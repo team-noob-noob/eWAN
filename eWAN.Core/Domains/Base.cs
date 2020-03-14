@@ -14,7 +14,7 @@ namespace eWAN.Core.Domains.Base
             deletedAt = null;
         }
 
-        public int Id;
+        public uint Id;
         public DateTime createdAt;
         public DateTime updatedAt;
         public DateTime deletedAt;

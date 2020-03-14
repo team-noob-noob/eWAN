@@ -16,8 +16,14 @@ namespace eWAN.Core.Domains.Base
         }
 
         public Guid Id;
+
+        ///<summary>Indicates when the instance was created</summary>
         public DateTime createdAt;
+        
+        ///<summary>Indicates if the instance is updated</summary>
         public DateTime updatedAt;
+
+        ///<summary>Indicates if the instance is deleted. If null, the value is not deleted.</summary>
         public DateTime deletedAt;
     }
 }

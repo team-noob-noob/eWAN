@@ -7,6 +7,8 @@ namespace eWAN.Core.Domains.Identity
     {
         public string username { get; protected set; }
         public string password { get; protected set; }
+        public UserDetails details { get; protected set; }
+        public UserContacts contacts { get; protected set; }
     }
 
     public class UserDetails : BaseEntity

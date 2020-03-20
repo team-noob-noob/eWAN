@@ -1,7 +1,7 @@
-
-namespace eWAN.Core.Domains.Identity
+namespace eWAN.Core.Domains.Entities.Identity
 {
-    using eWAN.Core.Domains.Base;
+    using eWAN.Core.Domains.Entities.Base;
+    using eWAN.Core.Domains.ValueObjects.Identity;
 
     public class User : BaseEntity
     {
@@ -9,19 +9,6 @@ namespace eWAN.Core.Domains.Identity
         public string password { get; protected set; }
         public UserDetails details { get; protected set; }
         public UserContacts contacts { get; protected set; }
-    }
-
-    public class UserDetails : BaseEntity
-    {
-        public string firstName { get; protected set; }
-        public string middleName { get; protected set; }
-        public string lastName { get; protected set; }
-    }
-
-    public class UserContacts : BaseEntity
-    {
-        public string emailAddress { get; protected set; }
-        public string mobileNumber { get; protected set; }
-        public string homeAddress { get; protected set; }
+        public UserGuardian guardian { get; protected set; }
     }
 }

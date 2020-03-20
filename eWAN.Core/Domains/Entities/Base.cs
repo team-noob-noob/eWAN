@@ -1,6 +1,6 @@
 using System;
 
-namespace eWAN.Core.Domains.Base
+namespace eWAN.Core.Domains.Entities.Base
 {
     ///<summary>Common properties for all Entity</summary>
     public class BaseEntity

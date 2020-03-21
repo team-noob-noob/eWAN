@@ -20,7 +20,7 @@ namespace eWAN.Core.Domains.ValueObjects.Identity
     {
         public string emailAddress { get; set; }
         public string mobileNumber { get; set; }
-        public string homeAddress { get; set; }
+        public Address homeAddress { get; set; }
 
         protected IEnumerable<object> GetAtomicValues()
         {

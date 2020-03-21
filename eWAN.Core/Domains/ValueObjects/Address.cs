@@ -1,5 +1,6 @@
 namespace eWAN.Core.Domains.ValueObjects
 {
+    using System.Collections.Generic;
     using eWAN.Core.Domains.ValueObjects.Base;
 
     public class Address : ValueObject

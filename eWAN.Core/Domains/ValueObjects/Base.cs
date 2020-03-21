@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+
 namespace eWAN.Core.Domains.ValueObjects.Base
 {
     public abstract class ValueObject

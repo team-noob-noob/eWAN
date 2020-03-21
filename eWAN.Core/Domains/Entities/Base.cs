@@ -24,6 +24,6 @@ namespace eWAN.Core.Domains.Entities.Base
         public DateTime updatedAt;
 
         ///<summary>Indicates if the instance is deleted. If null, the value is not deleted.</summary>
-        public DateTime deletedAt;
+        public DateTime? deletedAt;
     }
 }

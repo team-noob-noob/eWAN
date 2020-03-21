@@ -1,6 +1,7 @@
 namespace eWAN.Core.Domains.ValueObjects.Identity
 {
-    using eWAN.Core.Domains.ValueObject.Base;
+    using System.Collections.Generic;
+    using eWAN.Core.Domains.ValueObjects.Base;
 
     public class UserDetails : ValueObject
     {
@@ -31,7 +32,7 @@ namespace eWAN.Core.Domains.ValueObjects.Identity
             return $"{lastName}, {firstName} {middleName}";
         }
 
-        protected IEnumerable<object> GetAtomicValues()
+        protected override IEnumerable<object> GetAtomicValues()
         {
             yield return firstName;
             yield return middleName;
@@ -59,7 +60,7 @@ namespace eWAN.Core.Domains.ValueObjects.Identity
             this.homeAddress = homeAddress;
         }
 
-        protected IEnumerable<object> GetAtomicValues()
+        protected override IEnumerable<object> GetAtomicValues()
         {
             yield return emailAddress;
             yield return mobileNumber;
@@ -84,7 +85,7 @@ namespace eWAN.Core.Domains.ValueObjects.Identity
             this.mobileNumber = mobileNumber;
         }
 
-        protected IEnumerable<object> GetAtomicValues()
+        protected override IEnumerable<object> GetAtomicValues()
         {
             yield return name;
             yield return mobileNumber;

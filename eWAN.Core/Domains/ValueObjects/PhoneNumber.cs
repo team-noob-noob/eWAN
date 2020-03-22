@@ -26,7 +26,7 @@ namespace eWAN.Core.Domains.ValueObjects
             }
 
             // If the start is 09xx xxxxxxx
-            if(phoneNumber.StartsWith("09"))
+            if(phoneNumber.StartsWith("09") && phoneNumber.Length == 11)
             {
                 countryCode = "+63";
                 areaCode = phoneNumber.Substring(1, 3);

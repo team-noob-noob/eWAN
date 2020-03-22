@@ -21,15 +21,15 @@ namespace eWAN.Core.Domains.ValueObjects
             if(phoneNumber.StartsWith("+63"))
             {
                 countryCode = "+63";
-                areaCode = phoneNumber.Substring(2, 3);
+                areaCode = phoneNumber.Substring(3, 3);
                 extension = phoneNumber.Substring(6);
             }
 
             // If the start is 09xx xxxxxxx
             if(phoneNumber.StartsWith("09"))
             {
-                countryCode = "";
-                areaCode = phoneNumber.Substring(0, 4);
+                countryCode = "+63";
+                areaCode = phoneNumber.Substring(1, 3);
                 extension = phoneNumber.Substring(4);
             }
         }
@@ -43,6 +43,11 @@ namespace eWAN.Core.Domains.ValueObjects
             this.countryCode = countryCode;
             this.areaCode = areaCode;
             this.extension = extension;
+        }
+
+        public override string ToString()
+        {
+            return countryCode + areaCode + extension;
         }
 
         protected override IEnumerable<object> GetAtomicValues()

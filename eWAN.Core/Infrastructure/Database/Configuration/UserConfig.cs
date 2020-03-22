@@ -10,7 +10,10 @@ namespace eWAN.Core.Infrastructure.Database.Config
         {
             builder.HasKey(u => u.Id);
             builder.OwnsOne(u => u.details);
-            builder.OwnsOne(u => u.contacts, cb => cb.OwnsOne(c => c.homeAddress));
+            builder.OwnsOne(u => u.contacts, cb => {
+                cb.OwnsOne(c => c.homeAddress);
+                cb.OwnsOne(c => c.mobileNumber);
+            });
             builder.OwnsOne(u => u.guardian);
         }
     }

@@ -15,15 +15,15 @@ namespace eWAN.Core.Domains.Entities.Base
             deletedAt = null;
         }
 
-        public Guid Id;
+        public Guid Id { get; private set; }
 
         ///<summary>Indicates when the instance was created</summary>
-        public DateTime createdAt;
+        public DateTime createdAt { get; private set; }
         
         ///<summary>Indicates if the instance is updated</summary>
-        public DateTime updatedAt;
+        public DateTime updatedAt { get; protected set; }
 
         ///<summary>Indicates if the instance is deleted. If null, the value is not deleted.</summary>
-        public DateTime? deletedAt;
+        public DateTime? deletedAt { get; set; }
     }
 }

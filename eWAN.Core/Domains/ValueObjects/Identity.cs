@@ -43,7 +43,7 @@ namespace eWAN.Core.Domains.ValueObjects.Identity
     public class UserContacts : ValueObject
     {
         public string emailAddress { get; private set; }
-        public string mobileNumber { get; private set; }
+        public PhoneNumber mobileNumber { get; private set; }
         public Address homeAddress { get; private set; }
 
         private UserContacts()
@@ -51,7 +51,7 @@ namespace eWAN.Core.Domains.ValueObjects.Identity
         
         public UserContacts(
             string emailAddress,
-            string mobileNumber,
+            PhoneNumber mobileNumber,
             Address homeAddress
         )
         {

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Domains": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "HMAC_KEY": "fdba794297f816433ce5b9c8f22db3a3c9f73b54"
+      }
+    }
+  }
+}

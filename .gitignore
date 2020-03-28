@@ -13,6 +13,11 @@ project.lock.json
 *.userosscache
 *.sln.docstates
 
+#appsettings 
+appsettings.json
+appsettings.Development.json
+appsettings.Prodection.json
+
 # Build results
 bin/
 obj/

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "eWAN.Core.Tests": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "Key": "Value"
+      }
+    }
+  }
+}

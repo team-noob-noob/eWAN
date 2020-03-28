@@ -13,10 +13,12 @@ namespace eWAN.Core.Domains.OAuth
         public JWTPayload payload { get; set; }
 
         public string server_secret { get; set; }
-
-        public string createNewToken(string name, string permission_code, string server_secret)
+        public JWTToken(string server_secret)
         {
             this.server_secret = server_secret;
+        }
+        public string createNewToken(string name, string permission_code)
+        {
             this.createHeader();
             this.payload = new JWTPayload();
             this.payload.name = name;

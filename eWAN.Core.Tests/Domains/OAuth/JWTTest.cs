@@ -15,8 +15,8 @@ class JWTTest
     [Test]
     public void ShouldVerifySignature()
     {
-        JWTToken TokenGenerator = new JWTToken();
-        string token = TokenGenerator.createNewToken(this.name, this.permission_code, "Aiko");
+        JWTToken TokenGenerator = new JWTToken("Aiko");
+        string token = TokenGenerator.createNewToken(this.name, this.permission_code);
 
         bool result = TokenGenerator.decodeAndVerifyToken(token);
 

@@ -16,9 +16,9 @@ class JWTTest
     public void ShouldVerifySignature()
     {
         JWTToken TokenGenerator = new JWTToken("Aiko");
-        string token = TokenGenerator.createNewToken(this.name, this.permission_code);
+        string token = TokenGenerator.CreateNewToken(this.name, this.permission_code);
 
-        bool result = TokenGenerator.decodeAndVerifyToken(token);
+        bool result = TokenGenerator.DecodeAndVerifyToken(token);
 
         Assert.IsTrue(result);
     }

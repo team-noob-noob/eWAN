@@ -24,7 +24,7 @@ namespace eWAN.WebAPIs.Controllers
         {
             AccessToken token = new AccessToken();
             token.token_type = "Bearer";
-            token.access_token = this._token_generator.createNewToken(login.name, login.access_permission);
+            token.access_token = this._token_generator.CreateNewToken(login.name, login.access_permission);
             return token;
         }
     }

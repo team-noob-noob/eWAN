@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using eWAN.Core.Domains.OAuth;
+using eWAN.Core.UseCases.OAuth;
 
 namespace eWAN.WebAPIs
 {

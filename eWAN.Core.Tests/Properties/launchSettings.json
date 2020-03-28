@@ -3,7 +3,7 @@
     "eWAN.Core.Tests": {
       "commandName": "Project",
       "environmentVariables": {
-        "Key": "Value",
+        "Key": "Value"
       }
     }
   }

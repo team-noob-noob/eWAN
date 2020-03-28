@@ -20,8 +20,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="../eWAN.Core/Domains/Domains.csproj" />
+    <ProjectReference Include="..\eWAN.Core\UseCases\UseCases.csproj" />
   </ItemGroup>
 
 </Project>

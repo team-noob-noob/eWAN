@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace eWAN.Core.Domains.OAuth
+namespace eWAN.Core.UseCases.OAuth
 {
     public class AccessToken
     {

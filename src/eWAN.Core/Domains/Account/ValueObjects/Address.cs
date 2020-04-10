@@ -1,8 +1,7 @@
-namespace eWAN.Core.Domains.ValueObjects
-{
-    using System.Collections.Generic;
-    using eWAN.Core.Domains.ValueObjects.Base;
+using System.Collections.Generic;
 
+namespace eWAN.Core.Domains.Account
+{
     public class Address : ValueObject
     {
         public string street { get; private set; }

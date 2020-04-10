@@ -1,8 +1,7 @@
-namespace eWAN.Core.Domains.ValueObjects.Identity
-{
-    using System.Collections.Generic;
-    using eWAN.Core.Domains.ValueObjects.Base;
+using System.Collections.Generic;
 
+namespace eWAN.Core.Domains.Account
+{
     public class UserDetails : ValueObject
     {
         public string firstName { get; private set; }

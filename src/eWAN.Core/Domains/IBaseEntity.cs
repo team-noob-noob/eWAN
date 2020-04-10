@@ -1,6 +1,6 @@
 using System;
 
-namespace eWAN.Core.Domains.Interfaces.Entities
+namespace eWAN.Core.Domains
 {
     public interface IBaseEntity
     {

@@ -1,7 +1,7 @@
 using System;
 using eWAN.Core.Domains.Interfaces.Entities;
 
-namespace eWAN.Core.Domains.Entities.Base
+namespace eWAN.Core.Domains
 {
     ///<summary>Common properties for all Entity</summary>
     public class BaseEntity : IBaseEntity

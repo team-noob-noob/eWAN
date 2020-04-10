@@ -3,17 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eWAN.WebAPIs", "eWAN.WebAPIs\eWAN.WebAPIs.csproj", "{72B467C4-347B-4C6E-84EB-F3C71C94EF48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eWAN.WebAPIs", "src\eWAN.WebAPIs\eWAN.WebAPIs.csproj", "{72B467C4-347B-4C6E-84EB-F3C71C94EF48}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eWAN.Core.Tests", "eWAN.Core.Tests\eWAN.Core.Tests.csproj", "{A9F6E561-86F4-42C5-BCE7-EDF54E4CCD58}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "eWAN.Core", "eWAN.Core", "{36136844-1A89-472A-A66E-D0B53989F56F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domains", "src\eWAN.Core\Domains\Domains.csproj", "{4988EF5B-F642-4388-89C2-4298E1BE9522}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domains", "eWAN.Core\Domains\Domains.csproj", "{4988EF5B-F642-4388-89C2-4298E1BE9522}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\eWAN.Core\Infrastructure\Infrastructure.csproj", "{0FDA2082-08C0-4E31-BCD1-74CF4F2A90DC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "eWAN.Core\Infrastructure\Infrastructure.csproj", "{0FDA2082-08C0-4E31-BCD1-74CF4F2A90DC}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UseCases", "eWAN.Core\UseCases\UseCases.csproj", "{A298726D-0E2D-4B3A-A1E0-5197604C9195}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UseCases", "src\eWAN.Core\UseCases\UseCases.csproj", "{A298726D-0E2D-4B3A-A1E0-5197604C9195}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

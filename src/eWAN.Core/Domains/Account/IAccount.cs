@@ -1,6 +1,4 @@
-using eWAN.Core.Domains.ValueObjects.Identity;
-
-namespace eWAN.Core.Domains.Interfaces.Entities
+namespace eWAN.Core.Domains.Account
 {
     public interface IAccount
     {

@@ -2,7 +2,7 @@ using eWAN.Core.Domains;
 
 namespace eWAN.Core.Domains.Account
 {
-    public class User : BaseEntity
+    public class Account : BaseEntity
     {
         public UserDetails details { get; protected set; }
         public UserContacts contacts { get; protected set; }

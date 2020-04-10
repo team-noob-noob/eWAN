@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using eWAN.Core.Domains.ValueObjects;
+using eWAN.Core.Domains.Account;
 
 class PhoneNumberTest
 {

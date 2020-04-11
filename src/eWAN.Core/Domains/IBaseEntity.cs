@@ -4,8 +4,6 @@ namespace eWAN.Core.Domains
 {
     public interface IBaseEntity
     {
-        Guid Id { get; }
-
         ///<summary>Indicates when the instance was created</summary>
         DateTime createdAt { get; }
         

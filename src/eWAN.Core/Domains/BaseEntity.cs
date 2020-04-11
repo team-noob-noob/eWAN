@@ -9,13 +9,10 @@ namespace eWAN.Core.Domains
         {
             DateTime now = DateTime.Now;
 
-            Id = Guid.NewGuid();
             createdAt = now;
             updatedAt = now;
             deletedAt = null;
         }
-
-        public Guid Id { get; private set; }
 
         ///<summary>Indicates when the instance was created</summary>
         public DateTime createdAt { get; private set; }

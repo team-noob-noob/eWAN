@@ -1,5 +1,4 @@
 using System;
-using eWAN.Core.Domains.Interfaces.Entities;
 
 namespace eWAN.Core.Domains
 {

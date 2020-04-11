@@ -16,6 +16,11 @@ namespace eWAN.Core.Domains.Account
             string lastName
         )
         {
+            if(firstName.Equals(string.Empty) || middleName.Equals(string.Empty) || lastName.Equals(string.Empty))
+            {
+                throw new EmptyNameException();
+            }
+
             this.firstName = firstName;
             this.middleName = middleName;
             this.lastName = lastName;

@@ -25,11 +25,15 @@ namespace eWAN.Core.Domains.Account
             }
 
             // If the start is 09xx xxxxxxx
-            if(phoneNumber.StartsWith("09") && phoneNumber.Length == 11)
+            else if(phoneNumber.StartsWith("09") && phoneNumber.Length == 11)
             {
                 countryCode = "+63";
                 areaCode = phoneNumber.Substring(1, 3);
                 extension = phoneNumber.Substring(4);
+            }
+
+            else {
+                throw new InvalidPhoneNumberException();
             }
         }
 

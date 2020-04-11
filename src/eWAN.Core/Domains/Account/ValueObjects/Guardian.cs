@@ -2,15 +2,15 @@ using System.Collections.Generic;
 
 namespace eWAN.Core.Domains.Account
 {
-    public class UserGuardian : ValueObject
+    public class Guardian : ValueObject
     {
         public string name { get; private set; }
         public PhoneNumber mobileNumber { get; private set; }
 
-        private UserGuardian()
+        private Guardian()
         {}
 
-        public UserGuardian(
+        public Guardian(
             string name,
             PhoneNumber mobileNumber
         )

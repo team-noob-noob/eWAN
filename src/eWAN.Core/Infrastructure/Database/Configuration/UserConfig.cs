@@ -1,4 +1,5 @@
-using eWAN.Core.Domains.Entities.Identity;
+using eWAN.Core.Domains.Security;
+using eWAN.Core.Domains.Account;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -8,13 +9,23 @@ namespace eWAN.Core.Infrastructure.Database.Config
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasKey(u => u.Id);
-            builder.OwnsOne(u => u.details);
-            builder.OwnsOne(u => u.contacts, cb => {
-                cb.OwnsOne(c => c.homeAddress);
-                cb.OwnsOne(c => c.mobileNumber);
-            });
-            builder.OwnsOne(u => u.guardian);
+            builder.Property(b => b.externalUserId)
+                .HasConversion(
+                    v => v.ToGuid(),
+                    v => new ExternalUserId(v)
+                )
+                .IsRequired();
+            
+            builder.Property(b => b.accountId)
+                .HasConversion(
+                    v => v.ToString(),
+                    v => new AccountId(v)
+                )
+                .IsRequired();
+            
+            builder.HasKey(
+                c => new {c.externalUserId, c.accountId}
+            );
         }
     }
 }

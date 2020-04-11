@@ -2,10 +2,11 @@ using eWAN.Core.Domains;
 
 namespace eWAN.Core.Domains.Account
 {
-    public class Account : BaseEntity
+    public class Account : BaseEntity, IAccount
     {
-        public Name details { get; protected set; }
-        public UserContacts contacts { get; protected set; }
-        public UserGuardian guardian { get; protected set; }
+        public AccountId accountId { get; protected set; }
+        public Name name { get; protected set; }
+        public Contact contacts { get; protected set; }
+        public Guardian guardian { get; protected set; }
     }
 }

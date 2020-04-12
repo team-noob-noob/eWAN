@@ -9,6 +9,8 @@ namespace eWAN.Core.Infrastructure.Database.Config
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
+            builder.HasIndex(b => b.externalUserId);
+
             builder.Property(b => b.externalUserId)
                 .HasConversion(
                     v => v.ToGuid(),

@@ -15,6 +15,11 @@ namespace eWAN.Core.Domains.Account
             PhoneNumber mobileNumber
         )
         {
+            if(name == null || mobileNumber == null) 
+            {
+                throw new EmptyGuardianException();
+            }
+
             this.name = name;
             this.mobileNumber = mobileNumber;
         }

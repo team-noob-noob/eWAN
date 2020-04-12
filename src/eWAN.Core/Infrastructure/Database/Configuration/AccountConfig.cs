@@ -16,8 +16,15 @@ namespace eWAN.Core.Infrastructure.Database.Config
                     v => new AccountId(v)
                 )
                 .IsRequired();
-            
-            
+
+            builder.OwnsOne(a => a.name);
+            builder.OwnsOne(a => a.guardian, a => {
+                a.OwnsOne(b => b.mobileNumber);
+            });
+            builder.OwnsOne(a => a.contacts, a => {
+                a.OwnsOne(b => b.homeAddress);
+                a.OwnsOne(b => b.mobileNumber);
+            });
         }
     }
 }

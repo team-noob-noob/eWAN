@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using eWAN.Core.Domains.Security;
-using eWAN.Core.Infrastructure.Database.Config;
+using eWAN.Core.Domains.Account;
 
 namespace eWAN.Core.Infrastructure.Database
 {
@@ -9,7 +9,8 @@ namespace eWAN.Core.Infrastructure.Database
         public SchoolContext(DbContextOptions options)
             : base(options) {}
 
-        public DbSet<User> users { get; set; }
+        public DbSet<User> users { get; }
+        public DbSet<Account> accounts { get; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

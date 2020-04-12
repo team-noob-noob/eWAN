@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domains", "src\eWAN.Core\Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\eWAN.Core\Infrastructure\Infrastructure.csproj", "{7D158250-824C-4C4B-957C-2539F1DFBB6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases", "src\eWAN.Core\UseCases\UseCases.csproj", "{62DCB43A-53EA-4FB5-9506-2BF938232EDA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases", "src\eWAN.Core\Application\Application.csproj", "{62DCB43A-53EA-4FB5-9506-2BF938232EDA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWAN.Core.Tests", "eWAN.Core.Tests\eWAN.Core.Tests.csproj", "{A0C908A7-5640-4CA3-8F1E-8F146D2AC4BE}"
 EndProject

@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using Newtonsoft.Json;
 using System.Linq;
 
-namespace eWAN.Core.UseCases.OAuth
+namespace eWAN.Core.Application.OAuth
 {
     public class JWTToken
     {

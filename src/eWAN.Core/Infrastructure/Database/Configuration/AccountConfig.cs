@@ -1,6 +1,7 @@
-using eWAN.Core.Domains.Account;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using eWAN.Core.Infrastructure.Database.Entities;
+using AccountId = eWAN.Core.Domains.Account.AccountId;
 
 namespace eWAN.Core.Infrastructure.Database.Config
 {

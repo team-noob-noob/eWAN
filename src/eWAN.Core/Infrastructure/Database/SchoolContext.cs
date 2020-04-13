@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using eWAN.Core.Domains.Security;
-using eWAN.Core.Domains.Account;
+using eWAN.Core.Infrastructure.Database.Entities;
 
 namespace eWAN.Core.Infrastructure.Database
 {

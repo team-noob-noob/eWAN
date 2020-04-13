@@ -1,7 +1,8 @@
-using eWAN.Core.Domains.Security;
-using eWAN.Core.Domains.Account;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using eWAN.Core.Infrastructure.Database.Entities;
+using ExternalUserId = eWAN.Core.Domains.Security.ExternalUserId;
+using AccountId = eWAN.Core.Domains.Account.AccountId;
 
 namespace eWAN.Core.Infrastructure.Database.Config
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace eWAN.Core.Application.OAuth
+namespace eWAN.Core.Infrastructure.OAuth
 {
     public class JWTPayload
     {

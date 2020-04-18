@@ -1,10 +1,9 @@
-using System.Threading.Tasks;
 using eWAN.Core.Domains.Account;
 
 namespace eWAN.Core.Domains.Security
 {
-    public interface IUserRepository
+    public interface IUserFactory
     {
-        Task NewUser(AccountId accountId, string username, string password);
+        IUser NewUser(AccountId accountId, string username, string password);
     }
 }

@@ -1,11 +1,8 @@
-using System.Threading.Tasks;
-
 namespace eWAN.Core.Domains.Account
 {
     public interface IAccountFactory
     {
-        Task NewAccount(
-            Address address,
+        IAccount NewAccount(
             Contact contact,
             Guardian guardian,
             Name name

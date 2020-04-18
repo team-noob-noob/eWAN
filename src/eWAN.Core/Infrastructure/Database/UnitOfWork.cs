@@ -4,7 +4,7 @@ using eWAN.Core.Application.Services;
 
 namespace eWAN.Core.Infrastructure.Database
 {
-    public class UnitOfWork : IUnitOfWork, IDisposable
+    public sealed class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly SchoolContext _context;
         private bool _disposed;

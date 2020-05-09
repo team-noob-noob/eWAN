@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using eWAN.Core.UseCases.OAuth;
+using eWAN.Core.Infrastructure.OAuth;
 
 class JWTTest
 {

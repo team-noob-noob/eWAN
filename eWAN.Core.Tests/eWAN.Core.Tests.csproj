@@ -19,7 +19,6 @@
   <ItemGroup>
     <ProjectReference Include="..\src\eWAN.Core\Domains\Domains.csproj" />
     <ProjectReference Include="..\src\eWAN.Core\Infrastructure\Infrastructure.csproj" />
-    <ProjectReference Include="..\src\eWAN.Core\UseCases\UseCases.csproj" />
   </ItemGroup>
 
 </Project>

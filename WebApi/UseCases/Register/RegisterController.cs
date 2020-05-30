@@ -16,7 +16,15 @@ namespace eWAN.WebApi.UseCases.Register
             [FromServices] RegisterPresenter presenter,
             [FromForm] RegisterRequest request)
         {
-            var registerInput = new RegisterInput(request.Username, request.Password);
+            var registerInput = new RegisterInput(
+                request.Username,
+                request.Password,
+                request.Email,
+                request.PhoneNumber,
+                request.FirstName,
+                request.MiddleName,
+                request.LastName,
+                request.Address);
             await registerUseCase.Handle(registerInput);
             return presenter.ViewModel;
         }

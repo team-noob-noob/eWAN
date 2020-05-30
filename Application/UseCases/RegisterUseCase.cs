@@ -40,7 +40,15 @@ namespace eWAN.Application.UseCases
                 return;
             }
 
-            IUser user = this._userFactory.NewUser(input.Username, input.Password);
+            IUser user = this._userFactory.NewUser(
+                input.Username,
+                input.Password,
+                input.Email,
+                input.PhoneNumber,
+                input.FirstName,
+                input.MiddleName,
+                input.LastName,
+                input.Address);
             await this._userRepository.Add(user);
             await this._unitOfWork.Save();
 

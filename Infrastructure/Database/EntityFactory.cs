@@ -5,6 +5,25 @@ namespace eWAN.Infrastructure.Database
 
     public class EntityFactory : IUserFactory
     {
-        public IUser NewUser(string Username, string Password) => new User(Username, Password);
+        public IUser NewUser(
+            string Username,
+            string Password, 
+
+            string Email, 
+            string PhoneNumber, 
+
+            string FirstName,
+            string MiddleName,
+            string LastName,
+
+            string Address) => new User(
+                Username, 
+                Password,
+                Email,
+                PhoneNumber,
+                FirstName,
+                MiddleName,
+                LastName,
+                Address);
     }
 }

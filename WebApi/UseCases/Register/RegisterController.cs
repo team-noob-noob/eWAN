@@ -18,7 +18,7 @@ namespace eWAN.WebApi.UseCases.Register
         {
             var registerInput = new RegisterInput(request.Username, request.Password);
             await registerUseCase.Handle(registerInput);
-            return Accepted(new {Test = "Testing"});
+            return presenter.ViewModel;
         }
     }
 }

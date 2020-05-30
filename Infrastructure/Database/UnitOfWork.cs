@@ -9,6 +9,8 @@ namespace eWAN.Infrastructure.Database
         private readonly EwanContext _context;
         private bool _disposed;
 
+        public UnitOfWork(EwanContext context) => this._context = context;
+
         public void Dispose()
         {
             this.Dispose(true);

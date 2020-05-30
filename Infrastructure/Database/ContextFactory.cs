@@ -7,7 +7,7 @@ namespace eWAN.Infrastructure.Database
     {
         public EwanContext CreateDbContext(string[] args)
         {
-            string connectionString = "";
+            string connectionString = "Server=localhost;Database=ewan;Uid=root;Pwd=root;";
             var builder = new DbContextOptionsBuilder<EwanContext>();
             builder.UseMySQL(connectionString);
             return new EwanContext(builder.Options);

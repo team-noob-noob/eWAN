@@ -1,0 +1,23 @@
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
+
+namespace eWAN.WebApi.UseCases.Register
+{
+    using Application.Boundaries.Register;
+
+    [Route("api/[controller]")]
+    [ApiController]
+    public sealed class RegisterController : ControllerBase
+    {
+        public async Task<IActionResult> Post(
+            [FromServices] IRegisterUseCase registerUseCase,
+            [FromServices] RegisterPresenter presenter,
+            [FromBody] RegisterRequest request)
+        {
+            var registerInput = new RegisterInput(request.Username, request.Password);
+            await registerUseCase.Handle(registerInput);
+            return presenter.ViewModel;
+        }
+    }
+}

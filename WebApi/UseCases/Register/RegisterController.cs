@@ -6,18 +6,19 @@ namespace eWAN.WebApi.UseCases.Register
 {
     using Application.Boundaries.Register;
 
-    [Route("api/[controller]")]
+    [Route("/api/[controller]")]
     [ApiController]
     public sealed class RegisterController : ControllerBase
     {
+        [HttpPost]
         public async Task<IActionResult> Post(
             [FromServices] IRegisterUseCase registerUseCase,
             [FromServices] RegisterPresenter presenter,
-            [FromBody] RegisterRequest request)
+            [FromForm] RegisterRequest request)
         {
             var registerInput = new RegisterInput(request.Username, request.Password);
             await registerUseCase.Handle(registerInput);
-            return presenter.ViewModel;
+            return Accepted(new {Test = "Testing"});
         }
     }
 }

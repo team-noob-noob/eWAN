@@ -15,6 +15,8 @@ namespace eWAN.WebApi.Modules
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserRepository, UserRepository>();
 
+            services.AddScoped<IUserFactory, EntityFactory>();
+
             return services;
         }
     }

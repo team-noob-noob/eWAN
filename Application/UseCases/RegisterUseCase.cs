@@ -11,16 +11,19 @@ namespace eWAN.Application.UseCases
         public RegisterUseCase(
             IRegisterOutputPort outputPort,
             IUserRepository userRepository,
+            IUserFactory userFactory,
             IUnitOfWork unitOfWork
         )
         {
             this._outputPort = outputPort;
             this._userRepository = userRepository;
+            this._userFactory = userFactory;
             this._unitOfWork = unitOfWork;
         }
 
         private readonly IRegisterOutputPort _outputPort;
         private readonly IUserRepository _userRepository;
+        private readonly IUserFactory _userFactory;
         private readonly IUnitOfWork _unitOfWork;
 
         public async Task Handle(RegisterInput input)
@@ -37,7 +40,7 @@ namespace eWAN.Application.UseCases
                 return;
             }
 
-            IUser user = input;
+            IUser user = this._userFactory.NewUser(input.Username, input.Password);
             await this._userRepository.Add(user);
             await this._unitOfWork.Save();
 

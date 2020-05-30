@@ -2,7 +2,9 @@ using System;
 
 namespace eWAN.Infrastructure.Database.Entities
 {
-    public sealed class User : Domains.User.User
+    using Domains.User;
+
+    public sealed class User : Domains.User.User, IUser
     {
         public User(string Username, string Password)
         {

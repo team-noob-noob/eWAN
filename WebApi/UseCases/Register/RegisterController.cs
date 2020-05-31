@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eWAN.WebApi.UseCases.Register
@@ -11,7 +10,7 @@ namespace eWAN.WebApi.UseCases.Register
     public sealed class RegisterController : ControllerBase
     {
         [HttpPost]
-        public async Task<IActionResult> Post(
+        public async Task<IActionResult> CreateUser(
             [FromServices] IRegisterUseCase registerUseCase,
             [FromServices] RegisterPresenter presenter,
             [FromForm] RegisterRequest request)

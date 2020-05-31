@@ -19,6 +19,15 @@ namespace eWAN.Application.Boundaries.Register
         {
             this.Username = Username;
             this.Password = Password;
+
+            this.Email = Email;
+            this.PhoneNumber = PhoneNumber;
+            
+            this.FirstName = FirstName;
+            this.MiddleName = MiddleName;
+            this.LastName = LastName;
+
+            this.Address = Address;
         }
 
         public string Username { get; set; }

@@ -10,6 +10,6 @@ namespace eWAN.WebApi.UseCases.Register
 
         public void Standard(RegisterOutput output) => this.ViewModel = new CreatedAtRouteResult("Register", new {Username = output.newUser.Username});
         
-        public void WriteError(string message) => this.ViewModel = new BadRequestObjectResult(message);
+        public void WriteError(string message) => this.ViewModel = new BadRequestObjectResult(new {Message = message});
     }
 }

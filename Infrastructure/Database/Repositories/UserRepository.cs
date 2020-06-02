@@ -30,5 +30,13 @@ namespace eWAN.Infrastructure.Database.Repositories
 
             return user;
         }
+
+        public async Task<IUser> GetByEmail(string email)
+        {
+            User user = await this._context.Users
+            .Where(a => a.Email == email)
+            .SingleOrDefaultAsync();
+            return user;
+        }
     }
 }

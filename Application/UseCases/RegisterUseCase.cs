@@ -40,6 +40,12 @@ namespace eWAN.Application.UseCases
                 return;
             }
 
+            if(await this._userRepository.GetByEmail(input.Email) != null)
+            {
+                this._outputPort.WriteError("Email already taken");
+                return;
+            }
+
             IUser user = this._userFactory.NewUser(
                 input.Username,
                 input.Password,

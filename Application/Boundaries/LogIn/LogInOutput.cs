@@ -1,12 +1,14 @@
 namespace eWAN.Application.Boundaries.LogIn
 {
+    using Domains.User;
+
     public class LogInOutput
     {
-        public LogInOutput(string SessionString)
+        public LogInOutput(IUser user)
         {
-            this.SessionString = SessionString;
+            this.user = user;
         }
 
-        public string SessionString { get; }
+        public IUser user { get; }
     }
 }

@@ -8,7 +8,12 @@ namespace eWAN.WebApi.UseCases.LogIn
     {
         public IActionResult ViewModel = new NoContentResult();
 
-        public void Standard(LogInOutput output) => this.ViewModel = new CreatedAtRouteResult("LogIn", output);
+        public void Standard(LogInOutput output)
+        {
+            string session = "TESTING = " + output.user.Username;
+
+            this.ViewModel = new CreatedAtRouteResult("LogIn", new LogInReponse(session));
+        }
 
         public void WriteError(string message) => this.ViewModel = new BadRequestObjectResult(new {Message = message});
     }

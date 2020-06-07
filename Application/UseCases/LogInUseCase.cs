@@ -39,10 +39,7 @@ namespace eWAN.Application.UseCases
                 return;
             }
 
-            // TODO: Add session key generation
-            string SessionKey = "Testing SEssion - " + user.Username;
-
-            this._output.Standard(new LogInOutput(SessionKey));
+            this._output.Standard(new LogInOutput(user));
         }
     }
 }

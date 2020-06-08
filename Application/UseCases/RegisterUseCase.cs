@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 namespace eWAN.Application.UseCases
 {
     using Domains.User;
+    using Domains.Role;
     using Application.Boundaries.Register;
     using Application.Services;
 
@@ -11,19 +12,25 @@ namespace eWAN.Application.UseCases
         public RegisterUseCase(
             IRegisterOutputPort outputPort,
             IUserRepository userRepository,
+            IRoleRepository roleRepository,
             IUserFactory userFactory,
+            IRoleFactory roleFactory,
             IUnitOfWork unitOfWork
         )
         {
             this._outputPort = outputPort;
             this._userRepository = userRepository;
+            this._roleRepository = roleRepository;
             this._userFactory = userFactory;
+            this._roleFactory = roleFactory;
             this._unitOfWork = unitOfWork;
         }
 
         private readonly IRegisterOutputPort _outputPort;
         private readonly IUserRepository _userRepository;
+        private readonly IRoleRepository _roleRepository;
         private readonly IUserFactory _userFactory;
+        private readonly IRoleFactory _roleFactory;
         private readonly IUnitOfWork _unitOfWork;
 
         public async Task Handle(RegisterInput input)
@@ -56,6 +63,10 @@ namespace eWAN.Application.UseCases
                 input.LastName,
                 input.Address);
             await this._userRepository.Add(user);
+
+            IRole role = this._roleFactory.NewRole(user);
+            await this._roleRepository.Add(role);
+
             await this._unitOfWork.Save();
 
             this._outputPort.Standard(new RegisterOutput(user));

@@ -10,6 +10,7 @@ namespace eWAN.Infrastructure.Database
         public EwanContext(DbContextOptions options) : base(options) {}
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Role> UserRoles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

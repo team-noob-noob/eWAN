@@ -7,7 +7,7 @@ namespace eWAN.Infrastructure.Database.Entities
     {
         public Role() {}
 
-        public Role(IUser userId, UserRole role)
+        public Role(IUser user, UserRole role)
         {
             this.user = user;
             this.role = role;

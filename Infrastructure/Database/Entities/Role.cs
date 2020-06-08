@@ -13,6 +13,8 @@ namespace eWAN.Infrastructure.Database.Entities
             this.role = role;
         }
 
+        public override int Id { get; set; }
+
         public override IUser user { get; set; }
 
         public override UserRole role { get; set; }

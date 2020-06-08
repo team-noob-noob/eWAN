@@ -21,7 +21,8 @@ namespace eWAN.Infrastructure.Database.Configuration
             builder.Property(x => x.role).HasColumnType("int");
             builder.HasOne<User>(x => (User) x.user);
 
-            builder.HasNoKey();
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
         }
     }
 }

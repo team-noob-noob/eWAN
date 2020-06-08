@@ -1,14 +1,17 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace eWAN.WebApi.UseCases.Register
 {
     using Application.Boundaries.Register;
 
+    [Authorize]
     [Route("/api/[controller]")]
     [ApiController]
     public sealed class RegisterController : ControllerBase
     {
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> CreateUser(
             [FromServices] IRegisterUseCase registerUseCase,

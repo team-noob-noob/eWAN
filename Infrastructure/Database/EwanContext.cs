@@ -11,6 +11,7 @@ namespace eWAN.Infrastructure.Database
 
         public DbSet<User> Users { get; set; }
         public DbSet<Role> UserRoles { get; set; }
+        public DbSet<Application> Applications { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

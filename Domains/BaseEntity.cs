@@ -2,7 +2,7 @@ using System;
 
 namespace eWAN.Domains
 {
-    public class BaseEntity
+    public class BaseEntity : IBaseEntity
     {
         public DateTime createdAt { get; private set; } = DateTime.Now;
         public DateTime? updatedAt { get; set; } = null;

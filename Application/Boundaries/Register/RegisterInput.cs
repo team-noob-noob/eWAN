@@ -1,8 +1,9 @@
 namespace eWAN.Application.Boundaries.Register
 {
+    using System;
     using Domains.User;
 
-    public class RegisterInput : IUser
+    public class RegisterInput
     {
         public RegisterInput(
             string Username,

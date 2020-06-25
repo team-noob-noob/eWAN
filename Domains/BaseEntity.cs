@@ -4,9 +4,9 @@ namespace eWAN.Domains
 {
     public class BaseEntity : IBaseEntity
     {
-        public DateTime createdAt { get; private set; } = DateTime.Now;
-        public DateTime? updatedAt { get; set; } = null;
-        public DateTime? deletedAt { get; set; } = null;
+        public virtual DateTime createdAt { get; protected set; } = DateTime.Now;
+        public virtual DateTime? updatedAt { get; set; } = null;
+        public virtual DateTime? deletedAt { get; set; } = null;
         public bool isDeleted() => deletedAt != null;
     }
 }

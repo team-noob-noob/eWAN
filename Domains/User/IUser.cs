@@ -2,6 +2,8 @@ namespace eWAN.Domains.User
 {
     public interface IUser : IBaseEntity
     {
+        string? Id { get; }
+
         string Username { get; }
         string Password { get; }
 

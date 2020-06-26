@@ -13,11 +13,8 @@ namespace eWAN.Tests.Unit.UseCases.Application
     using Domains.User;
     using Mocks;
 
-    public class StudentApplicationUseCaseTests
+    public class StudentApplicationUseCaseTests : UseCasesFixture
     {
-        private IApplicationFactory applicationFactory;
-        private Mock<IApplicationRepository> mockedApplicationRepository;
-        private Mock<IUnitOfWork> mockedUnitOfWork;
         private Mock<IStudentApplicationOutputPort> mockedOutputPort;
         private Mock<IUser> mockedApplicant;
         private StudentApplicationUseCase sut;

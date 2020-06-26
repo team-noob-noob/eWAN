@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
 
-namespace eWAN.Tests.Unit.Application
+namespace eWAN.Tests.Unit.UseCases.Application
 {
     using eWAN.Application.UseCases;
     using eWAN.Application.Services;

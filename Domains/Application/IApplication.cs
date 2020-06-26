@@ -5,9 +5,9 @@ namespace eWAN.Domains.Application
     public interface IApplication : IBaseEntity
     {
         string Id { get; }
-        IUser applicant { get; }
-        IUser staff { get; }
-        bool isAccepted { get; }
-        string reason { get; }
+        IUser applicant { get; set; }
+        IUser staff { get; set; }
+        bool isAccepted { get; set; }
+        string reason { get; set; }
     }
 }

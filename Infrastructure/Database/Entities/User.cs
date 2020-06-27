@@ -30,15 +30,15 @@ namespace eWAN.Infrastructure.Database.Entities
             this.Id = DateTime.Now.Year.ToString() + RandomUtil.GenerateRandomNumber();
         }
 
-        public override string Id { get; set; }
-        public override string Username { get; protected set; }
-        public override string Password { get; protected set; }
-        public override string Email { get; protected set; }
-        public override string PhoneNumber { get; protected set; }
-        public override string FirstName { get; protected set; }
-        public override string MiddleName { get; protected set; }
-        public override string LastName { get; protected set; }
-        public override string Address { get; protected set; }
+        public override string Id { get; protected set; }
+        public override string Username { get; set; }
+        public override string Password { get; set; }
+        public override string Email { get; set; }
+        public override string PhoneNumber { get; set; }
+        public override string FirstName { get; set; }
+        public override string MiddleName { get; set; }
+        public override string LastName { get; set; }
+        public override string Address { get; set; }
     }
 
     internal class RandomUtil

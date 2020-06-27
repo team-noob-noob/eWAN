@@ -2,18 +2,18 @@ namespace eWAN.Domains.User
 {
     public interface IUser : IBaseEntity
     {
-        string? Id { get; }
+        string Id { get; }
 
-        string Username { get; }
-        string Password { get; }
+        string Username { get; set; }
+        string Password { get; set; }
 
-        string Email { get; }
-        string PhoneNumber { get; }
+        string Email { get; set; }
+        string PhoneNumber { get; set; }
         
-        string FirstName { get; }
-        string MiddleName { get; }
-        string LastName { get; }
+        string FirstName { get; set; }
+        string MiddleName { get; set; }
+        string LastName { get; set; }
 
-        string Address { get; }
+        string Address { get; set; }
     }
 }

@@ -15,7 +15,8 @@ namespace eWAN.Application.UseCases
             IRoleRepository roleRepository,
             IUserFactory userFactory,
             IRoleFactory roleFactory,
-            IUnitOfWork unitOfWork
+            IUnitOfWork unitOfWork,
+            IHashingService hashingService
         )
         {
             this._outputPort = outputPort;
@@ -24,6 +25,7 @@ namespace eWAN.Application.UseCases
             this._userFactory = userFactory;
             this._roleFactory = roleFactory;
             this._unitOfWork = unitOfWork;
+            this._hashingService = hashingService;
         }
 
         private readonly IRegisterOutputPort _outputPort;
@@ -32,6 +34,7 @@ namespace eWAN.Application.UseCases
         private readonly IUserFactory _userFactory;
         private readonly IRoleFactory _roleFactory;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IHashingService _hashingService;
 
         public async Task Handle(RegisterInput input)
         {
@@ -55,7 +58,7 @@ namespace eWAN.Application.UseCases
 
             IUser user = this._userFactory.NewUser(
                 input.Username,
-                input.Password,
+                this._hashingService.Hash(input.Password),
                 input.Email,
                 input.PhoneNumber,
                 input.FirstName,

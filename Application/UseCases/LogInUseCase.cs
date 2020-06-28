@@ -37,7 +37,7 @@ namespace eWAN.Application.UseCases
             }
 
             IUser user = await this._userRepository.GetByUsername(input.Username);
-            if(user is null || this._hashingService.IsValid(input.Password, user.Password))
+            if(user is null || !this._hashingService.IsValid(input.Password, user.Password))
             {
                 this._output.WriteError("Incorrect Username or Password");
                 return;

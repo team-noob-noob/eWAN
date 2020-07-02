@@ -12,17 +12,21 @@ namespace eWAN.WebApi.UseCases.LogIn
     public class LogInPresenter : ILogInOutputPort
     {
         public IActionResult ViewModel = new NoContentResult();
+        public ClaimsIdentity Identity = null;
 
         public void Standard(LogInOutput output)
         {
             string secret = "xecretKeywqejane";
 
+            var claims = new[] { new Claim(ClaimTypes.Name, output.user.Username) };
+            var identity = new ClaimsIdentity(claims);
+
             var tokenHandler = new JwtSecurityTokenHandler();
             byte[] key = Encoding.ASCII.GetBytes(secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, output.user.Username) }),
-                Expires = DateTime.UtcNow.AddDays(7),
+                Subject = identity,
+                Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
@@ -30,6 +34,7 @@ namespace eWAN.WebApi.UseCases.LogIn
             string token = tokenHandler.WriteToken(securityToken);
 
             this.ViewModel = new OkObjectResult(new LogInReponse(token));
+            this.Identity = identity;
         }
 
         public void WriteError(string message) => this.ViewModel = new BadRequestObjectResult(new {Message = message});

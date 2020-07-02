@@ -1,9 +1,11 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
 
 namespace eWAN.WebApi.UseCases.LogIn
 {
+    using System.Security.Claims;
     using Application.Boundaries.LogIn;
 
     [Authorize]
@@ -21,6 +23,13 @@ namespace eWAN.WebApi.UseCases.LogIn
         {
             var logInInput = new LogInInput(request.Username, request.Password);
             await logInUseCase.Handle(logInInput);
+            
+            // TODO: Move away from the controller class
+            if(presenter.ViewModel is OkObjectResult) 
+            {
+                await this.HttpContext.SignInAsync(new ClaimsPrincipal(new [] { presenter.Identity }));
+            }
+
             return presenter.ViewModel;
         }
     }

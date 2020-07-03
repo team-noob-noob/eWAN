@@ -23,7 +23,7 @@ namespace eWAN.WebApi.UseCases.StudentApplication
             var applicant = await userRepository.GetByUsername(this.HttpContext.User.Identity.Name);
             var input = new StudentApplicationInput(applicant);
             await useCase.Handle(input);
-            return presenter.Viewmodel;
+            return presenter.ViewModel;
         }
     }
 }

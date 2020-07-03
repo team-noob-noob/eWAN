@@ -5,9 +5,11 @@ namespace eWAN.WebApi.Modules
     using UseCases.Register;
     using UseCases.LogIn;
     using UseCases.StudentApplication;
+    using UseCases.ApplicationJurying;
     using Application.Boundaries.Register;
     using Application.Boundaries.LogIn;
     using Application.Boundaries.StudentApplication;
+    using Application.Boundaries.ApplicationJurying;
 
     public static class UserInterfaceExtensions
     {
@@ -21,6 +23,9 @@ namespace eWAN.WebApi.Modules
 
             services.AddScoped<StudentApplicationPresenter, StudentApplicationPresenter>();
             services.AddScoped<IStudentApplicationOutputPort>(x => x.GetRequiredService<StudentApplicationPresenter>());
+
+            services.AddScoped<ApplicationJuryingPresenter, ApplicationJuryingPresenter>();
+            services.AddScoped<IApplicationJuryingOutputPort>(x => x.GetRequiredService<ApplicationJuryingPresenter>());
 
             return services;
         }

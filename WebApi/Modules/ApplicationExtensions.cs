@@ -14,7 +14,7 @@ namespace eWAN.WebApi.Modules
         {
             services.AddScoped<IRegisterUseCase, RegisterUseCase>();
             services.AddScoped<ILogInUseCase, LogInUseCase>();
-            //services.AddScoped<IApplicationJuryingUseCase, ApplicationJuryingUseCase>();
+            services.AddScoped<IApplicationJuryingUseCase, ApplicationJuryingUseCase>();
             services.AddScoped<IStudentApplicationUseCase, StudentApplicationUseCase>();
             return services;
         }

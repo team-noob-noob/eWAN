@@ -16,7 +16,7 @@ namespace eWAN.WebApi.UseCases.LogIn
 
         public void Standard(LogInOutput output)
         {
-            string secret = "xecretKeywqejane";
+            string secret = System.Environment.GetEnvironmentVariable("SERVER_KEY");
 
             var claims = new[] { new Claim(ClaimTypes.Name, output.user.Username) };
             var identity = new ClaimsIdentity(claims);

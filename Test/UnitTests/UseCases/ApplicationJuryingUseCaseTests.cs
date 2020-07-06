@@ -21,6 +21,7 @@ namespace eWAN.Tests.UnitTests.UseCases.ApplicationJurying
             var sut = new ApplicationJuryingUseCase(
                 this._fixture.ApplicationRepositoryFake,
                 applicationJuryingPresenterFake,
+                this._fixture.RoleRepositoryFake,
                 this._fixture.UnitOfWorkFake
             );
             var expected = "Invalid Application Id";
@@ -42,6 +43,7 @@ namespace eWAN.Tests.UnitTests.UseCases.ApplicationJurying
             var sut = new ApplicationJuryingUseCase(
                 this._fixture.ApplicationRepositoryFake,
                 applicationJuryingPresenterFake,
+                this._fixture.RoleRepositoryFake,
                 this._fixture.UnitOfWorkFake
             );
             var expected = input.ApplicationId;

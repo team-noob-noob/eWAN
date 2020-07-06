@@ -5,6 +5,6 @@ namespace eWAN.Domains.Role
     public interface IRole : IBaseEntity
     {
         IUser user { get; }
-        UserRole role { get; }
+        UserRole role { get; set; }
     }
 }

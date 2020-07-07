@@ -10,6 +10,9 @@ namespace eWAN.Infrastructure.Database.Configuration
     {
         public void Configure(EntityTypeBuilder<EnrolledSubject> builder)
         {
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
+
             builder.HasOne<User>(x => (User) x.enrolledStudent);
 
             builder.HasOne<Subject>(x => (Subject) x.subject);

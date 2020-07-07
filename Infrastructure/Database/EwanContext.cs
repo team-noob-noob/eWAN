@@ -12,6 +12,13 @@ namespace eWAN.Infrastructure.Database
         public DbSet<User> Users { get; set; }
         public DbSet<Role> UserRoles { get; set; }
         public DbSet<Application> Applications { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<EnrolledSubject> EnrolledSubjects { get; set; }
+        public DbSet<Program> Programs { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<Semester> Semesters { get; set; }
+        public DbSet<Session> Sessions { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

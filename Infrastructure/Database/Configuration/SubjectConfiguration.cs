@@ -22,9 +22,8 @@ namespace eWAN.Infrastructure.Database.Configuration
                 .HasForeignKey("SubjectId");
             
             builder
-                .HasMany<User>(x => (IEnumerable<User>) x.Students)
-                .WithOne()
-                .HasForeignKey("SubjectId");
+                .HasMany<EnrolledSubject>(x => (IEnumerable<EnrolledSubject>) x.Students)
+                .WithOne();
 
             builder.ToTable("Subjects");
         }

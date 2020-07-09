@@ -19,6 +19,7 @@ namespace eWAN.Infrastructure.Database
         public DbSet<Semester> Semesters { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<Subject> Subjects { get; set; }
+        public DbSet<EnrolledProgram> EnrolledPrograms { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

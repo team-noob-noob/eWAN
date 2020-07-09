@@ -1,8 +1,10 @@
+using System.Threading.Tasks;
+
 namespace eWAN.Domains.Course
 {
     public interface ICourseRepository
     {
-        void Add(ICourse course);
-        void Remove(ICourse course);
+        Task Add(ICourse course);
+        Task Remove(ICourse course);
     }
 }

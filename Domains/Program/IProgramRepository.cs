@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
+
 namespace eWAN.Domains.Program
 {
     public interface IProgramRepository
     {
-        void Add(IProgram program);
+        Task Add(IProgram program);
     }
 }

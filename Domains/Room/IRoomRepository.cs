@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
+
 namespace eWAN.Domains.Room
 {
     public interface IRoomRepository
     {
-        void Add(IRoom room);
+        Task Add(IRoom room);
     }
 }

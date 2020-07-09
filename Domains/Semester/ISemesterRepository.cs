@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
+
 namespace eWAN.Domains.Semester
 {
     public interface ISemesterRepository
     {
-        void Add(ISemester semester);
+        Task Add(ISemester semester);
     }
 }

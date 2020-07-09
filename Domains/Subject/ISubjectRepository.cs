@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
+
 namespace eWAN.Domains.Subject
 {
     public interface ISubjectRepository
     {
-        void Add(ISubject subject);
+        Task Add(ISubject subject);
     }
 }

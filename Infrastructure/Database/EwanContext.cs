@@ -1,6 +1,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace eWAN.Infrastructure.Database
 {
@@ -43,7 +44,7 @@ namespace eWAN.Infrastructure.Database
             }
         }
 
-        public override int SaveChanges()
+        private void UpdateEntities()
         {
             var newEntities = this.ChangeTracker.Entries()
                 .Where(
@@ -70,8 +71,18 @@ namespace eWAN.Infrastructure.Database
             {
                 modifiedEntity.updatedAt = DateTime.UtcNow;
             }
+        }
 
+        public override int SaveChanges()
+        {
+            this.UpdateEntities();
             return base.SaveChanges();
+        }
+
+        public override async Task<int> SaveChangesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            this.UpdateEntities();
+            return await base.SaveChangesAsync(cancellationToken);
         }
     }
 }

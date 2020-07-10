@@ -25,7 +25,7 @@ namespace eWAN.Infrastructure.Database.Repositories
         public async Task<IUser> GetByUsername(string username)
         {
             User user = await this._context.Users
-            .Where(a => a.Username == username)
+            .Where(a => a.Username == username && !a.isDeleted())
             .SingleOrDefaultAsync();
 
             return user;
@@ -34,7 +34,7 @@ namespace eWAN.Infrastructure.Database.Repositories
         public async Task<IUser> GetByEmail(string email)
         {
             User user = await this._context.Users
-            .Where(a => a.Email == email)
+            .Where(a => a.Email == email && !a.isDeleted())
             .SingleOrDefaultAsync();
             return user;
         }

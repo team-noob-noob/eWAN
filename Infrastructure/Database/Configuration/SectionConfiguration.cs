@@ -13,6 +13,8 @@ namespace eWAN.Infrastructure.Database.Configuration
         {
             builder.HasMany<User>(x => (IEnumerable<User>) x.Students);
 
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
+
             builder.ToTable("Sections");
         }
     }

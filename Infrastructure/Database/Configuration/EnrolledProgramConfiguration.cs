@@ -14,6 +14,8 @@ namespace eWAN.Infrastructure.Database.Configuration
 
             builder.HasOne<Program>(x => (Program) x.Program);
 
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
+
             builder.ToTable("EnrolledProgram");
         }
     }

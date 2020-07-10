@@ -8,6 +8,6 @@ namespace eWAN.Domains.Course
             string Id, 
             string Title, 
             string Description, 
-            List<ICourse> PrerePrerequisitesquest);
+            List<ICourse> Prerequisites);
     }
 }

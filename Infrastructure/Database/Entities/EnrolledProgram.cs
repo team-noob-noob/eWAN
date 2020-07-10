@@ -6,6 +6,13 @@ namespace eWAN.Infrastructure.Database.Entities
 
     public sealed class EnrolledProgram : Domains.EnrolledProgram.EnrolledProgram, IEnrolledProgram
     {
+        public EnrolledProgram() {}
+        public EnrolledProgram(IUser Student, IProgram Program)
+        {
+            this.Student = Student;
+            this.Program = Program;
+        }
+
         public override int Id { get; set; }
         public override IUser Student { get; set; }
         public override IProgram Program { get; set; }

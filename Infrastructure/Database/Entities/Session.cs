@@ -7,6 +7,16 @@ namespace eWAN.Infrastructure.Database.Entities
 
     public sealed class Session : Domains.Session.Session, ISession
     {
+        public Session() {}
+        public Session(DayOfWeek day, DateTime time, IRoom room, IUser Instructor, SessionType type)
+        {
+            this.Day = day;
+            this.Time = time;
+            this.Room = room;
+            this.Instructor = Instructor;
+            this.Type = type;
+        }
+
         public override string Id { get; set; }
         public override DayOfWeek Day { get; set; }
         public override DateTime Time { get; set; }

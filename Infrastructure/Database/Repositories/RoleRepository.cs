@@ -33,7 +33,7 @@ namespace eWAN.Infrastructure.Database.Repositories
 
         public async Task Remove(IRole role)
         {
-            this._context.UserRoles.Remove((Role) role);
+            role.deletedAt = DateTime.Now;
             await this._context.SaveChangesAsync();
         }
     }

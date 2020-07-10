@@ -1,10 +1,12 @@
 using System;
 using Microsoft.EntityFrameworkCore;
-
+using System.Linq;
 
 namespace eWAN.Infrastructure.Database
 {
     using Entities;
+    using Domains;
+
     public class EwanContext : DbContext
     {
         public EwanContext(DbContextOptions options) : base(options) {}
@@ -39,6 +41,37 @@ namespace eWAN.Infrastructure.Database
                 string connectionString = "Server=localhost;Database=ewan;Uid=root;Pwd=root;";
                 optionsBuilder.UseMySQL(connectionString);
             }
+        }
+
+        public override int SaveChanges()
+        {
+            var newEntities = this.ChangeTracker.Entries()
+                .Where(
+                    x => x.State == EntityState.Added &&
+                    x.Entity != null &&
+                    x.Entity as IBaseEntity != null
+                    )
+                .Select(x => x.Entity as IBaseEntity);
+
+            var modifiedEntities = this.ChangeTracker.Entries() 
+                .Where(
+                    x => x.State == EntityState.Modified &&
+                    x.Entity != null &&
+                    x.Entity as IBaseEntity != null
+                    )
+                .Select(x => x.Entity as IBaseEntity);
+
+            foreach (var newEntity in newEntities)
+            {
+                newEntity.updatedAt = DateTime.UtcNow;
+            }
+
+            foreach (var modifiedEntity in modifiedEntities)
+            {
+                modifiedEntity.updatedAt = DateTime.UtcNow;
+            }
+
+            return base.SaveChanges();
         }
     }
 }

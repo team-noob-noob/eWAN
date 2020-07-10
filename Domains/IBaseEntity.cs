@@ -4,8 +4,9 @@ namespace eWAN.Domains
 {
     public interface IBaseEntity
     {
-        public DateTime createdAt { get; }
-        public DateTime? updatedAt { get; set; }
-        public DateTime? deletedAt { get; set; }
+        DateTime createdAt { get; }
+        DateTime? updatedAt { get; set; }
+        DateTime? deletedAt { get; set; }
+        bool isDeleted();
     }
 }

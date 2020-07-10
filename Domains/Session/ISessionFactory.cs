@@ -8,7 +8,6 @@ namespace eWAN.Domains.Session
     public interface ISessionFactory
     {
         ISession AddSession(
-            string id,
             DayOfWeek day,
             DateTime time,
             IRoom room,

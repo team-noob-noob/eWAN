@@ -40,8 +40,8 @@ namespace eWAN.Infrastructure.Database
         public ISemester AddSemester(string Id, DateTime Start, DateTime End, bool IsOpenForEnrollment, List<ISubject> OpenCourses) =>
             new Semester(Id, Start, End, OpenCourses, IsOpenForEnrollment);
 
-        public ISession AddSession(DayOfWeek day, DateTime time, IRoom room, IUser instructor, SessionType type) =>
-            new Session(day, time, room, instructor, type);
+        public ISession AddSession(DayOfWeek day, TimeSpan startTime, TimeSpan endTime, IRoom room, IUser instructor, SessionType type) =>
+            new Session(day, startTime, endTime, room, instructor, type);
 
         public IApplication NewApplication(IUser applicant) => new Application(applicant);
 

@@ -9,7 +9,8 @@ namespace eWAN.Domains.Session
     {
         ISession AddSession(
             DayOfWeek day,
-            DateTime time,
+            TimeSpan startTime,
+            TimeSpan endTime,
             IRoom room,
             IUser instructor,
             SessionType type

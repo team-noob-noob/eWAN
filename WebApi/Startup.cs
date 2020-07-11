@@ -33,6 +33,7 @@ namespace eWAN.WebApi
             services.AddCustomControllers();
             services.AddAuthentication();
             services.AddServices();
+            services.AddSwagger();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,12 +44,14 @@ namespace eWAN.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwaggerDoc();
 
             app.UseRouting();
 
             app.UseAuthentication();
 
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

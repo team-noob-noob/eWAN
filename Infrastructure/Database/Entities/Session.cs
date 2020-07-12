@@ -16,6 +16,7 @@ namespace eWAN.Infrastructure.Database.Entities
             this.Room = room;
             this.Instructor = Instructor;
             this.Type = type;
+            this.Id =  new Random().NewString(10, "0123456789");
         }
 
         public override string Id { get; set; }

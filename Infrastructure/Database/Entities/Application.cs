@@ -1,16 +1,17 @@
 using System;
-using System.Linq;
 using eWAN.Domains.User;
 
 namespace eWAN.Infrastructure.Database.Entities
 {
-    public class Application : Domains.Application.Application
+    using Domains.Application;
+
+    public class Application : Domains.Application.Application, IApplication
     {
         public Application() {}
 
         public Application(IUser applicant)
         {
-            this.Id = RandomString(10);
+            this.Id = rand.NewString(10);
             this.applicant = applicant;
             this.staff = null;
             this.isAccepted = false;
@@ -23,15 +24,7 @@ namespace eWAN.Infrastructure.Database.Entities
         public override bool isAccepted { get; set; }
         public override string reason { get; set; }
 
-        // TODO: Move this to a separate Module/Class
-        private Random random = new Random();
-        private string RandomString(int length)
-        {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            return new string(Enumerable.Repeat(chars, length)
-            .Select(s => s[random.Next(s.Length)]).ToArray());
-        }
-    
+        private Random rand = new Random();
     }
 
 }

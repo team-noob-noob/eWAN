@@ -21,20 +21,28 @@ namespace eWAN.WebApi.UseCases.LogIn
             var claims = new[] { new Claim(ClaimTypes.Name, output.user.Username) };
             var identity = new ClaimsIdentity(claims);
 
+            string token = GenerateJwtSecurityToken(identity, secret);
+
+            this.ViewModel = new OkObjectResult(new LogInReponse(token));
+            this.Identity = identity;
+        }
+
+        // TODO: Move to a separate class
+        private string GenerateJwtSecurityToken(ClaimsIdentity identity, string secret)
+        {
             var tokenHandler = new JwtSecurityTokenHandler();
             byte[] key = Encoding.ASCII.GetBytes(secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
+                Audience = "Testing123", // TODO: Move to a config file
+                Issuer = "Testing123", // TODO: Move to a config file
                 Subject = identity,
                 Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
             SecurityToken securityToken = tokenHandler.CreateToken(tokenDescriptor);
-            string token = tokenHandler.WriteToken(securityToken);
-
-            this.ViewModel = new OkObjectResult(new LogInReponse(token));
-            this.Identity = identity;
+            return tokenHandler.WriteToken(securityToken);
         }
 
         public void WriteError(string message) => this.ViewModel = new BadRequestObjectResult(new {Message = message});

@@ -19,7 +19,8 @@ namespace eWAN.Domains.Session
 
             foreach(var sameDaySession in sameDaySessions)
             {
-                if(newSession.StartTime >= sameDaySession.StartTime && newSession.EndTime < sameDaySession.EndTime)
+                if((newSession.StartTime >= sameDaySession.StartTime && newSession.EndTime < sameDaySession.EndTime) ||
+                (newSession.EndTime >= sameDaySession.StartTime && newSession.EndTime < sameDaySession.EndTime))
                 {
                     return await Task.FromResult(false);
                 }

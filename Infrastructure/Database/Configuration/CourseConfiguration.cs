@@ -14,7 +14,7 @@ namespace eWAN.Infrastructure.Database.Configuration
         public void Configure(EntityTypeBuilder<Course> builder)
         {
             builder
-                .HasMany<Course>(course => course.Prerequisites.Cast<Course>())
+                .HasMany<Course>(course => (IEnumerable<Course>) course.Prerequisites)
                 .WithOne()
                 .HasForeignKey("ParentId")
                 .IsRequired(false);

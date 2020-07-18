@@ -13,7 +13,7 @@ namespace eWAN.Infrastructure.Database.Configuration
         public void Configure(EntityTypeBuilder<Semester> builder)
         {
             builder
-                .HasMany<Subject>(x => x.OpenCourses.Cast<Subject>())
+                .HasMany<Subject>(x => (IEnumerable<Subject>) x.OpenCourses)
                 .WithOne()
                 .HasForeignKey("SemesterId");
 

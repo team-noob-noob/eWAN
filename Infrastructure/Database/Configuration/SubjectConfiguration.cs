@@ -18,12 +18,12 @@ namespace eWAN.Infrastructure.Database.Configuration
                 .HasForeignKey("CourseId");
             
             builder
-                .HasMany<Session>(x => x.Sessions.Cast<Session>())
+                .HasMany<Session>(x => (IEnumerable<Session>) x.Sessions)
                 .WithOne()
                 .HasForeignKey("SubjectId");
             
             builder
-                .HasMany<EnrolledSubject>(x => x.Students.Cast<EnrolledSubject>())
+                .HasMany<EnrolledSubject>(x => (IEnumerable<EnrolledSubject>) x.Students)
                 .WithOne();
 
             builder.ToTable("Subjects");

@@ -12,7 +12,7 @@ namespace eWAN.Infrastructure.Database.Configuration
     {
         public void Configure(EntityTypeBuilder<Section> builder)
         {
-            builder.HasMany<User>(x => x.Students.Cast<User>());
+            builder.HasMany<User>(x => (IEnumerable<User>) x.Students);
 
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
 

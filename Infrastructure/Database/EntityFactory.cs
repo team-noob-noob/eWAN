@@ -23,6 +23,7 @@ namespace eWAN.Infrastructure.Database
     using Semester = Entities.Semester;
     using Session = Entities.Session;
     using Subject = Entities.Subject;
+    using Program = Entities.Program;
     using System.Collections.Generic;
     using System;
 
@@ -37,7 +38,8 @@ namespace eWAN.Infrastructure.Database
     ISectionFactory,
     ISemesterFactory,
     ISessionFactory,
-    ISubjectFactory
+    ISubjectFactory,
+    IProgramFactory
     {
         public ISemester AddSemester(string Id, DateTime Start, DateTime End, bool IsOpenForEnrollment, List<ISubject> OpenCourses) =>
             new Semester(Id, Start, End, OpenCourses, IsOpenForEnrollment);
@@ -55,6 +57,9 @@ namespace eWAN.Infrastructure.Database
 
         public IEnrolledSubject NewEnrolledSubject(IUser student, ISubject subject, string grade = null) =>
             new EnrolledSubject(student, subject, grade);
+
+        public IProgram NewProgram(string Title, string Description, List<ICourse> Courses) =>
+            new Program(Title, Description, Courses);
 
         public IRole NewRole(IUser user, UserRole role = UserRole.StudentApplicant) => new Role(user, role);
 

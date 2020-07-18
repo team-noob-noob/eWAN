@@ -4,15 +4,14 @@ namespace eWAN.Domains.Subject
 {
     using Course;
     using Session;
-    using User;
+    using EnrolledSubject;
 
     public interface ISubjectFactory
     {
         ISubject NewSubject(
-            string id,
             ICourse course,
             List<ISession> sessions,
-            List<IUser> students
+            List<IEnrolledSubject> students
         );
     }
 }

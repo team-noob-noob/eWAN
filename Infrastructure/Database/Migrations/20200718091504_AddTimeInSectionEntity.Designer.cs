@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eWAN.Infrastructure.Database;
 
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(EwanContext))]
-    partial class EwanContextModelSnapshot : ModelSnapshot
+    [Migration("20200718091504_AddTimeInSectionEntity")]
+    partial class AddTimeInSectionEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

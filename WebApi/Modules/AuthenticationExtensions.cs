@@ -24,9 +24,12 @@ namespace eWAN.WebApi.Modules
                 x.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
+                    ValidateLifetime = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidIssuer = "Testing123", // TODO: Move text to a config
+                    ValidAudience = "Testing123" // TODO: Move text to a config
                 };
             });
 

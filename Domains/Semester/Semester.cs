@@ -10,6 +10,6 @@ namespace eWAN.Domains.Semester
         public abstract DateTime Start { get; set; }
         public abstract DateTime End { get; set; }
         public abstract bool IsOpenForEnrollment { get; set; }
-        public abstract IEnumerable<ISubject> OpenCourses { get; set; }
+        public abstract List<ISubject> OpenCourses { get; set; }
     }
 }

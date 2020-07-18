@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace eWAN.Infrastructure.Database.Configuration
 {
+    using System.Linq;
     using Entities;
     using Semester = Entities.Semester;
 
@@ -12,7 +13,7 @@ namespace eWAN.Infrastructure.Database.Configuration
         public void Configure(EntityTypeBuilder<Semester> builder)
         {
             builder
-                .HasMany<Subject>(x => (IEnumerable<Subject>) x.OpenCourses)
+                .HasMany<Subject>(x => x.OpenCourses.Cast<Subject>())
                 .WithOne()
                 .HasForeignKey("SemesterId");
 

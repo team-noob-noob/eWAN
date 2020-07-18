@@ -10,8 +10,8 @@ namespace eWAN.Domains.Session
     public interface ISessionRepository
     {
         Task Add(ISession session);
-        Task<ICollection<ISession>> GetSessionsByRoomAndSemester(IRoom room, ISemester semester);
-        Task<ICollection<ISession>> GetSessionsByInstructorAndSemester(IUser instructor, ISemester semester);
-        Task<ICollection<ISession>> GetSessionsByStudentAndSemester(IUser student, ISemester semester);
+        Task<List<ISession>> GetSessionsByRoomAndSemester(IRoom room, ISemester semester);
+        Task<List<ISession>> GetSessionsByInstructorAndSemester(IUser instructor, ISemester semester);
+        Task<List<ISession>> GetSessionsByStudentAndSemester(IUser student, ISemester semester);
     }
 }

@@ -9,6 +9,6 @@ namespace eWAN.Domains.Program
         int Id { get; set; }
         string Title { get; set; }
         string Description { get; set; }
-        IEnumerable<ICourse> Courses { get; set; }
+        List<ICourse> Courses { get; set; }
     }
 }

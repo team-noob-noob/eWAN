@@ -7,6 +7,6 @@ namespace eWAN.Domains.Course
         string Id { get; set; }
         string Title { get; set; }
         string Description { get; set; }
-        IEnumerable<ICourse> Prerequisites { get; set; }
+        List<ICourse> Prerequisites { get; set; }
     }
 }

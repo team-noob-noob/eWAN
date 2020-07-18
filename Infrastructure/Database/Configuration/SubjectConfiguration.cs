@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace eWAN.Infrastructure.Database.Configuration
 {
+    using System.Linq;
     using Entities;
     using Subject = Entities.Subject;
 
@@ -17,12 +18,12 @@ namespace eWAN.Infrastructure.Database.Configuration
                 .HasForeignKey("CourseId");
             
             builder
-                .HasMany<Session>(x => (IEnumerable<Session>) x.Sessions)
+                .HasMany<Session>(x => x.Sessions.Cast<Session>())
                 .WithOne()
                 .HasForeignKey("SubjectId");
             
             builder
-                .HasMany<EnrolledSubject>(x => (IEnumerable<EnrolledSubject>) x.Students)
+                .HasMany<EnrolledSubject>(x => x.Students.Cast<EnrolledSubject>())
                 .WithOne();
 
             builder.ToTable("Subjects");

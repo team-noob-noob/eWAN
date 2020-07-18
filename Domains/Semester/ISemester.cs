@@ -11,6 +11,6 @@ namespace eWAN.Domains.Semester
         DateTime Start { get; set; }
         DateTime End { get; set; }
         bool IsOpenForEnrollment { get; set; }
-        IEnumerable<ISubject> OpenCourses { get; set; }
+        List<ISubject> OpenCourses { get; set; }
     }
 }

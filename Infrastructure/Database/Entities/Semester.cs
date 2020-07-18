@@ -8,7 +8,7 @@ namespace eWAN.Infrastructure.Database.Entities
     public sealed class Semester : Domains.Semester.Semester, ISemester
     {
         public Semester() {}
-        public Semester(string Id, DateTime start, DateTime End, IEnumerable<ISubject> courses = null, bool IsOpenForEnrollment = true)
+        public Semester(string Id, DateTime start, DateTime End, List<ISubject> courses = null, bool IsOpenForEnrollment = true)
         {
             this.Id = Id;
             this.Start = Start;
@@ -21,6 +21,6 @@ namespace eWAN.Infrastructure.Database.Entities
         public override DateTime Start { get; set; }
         public override DateTime End { get; set; }
         public override bool IsOpenForEnrollment { get; set; }
-        public override IEnumerable<ISubject> OpenCourses { get; set; }
+        public override List<ISubject> OpenCourses { get; set; }
     }
 }

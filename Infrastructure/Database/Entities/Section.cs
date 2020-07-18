@@ -7,7 +7,7 @@ namespace eWAN.Infrastructure.Database.Entities
     public sealed class Section : Domains.Section.Section, ISection
     {
         public Section() {}
-        public Section(string Name, IEnumerable<IUser> Students)
+        public Section(string Name, List<IUser> Students)
         {
             this.Name = Name;
             this.Students = Students;
@@ -15,6 +15,6 @@ namespace eWAN.Infrastructure.Database.Entities
 
         public override int Id { get; set; }
         public override string Name { get; set; }
-        public override IEnumerable<IUser> Students { get; set; }
+        public override List<IUser> Students { get; set; }
     }
 }

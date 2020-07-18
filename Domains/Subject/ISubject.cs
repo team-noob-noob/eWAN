@@ -10,7 +10,7 @@ namespace eWAN.Domains.Subject
     {
         string Id { get; set; }
         ICourse Course { get; set; }
-        IEnumerable<ISession> Sessions { get; set; }
-        IEnumerable<IEnrolledSubject> Students { get; set; }
+        List<ISession> Sessions { get; set; }
+        List<IEnrolledSubject> Students { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace eWAN.Infrastructure.Database.Entities
     public sealed class Subject : Domains.Subject.Subject, ISubject
     {
         public Subject() {}
-        public Subject(ICourse course, IEnumerable<ISession> sessions, IEnumerable<IEnrolledSubject> Students)
+        public Subject(ICourse course, List<ISession> sessions, List<IEnrolledSubject> Students)
         {
             this.Course = course;
             this.Sessions = sessions;
@@ -20,7 +20,7 @@ namespace eWAN.Infrastructure.Database.Entities
 
         public override string Id { get; set; }
         public override ICourse Course { get; set; }
-        public override IEnumerable<ISession> Sessions { get; set; }
-        public override IEnumerable<IEnrolledSubject> Students { get; set; }
+        public override List<ISession> Sessions { get; set; }
+        public override List<IEnrolledSubject> Students { get; set; }
     }
 }

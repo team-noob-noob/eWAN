@@ -21,28 +21,28 @@ namespace eWAN.Infrastructure.Database.Repositories
             await this._context.SaveChangesAsync();
         }
 
-        public async Task<ICollection<ISession>> GetSessionsByRoomAndSemester(IRoom room, ISemester semester)
+        public async Task<List<ISession>> GetSessionsByRoomAndSemester(IRoom room, ISemester semester)
         {
             var sessions = semester.OpenCourses
                 .SelectMany(x => x.Sessions)
                 .Where(y => y.Room.Id == room.Id);
-            return await Task.FromResult(sessions.ToHashSet());
+            return await Task.FromResult(sessions.ToList());
         }
 
-        public async Task<ICollection<ISession>> GetSessionsByInstructorAndSemester(IUser instructor, ISemester semester)
+        public async Task<List<ISession>> GetSessionsByInstructorAndSemester(IUser instructor, ISemester semester)
         {
             var sessions = semester.OpenCourses
                 .SelectMany(x => x.Sessions)
                 .Where(y => y.Instructor.Id == instructor.Id);
-            return await Task.FromResult(sessions.ToHashSet());
+            return await Task.FromResult(sessions.ToList());
         }
 
-        public async Task<ICollection<ISession>> GetSessionsByStudentAndSemester(IUser student, ISemester semester)
+        public async Task<List<ISession>> GetSessionsByStudentAndSemester(IUser student, ISemester semester)
         {
             var sessions = semester.OpenCourses
                 .Where(x => x.Students.Where(y => y.enrolledStudent.Id == student.Id).Count() >= 1)
                 .SelectMany(x => x.Sessions);
-            return await Task.FromResult(sessions.ToHashSet());
+            return await Task.FromResult(sessions.ToList());
         }
     }
 }

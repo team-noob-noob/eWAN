@@ -8,6 +8,6 @@ namespace eWAN.Domains.Program
         public abstract int Id { get; set; }
         public abstract string Title { get; set; }
         public abstract string Description { get; set; }
-        public abstract IEnumerable<ICourse> Courses { get; set; }
+        public abstract List<ICourse> Courses { get; set; }
     }
 }

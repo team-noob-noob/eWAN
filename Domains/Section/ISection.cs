@@ -8,6 +8,6 @@ namespace eWAN.Domains.Section
     {
         int Id { get; set; }
         string Name { get; set; }
-        IEnumerable<IUser> Students { get; set; }
+        List<IUser> Students { get; set; }
     }
 }

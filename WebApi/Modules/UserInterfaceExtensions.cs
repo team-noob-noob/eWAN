@@ -6,10 +6,12 @@ namespace eWAN.WebApi.Modules
     using UseCases.LogIn;
     using UseCases.StudentApplication;
     using UseCases.ApplicationJurying;
+    using UseCases.CreateSubject;
     using Application.Boundaries.Register;
     using Application.Boundaries.LogIn;
     using Application.Boundaries.StudentApplication;
     using Application.Boundaries.ApplicationJurying;
+    using Application.Boundaries.CreateSubject;
 
     public static class UserInterfaceExtensions
     {
@@ -26,6 +28,9 @@ namespace eWAN.WebApi.Modules
 
             services.AddScoped<ApplicationJuryingPresenter, ApplicationJuryingPresenter>();
             services.AddScoped<IApplicationJuryingOutputPort>(x => x.GetRequiredService<ApplicationJuryingPresenter>());
+
+            services.AddScoped<CreateSubjectPresenter, CreateSubjectPresenter>();
+            services.AddScoped<ICreateSubjectOutputPort>(x => x.GetRequiredService<CreateSubjectPresenter>());
 
             return services;
         }

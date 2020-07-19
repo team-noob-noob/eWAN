@@ -37,5 +37,15 @@ namespace eWAN.Tests.Fakes
             }
             return await Task.FromResult(user);
         }
+
+        public async Task<IUser> GetById(string Id)
+        {
+            var user = this._context.Users.SingleOrDefault(e => e.Id == Id);
+            if(user is null)
+            {
+                return null;
+            }
+            return await Task.FromResult(user);
+        }
     }
 }

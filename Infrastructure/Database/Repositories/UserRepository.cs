@@ -38,5 +38,12 @@ namespace eWAN.Infrastructure.Database.Repositories
             .SingleOrDefaultAsync();
             return user;
         }
+
+        public async Task<IUser> GetById(string Id)
+        {
+            var user = await this._context.Users
+            .SingleOrDefaultAsync(a => a.Id == Id);
+            return user;
+        }
     }
 }

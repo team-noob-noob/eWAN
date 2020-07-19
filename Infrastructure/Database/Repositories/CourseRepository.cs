@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace eWAN.Infrastructure.Database.Repositories
 {
@@ -21,6 +22,16 @@ namespace eWAN.Infrastructure.Database.Repositories
         {
             course.deletedAt = DateTime.Now;
             await this._context.SaveChangesAsync();
+        }
+
+        public async Task<ICourse> GetCourseById(string Id)
+        {
+            var course = this._context.Courses.FirstOrDefault(x => x.Id == Id && !x.isDeleted());
+            if(course is null)
+            {
+                return null;
+            }
+            return await Task.FromResult(course);
         }
     }
 }

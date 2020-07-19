@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace eWAN.Infrastructure.Database.Repositories
 {
@@ -14,6 +15,16 @@ namespace eWAN.Infrastructure.Database.Repositories
         {
             this._context.Add((Semester) semester);
             await this._context.SaveChangesAsync();
+        }
+
+        public async Task<ISemester> GetSemesterById(string Id)
+        {
+            var semester = this._context.Semesters.SingleOrDefault(x => x.Id == Id);
+            if(semester is null)
+            {
+                return null;
+            }
+            return await Task.FromResult(semester);
         }
     }
 }

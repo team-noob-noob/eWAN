@@ -57,6 +57,8 @@ namespace eWAN.Application.UseCases
             
             input.Semester.OpenCourses.Add(subject);
 
+            subject.Sessions.AddRange(input.Sessions);
+
             await this._subjectRepository.Add(subject);
 
             this._outputPort.Standard(new CreateSubjectOutput(subject));

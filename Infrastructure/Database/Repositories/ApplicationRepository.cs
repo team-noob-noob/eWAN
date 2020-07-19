@@ -27,11 +27,8 @@ namespace eWAN.Infrastructure.Database.Repositories
 
         public List<IApplication> GetApplicationsByApplicantId(string applicantId)
         {
-            List<IApplication> result = new List<IApplication>();
-            var query = this._context.Applications.Where(x => x.applicant.Id == applicantId && !x.isDeleted()).ToList();
-            foreach(IApplication application in query)
-                result.Add(application);
-            return result;
+            var query = this._context.Applications.Where(x => x.applicant.Id == applicantId && !x.isDeleted());
+            return query.Cast<IApplication>().ToList();
         }
     }
 }

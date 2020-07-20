@@ -39,10 +39,12 @@ namespace eWAN.Infrastructure.Database.Repositories
 
         public async Task<List<ISession>> GetSessionsByStudentAndSemester(IUser student, ISemester semester)
         {
-            var sessions = semester.OpenCourses
-                .Where(x => x.Students.Where(y => y.enrolledStudent.Id == student.Id).Count() >= 1)
-                .SelectMany(x => x.Sessions);
-            return await Task.FromResult(sessions.ToList());
+            var sessions_2d = from course in semester.OpenCourses
+                    join subject in this._context.Subjects on course.Id equals subject.Course.Id
+                    join enrolledSubject in this._context.EnrolledSubjects on subject.Id equals enrolledSubject.subject.Id
+                    where enrolledSubject.enrolledStudent.Id == student.Id
+                    select subject.Sessions;
+            return await Task.FromResult(sessions_2d.SelectMany(x => x).ToList());
         }
     }
 }

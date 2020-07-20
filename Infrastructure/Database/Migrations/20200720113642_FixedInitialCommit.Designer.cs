@@ -9,8 +9,8 @@ using eWAN.Infrastructure.Database;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(EwanContext))]
-    [Migration("20200707133100_AddEnrollmentEntities")]
-    partial class AddEnrollmentEntities
+    [Migration("20200720113642_FixedInitialCommit")]
+    partial class FixedInitialCommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -178,6 +178,36 @@ namespace Infrastructure.Migrations
                     b.ToTable("Courses");
                 });
 
+            modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.EnrolledProgram", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProgramId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StudentId")
+                        .HasColumnType("varchar(767)");
+
+                    b.Property<DateTime>("createdAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime?>("deletedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime?>("updatedAt")
+                        .HasColumnType("datetime");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProgramId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("EnrolledProgram");
+                });
+
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.EnrolledSubject", b =>
                 {
                     b.Property<int>("Id")
@@ -262,6 +292,29 @@ namespace Infrastructure.Migrations
                     b.ToTable("Rooms");
                 });
 
+            modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.Section", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("createdAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime?>("deletedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime?>("updatedAt")
+                        .HasColumnType("datetime");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sections");
+                });
+
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.Semester", b =>
                 {
                     b.Property<string>("Id")
@@ -298,17 +351,20 @@ namespace Infrastructure.Migrations
                     b.Property<int>("Day")
                         .HasColumnType("int");
 
+                    b.Property<TimeSpan>("EndTime")
+                        .HasColumnType("time");
+
                     b.Property<string>("InstructorId")
                         .HasColumnType("varchar(767)");
 
                     b.Property<string>("RoomId")
                         .HasColumnType("varchar(767)");
 
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time");
+
                     b.Property<string>("SubjectId")
                         .HasColumnType("varchar(767)");
-
-                    b.Property<DateTime>("Time")
-                        .HasColumnType("datetime");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");
@@ -380,10 +436,10 @@ namespace Infrastructure.Migrations
                 {
                     b.HasBaseType("eWAN.Domains.User.User");
 
-                    b.Property<string>("SubjectId")
-                        .HasColumnType("varchar(767)");
+                    b.Property<int?>("SectionId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("SubjectId");
+                    b.HasIndex("SectionId");
 
                     b.HasDiscriminator().HasValue("User");
                 });
@@ -415,6 +471,17 @@ namespace Infrastructure.Migrations
                     b.HasOne("eWAN.Infrastructure.Database.Entities.Course", null)
                         .WithMany("Prerequisites")
                         .HasForeignKey("ParentId");
+                });
+
+            modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.EnrolledProgram", b =>
+                {
+                    b.HasOne("eWAN.Infrastructure.Database.Entities.Program", "Program")
+                        .WithMany()
+                        .HasForeignKey("ProgramId");
+
+                    b.HasOne("eWAN.Infrastructure.Database.Entities.User", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId");
                 });
 
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.EnrolledSubject", b =>
@@ -456,9 +523,9 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.User", b =>
                 {
-                    b.HasOne("eWAN.Infrastructure.Database.Entities.Subject", null)
+                    b.HasOne("eWAN.Infrastructure.Database.Entities.Section", null)
                         .WithMany("Students")
-                        .HasForeignKey("SubjectId");
+                        .HasForeignKey("SectionId");
                 });
 #pragma warning restore 612, 618
         }

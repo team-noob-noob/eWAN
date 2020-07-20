@@ -212,9 +212,6 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("SubjectId")
-                        .HasColumnType("varchar(767)");
-
                     b.Property<DateTime>("createdAt")
                         .HasColumnType("datetime");
 
@@ -234,8 +231,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("datetime");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("SubjectId");
 
                     b.HasIndex("enrolledStudentId");
 
@@ -489,10 +484,6 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.EnrolledSubject", b =>
                 {
-                    b.HasOne("eWAN.Infrastructure.Database.Entities.Subject", null)
-                        .WithMany("Students")
-                        .HasForeignKey("SubjectId");
-
                     b.HasOne("eWAN.Infrastructure.Database.Entities.User", "enrolledStudent")
                         .WithMany()
                         .HasForeignKey("enrolledStudentId");

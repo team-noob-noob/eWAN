@@ -27,7 +27,7 @@ namespace eWAN.Infrastructure.Database.Entities
             this.MiddleName = MiddleName;
             this.LastName = LastName;
             this.Address = Address;
-            this.Id = DateTime.Now.Year.ToString() + RandomUtil.GenerateRandomNumber();
+            this.Id = DateTime.Now.Year.ToString() + new Random().NewString(10, "0123456789");
         }
 
         public override string Id { get; protected set; }
@@ -39,22 +39,6 @@ namespace eWAN.Infrastructure.Database.Entities
         public override string MiddleName { get; set; }
         public override string LastName { get; set; }
         public override string Address { get; set; }
-    }
-
-    internal class RandomUtil
-    {
-        public static string GenerateRandomNumber()
-        {
-            string res = "";
-            Random rand = new Random();
-
-            for(int i = 0; i < 5; i++)
-            {
-                res += (rand.Next() % 10).ToString();
-            }
-
-            return res;
-        }
     }
 }
 

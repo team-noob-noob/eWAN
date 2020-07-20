@@ -12,6 +12,5 @@ namespace eWAN.Domains.Subject
         public abstract string Id { get; set; }
         public abstract ICourse Course { get; set; }
         public abstract List<ISession> Sessions { get; set; }
-        public abstract List<IEnrolledSubject> Students { get; set; }
     }
 }

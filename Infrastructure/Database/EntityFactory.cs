@@ -67,8 +67,8 @@ namespace eWAN.Infrastructure.Database
 
         public ISection NewSection(string Name, List<IUser> Students) => new Section(Name, Students);
 
-        public ISubject NewSubject(ICourse course, List<ISession> sessions, List<IEnrolledSubject> students) =>
-            new Subject(course, sessions, students);
+        public ISubject NewSubject(ICourse course, List<ISession> sessions) =>
+            new Subject(course, sessions);
 
         public IUser NewUser(
             string Username,

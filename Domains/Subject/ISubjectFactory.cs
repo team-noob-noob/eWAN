@@ -10,8 +10,7 @@ namespace eWAN.Domains.Subject
     {
         ISubject NewSubject(
             ICourse course,
-            List<ISession> sessions,
-            List<IEnrolledSubject> students
+            List<ISession> sessions
         );
     }
 }

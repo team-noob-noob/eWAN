@@ -11,6 +11,5 @@ namespace eWAN.Domains.Subject
         string Id { get; set; }
         ICourse Course { get; set; }
         List<ISession> Sessions { get; set; }
-        List<IEnrolledSubject> Students { get; set; }
     }
 }

@@ -53,7 +53,7 @@ namespace eWAN.Application.UseCases
                 }
             }
 
-            ISubject subject = this._subjectFactory.NewSubject(input.Course, (List<ISession>) input.Sessions, null);
+            ISubject subject = this._subjectFactory.NewSubject(input.Course, (List<ISession>) input.Sessions);
             
             input.Semester.OpenCourses.Add(subject);
 

@@ -38,10 +38,10 @@ namespace eWAN.Application.UseCases
         {
             foreach(var session in input.Sessions)
             {
-                var roomSched = await this._sessionRepository.GetSessionsByRoomAndSemester(input.room, input.Semester);
+                var roomSched = await this._sessionRepository.GetSessionsByRoomAndSemester(session.Room, input.Semester);
                 if(!await this._sessionFitService.IsSessionFitInSched(roomSched, session))
                 {
-                    this._outputPort.WriteError($"Session {session.StartTime}-{session.EndTime} does not fit in the schedule of Room {input.room.Name}");
+                    this._outputPort.WriteError($"Session {session.StartTime}-{session.EndTime} does not fit in the schedule of Room {session.Room.Name}");
                     return;
                 }
 

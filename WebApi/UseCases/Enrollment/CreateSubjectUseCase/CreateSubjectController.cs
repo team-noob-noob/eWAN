@@ -20,7 +20,6 @@ namespace eWAN.WebApi.UseCases.CreateSubject
         public async Task<IActionResult> CreateSubject(
             [FromServices] CreateSubjectPresenter presenter,
             [FromServices] ICreateSubjectUseCase useCase,
-            [FromServices] IRoomRepository roomRepository,
             [FromServices] ICourseRepository courseRepository,
             [FromServices] ISemesterRepository semesterRepository,
             [FromServices] IUserRepository userRepository,
@@ -29,7 +28,6 @@ namespace eWAN.WebApi.UseCases.CreateSubject
         {
             var input = new CreateSubjectInput()
             {
-                room = await roomRepository.GetRoomById(request.RoomId),
                 Course = await courseRepository.GetCourseById(request.CourseId),
                 Sessions = request.Sessions,
                 Semester = await semesterRepository.GetSemesterById(request.SemesterCode),

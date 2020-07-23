@@ -10,7 +10,6 @@ namespace eWAN.Application.Boundaries.CreateSubject
 
     public class CreateSubjectInput
     {
-        public IRoom room { get; set; }
         public ICourse Course { get; set; }
         public List<ISession> Sessions { get; set; }
         public ISemester Semester { get; set; }

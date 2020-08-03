@@ -11,11 +11,12 @@ This is a school management system. Yeah that's it.
 ### Why?
 This project is for us team noob noob to study CLEAN architecture, learn team-based code collaboration, team sprinting and as a time killer.
 ### Can I use it?
-If you want, however notice the MIT license. We do not guarantee security or stability.
+If you want, however notice the [MIT license](https://github.com/team-noob-noob/eWAN/blob/master/LICENSE). We do not guarantee security or stability.
 # Basic Setup
 ### General Requirements
 * MySQL / MSSQL
 * Nodejs
+* .NET Core 3.1 
 ## Get Started
 1. Fire up a MySQL server
 1. Change credentials in ContextFactory and EwanContext

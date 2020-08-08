@@ -1,10 +1,11 @@
 using System;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    
 namespace eWAN.Infrastructure.Database.Configuration
 {
     using Domains.User;
-    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using User = Entities.User;
 
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {

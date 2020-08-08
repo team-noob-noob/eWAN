@@ -20,7 +20,7 @@ namespace eWAN.Infrastructure.Database.Entities
         public override string Id { get; set; }
         public override string Title { get; set; }
         public override string Description { get; set; }
-        public int ParentCourse_Id { get; set; }
+        public string ParentCourse_Id { get; set; }
         public int Program_Id { get; set; }
     }
 }

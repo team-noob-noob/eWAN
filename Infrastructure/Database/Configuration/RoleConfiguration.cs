@@ -6,6 +6,7 @@ namespace eWAN.Infrastructure.Database.Configuration
 {
     using Domains.Role;
     using User = Entities.User;
+    using Role = Entities.Role;
 
     public class RoleConfiguration : IEntityTypeConfiguration<Role>
     {
@@ -19,7 +20,10 @@ namespace eWAN.Infrastructure.Database.Configuration
             builder.ToTable("UserRoles");
 
             builder.Property(x => x.role).HasColumnType("int");
-            builder.HasOne<User>(x => (User) x.user).WithOne(y => (Role) y.AssignedRole);
+            builder
+                .HasOne<User>(x => (User) x.user)
+                .WithOne(y => (Role) y.AssignedRole)
+                .HasForeignKey<Role>(x => x.User_Id);
 
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();

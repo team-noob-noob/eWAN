@@ -11,9 +11,6 @@ namespace eWAN.Infrastructure.Database.Configuration
     {
         public void Configure(EntityTypeBuilder<EnrolledSubject> builder)
         {
-            builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).ValueGeneratedOnAdd();
-
             builder
                 .HasOne<User>(x => (User) x.enrolledStudent)
                 .WithMany(y => (IEnumerable<EnrolledSubject>) y.EnrolledSubjects)
@@ -23,6 +20,9 @@ namespace eWAN.Infrastructure.Database.Configuration
                 .HasOne<Subject>(x => (Subject) x.subject)
                 .WithMany(y => (IEnumerable<EnrolledSubject>) y.StudentsEnrolled)
                 .HasForeignKey(x => x.Subject_Id);
+
+            builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
             builder.ToTable("EnrolledSubjects");
         }

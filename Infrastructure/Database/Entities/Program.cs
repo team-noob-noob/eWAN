@@ -4,6 +4,7 @@ namespace eWAN.Infrastructure.Database.Entities
 {
     using Domains.Program;
     using eWAN.Domains.Course;
+    using eWAN.Domains.EnrolledProgram;
 
     public sealed class Program : Domains.Program.Program, IProgram
     {
@@ -18,6 +19,5 @@ namespace eWAN.Infrastructure.Database.Entities
         public override int Id { get; set; }
         public override string Title { get; set; }
         public override string Description { get; set; }
-        public override List<ICourse> Courses { get; set; }
     }
 }

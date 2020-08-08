@@ -7,6 +7,7 @@ namespace eWAN.Infrastructure.Database.Entities
     using Domains.EnrolledSubject;
     using System;
     using System.ComponentModel.DataAnnotations.Schema;
+    using eWAN.Domains.Semester;
 
     public sealed class Subject : Domains.Subject.Subject, ISubject
     {
@@ -21,5 +22,7 @@ namespace eWAN.Infrastructure.Database.Entities
         public override string Id { get; set; }
         public override ICourse Course { get; set; }
         public override List<ISession> Sessions { get; set; }
+        public override ISemester Semester { get; set; }
+        public override List<IEnrolledSubject> StudentsEnrolled { get; set; }
     }
 }

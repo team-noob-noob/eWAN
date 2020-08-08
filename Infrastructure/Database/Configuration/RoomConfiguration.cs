@@ -9,6 +9,8 @@ namespace eWAN.Infrastructure.Database.Configuration
     {
         public void Configure(EntityTypeBuilder<Room> builder)
         {
+            builder.HasKey(x => x.Id);
+
             builder.ToTable("Rooms");
         }
     }

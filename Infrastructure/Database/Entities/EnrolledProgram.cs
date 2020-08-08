@@ -1,5 +1,6 @@
 namespace eWAN.Infrastructure.Database.Entities
 {
+    using System.ComponentModel.DataAnnotations.Schema;
     using Domains.EnrolledProgram;
     using Domains.Program;
     using Domains.User;
@@ -14,7 +15,7 @@ namespace eWAN.Infrastructure.Database.Entities
         }
 
         public override int Id { get; set; }
-        public override IUser Student { get; set; }
-        public override IProgram Program { get; set; }
+        public string Student_Id { get; set; }
+        public int Program_Id { get; set; }
     }
 }

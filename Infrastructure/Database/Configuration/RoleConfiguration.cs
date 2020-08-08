@@ -19,7 +19,7 @@ namespace eWAN.Infrastructure.Database.Configuration
             builder.ToTable("UserRoles");
 
             builder.Property(x => x.role).HasColumnType("int");
-            builder.HasOne<User>(x => (User) x.user);
+            builder.HasOne<User>(x => (User) x.user).WithOne(y => (Role) y.AssignedRole);
 
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();

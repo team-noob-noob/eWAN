@@ -3,6 +3,8 @@ using System.Collections.Generic;
 namespace eWAN.Infrastructure.Database.Entities
 {
     using Domains.Course;
+    using eWAN.Domains.Program;
+    using eWAN.Domains.Subject;
 
     public sealed class Course : Domains.Course.Course, ICourse
     {
@@ -18,6 +20,7 @@ namespace eWAN.Infrastructure.Database.Entities
         public override string Id { get; set; }
         public override string Title { get; set; }
         public override string Description { get; set; }
-        public override List<ICourse> Prerequisites { get; set; }
+        public int ParentCourse_Id { get; set; }
+        public int Program_Id { get; set; }
     }
 }

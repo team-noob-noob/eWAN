@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Collections.Generic;
 
 namespace eWAN.Infrastructure.Database.Configuration
 {
@@ -13,9 +14,15 @@ namespace eWAN.Infrastructure.Database.Configuration
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
-            builder.HasOne<User>(x => (User) x.enrolledStudent);
+            builder
+                .HasOne<User>(x => (User) x.enrolledStudent)
+                .WithMany(y => (IEnumerable<EnrolledSubject>) y.EnrolledSubjects)
+                .HasForeignKey(x => x.User_Id);
 
-            builder.HasOne<Subject>(x => (Subject) x.subject);
+            builder
+                .HasOne<Subject>(x => (Subject) x.subject)
+                .WithMany(y => (IEnumerable<EnrolledSubject>) y.StudentsEnrolled)
+                .HasForeignKey(x => x.Subject_Id);
 
             builder.ToTable("EnrolledSubjects");
         }

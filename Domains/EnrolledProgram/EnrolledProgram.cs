@@ -6,7 +6,7 @@ namespace eWAN.Domains.EnrolledProgram
     public abstract class EnrolledProgram : BaseEntity, IEnrolledProgram
     {
         public abstract int Id { get; set; }
-        public abstract IUser Student { get; set; }
-        public abstract IProgram Program { get; set; }
+        public virtual IUser Student { get; set; }
+        public virtual IProgram Program { get; set; }
     }
 }

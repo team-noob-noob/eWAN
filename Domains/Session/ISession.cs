@@ -4,6 +4,7 @@ namespace eWAN.Domains.Session
 {
     using Room;
     using User;
+    using Subject;
 
     public interface ISession : IBaseEntity
     {
@@ -14,5 +15,8 @@ namespace eWAN.Domains.Session
         IRoom Room { get; set; }
         IUser Instructor { get; set; }
         SessionType Type { get; set; }
+
+        // Inverse Property
+        ISubject Subject { get; set; }
     }
 }

@@ -7,7 +7,8 @@ This is a school management system. Yeah that's it.
 - Enrollment System
 - Online Learning Platform
 - Student Accomplishment Tracing (Students who graduated needs to give the school a review)
-- And more... (too lazy to write)
+- Blogging (Per department websites)
+
 ### Why?
 This project is for us team noob noob to study CLEAN architecture, learn team-based code collaboration, team sprinting and as a time killer.
 ### Can I use it?

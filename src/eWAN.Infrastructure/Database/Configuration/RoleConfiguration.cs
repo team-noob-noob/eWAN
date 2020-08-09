@@ -1,6 +1,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Collections.Generic;
 
 namespace eWAN.Infrastructure.Database.Configuration
 {
@@ -20,10 +21,6 @@ namespace eWAN.Infrastructure.Database.Configuration
             builder.ToTable("UserRoles");
 
             builder.Property(x => x.role).HasColumnType("int");
-            builder
-                .HasOne<User>(x => (User) x.user)
-                .WithOne(y => (Role) y.AssignedRole)
-                .HasForeignKey<Role>(x => x.User_Id);
 
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();

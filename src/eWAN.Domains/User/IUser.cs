@@ -26,7 +26,7 @@ namespace eWAN.Domains.User
         // Inverse Property
         List<IEnrolledSubject> EnrolledSubjects { get; set; }
         List<IEnrolledProgram> EnrolledPrograms { get; set; }
-        IRole AssignedRole { get; set; }
+        List<IRole> AssignedRoles { get; set; }
         ISection AssignedSection { get; set; }
     }
 }

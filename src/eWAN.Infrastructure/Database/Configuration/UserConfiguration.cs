@@ -1,11 +1,13 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Collections.Generic;
     
 namespace eWAN.Infrastructure.Database.Configuration
 {
     using Domains.User;
     using User = Entities.User;
+    using Role = Entities.Role;
 
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {
@@ -15,6 +17,11 @@ namespace eWAN.Infrastructure.Database.Configuration
             {
                 throw new ArgumentNullException(nameof(builder));
             }
+
+            builder
+                .HasMany<Role>(x => (IEnumerable<Role>) x.AssignedRoles)
+                .WithOne(y => (User) y.user)
+                .HasForeignKey(x => x.User_Id);
 
             builder.ToTable("User");
 

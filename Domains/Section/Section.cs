@@ -8,6 +8,6 @@ namespace eWAN.Domains.Section
         public abstract int Id { get; set; }
 
         public abstract string Name { get; set; }
-        public abstract List<IUser> Students { get; set; }
+        public virtual List<IUser> Students { get; set; }
     }
 }

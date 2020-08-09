@@ -1,3 +1,9 @@
+using System.Collections.Generic;
+using eWAN.Domains.EnrolledProgram;
+using eWAN.Domains.EnrolledSubject;
+using eWAN.Domains.Role;
+using eWAN.Domains.Section;
+
 namespace eWAN.Domains.User
 {
     public abstract class User : BaseEntity, IUser
@@ -19,5 +25,9 @@ namespace eWAN.Domains.User
         public abstract string LastName { get; set; }
 
         public abstract string Address { get; set; }
+        public virtual List<IEnrolledSubject> EnrolledSubjects { get; set; }
+        public virtual List<IEnrolledProgram> EnrolledPrograms { get; set; }
+        public virtual IRole AssignedRole { get; set; }
+        public virtual ISection AssignedSection { get; set; }
     }
 }

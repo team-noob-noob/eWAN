@@ -21,6 +21,5 @@ namespace eWAN.Infrastructure.Database.Entities
         public override DateTime Start { get; set; }
         public override DateTime End { get; set; }
         public override bool IsOpenForEnrollment { get; set; }
-        public override List<ISubject> OpenCourses { get; set; }
     }
 }

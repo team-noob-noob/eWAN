@@ -1,5 +1,12 @@
+using System.Collections.Generic;
+
 namespace eWAN.Domains.User
 {
+    using EnrolledSubject;
+    using EnrolledProgram;
+    using Role;
+    using Section;
+
     public interface IUser : IBaseEntity
     {
         string Id { get; }
@@ -15,5 +22,11 @@ namespace eWAN.Domains.User
         string LastName { get; set; }
 
         string Address { get; set; }
+
+        // Inverse Property
+        List<IEnrolledSubject> EnrolledSubjects { get; set; }
+        List<IEnrolledProgram> EnrolledPrograms { get; set; }
+        IRole AssignedRole { get; set; }
+        ISection AssignedSection { get; set; }
     }
 }

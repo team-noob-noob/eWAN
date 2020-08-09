@@ -14,13 +14,15 @@ namespace eWAN.Infrastructure.Database.Configuration
         {
             builder
                 .HasOne(x => (Course) x.Course)
-                .WithMany()
+                .WithMany(y => (IEnumerable<Subject>) y.OpenedSubjects)
                 .HasForeignKey("CourseId");
             
             builder
                 .HasMany<Session>(x => (IEnumerable<Session>) x.Sessions)
-                .WithOne()
+                .WithOne(y => (Subject) y.Subject)
                 .HasForeignKey("SubjectId");
+
+            builder.HasKey(x => x.Id);
 
             builder.ToTable("Subjects");
         }

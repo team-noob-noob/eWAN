@@ -4,7 +4,7 @@ using MySql.Data.EntityFrameworkCore.Metadata;
 
 namespace Infrastructure.Migrations
 {
-    public partial class FixedInitialCommit : Migration
+    public partial class fixedFixedInitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -84,24 +84,24 @@ namespace Infrastructure.Migrations
                     deletedAt = table.Column<DateTime>(nullable: true),
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    CourseId = table.Column<int>(nullable: true),
-                    ParentId = table.Column<string>(nullable: true)
+                    ParentCourse_Id = table.Column<string>(nullable: true),
+                    Program_Id = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Courses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Courses_Programs_CourseId",
-                        column: x => x.CourseId,
-                        principalTable: "Programs",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Courses_Courses_ParentId",
-                        column: x => x.ParentId,
+                        name: "FK_Courses_Courses_ParentCourse_Id",
+                        column: x => x.ParentCourse_Id,
                         principalTable: "Courses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Courses_Programs_Program_Id",
+                        column: x => x.Program_Id,
+                        principalTable: "Programs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -112,6 +112,7 @@ namespace Infrastructure.Migrations
                     createdAt = table.Column<DateTime>(nullable: false),
                     updatedAt = table.Column<DateTime>(nullable: true),
                     deletedAt = table.Column<DateTime>(nullable: true),
+                    AssignedSectionId = table.Column<int>(nullable: true),
                     Username = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
@@ -119,16 +120,14 @@ namespace Infrastructure.Migrations
                     FirstName = table.Column<string>(nullable: true),
                     MiddleName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: true),
-                    Discriminator = table.Column<string>(nullable: false),
-                    SectionId = table.Column<int>(nullable: true)
+                    Address = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_User", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_User_Sections_SectionId",
-                        column: x => x.SectionId,
+                        name: "FK_User_Sections_AssignedSectionId",
+                        column: x => x.AssignedSectionId,
                         principalTable: "Sections",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -170,27 +169,26 @@ namespace Infrastructure.Migrations
                     createdAt = table.Column<DateTime>(nullable: false),
                     updatedAt = table.Column<DateTime>(nullable: true),
                     deletedAt = table.Column<DateTime>(nullable: true),
-                    applicantId = table.Column<string>(nullable: true),
-                    staffId = table.Column<string>(nullable: true),
                     isAccepted = table.Column<bool>(nullable: false),
                     reason = table.Column<string>(nullable: true),
-                    Discriminator = table.Column<string>(nullable: false)
+                    Applicant_Id = table.Column<string>(nullable: false),
+                    Staff_Id = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Applications", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Applications_User_applicantId",
-                        column: x => x.applicantId,
+                        name: "FK_Applications_User_Applicant_Id",
+                        column: x => x.Applicant_Id,
                         principalTable: "User",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Applications_User_staffId",
-                        column: x => x.staffId,
+                        name: "FK_Applications_User_Staff_Id",
+                        column: x => x.Staff_Id,
                         principalTable: "User",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -202,21 +200,21 @@ namespace Infrastructure.Migrations
                     createdAt = table.Column<DateTime>(nullable: false),
                     updatedAt = table.Column<DateTime>(nullable: true),
                     deletedAt = table.Column<DateTime>(nullable: true),
-                    StudentId = table.Column<string>(nullable: true),
-                    ProgramId = table.Column<int>(nullable: true)
+                    Student_Id = table.Column<string>(nullable: true),
+                    Program_Id = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EnrolledProgram", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EnrolledProgram_Programs_ProgramId",
-                        column: x => x.ProgramId,
+                        name: "FK_EnrolledProgram_Programs_Program_Id",
+                        column: x => x.Program_Id,
                         principalTable: "Programs",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_EnrolledProgram_User_StudentId",
-                        column: x => x.StudentId,
+                        name: "FK_EnrolledProgram_User_Student_Id",
+                        column: x => x.Student_Id,
                         principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -231,16 +229,15 @@ namespace Infrastructure.Migrations
                     createdAt = table.Column<DateTime>(nullable: false),
                     updatedAt = table.Column<DateTime>(nullable: true),
                     deletedAt = table.Column<DateTime>(nullable: true),
-                    userId = table.Column<string>(nullable: true),
                     role = table.Column<int>(type: "int", nullable: false),
-                    Discriminator = table.Column<string>(nullable: false)
+                    User_Id = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_UserRoles", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserRoles_User_userId",
-                        column: x => x.userId,
+                        name: "FK_UserRoles_User_User_Id",
+                        column: x => x.User_Id,
                         principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -255,23 +252,23 @@ namespace Infrastructure.Migrations
                     createdAt = table.Column<DateTime>(nullable: false),
                     updatedAt = table.Column<DateTime>(nullable: true),
                     deletedAt = table.Column<DateTime>(nullable: true),
-                    enrolledStudentId = table.Column<string>(nullable: true),
-                    subjectId = table.Column<string>(nullable: true),
-                    grade = table.Column<string>(nullable: true)
+                    grade = table.Column<string>(nullable: true),
+                    Subject_Id = table.Column<string>(nullable: true),
+                    User_Id = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EnrolledSubjects", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EnrolledSubjects_User_enrolledStudentId",
-                        column: x => x.enrolledStudentId,
-                        principalTable: "User",
+                        name: "FK_EnrolledSubjects_Subjects_Subject_Id",
+                        column: x => x.Subject_Id,
+                        principalTable: "Subjects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_EnrolledSubjects_Subjects_subjectId",
-                        column: x => x.subjectId,
-                        principalTable: "Subjects",
+                        name: "FK_EnrolledSubjects_User_User_Id",
+                        column: x => x.User_Id,
+                        principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -286,11 +283,11 @@ namespace Infrastructure.Migrations
                     deletedAt = table.Column<DateTime>(nullable: true),
                     RoomId = table.Column<string>(nullable: true),
                     InstructorId = table.Column<string>(nullable: true),
+                    SubjectId = table.Column<string>(nullable: true),
                     Day = table.Column<int>(nullable: false),
                     Type = table.Column<int>(nullable: false),
                     StartTime = table.Column<TimeSpan>(nullable: false),
-                    EndTime = table.Column<TimeSpan>(nullable: false),
-                    SubjectId = table.Column<string>(nullable: true)
+                    EndTime = table.Column<TimeSpan>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -316,44 +313,46 @@ namespace Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Applications_applicantId",
+                name: "IX_Applications_Applicant_Id",
                 table: "Applications",
-                column: "applicantId");
+                column: "Applicant_Id",
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Applications_staffId",
+                name: "IX_Applications_Staff_Id",
                 table: "Applications",
-                column: "staffId");
+                column: "Staff_Id",
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Courses_CourseId",
+                name: "IX_Courses_ParentCourse_Id",
                 table: "Courses",
-                column: "CourseId");
+                column: "ParentCourse_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Courses_ParentId",
+                name: "IX_Courses_Program_Id",
                 table: "Courses",
-                column: "ParentId");
+                column: "Program_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EnrolledProgram_ProgramId",
+                name: "IX_EnrolledProgram_Program_Id",
                 table: "EnrolledProgram",
-                column: "ProgramId");
+                column: "Program_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EnrolledProgram_StudentId",
+                name: "IX_EnrolledProgram_Student_Id",
                 table: "EnrolledProgram",
-                column: "StudentId");
+                column: "Student_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EnrolledSubjects_enrolledStudentId",
+                name: "IX_EnrolledSubjects_Subject_Id",
                 table: "EnrolledSubjects",
-                column: "enrolledStudentId");
+                column: "Subject_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EnrolledSubjects_subjectId",
+                name: "IX_EnrolledSubjects_User_Id",
                 table: "EnrolledSubjects",
-                column: "subjectId");
+                column: "User_Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Sessions_InstructorId",
@@ -381,14 +380,15 @@ namespace Infrastructure.Migrations
                 column: "SemesterId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_User_SectionId",
+                name: "IX_User_AssignedSectionId",
                 table: "User",
-                column: "SectionId");
+                column: "AssignedSectionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserRoles_userId",
+                name: "IX_UserRoles_User_Id",
                 table: "UserRoles",
-                column: "userId");
+                column: "User_Id",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

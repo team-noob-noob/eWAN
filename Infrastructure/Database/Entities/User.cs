@@ -2,7 +2,12 @@ using System;
 
 namespace eWAN.Infrastructure.Database.Entities
 {
+    using System.Collections.Generic;
     using Domains.User;
+    using eWAN.Domains.EnrolledProgram;
+    using eWAN.Domains.EnrolledSubject;
+    using eWAN.Domains.Role;
+    using eWAN.Domains.Section;
 
     public sealed class User : Domains.User.User, IUser
     {

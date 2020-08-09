@@ -11,9 +11,11 @@ namespace eWAN.Infrastructure.Database.Configuration
     {
         public void Configure(EntityTypeBuilder<Session> builder)
         {
-            builder.HasOne<Room>(x => (Room) x.Room);
+            builder.HasOne<Room>(x => (Room) x.Room).WithMany(y => (IEnumerable<Session>) y.Schedule);
 
             builder.HasOne<User>(x => (User) x.Instructor);
+
+            builder.HasKey(x => x.Id);
 
             builder.ToTable("Sessions");
         }

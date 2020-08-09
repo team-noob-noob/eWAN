@@ -31,17 +31,14 @@ namespace eWAN.Infrastructure.Database
             {
                 throw new ArgumentNullException(nameof(builder)); 
             }
-
+            builder.Entity<EnrolledProgram>().Ignore(x => x.Program);
             builder.ApplyConfigurationsFromAssembly(typeof(EwanContext).Assembly);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if(!optionsBuilder.IsConfigured)
-            {
-                string connectionString = "Server=localhost;Database=ewan;Uid=root;Pwd=root;";
+            string connectionString = "Server=localhost;Database=ewan;Uid=root;Pwd=root;";
                 optionsBuilder.UseMySQL(connectionString);
-            }
         }
 
         private void UpdateEntities()

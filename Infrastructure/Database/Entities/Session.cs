@@ -4,6 +4,7 @@ namespace eWAN.Infrastructure.Database.Entities
     using Domains.Session;
     using Domains.Room;
     using Domains.User;
+    using eWAN.Domains.Subject;
 
     public sealed class Session : Domains.Session.Session, ISession
     {
@@ -27,5 +28,6 @@ namespace eWAN.Infrastructure.Database.Entities
         public override SessionType Type { get; set; }
         public override TimeSpan StartTime { get; set; }
         public override TimeSpan EndTime { get; set; }
+        public override ISubject Subject { get; set; }
     }
 }

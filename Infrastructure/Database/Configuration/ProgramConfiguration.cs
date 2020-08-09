@@ -14,9 +14,11 @@ namespace eWAN.Infrastructure.Database.Configuration
         {
             builder
                 .HasMany<Course>(x => (IEnumerable<Course>) x.Courses)
-                .WithOne()
-                .HasForeignKey("CourseId");
+                .WithOne(y => (Program) y.AssignedProgram)
+                .HasForeignKey(x => x.Program_Id);
+
             builder.ToTable("Programs");
+            
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
         }

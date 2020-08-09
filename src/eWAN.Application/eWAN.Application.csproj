@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Domains\Domains.csproj" />
+    <ProjectReference Include="..\eWAN.Domains\eWAN.Domains.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

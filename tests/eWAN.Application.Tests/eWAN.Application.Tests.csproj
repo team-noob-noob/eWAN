@@ -14,10 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Application\Application.csproj" />
-    <ProjectReference Include="..\Domains\Domains.csproj" />
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-    <ProjectReference Include="..\WebApi\WebApi.csproj" />
+    <ProjectReference Include="..\src\eWAN.Application\eWAN.Application.csproj" />
+    <ProjectReference Include="..\src\eWAN.Domains\eWAN.Domains.csproj" />
+    <ProjectReference Include="..\src\eWAN.Infrastructure\eWAN.Infrastructure.csproj" />
+    <ProjectReference Include="..\src\eWAN.WebApi\eWAN.WebApi.csproj" />
   </ItemGroup>
 
 </Project>

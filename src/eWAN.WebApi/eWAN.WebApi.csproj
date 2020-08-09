@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-    <ProjectReference Include="..\Application\Application.csproj" />
-    <ProjectReference Include="..\Domains\Domains.csproj" />
+    <ProjectReference Include="..\eWAN.Infrastructure\eWAN.Infrastructure.csproj" />
+    <ProjectReference Include="..\eWAN.Application\eWAN.Application.csproj" />
+    <ProjectReference Include="..\eWAN.Domains\eWAN.Domains.csproj" />
   </ItemGroup>
 
   <ItemGroup>

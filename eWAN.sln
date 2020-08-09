@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{4C6B0CEA-2957-4D13-8C4D-62BDDB3D0E60}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWAN.Application", "src\eWAN.Application\eWAN.Application.csproj", "{4C6B0CEA-2957-4D13-8C4D-62BDDB3D0E60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domains", "Domains\Domains.csproj", "{B049638A-5BF9-409D-AE54-002193FBA5A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWAN.Domains", "src\eWAN.Domains\eWAN.Domains.csproj", "{B049638A-5BF9-409D-AE54-002193FBA5A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{4013F046-EC2E-449D-8F43-D331DEC8E101}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWAN.Infrastructure", "src\eWAN.Infrastructure\eWAN.Infrastructure.csproj", "{4013F046-EC2E-449D-8F43-D331DEC8E101}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{C67775D3-86ED-437F-A830-515BCA0E3B1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWAN.WebApi", "src\eWAN.WebApi\eWAN.WebApi.csproj", "{C67775D3-86ED-437F-A830-515BCA0E3B1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{8B18AE10-0817-46C8-B2C2-BAC23CDFBB54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWAN.Application.Tests", "tests\eWAN.Application.Tests\eWAN.Application.Tests.csproj", "{8B18AE10-0817-46C8-B2C2-BAC23CDFBB54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

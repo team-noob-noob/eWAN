@@ -8,6 +8,7 @@ namespace eWAN.Domains.Program
     public interface IProgram : IBaseEntity
     {
         int Id { get; set; }
+        string Code { get; set; }
         string Title { get; set; }
         string Description { get; set; }
         List<ICourse> Courses { get; set; }

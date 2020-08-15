@@ -17,6 +17,7 @@ namespace eWAN.Infrastructure.Database.Entities
         }
 
         public override int Id { get; set; }
+        public override string Code { get; set; }
         public override string Title { get; set; }
         public override string Description { get; set; }
     }

@@ -22,12 +22,12 @@ namespace eWAN.Infrastructure.Database.Repositories
 
         public IApplication GetApplicationById(string id)
         {
-            return (IApplication) this._context.Applications.Where(x => x.Id == id && !x.isDeleted());
+            return (IApplication) this._context.Applications.Where(x => x.Id == id && x.deletedAt == null);
         }
 
         public List<IApplication> GetApplicationsByApplicantId(string applicantId)
         {
-            var query = this._context.Applications.Where(x => x.applicant.Id == applicantId && !x.isDeleted());
+            var query = this._context.Applications.Where(x => x.applicant.Id == applicantId && x.deletedAt == null);
             return query.Cast<IApplication>().ToList();
         }
     }

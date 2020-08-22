@@ -19,12 +19,12 @@ namespace eWAN.Infrastructure.Database.Repositories
 
         public async Task<IProgram> GetProgramByTitle(string title)
         {
-            return await Task.FromResult(this._context.Programs.SingleOrDefault(x => x.Title == title));
+            return await Task.FromResult(this._context.Programs.SingleOrDefault(x => x.Title == title && x.deletedAt == null));
         }
 
         public async Task<IProgram> GetProgramByCode(string code)
         {
-            return await Task.FromResult(this._context.Programs.SingleOrDefault(x => x.Code == code));
+            return await Task.FromResult(this._context.Programs.SingleOrDefault(x => x.Code == code && x.deletedAt == null));
         }
     }
 }

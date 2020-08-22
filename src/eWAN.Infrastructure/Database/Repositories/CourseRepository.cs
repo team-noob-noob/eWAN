@@ -26,7 +26,7 @@ namespace eWAN.Infrastructure.Database.Repositories
 
         public async Task<ICourse> GetCourseById(string Id)
         {
-            var course = this._context.Courses.FirstOrDefault(x => x.Id == Id && !x.isDeleted());
+            var course = this._context.Courses.FirstOrDefault(x => x.Id == Id && x.deletedAt == null);
             if(course is null)
             {
                 return null;

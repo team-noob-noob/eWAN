@@ -1,9 +1,11 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Identity;
 
-namespace eWAN.WebApi.Modules
+namespace eWAN.Infrastructure.Auth
 {
 
     public static class AuthenticationExtensions
@@ -17,6 +19,7 @@ namespace eWAN.WebApi.Modules
             .AddAuthentication(x => {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
             })
             .AddJwtBearer(x => {
                 x.RequireHttpsMetadata = false;
@@ -31,6 +34,12 @@ namespace eWAN.WebApi.Modules
                     ValidIssuer = "Testing123", // TODO: Move text to a config
                     ValidAudience = "Testing123" // TODO: Move text to a config
                 };
+            });
+
+            services.AddAuthorization(options => {
+                var defaultAuthorizationPolicyBuilder = new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme);
+                defaultAuthorizationPolicyBuilder = defaultAuthorizationPolicyBuilder.RequireAuthenticatedUser();
+                options.DefaultPolicy = defaultAuthorizationPolicyBuilder.Build();
             });
 
             return services;

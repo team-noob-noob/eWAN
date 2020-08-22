@@ -14,6 +14,8 @@ using Microsoft.Extensions.Logging;
 namespace eWAN.WebApi
 {
     using Modules;
+    using Infrastructure.Auth;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)

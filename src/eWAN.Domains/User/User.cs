@@ -25,9 +25,9 @@ namespace eWAN.Domains.User
         public abstract string LastName { get; set; }
 
         public abstract string Address { get; set; }
-        public virtual List<IEnrolledSubject> EnrolledSubjects { get; set; }
-        public virtual List<IEnrolledProgram> EnrolledPrograms { get; set; }
-        public virtual List<IRole> AssignedRoles { get; set; }
+        public virtual List<IEnrolledSubject> EnrolledSubjects { get; set; } = new List<IEnrolledSubject>();
+        public virtual List<IEnrolledProgram> EnrolledPrograms { get; set; } = new List<IEnrolledProgram>();
+        public virtual List<IRole> AssignedRoles { get; set; } = new List<IRole>();
         public virtual ISection AssignedSection { get; set; }
     }
 }

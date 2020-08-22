@@ -11,8 +11,8 @@ namespace eWAN.Domains.Subject
     {
         public abstract string Id { get; set; }
         public virtual ICourse Course { get; set; }
-        public virtual List<ISession> Sessions { get; set; }
+        public virtual List<ISession> Sessions { get; set; } = new List<ISession>();
         public virtual ISemester Semester { get; set; }
-        public virtual List<IEnrolledSubject> StudentsEnrolled { get; set; }
+        public virtual List<IEnrolledSubject> StudentsEnrolled { get; set; } = new List<IEnrolledSubject>();
     }
 }

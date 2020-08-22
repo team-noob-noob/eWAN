@@ -8,6 +8,7 @@ namespace eWAN.Domains.Program
     {
         IProgram NewProgram(
             string Title,
+            string Code,
             string Description,
             List<ICourse> Courses
         );

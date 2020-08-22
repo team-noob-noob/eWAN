@@ -6,5 +6,6 @@ namespace eWAN.Domains.Program
     {
         Task Add(IProgram program);
         Task<IProgram> GetProgramByTitle(string title);
+        Task<IProgram> GetProgramByCode(string code);
     }
 }

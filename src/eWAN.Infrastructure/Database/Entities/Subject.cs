@@ -9,7 +9,7 @@ namespace eWAN.Infrastructure.Database.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using eWAN.Domains.Semester;
 
-    public sealed class Subject : Domains.Subject.Subject, ISubject
+    public class Subject : Domains.Subject.Subject, ISubject
     {
         public Subject() {}
         public Subject(ICourse course, List<ISession> sessions)

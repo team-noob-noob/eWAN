@@ -4,7 +4,7 @@ namespace eWAN.Infrastructure.Database.Entities
     using eWAN.Domains.Subject;
     using eWAN.Domains.User;
 
-    public sealed class EnrolledSubject : Domains.EnrolledSubject.EnrolledSubject, IEnrolledSubject
+    public class EnrolledSubject : Domains.EnrolledSubject.EnrolledSubject, IEnrolledSubject
     {
         public EnrolledSubject() {}
         public EnrolledSubject(IUser student, ISubject subject, string grade = null)

@@ -3,7 +3,7 @@ using eWAN.Domains.User;
 
 namespace eWAN.Infrastructure.Database.Entities
 {
-    public sealed class Role : Domains.Role.Role, IRole
+    public class Role : Domains.Role.Role, IRole
     {
         public Role() {}
 

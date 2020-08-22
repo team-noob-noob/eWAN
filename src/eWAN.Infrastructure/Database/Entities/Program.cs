@@ -6,7 +6,7 @@ namespace eWAN.Infrastructure.Database.Entities
     using eWAN.Domains.Course;
     using eWAN.Domains.EnrolledProgram;
 
-    public sealed class Program : Domains.Program.Program, IProgram
+    public class Program : Domains.Program.Program, IProgram
     {
         public Program() {}
         public Program(string Title, string Code, string Description, List<ICourse> courses)

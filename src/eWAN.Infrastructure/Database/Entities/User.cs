@@ -9,7 +9,7 @@ namespace eWAN.Infrastructure.Database.Entities
     using eWAN.Domains.Role;
     using eWAN.Domains.Section;
 
-    public sealed class User : Domains.User.User, IUser
+    public class User : Domains.User.User, IUser
     {
         public User(
             string Username,

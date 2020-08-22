@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 namespace eWAN.WebApi.Modules
 {
@@ -22,7 +23,7 @@ namespace eWAN.WebApi.Modules
     {
         public static IServiceCollection AddPersistence(this IServiceCollection services)
         {
-            services.AddDbContext<EwanContext>();
+            services.AddDbContext<EwanContext>(options => options.UseLazyLoadingProxies());
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();

@@ -4,7 +4,7 @@ namespace eWAN.Infrastructure.Database.Entities
     using Domains.Room;
     using Domains.Session;
 
-    public sealed class Room : Domains.Room.Room, IRoom
+    public class Room : Domains.Room.Room, IRoom
     {
         public Room() {}
         public Room(string Id, string Name, string Address = null)

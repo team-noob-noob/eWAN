@@ -6,7 +6,7 @@ namespace eWAN.Infrastructure.Database.Entities
     using Domains.User;
     using eWAN.Domains.Subject;
 
-    public sealed class Session : Domains.Session.Session, ISession
+    public class Session : Domains.Session.Session, ISession
     {
         public Session() {}
         public Session(DayOfWeek day, TimeSpan startTime, TimeSpan endTime, IRoom room, IUser Instructor, SessionType type)

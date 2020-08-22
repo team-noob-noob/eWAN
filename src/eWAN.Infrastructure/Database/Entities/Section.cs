@@ -4,7 +4,7 @@ namespace eWAN.Infrastructure.Database.Entities
     using Domains.Section;
     using eWAN.Domains.User;
 
-    public sealed class Section : Domains.Section.Section, ISection
+    public class Section : Domains.Section.Section, ISection
     {
         public Section() {}
         public Section(string Name, List<IUser> Students)

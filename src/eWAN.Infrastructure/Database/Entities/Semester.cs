@@ -5,7 +5,7 @@ namespace eWAN.Infrastructure.Database.Entities
     using Domains.Semester;
     using eWAN.Domains.Subject;
 
-    public sealed class Semester : Domains.Semester.Semester, ISemester
+    public class Semester : Domains.Semester.Semester, ISemester
     {
         public Semester() {}
         public Semester(string Id, DateTime start, DateTime End, List<ISubject> courses = null, bool IsOpenForEnrollment = true)

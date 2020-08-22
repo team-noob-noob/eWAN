@@ -5,7 +5,7 @@ namespace eWAN.Infrastructure.Database.Entities
     using Domains.Program;
     using Domains.User;
 
-    public sealed class EnrolledProgram : Domains.EnrolledProgram.EnrolledProgram, IEnrolledProgram
+    public class EnrolledProgram : Domains.EnrolledProgram.EnrolledProgram, IEnrolledProgram
     {
         public EnrolledProgram() {}
         public EnrolledProgram(IUser Student, IProgram Program)

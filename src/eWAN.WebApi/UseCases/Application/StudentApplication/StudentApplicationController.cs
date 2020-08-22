@@ -9,9 +9,9 @@ namespace eWAN.WebApi.UseCases.StudentApplication
     using Domains.User;
 
     [Authorize]
-    [Route("/api/[controller]")]
+    [Route("/api/[controller]/[action]")]
     [ApiController]
-    public sealed class StudentApplicationController : ControllerBase
+    public sealed class ApplicationController : ControllerBase
     {
         [HttpPost]
         public async Task<IActionResult> PassStudentApplication(

@@ -7,9 +7,9 @@ namespace eWAN.WebApi.UseCases.Register
     using Application.Boundaries.Register;
 
     [Authorize]
-    [Route("/api/[controller]")]
+    [Route("/api/[controller]/[action]")]
     [ApiController]
-    public sealed class RegisterController : ControllerBase
+    public sealed class UserController : ControllerBase
     {
         [AllowAnonymous]
         [HttpPost]

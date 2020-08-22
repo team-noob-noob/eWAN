@@ -11,9 +11,9 @@ namespace eWAN.WebApi.UseCases.ApplicationJurying
     using Application.Boundaries.ApplicationJurying;
 
     [Authorize]
-    [Route("/api/[controller]")]
+    [Route("/api/[controller]/[action]")]
     [ApiController]
-    public sealed class ApplicationJuryingController : Controller
+    public sealed class ApplicationController : Controller
     {
         [HttpPost]
         public async Task<IActionResult> ApplyJudgement(

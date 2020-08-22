@@ -12,9 +12,9 @@ namespace eWAN.WebApi.UseCases.CreateSubject
     using Domains.User;
 
     [Authorize]
-    [Route("/api/[controller]")]
+    [Route("/api/[controller]/[action]")]
     [ApiController]
-    public class CreateSubjectController : Controller
+    public class SubjectController : Controller
     {
         [HttpPost]
         public async Task<IActionResult> CreateSubject(

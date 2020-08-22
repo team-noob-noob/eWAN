@@ -9,9 +9,9 @@ namespace eWAN.WebApi.UseCases.LogIn
     using Application.Boundaries.LogIn;
 
     [Authorize]
-    [Route("/api/[controller]")]
+    [Route("/api/[controller]/[action]")]
     [ApiController]
-    public class LogInController : ControllerBase
+    public class AuthController : ControllerBase
     {
         [AllowAnonymous]
         [HttpPost]
@@ -24,12 +24,6 @@ namespace eWAN.WebApi.UseCases.LogIn
             var logInInput = new LogInInput(request.Username, request.Password);
             await logInUseCase.Handle(logInInput);
             
-            // TODO: Move away from the controller class
-            if(presenter.ViewModel is OkObjectResult) 
-            {
-                await this.HttpContext.SignInAsync(new ClaimsPrincipal(new [] { presenter.Identity }));
-            }
-
             return presenter.ViewModel;
         }
     }

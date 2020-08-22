@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eWAN.Infrastructure.Database;
 
-namespace Infrastructure.Migrations
+namespace eWAN.Infrastructure.Migrations
 {
     [DbContext(typeof(EwanContext))]
-    [Migration("20200809074556_MultipleRoles")]
-    partial class MultipleRoles
+    [Migration("20200822150229_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -162,6 +162,9 @@ namespace Infrastructure.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("text");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");

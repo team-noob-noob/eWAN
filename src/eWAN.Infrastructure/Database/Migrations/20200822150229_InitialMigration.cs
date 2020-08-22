@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.Data.EntityFrameworkCore.Metadata;
 
-namespace Infrastructure.Migrations
+namespace eWAN.Infrastructure.Migrations
 {
-    public partial class fixedFixedInitialMigration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,6 +17,7 @@ namespace Infrastructure.Migrations
                     createdAt = table.Column<DateTime>(nullable: false),
                     updatedAt = table.Column<DateTime>(nullable: true),
                     deletedAt = table.Column<DateTime>(nullable: true),
+                    Code = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true)
                 },
@@ -387,8 +388,7 @@ namespace Infrastructure.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_UserRoles_User_Id",
                 table: "UserRoles",
-                column: "User_Id",
-                unique: true);
+                column: "User_Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

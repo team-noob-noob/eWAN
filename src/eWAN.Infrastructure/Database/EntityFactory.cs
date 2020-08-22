@@ -58,8 +58,8 @@ namespace eWAN.Infrastructure.Database
         public IEnrolledSubject NewEnrolledSubject(IUser student, ISubject subject, string grade = null) =>
             new EnrolledSubject(student, subject, grade);
 
-        public IProgram NewProgram(string Title, string Description, List<ICourse> Courses) =>
-            new Program(Title, Description, Courses);
+        public IProgram NewProgram(string Title, string Code, string Description, List<ICourse> Courses) =>
+            new Program(Title, Code, Description, Courses);
 
         public IRole NewRole(IUser user, UserRole role = UserRole.StudentApplicant) => new Role(user, role);
 

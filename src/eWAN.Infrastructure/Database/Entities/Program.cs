@@ -9,9 +9,10 @@ namespace eWAN.Infrastructure.Database.Entities
     public sealed class Program : Domains.Program.Program, IProgram
     {
         public Program() {}
-        public Program(string Title, string Description, List<ICourse> courses)
+        public Program(string Title, string Code, string Description, List<ICourse> courses)
         {
             this.Title = Title;
+            this.Code = Code;
             this.Description = Description;
             this.Courses = courses ?? new List<ICourse>();
         }

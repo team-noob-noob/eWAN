@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace eWAN.WebApi.UseCases.StudentApplication
 {
+    using Modules;
     using Application.Boundaries.StudentApplication;
     using Domains.User;
 
@@ -20,7 +21,7 @@ namespace eWAN.WebApi.UseCases.StudentApplication
             [FromServices] IUserRepository userRepository
         )
         {
-            var applicant = await userRepository.GetByUsername(this.HttpContext.User.Identity.Name);
+            var applicant = await userRepository.GetById(this.HttpContext.User.GetUserId());
             var input = new StudentApplicationInput(applicant);
             await useCase.Handle(input);
             return presenter.ViewModel;

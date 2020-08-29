@@ -20,4 +20,8 @@
     <ProjectReference Include="..\..\src\eWAN.WebApi\eWAN.WebApi.csproj" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <NullableReferenceTypes>true</NullableReferenceTypes>
+  </PropertyGroup>
+
 </Project>

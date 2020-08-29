@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <LangVersion>latest</LangVersion>
+    <Nullable>annotations</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,10 +26,4 @@
     <ProjectReference Include="..\eWAN.Application\eWAN.Application.csproj" />
     <ProjectReference Include="..\eWAN.Domains\eWAN.Domains.csproj" />
   </ItemGroup>
-
-  <PropertyGroup>
-    <NullableReferenceTypes>true</NullableReferenceTypes>
-    <Nullable>true</Nullable>
-  </PropertyGroup>
-
 </Project>

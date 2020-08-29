@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-
+    <LangVersion>latest</LangVersion>
+    <Nullable>annotations</Nullable>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -19,9 +20,4 @@
     <ProjectReference Include="..\..\src\eWAN.Infrastructure\eWAN.Infrastructure.csproj" />
     <ProjectReference Include="..\..\src\eWAN.WebApi\eWAN.WebApi.csproj" />
   </ItemGroup>
-
-  <PropertyGroup>
-    <NullableReferenceTypes>true</NullableReferenceTypes>
-  </PropertyGroup>
-
 </Project>

@@ -11,6 +11,7 @@ namespace eWAN.Infrastructure.Database.Entities
 
         public Application(IUser applicant)
         {
+            Random rand = new Random();
             this.Id = rand.NewString(10);
             this.applicant = applicant;
             this.staff = null;
@@ -23,9 +24,6 @@ namespace eWAN.Infrastructure.Database.Entities
         public override string reason { get; set; }
         public string? Applicant_Id { get; set; }
         public string? Staff_Id { get; set; }
-
-
-        private Random rand = new Random();
     }
 
 }

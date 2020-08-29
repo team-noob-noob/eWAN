@@ -15,13 +15,13 @@ namespace eWAN.Infrastructure.Database.Configuration
                 .HasOne<User>(x => (User) x.applicant)
                 .WithOne()
                 .HasForeignKey<Application>(x => x.Applicant_Id)
-                .IsRequired();
+                .IsRequired(false);
             
             builder
                 .HasOne<User>(x => (User) x.staff)
                 .WithOne()
                 .HasForeignKey<Application>(x => x.Staff_Id)
-                .IsRequired();
+                .IsRequired(false);
 
             builder.HasKey(x => x.Id);
 

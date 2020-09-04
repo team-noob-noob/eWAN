@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace eWAN.WebApi.UseCases.Register
 {
     using Application.Boundaries.Register;
+    using Microsoft.AspNetCore.Http;
 
     [Authorize]
     [Route("/api/[controller]/[action]")]
@@ -13,6 +14,10 @@ namespace eWAN.WebApi.UseCases.Register
     {
         [AllowAnonymous]
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> CreateUser(
             [FromServices] IRegisterUseCase registerUseCase,
             [FromServices] RegisterPresenter presenter,

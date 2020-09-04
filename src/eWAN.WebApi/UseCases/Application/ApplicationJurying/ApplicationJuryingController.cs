@@ -9,6 +9,7 @@ namespace eWAN.WebApi.UseCases.ApplicationJurying
     using Domains.User;
     using Application.UseCases;
     using Application.Boundaries.ApplicationJurying;
+    using Microsoft.AspNetCore.Http;
 
     [Authorize]
     [Route("/api/[controller]/[action]")]
@@ -16,6 +17,10 @@ namespace eWAN.WebApi.UseCases.ApplicationJurying
     public sealed class ApplicationController : Controller
     {
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> ApplyJudgement(
             [FromServices] ApplicationJuryingUseCase useCase,
             [FromServices] ApplicationJuryingPresenter presenter,

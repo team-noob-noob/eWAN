@@ -10,6 +10,7 @@ namespace eWAN.WebApi.UseCases.CreateSubject
     using Domains.Course;
     using Domains.Semester;
     using Domains.User;
+    using Microsoft.AspNetCore.Http;
 
     [Authorize]
     [Route("/api/[controller]/[action]")]
@@ -17,6 +18,10 @@ namespace eWAN.WebApi.UseCases.CreateSubject
     public class SubjectController : Controller
     {
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> CreateSubject(
             [FromServices] CreateSubjectPresenter presenter,
             [FromServices] ICreateSubjectUseCase useCase,

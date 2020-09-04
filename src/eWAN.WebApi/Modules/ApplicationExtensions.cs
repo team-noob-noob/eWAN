@@ -8,6 +8,7 @@ namespace eWAN.WebApi.Modules
     using Application.Boundaries.StudentApplication;
     using Application.Boundaries.CreateSubject;
     using Application.Boundaries.CreateProgram;
+    using Application.Boundaries.CreateRoom;
     using Application.UseCases;
 
     public static class ApplicationExtensions
@@ -20,6 +21,7 @@ namespace eWAN.WebApi.Modules
             services.AddScoped<IStudentApplicationUseCase, StudentApplicationUseCase>();
             services.AddScoped<ICreateSubjectUseCase, CreateSubjectUseCase>();
             services.AddScoped<ICreateProgramUseCase, CreateProgramUseCase>();
+            services.AddScoped<ICreateRoomUseCase, CreateRoomUseCase>();
             return services;
         }
     }

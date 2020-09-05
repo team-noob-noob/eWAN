@@ -14,6 +14,7 @@ namespace eWAN.Application.UseCases
         {
             this._roomRepo = roomRepository;
             this._roomFactory = roomFactory;
+            this._output = outputPort;
         }
 
         private readonly IRoomRepository _roomRepo;

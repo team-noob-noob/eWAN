@@ -12,7 +12,10 @@ namespace eWAN.Infrastructure.Database.Configuration
     {
         public void Configure(EntityTypeBuilder<Section> builder)
         {
-            builder.HasMany<User>(x => (IEnumerable<User>) x.Students).WithOne(y => (Section) y.AssignedSection);
+            builder
+                .HasMany<User>(x => (IEnumerable<User>) x.Students)
+                .WithOne(y => (Section) y.AssignedSection)
+                .IsRequired(false);
 
             builder.HasKey(x => x.Id);
 

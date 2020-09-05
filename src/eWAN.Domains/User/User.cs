@@ -28,6 +28,6 @@ namespace eWAN.Domains.User
         public virtual List<IEnrolledSubject> EnrolledSubjects { get; set; } = new List<IEnrolledSubject>();
         public virtual List<IEnrolledProgram> EnrolledPrograms { get; set; } = new List<IEnrolledProgram>();
         public virtual List<IRole> AssignedRoles { get; set; } = new List<IRole>();
-        public virtual ISection AssignedSection { get; set; }
+        public virtual ISection? AssignedSection { get; set; }
     }
 }

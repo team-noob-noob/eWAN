@@ -9,7 +9,7 @@ using eWAN.Infrastructure.Database;
 namespace eWAN.Infrastructure.Migrations
 {
     [DbContext(typeof(EwanContext))]
-    [Migration("20200822150229_InitialMigration")]
+    [Migration("20200905033157_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,11 +26,9 @@ namespace eWAN.Infrastructure.Migrations
                         .HasColumnType("varchar(767)");
 
                     b.Property<string>("Applicant_Id")
-                        .IsRequired()
                         .HasColumnType("varchar(767)");
 
                     b.Property<string>("Staff_Id")
-                        .IsRequired()
                         .HasColumnType("varchar(767)");
 
                     b.Property<DateTime>("createdAt")
@@ -43,6 +41,7 @@ namespace eWAN.Infrastructure.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("reason")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("updatedAt")
@@ -65,6 +64,7 @@ namespace eWAN.Infrastructure.Migrations
                         .HasColumnType("varchar(767)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("ParentCourse_Id")
@@ -74,6 +74,7 @@ namespace eWAN.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("createdAt")
@@ -104,6 +105,7 @@ namespace eWAN.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Student_Id")
+                        .IsRequired()
                         .HasColumnType("varchar(767)");
 
                     b.Property<DateTime>("createdAt")
@@ -131,9 +133,11 @@ namespace eWAN.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Subject_Id")
+                        .IsRequired()
                         .HasColumnType("varchar(767)");
 
                     b.Property<string>("User_Id")
+                        .IsRequired()
                         .HasColumnType("varchar(767)");
 
                     b.Property<DateTime>("createdAt")
@@ -143,6 +147,7 @@ namespace eWAN.Infrastructure.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<string>("grade")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("updatedAt")
@@ -164,12 +169,15 @@ namespace eWAN.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Code")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("createdAt")
@@ -193,6 +201,7 @@ namespace eWAN.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("User_Id")
+                        .IsRequired()
                         .HasColumnType("varchar(767)");
 
                     b.Property<DateTime>("createdAt")
@@ -220,9 +229,11 @@ namespace eWAN.Infrastructure.Migrations
                         .HasColumnType("varchar(767)");
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("createdAt")
@@ -246,6 +257,7 @@ namespace eWAN.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("createdAt")
@@ -302,15 +314,18 @@ namespace eWAN.Infrastructure.Migrations
                         .HasColumnType("time");
 
                     b.Property<string>("InstructorId")
+                        .IsRequired()
                         .HasColumnType("varchar(767)");
 
                     b.Property<string>("RoomId")
+                        .IsRequired()
                         .HasColumnType("varchar(767)");
 
                     b.Property<TimeSpan>("StartTime")
                         .HasColumnType("time");
 
                     b.Property<string>("SubjectId")
+                        .IsRequired()
                         .HasColumnType("varchar(767)");
 
                     b.Property<int>("Type")
@@ -342,9 +357,11 @@ namespace eWAN.Infrastructure.Migrations
                         .HasColumnType("varchar(767)");
 
                     b.Property<string>("CourseId")
+                        .IsRequired()
                         .HasColumnType("varchar(767)");
 
                     b.Property<string>("SemesterId")
+                        .IsRequired()
                         .HasColumnType("varchar(767)");
 
                     b.Property<DateTime>("createdAt")
@@ -371,30 +388,38 @@ namespace eWAN.Infrastructure.Migrations
                         .HasColumnType("varchar(767)");
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int?>("AssignedSectionId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("MiddleName")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Username")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("createdAt")
@@ -417,15 +442,11 @@ namespace eWAN.Infrastructure.Migrations
                 {
                     b.HasOne("eWAN.Infrastructure.Database.Entities.User", "applicant")
                         .WithOne()
-                        .HasForeignKey("eWAN.Infrastructure.Database.Entities.Application", "Applicant_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("eWAN.Infrastructure.Database.Entities.Application", "Applicant_Id");
 
                     b.HasOne("eWAN.Infrastructure.Database.Entities.User", "staff")
                         .WithOne()
-                        .HasForeignKey("eWAN.Infrastructure.Database.Entities.Application", "Staff_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("eWAN.Infrastructure.Database.Entities.Application", "Staff_Id");
                 });
 
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.Course", b =>
@@ -451,51 +472,69 @@ namespace eWAN.Infrastructure.Migrations
 
                     b.HasOne("eWAN.Infrastructure.Database.Entities.User", "Student")
                         .WithMany("EnrolledPrograms")
-                        .HasForeignKey("Student_Id");
+                        .HasForeignKey("Student_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.EnrolledSubject", b =>
                 {
                     b.HasOne("eWAN.Infrastructure.Database.Entities.Subject", "subject")
                         .WithMany("StudentsEnrolled")
-                        .HasForeignKey("Subject_Id");
+                        .HasForeignKey("Subject_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("eWAN.Infrastructure.Database.Entities.User", "enrolledStudent")
                         .WithMany("EnrolledSubjects")
-                        .HasForeignKey("User_Id");
+                        .HasForeignKey("User_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.Role", b =>
                 {
                     b.HasOne("eWAN.Infrastructure.Database.Entities.User", "user")
                         .WithMany("AssignedRoles")
-                        .HasForeignKey("User_Id");
+                        .HasForeignKey("User_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.Session", b =>
                 {
                     b.HasOne("eWAN.Infrastructure.Database.Entities.User", "Instructor")
                         .WithMany()
-                        .HasForeignKey("InstructorId");
+                        .HasForeignKey("InstructorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("eWAN.Infrastructure.Database.Entities.Room", "Room")
                         .WithMany("Schedule")
-                        .HasForeignKey("RoomId");
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("eWAN.Infrastructure.Database.Entities.Subject", "Subject")
                         .WithMany("Sessions")
-                        .HasForeignKey("SubjectId");
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.Subject", b =>
                 {
                     b.HasOne("eWAN.Infrastructure.Database.Entities.Course", "Course")
                         .WithMany("OpenedSubjects")
-                        .HasForeignKey("CourseId");
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("eWAN.Infrastructure.Database.Entities.Semester", "Semester")
                         .WithMany("OpenCourses")
-                        .HasForeignKey("SemesterId");
+                        .HasForeignKey("SemesterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.User", b =>

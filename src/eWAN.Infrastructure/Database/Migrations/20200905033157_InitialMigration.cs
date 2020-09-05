@@ -17,9 +17,9 @@ namespace eWAN.Infrastructure.Migrations
                     createdAt = table.Column<DateTime>(nullable: false),
                     updatedAt = table.Column<DateTime>(nullable: true),
                     deletedAt = table.Column<DateTime>(nullable: true),
-                    Code = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    Code = table.Column<string>(nullable: false),
+                    Title = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -34,8 +34,8 @@ namespace eWAN.Infrastructure.Migrations
                     createdAt = table.Column<DateTime>(nullable: false),
                     updatedAt = table.Column<DateTime>(nullable: true),
                     deletedAt = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: false),
+                    Address = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -51,7 +51,7 @@ namespace eWAN.Infrastructure.Migrations
                     createdAt = table.Column<DateTime>(nullable: false),
                     updatedAt = table.Column<DateTime>(nullable: true),
                     deletedAt = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -83,8 +83,8 @@ namespace eWAN.Infrastructure.Migrations
                     createdAt = table.Column<DateTime>(nullable: false),
                     updatedAt = table.Column<DateTime>(nullable: true),
                     deletedAt = table.Column<DateTime>(nullable: true),
-                    Title = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
                     ParentCourse_Id = table.Column<string>(nullable: true),
                     Program_Id = table.Column<int>(nullable: false)
                 },
@@ -114,14 +114,14 @@ namespace eWAN.Infrastructure.Migrations
                     updatedAt = table.Column<DateTime>(nullable: true),
                     deletedAt = table.Column<DateTime>(nullable: true),
                     AssignedSectionId = table.Column<int>(nullable: true),
-                    Username = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    FirstName = table.Column<string>(nullable: true),
-                    MiddleName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: true)
+                    Username = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(nullable: false),
+                    PhoneNumber = table.Column<string>(nullable: false),
+                    FirstName = table.Column<string>(nullable: false),
+                    MiddleName = table.Column<string>(nullable: false),
+                    LastName = table.Column<string>(nullable: false),
+                    Address = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -142,8 +142,8 @@ namespace eWAN.Infrastructure.Migrations
                     createdAt = table.Column<DateTime>(nullable: false),
                     updatedAt = table.Column<DateTime>(nullable: true),
                     deletedAt = table.Column<DateTime>(nullable: true),
-                    CourseId = table.Column<string>(nullable: true),
-                    SemesterId = table.Column<string>(nullable: true)
+                    CourseId = table.Column<string>(nullable: false),
+                    SemesterId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -153,13 +153,13 @@ namespace eWAN.Infrastructure.Migrations
                         column: x => x.CourseId,
                         principalTable: "Courses",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Subjects_Semesters_SemesterId",
                         column: x => x.SemesterId,
                         principalTable: "Semesters",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -171,9 +171,9 @@ namespace eWAN.Infrastructure.Migrations
                     updatedAt = table.Column<DateTime>(nullable: true),
                     deletedAt = table.Column<DateTime>(nullable: true),
                     isAccepted = table.Column<bool>(nullable: false),
-                    reason = table.Column<string>(nullable: true),
-                    Applicant_Id = table.Column<string>(nullable: false),
-                    Staff_Id = table.Column<string>(nullable: false)
+                    reason = table.Column<string>(nullable: false),
+                    Applicant_Id = table.Column<string>(nullable: true),
+                    Staff_Id = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -183,13 +183,13 @@ namespace eWAN.Infrastructure.Migrations
                         column: x => x.Applicant_Id,
                         principalTable: "User",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Applications_User_Staff_Id",
                         column: x => x.Staff_Id,
                         principalTable: "User",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -201,7 +201,7 @@ namespace eWAN.Infrastructure.Migrations
                     createdAt = table.Column<DateTime>(nullable: false),
                     updatedAt = table.Column<DateTime>(nullable: true),
                     deletedAt = table.Column<DateTime>(nullable: true),
-                    Student_Id = table.Column<string>(nullable: true),
+                    Student_Id = table.Column<string>(nullable: false),
                     Program_Id = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -218,7 +218,7 @@ namespace eWAN.Infrastructure.Migrations
                         column: x => x.Student_Id,
                         principalTable: "User",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -231,7 +231,7 @@ namespace eWAN.Infrastructure.Migrations
                     updatedAt = table.Column<DateTime>(nullable: true),
                     deletedAt = table.Column<DateTime>(nullable: true),
                     role = table.Column<int>(type: "int", nullable: false),
-                    User_Id = table.Column<string>(nullable: true)
+                    User_Id = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -241,7 +241,7 @@ namespace eWAN.Infrastructure.Migrations
                         column: x => x.User_Id,
                         principalTable: "User",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -253,9 +253,9 @@ namespace eWAN.Infrastructure.Migrations
                     createdAt = table.Column<DateTime>(nullable: false),
                     updatedAt = table.Column<DateTime>(nullable: true),
                     deletedAt = table.Column<DateTime>(nullable: true),
-                    grade = table.Column<string>(nullable: true),
-                    Subject_Id = table.Column<string>(nullable: true),
-                    User_Id = table.Column<string>(nullable: true)
+                    grade = table.Column<string>(nullable: false),
+                    Subject_Id = table.Column<string>(nullable: false),
+                    User_Id = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -265,13 +265,13 @@ namespace eWAN.Infrastructure.Migrations
                         column: x => x.Subject_Id,
                         principalTable: "Subjects",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_EnrolledSubjects_User_User_Id",
                         column: x => x.User_Id,
                         principalTable: "User",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -282,9 +282,9 @@ namespace eWAN.Infrastructure.Migrations
                     createdAt = table.Column<DateTime>(nullable: false),
                     updatedAt = table.Column<DateTime>(nullable: true),
                     deletedAt = table.Column<DateTime>(nullable: true),
-                    RoomId = table.Column<string>(nullable: true),
-                    InstructorId = table.Column<string>(nullable: true),
-                    SubjectId = table.Column<string>(nullable: true),
+                    RoomId = table.Column<string>(nullable: false),
+                    InstructorId = table.Column<string>(nullable: false),
+                    SubjectId = table.Column<string>(nullable: false),
                     Day = table.Column<int>(nullable: false),
                     Type = table.Column<int>(nullable: false),
                     StartTime = table.Column<TimeSpan>(nullable: false),
@@ -298,19 +298,19 @@ namespace eWAN.Infrastructure.Migrations
                         column: x => x.InstructorId,
                         principalTable: "User",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Sessions_Rooms_RoomId",
                         column: x => x.RoomId,
                         principalTable: "Rooms",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Sessions_Subjects_SubjectId",
                         column: x => x.SubjectId,
                         principalTable: "Subjects",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

@@ -49,8 +49,8 @@ namespace eWAN.Infrastructure.Database
 
         public IApplication NewApplication(IUser applicant) => new Application(applicant);
 
-        public ICourse NewCourse(string Id, string Title, string Description, List<ICourse> Prerequisites) =>
-            new Course(Id, Title, Description, Prerequisites);
+        public ICourse NewCourse(string Id, string Title, string Description, List<ICourse> Prerequisites, IProgram program) =>
+            new Course(Id, Title, Description, Prerequisites, program);
 
         public IEnrolledProgram NewEnrolledProgram(IUser student, IProgram program) =>
             new EnrolledProgram(student, program);

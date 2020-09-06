@@ -9,12 +9,13 @@ namespace eWAN.Infrastructure.Database.Entities
     public class Course : Domains.Course.Course, ICourse
     {
         public Course() {}
-        public Course(string Id, string Title, string Description, List<ICourse> Prerequisites)
+        public Course(string Id, string Title, string Description, List<ICourse> Prerequisites, IProgram program)
         {
             this.Id = Id;
             this.Title = Title;
             this.Description = Description;
             this.Prerequisites = Prerequisites ?? new List<ICourse>();
+            this.AssignedProgram = program;
         }
 
         public override string Id { get; set; }

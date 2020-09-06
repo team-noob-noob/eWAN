@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using eWAN.Domains.Program;
 
 namespace eWAN.Domains.Course
 {
@@ -8,6 +9,7 @@ namespace eWAN.Domains.Course
             string Id, 
             string Title, 
             string Description, 
-            List<ICourse> Prerequisites);
+            List<ICourse> Prerequisites,
+            IProgram program);
     }
 }

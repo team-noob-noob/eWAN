@@ -33,5 +33,15 @@ namespace eWAN.Infrastructure.Database.Repositories
             }
             return await Task.FromResult(course);
         }
+
+        public async Task<ICourse> GetCourseByTitle(string title)
+        {
+            var course = this._context.Courses.FirstOrDefault(x => x.Title == title && x.deletedAt == null);
+            if(course is null)
+            {
+                return null;
+            }
+            return await Task.FromResult(course);
+        }
     }
 }

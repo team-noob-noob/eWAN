@@ -12,8 +12,7 @@ namespace eWAN.Infrastructure.Auth
     {
         public static IServiceCollection AddAuthentication(this IServiceCollection services)
         {
-            // TODO: Move text to a config
-            var key = Encoding.ASCII.GetBytes("xecretKeywqejane");
+            var key = Encoding.ASCII.GetBytes(System.Environment.GetEnvironmentVariable("SERVER_KEY"));
 
             services
             .AddAuthentication(x => {

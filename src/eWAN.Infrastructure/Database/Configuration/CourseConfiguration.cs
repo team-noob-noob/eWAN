@@ -21,7 +21,8 @@ namespace eWAN.Infrastructure.Database.Configuration
             
             builder
                 .HasMany<Subject>(x => (IEnumerable<Subject>) x.OpenedSubjects)
-                .WithOne(y => (Course) y.Course);
+                .WithOne(y => (Course) y.Course)
+                .IsRequired(false);
 
             builder.HasKey(x => x.Id);
 

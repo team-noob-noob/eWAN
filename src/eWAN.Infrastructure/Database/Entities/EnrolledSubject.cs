@@ -2,12 +2,12 @@ namespace eWAN.Infrastructure.Database.Entities
 {
     using Domains.EnrolledSubject;
     using eWAN.Domains.Subject;
-    using eWAN.Domains.User;
+    using eWAN.Domains.Student;
 
     public class EnrolledSubject : Domains.EnrolledSubject.EnrolledSubject, IEnrolledSubject
     {
         public EnrolledSubject() {}
-        public EnrolledSubject(IUser student, ISubject subject, string grade = null)
+        public EnrolledSubject(IStudent student, ISubject subject, string grade = null)
         {
             this.enrolledStudent = student;
             this.subject = subject;

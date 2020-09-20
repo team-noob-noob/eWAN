@@ -2,11 +2,12 @@ namespace eWAN.Domains.EnrolledSubject
 {
     using User;
     using Subject;
+    using Student;
 
     public interface IEnrolledSubjectFactory
     {
         IEnrolledSubject NewEnrolledSubject(
-            IUser student,
+            IStudent student,
             ISubject subject,
             string grade = null
         );

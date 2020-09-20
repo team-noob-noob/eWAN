@@ -3,12 +3,12 @@ namespace eWAN.Infrastructure.Database.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using Domains.EnrolledProgram;
     using Domains.Program;
-    using Domains.User;
+    using Domains.Student;
 
     public class EnrolledProgram : Domains.EnrolledProgram.EnrolledProgram, IEnrolledProgram
     {
         public EnrolledProgram() {}
-        public EnrolledProgram(IUser Student, IProgram Program)
+        public EnrolledProgram(IStudent Student, IProgram Program)
         {
             this.Student = Student;
             this.Program = Program;

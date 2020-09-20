@@ -1,15 +1,16 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using eWAN.Domains.Room;
+using eWAN.Domains.Semester;
+using eWAN.Domains.User;
+using eWAN.Domains.Session;
+using eWAN.Domains.Student;
+using Session = eWAN.Infrastructure.Database.Entities.Session;
+
 
 namespace eWAN.Infrastructure.Database.Repositories
 {
-    using Domains.Session;
-    using eWAN.Domains.Room;
-    using eWAN.Domains.Semester;
-    using eWAN.Domains.User;
-    using Session = Entities.Session;
-
     public class SessionRepository : ISessionRepository
     {
         public SessionRepository(EwanContext context) => this._context = context;
@@ -37,7 +38,7 @@ namespace eWAN.Infrastructure.Database.Repositories
             return await Task.FromResult(sessions.ToList());
         }
 
-        public async Task<List<ISession>> GetSessionsByStudentAndSemester(IUser student, ISemester semester)
+        public async Task<List<ISession>> GetSessionsByStudentAndSemester(IStudent student, ISemester semester)
         {
             var sessions_2d = from course in semester.OpenCourses
                     join subject in this._context.Subjects on course.Id equals subject.Course.Id

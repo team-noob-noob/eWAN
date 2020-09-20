@@ -1,14 +1,13 @@
 using System.Collections.Generic;
+using eWAN.Domains.Student;
 
 namespace eWAN.Domains.Section
 {
-    using User;
-
     public interface ISectionFactory
     {
         ISection NewSection(
             string Name,
-            List<IUser> Students
+            List<IStudent> Students
         );
     }
 }

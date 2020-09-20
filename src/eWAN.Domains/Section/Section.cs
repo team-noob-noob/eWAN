@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using eWAN.Domains.User;
+using eWAN.Domains.Student;
 
 namespace eWAN.Domains.Section
 {
@@ -8,6 +8,6 @@ namespace eWAN.Domains.Section
         public abstract int Id { get; set; }
 
         public abstract string Name { get; set; }
-        public virtual List<IUser> Students { get; set; } = new List<IUser>();
+        public virtual List<IStudent> Students { get; set; } = new List<IStudent>();
     }
 }

@@ -12,6 +12,7 @@ namespace eWAN.Infrastructure.Database
     using Domains.Semester;
     using Domains.Session;
     using Domains.Subject;
+    using Domains.Student;
     using Role = Entities.Role;
     using User = Entities.User;
     using Application = Entities.Application;
@@ -24,6 +25,7 @@ namespace eWAN.Infrastructure.Database
     using Session = Entities.Session;
     using Subject = Entities.Subject;
     using Program = Entities.Program;
+    using Student = Entities.Student;
     using System.Collections.Generic;
     using System;
 
@@ -39,7 +41,8 @@ namespace eWAN.Infrastructure.Database
     ISemesterFactory,
     ISessionFactory,
     ISubjectFactory,
-    IProgramFactory
+    IProgramFactory,
+    IStudentFactory
     {
         public ISemester AddSemester(string Id, DateTime Start, DateTime End, bool IsOpenForEnrollment, List<ISubject> OpenCourses) =>
             new Semester(Id, Start, End, OpenCourses, IsOpenForEnrollment);
@@ -52,10 +55,10 @@ namespace eWAN.Infrastructure.Database
         public ICourse NewCourse(string Id, string Title, string Description, List<ICourse> Prerequisites, IProgram program) =>
             new Course(Id, Title, Description, Prerequisites, program);
 
-        public IEnrolledProgram NewEnrolledProgram(IUser student, IProgram program) =>
+        public IEnrolledProgram NewEnrolledProgram(IStudent student, IProgram program) =>
             new EnrolledProgram(student, program);
 
-        public IEnrolledSubject NewEnrolledSubject(IUser student, ISubject subject, string grade = null) =>
+        public IEnrolledSubject NewEnrolledSubject(IStudent student, ISubject subject, string grade = null) =>
             new EnrolledSubject(student, subject, grade);
 
         public IProgram NewProgram(string Title, string Code, string Description, List<ICourse> Courses) =>
@@ -65,7 +68,9 @@ namespace eWAN.Infrastructure.Database
 
         public IRoom NewRoom(string Id, string Name, string Address) => new Room(Id, Name, Address);
 
-        public ISection NewSection(string Name, List<IUser> Students) => new Section(Name, Students);
+        public ISection NewSection(string Name, List<IStudent> Students) => new Section(Name, Students);
+
+        public IStudent NewStudent(IUser details) => new Student(details);
 
         public ISubject NewSubject(ICourse course, List<ISession> sessions) =>
             new Subject(course, sessions);

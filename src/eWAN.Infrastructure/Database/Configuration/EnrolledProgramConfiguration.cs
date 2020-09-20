@@ -13,7 +13,7 @@ namespace eWAN.Infrastructure.Database.Configuration
         public void Configure(EntityTypeBuilder<EnrolledProgram> builder)
         {
             builder
-                .HasOne<User>(x => (User) x.Student)
+                .HasOne<Student>(x => (Student) x.Student)
                 .WithMany(y => (IEnumerable<EnrolledProgram>) y.EnrolledPrograms)
                 .HasForeignKey(x => x.Student_Id);
 

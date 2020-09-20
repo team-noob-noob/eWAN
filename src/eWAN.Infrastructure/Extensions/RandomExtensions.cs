@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
 
-namespace eWAN.Infrastructure.Database.Entities
+namespace eWAN.Infrastructure
 {
-    internal static class RandomString
+    internal static class RandomExtensions
     {
        public static string NewString(this Random random, int length = 10, string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
        {

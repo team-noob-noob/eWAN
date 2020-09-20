@@ -3,6 +3,7 @@ using eWAN.Domains.EnrolledProgram;
 using eWAN.Domains.EnrolledSubject;
 using eWAN.Domains.Role;
 using eWAN.Domains.Section;
+using eWAN.Domains.Student;
 
 namespace eWAN.Domains.User
 {
@@ -25,9 +26,7 @@ namespace eWAN.Domains.User
         public abstract string LastName { get; set; }
 
         public abstract string Address { get; set; }
-        public virtual List<IEnrolledSubject> EnrolledSubjects { get; set; } = new List<IEnrolledSubject>();
-        public virtual List<IEnrolledProgram> EnrolledPrograms { get; set; } = new List<IEnrolledProgram>();
         public virtual List<IRole> AssignedRoles { get; set; } = new List<IRole>();
-        public virtual ISection? AssignedSection { get; set; }
+        public virtual IStudent? StudentProfile { get; set; }
     }
 }

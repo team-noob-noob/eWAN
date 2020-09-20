@@ -2,11 +2,12 @@ namespace eWAN.Domains.EnrolledProgram
 {
     using User;
     using Program;
+    using Student;
 
     public interface IEnrolledProgramFactory
     {
         IEnrolledProgram NewEnrolledProgram(
-            IUser student,
+            IStudent student,
             IProgram program
         );
     }

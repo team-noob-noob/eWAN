@@ -19,7 +19,11 @@ namespace eWAN.WebApi.UseCases.CreateRoom
             [FromServices] ICreateRoomUseCase useCase
         )
         {
-            var input = new CreateRoomInput();
+            var input = new CreateRoomInput(
+                request.Id,
+                request.Name,
+                request.Address
+            );
 
             await useCase.Handle(input);
 

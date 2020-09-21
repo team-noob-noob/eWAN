@@ -3,23 +3,27 @@ namespace eWAN.Application.UseCases
     using System.Threading.Tasks;
     using Application.Boundaries.CreateRoom;
     using Domains.Room;
+    using eWAN.Application.Services;
 
     public class CreateRoomUseCase : ICreateRoomUseCase
     {
         public CreateRoomUseCase(
             IRoomRepository roomRepository,
             IRoomFactory roomFactory,
-            ICreateRoomOutputPort outputPort
+            ICreateRoomOutputPort outputPort,
+            IUnitOfWork unitOfWork
         )
         {
             this._roomRepo = roomRepository;
             this._roomFactory = roomFactory;
             this._output = outputPort;
+            this._unitOfWork = unitOfWork;
         }
 
         private readonly IRoomRepository _roomRepo;
         private readonly IRoomFactory _roomFactory;
         private readonly ICreateRoomOutputPort _output;
+        private readonly IUnitOfWork _unitOfWork;
 
         public async Task Handle(CreateRoomInput input)
         {
@@ -34,6 +38,8 @@ namespace eWAN.Application.UseCases
             await this._roomRepo.Add(room);
 
             this._output.Standard(new CreateRoomOutput(room));
+
+            await this._unitOfWork.Save();
         }
     }
 }

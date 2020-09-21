@@ -3,23 +3,27 @@ namespace eWAN.Application.UseCases
     using System.Threading.Tasks;
     using Application.Boundaries.CreateProgram;
     using Domains.Program;
+    using eWAN.Application.Services;
 
     public class CreateProgramUseCase : ICreateProgramUseCase
     {
         public CreateProgramUseCase(
             ICreateProgramOutputPort outputPort,
             IProgramRepository programRepository,
-            IProgramFactory factory
+            IProgramFactory factory,
+            IUnitOfWork unitOfWork
         )
         {
             this._outputPort = outputPort;
             this._programRepository = programRepository;
             this._programFactory = factory;
+            this._unitOfWork = unitOfWork;
         }
 
         private ICreateProgramOutputPort _outputPort { get; }
         private IProgramRepository _programRepository { get; }
         private IProgramFactory _programFactory { get; }
+        private IUnitOfWork _unitOfWork;
 
         public async Task Handle(CreateProgramInput input)
         {
@@ -40,6 +44,8 @@ namespace eWAN.Application.UseCases
             await this._programRepository.Add(newProgram);
 
             this._outputPort.Standard(new CreateProgramOutput(newProgram));
+
+            await this._unitOfWork.Save();
         }
     }
 }

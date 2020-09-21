@@ -3,23 +3,27 @@ namespace eWAN.Application.UseCases
     using System.Threading.Tasks;
     using Boundaries.CreateCourse;
     using Domains.Course;
+    using eWAN.Application.Services;
 
     public class CreateCourseUseCase : ICreateCourseUseCase
     {
         public CreateCourseUseCase(
             ICreateCourseOutputPort outputPort,
             ICourseFactory courseFactory,
-            ICourseRepository repository
+            ICourseRepository repository,
+            IUnitOfWork unitOfWork
         )
         {
             this._outputPort = outputPort;
             this._repo = repository;
             this._factory = courseFactory;
+            this._unitOfWork = unitOfWork;
         }
 
         private readonly ICreateCourseOutputPort _outputPort;
         private readonly ICourseRepository _repo;
         private readonly ICourseFactory _factory;
+        private readonly IUnitOfWork _unitOfWork;
 
         public async Task Handle(CreateCourseInput input)
         {
@@ -40,6 +44,8 @@ namespace eWAN.Application.UseCases
             await this._repo.Add(course);
 
             this._outputPort.Standard(new CreateCourseOutput(course));
+
+            await this._unitOfWork.Save();
         }
     }
 }

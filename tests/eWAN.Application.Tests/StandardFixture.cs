@@ -20,6 +20,9 @@ namespace eWAN.Tests
         public UserRepositoryFake UserRepositoryFake { get; set; }
         public EntityFactory EntityFactory { get; set; }
         public BcryptHashing BcryptHashing { get; set; }
+        public CourseRepositoryFake CourseRepositoryFake { get; set; }
+        public ProgramRepositoryFake ProgramRepositoryFake { get; set; }
+        public RoomRepositoryFake RoomRepositoryFake { get; set; }
 
         public void Dispose()
         {
@@ -30,6 +33,9 @@ namespace eWAN.Tests
             this.ApplicationRepositoryFake = new ApplicationRepositoryFake(this.EwanContextFake);
             this.RoleRepositoryFake = new RoleRepositoryFake(this.EwanContextFake);
             this.UserRepositoryFake = new UserRepositoryFake(this.EwanContextFake);
+            this.CourseRepositoryFake = new CourseRepositoryFake(this.EwanContextFake);
+            this.ProgramRepositoryFake = new ProgramRepositoryFake(this.EwanContextFake);
+            this.RoomRepositoryFake = new RoomRepositoryFake(this.EwanContextFake);
         }
     }
 }

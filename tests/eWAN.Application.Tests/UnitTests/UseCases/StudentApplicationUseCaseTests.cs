@@ -1,6 +1,7 @@
 using Xunit;
 using System;
 using System.Threading.Tasks;
+using FluentAssertions;
 
 namespace eWAN.Tests.UnitTests.UseCases.StudentApplication
 {
@@ -30,14 +31,15 @@ namespace eWAN.Tests.UnitTests.UseCases.StudentApplication
                 this._fixture.UnitOfWorkFake,
                 studentApplicationPresenterFake
             );
-            var expected = "User already applied within 6 months, please wait a while";
+            
 
             // Act
             await sut.Handle(input);
 
             // Assert
             var actual = studentApplicationPresenterFake.ErrorOutput;
-            Assert.StrictEqual<string>(expected, actual);
+            var expected = "User already applied within 6 months, please wait a while";
+            actual.Should().Be(expected);
         }
 
         [Theory]
@@ -55,14 +57,14 @@ namespace eWAN.Tests.UnitTests.UseCases.StudentApplication
                 this._fixture.UnitOfWorkFake,
                 studentApplicationPresenterFake
             );
-            var expected = "User already surpassed the allowed limit of applications; User is only allowed maximum of 3 applications";
-
+            
             // Act
             await sut.Handle(input);
 
             // Assert
             var actual = studentApplicationPresenterFake.ErrorOutput;
-            Assert.StrictEqual<string>(expected, actual);
+            var expected = "User already surpassed the allowed limit of applications; User is only allowed maximum of 3 applications";
+            actual.Should().Be(expected);
         }
 
         [Theory]
@@ -83,7 +85,7 @@ namespace eWAN.Tests.UnitTests.UseCases.StudentApplication
 
             // Assert
             var actual = studentApplicationPresenterFake.StandardOutput;
-            Assert.NotNull(actual);
+            actual.Should().NotBe(null);
         }
 
         public void Dispose()

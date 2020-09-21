@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Xunit;
+using FluentAssertions;
 
 namespace eWAN.Tests.UnitTests.UseCases.ApplicationJurying
 {
@@ -24,14 +25,14 @@ namespace eWAN.Tests.UnitTests.UseCases.ApplicationJurying
                 this._fixture.RoleRepositoryFake,
                 this._fixture.UnitOfWorkFake
             );
-            var expected = "Invalid Application Id";
 
             // Act
             await sut.Handle(input);
 
             // Assert
             var actual = applicationJuryingPresenterFake.ErrorOutput;
-            Assert.StrictEqual<string>(expected, actual);
+            var expected = "Invalid Application Id";
+            actual.Should().Be(expected);
         }
 
         [Theory]
@@ -46,14 +47,14 @@ namespace eWAN.Tests.UnitTests.UseCases.ApplicationJurying
                 this._fixture.RoleRepositoryFake,
                 this._fixture.UnitOfWorkFake
             );
-            var expected = input.ApplicationId;
 
             // Act
             await sut.Handle(input);
 
             // Assert
             var actual = applicationJuryingPresenterFake.StandardOutput.StudentApplicationResult.Id;
-            Assert.StrictEqual<string>(expected, actual);
+            var expected = input.ApplicationId;
+            actual.Should().Be(expected);
         }
     }
 

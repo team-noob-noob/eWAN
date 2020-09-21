@@ -1,5 +1,6 @@
 using Xunit;
 using System.Threading.Tasks;
+using FluentAssertions;
 
 namespace eWAN.Tests.UnitTests.UseCases.LogIn
 {
@@ -14,8 +15,8 @@ namespace eWAN.Tests.UnitTests.UseCases.LogIn
         public LogInUseCaseTests(StandardFixture fixture) => this._fixture = fixture;
 
         [Theory]
-        [ClassData(typeof(ValidCredentials))]
-        public async Task LogIn_ValidCredential(
+        [InlineData("testing", "testing")]
+        public async Task LogIn_ValidCredential_ShouldReturnStandard(
             string username,
             string password
         )
@@ -34,12 +35,12 @@ namespace eWAN.Tests.UnitTests.UseCases.LogIn
 
             // Assert
             var actual = logInPresenter.StandardOutput.user.Username;
-            Assert.StrictEqual<string>(username, actual);
+            actual.Should().Be(username);
         }
 
         [Theory]
-        [ClassData(typeof(EmptyCredentials))]
-        public async Task LogIn_EmptyCredentials(
+        [InlineData("", "")]
+        public async Task LogIn_EmptyCredentials_ShouldReturnError(
             string username,
             string password
         )
@@ -52,19 +53,19 @@ namespace eWAN.Tests.UnitTests.UseCases.LogIn
                 this._fixture.BcryptHashing
             );
             var input = new LogInInput(username, password);
+
+            // Act
+            await sut.Handle(input);
+
+            // Assert
+            var actual = logInPresenter.ErrorOutput;
             var expected = "Username or Password is empty";
-
-            // Act
-            await sut.Handle(input);
-
-            // Assert
-            var actual = logInPresenter.ErrorOutput;
-            Assert.StrictEqual<string>(expected, actual);
+            actual.Should().Be(expected);
         }
 
         [Theory]
-        [ClassData(typeof(InvalidCredentials))]
-        public async Task LogIn_InvalidCredentials(
+        [InlineData("testing123", "testing123")]
+        public async Task LogIn_InvalidCredentials_ShouldReturnError(
             string username,
             string password
         )
@@ -77,29 +78,14 @@ namespace eWAN.Tests.UnitTests.UseCases.LogIn
                 this._fixture.BcryptHashing
             );
             var input = new LogInInput(username, password);
-            var expected = "Incorrect Username or Password";
 
             // Act
             await sut.Handle(input);
 
             // Assert
             var actual = logInPresenter.ErrorOutput;
-            Assert.StrictEqual<string>(expected, actual);
+            var expected = "Incorrect Username or Password";
+            actual.Should().Be(expected);
         }
-    }
-
-    internal sealed class ValidCredentials : TheoryData<string, string>
-    {
-        public ValidCredentials() => this.Add("testing", "testing");
-    }
-
-    internal sealed class InvalidCredentials : TheoryData<string, string>
-    {
-        public InvalidCredentials() => this.Add("testing123", "testing123");
-    }
-
-    internal sealed class EmptyCredentials : TheoryData<string, string>
-    {
-        public EmptyCredentials() => this.Add(string.Empty, string.Empty);
     }
 }

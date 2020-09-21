@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Xunit;
 using System;
+using FluentAssertions;
 
 namespace eWAN.Tests.UnitTests.UseCases.Reguster
 {
@@ -29,14 +30,14 @@ namespace eWAN.Tests.UnitTests.UseCases.Reguster
                 this._fixture.UnitOfWorkFake,
                 this._fixture.BcryptHashing
             );
-            var expected = "Username already taken";
-
+            
             // Act
             await sut.Handle(input);
 
             // Assert
             var actual = registerPresenterFake.ErrorOutput;
-            Assert.StrictEqual<string>(expected, actual);
+            var expected = "Username already taken";
+            actual.Should().Be(expected);
         }
 
         [Theory]
@@ -67,14 +68,14 @@ namespace eWAN.Tests.UnitTests.UseCases.Reguster
                 this._fixture.UnitOfWorkFake,
                 this._fixture.BcryptHashing
             );
-            var expected = "Email already taken";
 
             // Act
             await sut.Handle(input);
 
             // Assert
             var actual = registerPresenterFake.ErrorOutput;
-            Assert.StrictEqual<string>(expected, actual);
+            var expected = "Email already taken";
+            actual.Should().Be(expected);
         }
 
         [Theory]
@@ -92,14 +93,14 @@ namespace eWAN.Tests.UnitTests.UseCases.Reguster
                 this._fixture.UnitOfWorkFake,
                 this._fixture.BcryptHashing
             );
-            var expected = "testing321312312123";
 
             // Act
             await sut.Handle(input);
 
             // Assert
             var actual = registerPresenterFake.StandardOutput.newUser.Username;
-            Assert.StrictEqual<string>(expected, actual);
+            var expected = "testing321312312123";
+            actual.Should().Be(expected);
         }
 
         public void Dispose()

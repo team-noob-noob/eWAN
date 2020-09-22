@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eWAN.Infrastructure.Database;
 
-namespace eWAN.Infrastructure.Migrations
+namespace eWAN.Infrastructure.Database.Migrations
 {
     [DbContext(typeof(EwanContext))]
     partial class EwanContextModelSnapshot : ModelSnapshot

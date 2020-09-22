@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eWAN.Infrastructure.Database;
 
-namespace eWAN.Infrastructure.Migrations
+namespace eWAN.Infrastructure.Database.Migrations
 {
     [DbContext(typeof(EwanContext))]
     [Migration("20200905033157_InitialMigration")]

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace eWAN.Infrastructure.Migrations
+namespace eWAN.Infrastructure.Database.Migrations
 {
     public partial class AllowNullableInCourseEntity : Migration
     {

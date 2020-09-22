@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.Data.EntityFrameworkCore.Metadata;
 
-namespace eWAN.Infrastructure.Migrations
+namespace eWAN.Infrastructure.Database.Migrations
 {
     public partial class InitialMigration : Migration
     {

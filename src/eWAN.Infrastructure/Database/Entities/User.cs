@@ -11,6 +11,7 @@ namespace eWAN.Infrastructure.Database.Entities
 
     public class User : Domains.User.User, IUser
     {
+        protected User() {}
         public User(
             string Username,
             string Password, 

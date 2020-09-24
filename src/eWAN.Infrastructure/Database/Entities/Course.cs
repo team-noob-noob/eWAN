@@ -8,7 +8,7 @@ namespace eWAN.Infrastructure.Database.Entities
 
     public class Course : Domains.Course.Course, ICourse
     {
-        public Course() {}
+        protected Course() {}
         public Course(string Id, string Title, string Description, List<ICourse> Prerequisites, IProgram program)
         {
             this.Id = Id;

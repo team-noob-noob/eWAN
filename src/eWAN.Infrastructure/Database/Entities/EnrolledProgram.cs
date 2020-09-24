@@ -7,7 +7,7 @@ namespace eWAN.Infrastructure.Database.Entities
 
     public class EnrolledProgram : Domains.EnrolledProgram.EnrolledProgram, IEnrolledProgram
     {
-        public EnrolledProgram() {}
+        protected EnrolledProgram() {}
         public EnrolledProgram(IStudent Student, IProgram Program)
         {
             this.Student = Student;

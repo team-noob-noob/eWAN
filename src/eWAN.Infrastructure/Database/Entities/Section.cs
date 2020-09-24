@@ -6,7 +6,7 @@ namespace eWAN.Infrastructure.Database.Entities
 
     public class Section : Domains.Section.Section, ISection
     {
-        public Section() {}
+        protected Section() {}
         public Section(string Name, List<IStudent> Students)
         {
             this.Name = Name;

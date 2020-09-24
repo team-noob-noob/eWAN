@@ -7,7 +7,7 @@ namespace eWAN.Infrastructure.Database.Entities
 
     public class Semester : Domains.Semester.Semester, ISemester
     {
-        public Semester() {}
+        protected Semester() {}
         public Semester(string Id, DateTime start, DateTime End, List<ISubject> courses = null, bool IsOpenForEnrollment = true)
         {
             this.Id = Id;

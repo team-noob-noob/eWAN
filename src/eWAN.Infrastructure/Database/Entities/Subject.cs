@@ -11,7 +11,7 @@ namespace eWAN.Infrastructure.Database.Entities
 
     public class Subject : Domains.Subject.Subject, ISubject
     {
-        public Subject() {}
+        protected Subject() {}
         public Subject(ICourse course, List<ISession> sessions)
         {
             this.Course = course;

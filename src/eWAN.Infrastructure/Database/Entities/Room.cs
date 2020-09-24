@@ -6,7 +6,7 @@ namespace eWAN.Infrastructure.Database.Entities
 
     public class Room : Domains.Room.Room, IRoom
     {
-        public Room() {}
+        protected Room() {}
         public Room(string Id, string Name, string Address = null)
         {
             this.Id = Id;

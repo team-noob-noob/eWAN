@@ -5,7 +5,7 @@ namespace eWAN.Infrastructure.Database.Entities
 {
     public class Role : Domains.Role.Role, IRole
     {
-        protected Role() {}
+        public Role() {}
 
         public Role(IUser user, UserRole role)
         {

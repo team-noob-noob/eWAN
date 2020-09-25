@@ -7,7 +7,7 @@ namespace eWAN.Infrastructure.Database.Entities
 
     public class Application : Domains.Application.Application, IApplication
     {
-        protected Application() {}
+        public Application() {}
 
         public Application(IUser applicant)
         {

@@ -6,7 +6,7 @@ namespace eWAN.Infrastructure.Database.Entities
 
     public class EnrolledSubject : Domains.EnrolledSubject.EnrolledSubject, IEnrolledSubject
     {
-        protected EnrolledSubject() {}
+        public EnrolledSubject() {}
         public EnrolledSubject(IStudent student, ISubject subject, string grade = null)
         {
             this.enrolledStudent = student;

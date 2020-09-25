@@ -8,7 +8,7 @@ namespace eWAN.Infrastructure.Database.Entities
 
     public class Program : Domains.Program.Program, IProgram
     {
-        protected Program() {}
+        public Program() {}
         public Program(string Title, string Code, string Description, List<ICourse> courses)
         {
             this.Title = Title;

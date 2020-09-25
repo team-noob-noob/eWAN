@@ -8,7 +8,7 @@ namespace eWAN.Infrastructure.Database.Entities
 
     public class Session : Domains.Session.Session, ISession
     {
-        protected Session() {}
+        public Session() {}
         public Session(DayOfWeek day, TimeSpan startTime, TimeSpan endTime, IRoom room, IUser Instructor, SessionType type)
         {
             this.Day = day;

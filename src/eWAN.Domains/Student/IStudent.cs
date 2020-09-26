@@ -16,7 +16,7 @@ namespace eWAN.Domains.Student
         List<IEnrolledSubject> EnrolledSubjects { get; set; }
         List<IEnrolledProgram> EnrolledPrograms { get; set; }
         
-        /// <summary>Checks whether the student already finished all subjects required in a given program</summary>
+        /// <summary>Checks whether the student already finished all courses required in a given program</summary>
         bool IsFinishedStudies(IProgram programToCheck);
     }
 }

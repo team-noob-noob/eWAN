@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using eWAN.Infrastructure.Database;
 
 namespace eWAN.WebApi
 {
@@ -13,7 +14,12 @@ namespace eWAN.WebApi
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+            
+            SeedData seedData = (SeedData) host.Services.GetService(typeof(SeedData));
+            seedData.Seed();
+            
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

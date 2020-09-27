@@ -23,7 +23,7 @@ namespace eWAN.WebApi.Modules
     {
         public static IServiceCollection AddPersistence(this IServiceCollection services)
         {
-            services.AddDbContext<EwanContext>(options => options.UseLazyLoadingProxies());
+            services.AddDbContext<EwanContext>(options => options.UseLazyLoadingProxies(), ServiceLifetime.Singleton, ServiceLifetime.Singleton);
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
@@ -51,6 +51,8 @@ namespace eWAN.WebApi.Modules
             services.AddScoped<ISessionFactory, EntityFactory>();
             services.AddScoped<ISubjectFactory, EntityFactory>();
             services.AddScoped<IRoomFactory, EntityFactory>();
+
+            services.AddSingleton<SeedData>();
 
             return services;
         }

@@ -11,8 +11,8 @@ namespace eWAN.Infrastructure.Database.Entities
 
         public Application(IUser applicant)
         {
-            Random rand = new Random();
-            this.Id = rand.NewString(10);
+            
+            this.Id = new Random().NewString();
             this.applicant = applicant;
             this.staff = null;
             this.isAccepted = false;

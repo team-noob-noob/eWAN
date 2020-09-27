@@ -11,7 +11,7 @@ namespace eWAN.Infrastructure.Database.Entities
 
     public class User : Domains.User.User, IUser
     {
-        public User() {}
+        public User() => this.Id = DateTime.Now.Year.ToString() + new Random().NewString(10, "0123456789");
         public User(
             string Username,
             string Password, 

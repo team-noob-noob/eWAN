@@ -9,9 +9,9 @@ namespace eWAN.Domains.Student
 {
     public abstract class Student : BaseEntity, IStudent
     {
-        public string Id { get; set; }
-        public IUser User { get; set; }
-
+        public abstract string Id { get; set; }
+        
+        public virtual IUser User { get; set; }
         public virtual ISection? AssignedSection { get; set; }
         public virtual List<IEnrolledSubject> EnrolledSubjects { get; set; } = new List<IEnrolledSubject>();
         public virtual List<IEnrolledProgram> EnrolledPrograms { get; set; } = new List<IEnrolledProgram>();

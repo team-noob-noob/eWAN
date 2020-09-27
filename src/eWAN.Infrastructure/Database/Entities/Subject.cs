@@ -20,9 +20,5 @@ namespace eWAN.Infrastructure.Database.Entities
         }
 
         public override string Id { get; set; }
-        public override ICourse Course { get; set; }
-        public override List<ISession> Sessions { get; set; }
-        public override ISemester Semester { get; set; }
-        public override List<IEnrolledSubject> StudentsEnrolled { get; set; }
     }
 }

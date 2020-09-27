@@ -17,6 +17,5 @@ namespace eWAN.Infrastructure.Database.Entities
         public override string Id { get; set; }
         public override string Name { get; set; }
         public override string Address { get; set; }
-        public override List<ISession> Schedule { get; set; }
     }
 }

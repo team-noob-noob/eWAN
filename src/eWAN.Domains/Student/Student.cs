@@ -4,6 +4,7 @@ using eWAN.Domains.EnrolledSubject;
 using eWAN.Domains.Program;
 using eWAN.Domains.Section;
 using eWAN.Domains.User;
+using System.Linq;
 
 namespace eWAN.Domains.Student
 {
@@ -18,7 +19,22 @@ namespace eWAN.Domains.Student
 
         public bool IsFinishedStudies(IProgram programToCheck)
         {
-            throw new System.NotImplementedException();
+            bool isAnyCourseNotFinished = false;
+
+            foreach(var course in programToCheck.Courses)
+            {
+                // Get the Subjects in a Course that the student was enrolled in
+                var subjects = EnrolledSubjects.Where(x => x.subject.Course.Id == course.Id);
+            
+                // If any of those subjects weren't graded, the course is not complete
+                if(subjects.Any(x => string.IsNullOrEmpty(x.grade)))
+                {
+                    isAnyCourseNotFinished = true;
+                    break;
+                }
+            }
+            
+            return !isAnyCourseNotFinished;
         }
     }
 }

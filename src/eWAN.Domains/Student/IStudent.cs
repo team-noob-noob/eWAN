@@ -18,5 +18,7 @@ namespace eWAN.Domains.Student
         
         /// <summary>Checks whether the student already finished all courses required in a given program</summary>
         bool IsFinishedStudies(IProgram programToCheck);
+
+        
     }
 }

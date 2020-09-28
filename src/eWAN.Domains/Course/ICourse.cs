@@ -5,6 +5,7 @@ namespace eWAN.Domains.Course
     using Program;
     using Subject;
 
+    ///<summary>Represents a study or topic</summary>
     public interface ICourse : IBaseEntity
     {
         string Id { get; set; }

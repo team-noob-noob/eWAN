@@ -10,11 +10,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Elastic.Apm.NetCoreAll;
+using eWAN.WebApi.Modules;
 
 namespace eWAN.WebApi
 {
-    using Modules;
-    using Infrastructure.Auth;
+    using eWAN.Infrastructure.Auth;
 
     public class Startup
     {
@@ -43,6 +43,8 @@ namespace eWAN.WebApi
         {
             app.UseAllElasticApm();
 
+            app.UseHttpsRedirection();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -55,7 +57,6 @@ namespace eWAN.WebApi
             app.UseAuthentication();
 
             app.UseAuthorization();
-
 
             app.UseEndpoints(endpoints =>
             {

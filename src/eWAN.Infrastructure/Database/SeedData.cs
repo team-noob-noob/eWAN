@@ -47,7 +47,7 @@ namespace eWAN.Infrastructure.Database
             .RuleFor(o => o.Description, (f, o) => f.Rant.Review(o.Title));
 
         public static readonly Course Course = new Bogus.Faker<Course>()
-            .RuleFor(o => o.Id, f => f.Hacker.Abbreviation())
+            .RuleFor(o => o.Id, f => f.Hacker.Abbreviation() + f.Hacker.Random.String())
             .RuleFor(o => o.Title, f => f.Hacker.Adjective() + " " + f.Hacker.Noun())
             .RuleFor(o => o.Description, (f, o) => f.Rant.Review(o.Title))
             .RuleFor(o => o.AssignedProgram, _ => Program);

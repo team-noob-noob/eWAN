@@ -6,6 +6,7 @@ using System.Linq;
 namespace eWAN.Infrastructure.Database.Repositories
 {
     using Domains.Application;
+    using Microsoft.EntityFrameworkCore;
     using Application = Entities.Application;
 
     public class ApplicationRepository : IApplicationRepository
@@ -16,7 +17,8 @@ namespace eWAN.Infrastructure.Database.Repositories
 
         public async Task Add(IApplication newApplication)
         {
-            await this._context.Applications.AddAsync((Application) newApplication);
+            this._context.Entry(newApplication.applicant).State = EntityState.Unchanged;
+            this._context.Applications.Add((Application) newApplication);
             await this._context.SaveChangesAsync();
         }
 

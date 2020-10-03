@@ -5,6 +5,7 @@ namespace eWAN.Domains.Semester
 {
     using Subject;
 
+    ///<summary>Represents the overall time the students and instructors have to meet</summary>
     public interface ISemester
     {
         string Id { get; set; }

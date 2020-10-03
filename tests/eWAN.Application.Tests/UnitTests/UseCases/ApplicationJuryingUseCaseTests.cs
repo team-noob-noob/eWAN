@@ -10,8 +10,8 @@ namespace eWAN.Tests.UnitTests.UseCases.ApplicationJurying
 
     public sealed class ApplicationJuryingUseCaseTests : IClassFixture<StandardFixture>
     {
-        public ApplicationJuryingUseCaseTests(StandardFixture fixture) => this._fixture = fixture;
-        private StandardFixture _fixture { get; }
+        public ApplicationJuryingUseCaseTests(StandardFixture fixture) => Fixture = fixture;
+        private StandardFixture Fixture { get; }
 
         [Theory]
         [ClassData(typeof(InvalidApplicationId))]
@@ -20,10 +20,10 @@ namespace eWAN.Tests.UnitTests.UseCases.ApplicationJurying
             // Arrange
             var applicationJuryingPresenterFake = new ApplicationJuryingPresenterFake();
             var sut = new ApplicationJuryingUseCase(
-                this._fixture.ApplicationRepositoryFake,
+                Fixture.ApplicationRepositoryFake,
                 applicationJuryingPresenterFake,
-                this._fixture.RoleRepositoryFake,
-                this._fixture.UnitOfWorkFake
+                Fixture.RoleRepositoryFake,
+                Fixture.UnitOfWorkFake
             );
 
             // Act
@@ -42,10 +42,10 @@ namespace eWAN.Tests.UnitTests.UseCases.ApplicationJurying
             // Arrange
             var applicationJuryingPresenterFake = new ApplicationJuryingPresenterFake();
             var sut = new ApplicationJuryingUseCase(
-                this._fixture.ApplicationRepositoryFake,
+                Fixture.ApplicationRepositoryFake,
                 applicationJuryingPresenterFake,
-                this._fixture.RoleRepositoryFake,
-                this._fixture.UnitOfWorkFake
+                Fixture.RoleRepositoryFake,
+                Fixture.UnitOfWorkFake
             );
 
             // Act

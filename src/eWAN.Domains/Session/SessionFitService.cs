@@ -6,13 +6,13 @@ namespace eWAN.Domains.Session
 {
     public class SessionFitService : ISessionFitService
     {
-        public async Task<bool> IsSessionFitInSched(List<ISession> sessions, ISession newSession)
+        public async Task<bool> IsSessionFitInSchedule(List<ISession> sessions, ISession newSession)
         {
             var sameDaySessions = sessions
                 .Where(x => x.Day == newSession.Day)
-                .OrderBy(x => x.StartTime);
+                .OrderBy(x => x.StartTime).ToList();
             
-            if(sameDaySessions.Count() <= 0)
+            if(!sameDaySessions.Any())
             {
                 return await Task.FromResult(true);
             }

@@ -29,7 +29,7 @@ namespace eWAN.WebApi.UseCases.ApplicationJurying
             [FromForm] [Required] ApplicationJuryingRequest request
         )
         {
-            var jury = await userRepository.GetByUsername(this.HttpContext.User.Identity.Name);
+            var jury = await userRepository.GetByUsername(HttpContext.User.Identity.Name);
             var input = new ApplicationJuryingInput(
                 request.ApplicationId,
                 jury,

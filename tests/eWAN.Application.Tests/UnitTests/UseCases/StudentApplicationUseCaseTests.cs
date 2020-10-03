@@ -13,10 +13,10 @@ namespace eWAN.Tests.UnitTests.UseCases.StudentApplication
     {
         public StudentApplicationUseCaseTests(StandardFixture fixture)
         {
-            this._fixture = fixture;
+            Fixture = fixture;
         }
 
-        private StandardFixture _fixture { get; } 
+        private StandardFixture Fixture { get; } 
 
         [Theory]
         [ClassData(typeof(InvalidStudentApplication))]
@@ -24,11 +24,11 @@ namespace eWAN.Tests.UnitTests.UseCases.StudentApplication
         {
             // Arrange
             var studentApplicationPresenterFake = new StudentApplicationPresenterFake();
-            this._fixture.EwanContextFake.Applications.Add(EwanContextFake.TestApplication);
+            Fixture.EwanContextFake.Applications.Add(EwanContextFake.TestApplication);
             var sut = new StudentApplicationUseCase(
-                this._fixture.EntityFactory,
-                this._fixture.ApplicationRepositoryFake,
-                this._fixture.UnitOfWorkFake,
+                Fixture.EntityFactory,
+                Fixture.ApplicationRepositoryFake,
+                Fixture.UnitOfWorkFake,
                 studentApplicationPresenterFake
             );
             
@@ -48,13 +48,13 @@ namespace eWAN.Tests.UnitTests.UseCases.StudentApplication
         {
             // Arrange
             var studentApplicationPresenterFake = new StudentApplicationPresenterFake();
-            this._fixture.EwanContextFake.Applications.Add(EwanContextFake.TestApplication);
-            this._fixture.EwanContextFake.Applications.Add(EwanContextFake.TestApplication);
-            this._fixture.EwanContextFake.Applications.Add(EwanContextFake.TestApplication);
+            Fixture.EwanContextFake.Applications.Add(EwanContextFake.TestApplication);
+            Fixture.EwanContextFake.Applications.Add(EwanContextFake.TestApplication);
+            Fixture.EwanContextFake.Applications.Add(EwanContextFake.TestApplication);
             var sut = new StudentApplicationUseCase(
-                this._fixture.EntityFactory,
-                this._fixture.ApplicationRepositoryFake,
-                this._fixture.UnitOfWorkFake,
+                Fixture.EntityFactory,
+                Fixture.ApplicationRepositoryFake,
+                Fixture.UnitOfWorkFake,
                 studentApplicationPresenterFake
             );
             
@@ -74,9 +74,9 @@ namespace eWAN.Tests.UnitTests.UseCases.StudentApplication
             // Arrange
             var studentApplicationPresenterFake = new StudentApplicationPresenterFake();
             var sut = new StudentApplicationUseCase(
-                this._fixture.EntityFactory,
-                this._fixture.ApplicationRepositoryFake,
-                this._fixture.UnitOfWorkFake,
+                Fixture.EntityFactory,
+                Fixture.ApplicationRepositoryFake,
+                Fixture.UnitOfWorkFake,
                 studentApplicationPresenterFake
             );
 
@@ -90,7 +90,7 @@ namespace eWAN.Tests.UnitTests.UseCases.StudentApplication
 
         public void Dispose()
         {
-            this._fixture.Dispose();
+            Fixture.Dispose();
         }
     }
 

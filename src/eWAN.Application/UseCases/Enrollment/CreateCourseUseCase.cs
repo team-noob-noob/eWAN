@@ -3,7 +3,7 @@ namespace eWAN.Application.UseCases
     using System.Threading.Tasks;
     using Boundaries.CreateCourse;
     using Domains.Course;
-    using eWAN.Application.Services;
+    using Services;
 
     public class CreateCourseUseCase : ICreateCourseUseCase
     {
@@ -14,10 +14,10 @@ namespace eWAN.Application.UseCases
             IUnitOfWork unitOfWork
         )
         {
-            this._outputPort = outputPort;
-            this._repo = repository;
-            this._factory = courseFactory;
-            this._unitOfWork = unitOfWork;
+            _outputPort = outputPort;
+            _repo = repository;
+            _factory = courseFactory;
+            _unitOfWork = unitOfWork;
         }
 
         private readonly ICreateCourseOutputPort _outputPort;
@@ -27,25 +27,25 @@ namespace eWAN.Application.UseCases
 
         public async Task Handle(CreateCourseInput input)
         {
-            if(await this._repo.GetCourseById(input.Id) != null)
+            if(await _repo.GetCourseById(input.Id) != null)
             {
-                this._outputPort.WriteError("Id already taken");
+                _outputPort.WriteError("Id already taken");
                 return;
             }
 
-            if(await this._repo.GetCourseByTitle(input.Title) != null)
+            if(await _repo.GetCourseByTitle(input.Title) != null)
             {
-                this._outputPort.WriteError("Title already taken");
+                _outputPort.WriteError("Title already taken");
                 return;
             }
 
-            var course = this._factory.NewCourse(input.Id, input.Title, input.Description, input.Prerequisites, input.Program);
+            var course = _factory.NewCourse(input.Id, input.Title, input.Description, input.Prerequisites, input.Program);
 
-            await this._repo.Add(course);
+            await _repo.Add(course);
 
-            this._outputPort.Standard(new CreateCourseOutput(course));
+            _outputPort.Standard(new CreateCourseOutput(course));
 
-            await this._unitOfWork.Save();
+            await _unitOfWork.Save();
         }
     }
 }

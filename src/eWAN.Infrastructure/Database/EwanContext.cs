@@ -62,12 +62,12 @@ namespace eWAN.Infrastructure.Database
 
             foreach (var newEntity in newEntities)
             {
-                newEntity.updatedAt = DateTime.UtcNow;
+                newEntity.UpdatedAt = DateTime.UtcNow;
             }
 
             foreach (var modifiedEntity in modifiedEntities)
             {
-                modifiedEntity.updatedAt = DateTime.UtcNow;
+                modifiedEntity.UpdatedAt = DateTime.UtcNow;
             }
         }
 

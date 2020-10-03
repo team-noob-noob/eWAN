@@ -1,6 +1,5 @@
 namespace eWAN.Domains.EnrolledProgram
 {
-    using User;
     using Program;
     using Student;
 

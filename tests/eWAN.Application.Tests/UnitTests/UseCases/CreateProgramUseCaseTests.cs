@@ -10,9 +10,9 @@ namespace eWAN.Tests.UnitTests.UseCases.CreateProgram
 {
     public sealed class CreateProgramUseCaseTests : IClassFixture<StandardFixture>, IDisposable
     {
-        public CreateProgramUseCaseTests(StandardFixture fixture) => this._fixtures = fixture;
-        private StandardFixture _fixtures;
-        public void Dispose() => this._fixtures.Dispose();
+        public CreateProgramUseCaseTests(StandardFixture fixture) => _fixtures = fixture;
+        private readonly StandardFixture _fixtures;
+        public void Dispose() => _fixtures.Dispose();
 
         [Fact]
         public async Task CreateProgram_DuplicateCode_ShouldReturnError()
@@ -20,9 +20,9 @@ namespace eWAN.Tests.UnitTests.UseCases.CreateProgram
             var presenter = new CreateProgramPresenterFake();
             var sut = new CreateProgramUseCase(
                 presenter,
-                this._fixtures.ProgramRepositoryFake,
-                this._fixtures.EntityFactory,
-                this._fixtures.UnitOfWorkFake
+                _fixtures.ProgramRepositoryFake,
+                _fixtures.EntityFactory,
+                _fixtures.UnitOfWorkFake
             );
             var input = new CreateProgramInput(
                 "Testing Program",
@@ -42,9 +42,9 @@ namespace eWAN.Tests.UnitTests.UseCases.CreateProgram
             var presenter = new CreateProgramPresenterFake();
             var sut = new CreateProgramUseCase(
                 presenter,
-                this._fixtures.ProgramRepositoryFake,
-                this._fixtures.EntityFactory,
-                this._fixtures.UnitOfWorkFake
+                _fixtures.ProgramRepositoryFake,
+                _fixtures.EntityFactory,
+                _fixtures.UnitOfWorkFake
             );
             var input = new CreateProgramInput(
                 EwanContextFake.TestProgram.Title,
@@ -64,9 +64,9 @@ namespace eWAN.Tests.UnitTests.UseCases.CreateProgram
             var presenter = new CreateProgramPresenterFake();
             var sut = new CreateProgramUseCase(
                 presenter,
-                this._fixtures.ProgramRepositoryFake,
-                this._fixtures.EntityFactory,
-                this._fixtures.UnitOfWorkFake
+                _fixtures.ProgramRepositoryFake,
+                _fixtures.EntityFactory,
+                _fixtures.UnitOfWorkFake
             );
             var input = new CreateProgramInput(
                 "Testing Program",

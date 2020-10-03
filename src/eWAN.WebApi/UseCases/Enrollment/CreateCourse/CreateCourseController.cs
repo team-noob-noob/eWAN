@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using eWAN.Application.UseCases;
 using eWAN.Application.Boundaries.CreateCourse;
 using eWAN.Domains.Course;
 using System.Collections.Generic;

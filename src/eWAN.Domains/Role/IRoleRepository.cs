@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace eWAN.Domains.Role
 {
-    using Domains.User;
+    using User;
 
     public interface IRoleRepository
     {

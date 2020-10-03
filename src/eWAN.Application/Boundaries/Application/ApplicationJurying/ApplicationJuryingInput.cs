@@ -5,15 +5,15 @@ namespace eWAN.Application.Boundaries.ApplicationJurying
     public class ApplicationJuryingInput
     {
         public ApplicationJuryingInput(
-            string ApplicationId,
+            string applicationId,
             IUser jury,
             bool isAccepted,
             string reason)
         {
-            this.ApplicationId = ApplicationId;
-            this.Jury = jury;
-            this.IsAccepted = isAccepted;
-            this.Reason = reason;
+            ApplicationId = applicationId;
+            Jury = jury;
+            IsAccepted = isAccepted;
+            Reason = reason;
         }
 
         public string ApplicationId { get; }

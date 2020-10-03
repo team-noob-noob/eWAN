@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using System.ComponentModel.DataAnnotations;
 
 namespace eWAN.WebApi.UseCases.StudentApplication
 {
@@ -26,7 +25,7 @@ namespace eWAN.WebApi.UseCases.StudentApplication
             [FromServices] IUserRepository userRepository
         )
         {
-            var applicant = await userRepository.GetById(this.HttpContext.User.GetUserId());
+            var applicant = await userRepository.GetById(HttpContext.User.GetUserId());
             var input = new StudentApplicationInput(applicant);
             await useCase.Handle(input);
             return presenter.ViewModel;

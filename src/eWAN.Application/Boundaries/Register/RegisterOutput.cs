@@ -6,9 +6,9 @@ namespace eWAN.Application.Boundaries.Register
     {
         public RegisterOutput(IUser newUser)
         {
-            this.newUser = newUser;
+            NewUser = newUser;
         }
 
-        public IUser newUser { get; }
+        public IUser NewUser { get; }
     }
 }

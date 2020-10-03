@@ -20,13 +20,13 @@ namespace eWAN.Infrastructure.Database.Repositories
 
         public async Task Remove(ICourse course)
         {
-            course.deletedAt = DateTime.Now;
+            course.DeletedAt = DateTime.Now;
             await this._context.SaveChangesAsync();
         }
 
         public async Task<ICourse> GetCourseById(string Id)
         {
-            var course = this._context.Courses.FirstOrDefault(x => x.Id == Id && x.deletedAt == null);
+            var course = this._context.Courses.FirstOrDefault(x => x.Id == Id && x.DeletedAt == null);
             if(course is null)
             {
                 return null;
@@ -36,7 +36,7 @@ namespace eWAN.Infrastructure.Database.Repositories
 
         public async Task<ICourse> GetCourseByTitle(string title)
         {
-            var course = this._context.Courses.FirstOrDefault(x => x.Title == title && x.deletedAt == null);
+            var course = this._context.Courses.FirstOrDefault(x => x.Title == title && x.DeletedAt == null);
             if(course is null)
             {
                 return null;

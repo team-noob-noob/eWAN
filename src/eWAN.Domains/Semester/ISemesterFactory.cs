@@ -8,11 +8,11 @@ namespace eWAN.Domains.Semester
     public interface ISemesterFactory
     {
         ISemester AddSemester(
-            string Id,
-            DateTime Start,
-            DateTime End,
-            bool IsOpenForEnrollment,
-            List<ISubject> OpenCourses
+            string id,
+            DateTime start,
+            DateTime end,
+            bool isOpenForEnrollment,
+            List<ISubject> openCourses
         );
     }
 }

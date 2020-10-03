@@ -2,9 +2,9 @@ namespace eWAN.WebApi.UseCases.StudentApplication
 {
     public class StudentApplicationResponse
     {
-        public StudentApplicationResponse(string ApplicationId)
+        public StudentApplicationResponse(string applicationId)
         {
-            this.ApplicationId = ApplicationId;
+            ApplicationId = applicationId;
         }
 
         public string ApplicationId { get; set; }

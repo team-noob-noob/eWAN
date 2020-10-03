@@ -2,9 +2,9 @@ namespace eWAN.WebApi.UseCases.Register
 {
     public sealed class RegisterResponse
     {
-        public RegisterResponse(string Id)
+        public RegisterResponse(string id)
         {
-            this.Id = Id;
+            Id = id;
         }
 
         public string Id { get; }

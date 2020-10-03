@@ -42,8 +42,8 @@ namespace eWAN.Infrastructure.Database.Repositories
         {
             var sessions_2d = from course in semester.OpenCourses
                     join subject in this._context.Subjects on course.Id equals subject.Course.Id
-                    join enrolledSubject in this._context.EnrolledSubjects on subject.Id equals enrolledSubject.subject.Id
-                    where enrolledSubject.enrolledStudent.Id == student.Id
+                    join enrolledSubject in this._context.EnrolledSubjects on subject.Id equals enrolledSubject.Subject.Id
+                    where enrolledSubject.EnrolledStudent.Id == student.Id
                     select subject.Sessions;
             return await Task.FromResult(sessions_2d.SelectMany(x => x).ToList());
         }

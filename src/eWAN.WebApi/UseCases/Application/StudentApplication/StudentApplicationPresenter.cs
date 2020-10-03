@@ -10,9 +10,9 @@ namespace eWAN.WebApi.UseCases.StudentApplication
         public IActionResult ViewModel = new NoContentResult();
 
         public void Standard(StudentApplicationOutput output) => 
-            this.ViewModel = new OkObjectResult(new StudentApplicationResponse(output.ConfirmationId));
+            ViewModel = new OkObjectResult(new StudentApplicationResponse(output.ConfirmationId));
 
-        public void WriteError(string message) => this.ViewModel = new BadRequestObjectResult(new { Message = message });
+        public void WriteError(string message) => ViewModel = new BadRequestObjectResult(new { Message = message });
         
     }
 }

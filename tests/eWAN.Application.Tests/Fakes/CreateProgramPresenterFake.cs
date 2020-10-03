@@ -7,8 +7,8 @@ namespace eWAN.Tests.Fakes
         public CreateProgramOutput StandardOutput;
         public string ErrorOutput;
 
-        public void Standard(CreateProgramOutput output) => this.StandardOutput = output;
+        public void Standard(CreateProgramOutput output) => StandardOutput = output;
 
-        public void WriteError(string message) => this.ErrorOutput = message;
+        public void WriteError(string message) => ErrorOutput = message;
     }
 }

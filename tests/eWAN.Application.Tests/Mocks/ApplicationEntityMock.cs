@@ -2,20 +2,20 @@ namespace eWAN.Tests.Mocks
 {
     using System;
     using Domains.Application;
-    using eWAN.Domains.User;
+    using Domains.User;
 
     public class ApplicationEntityMock : Application
     {
         public ApplicationEntityMock(DateTime createdAt = new DateTime())
         {
-            this.createdAt = createdAt;
+            this.CreatedAt = createdAt;
         }
 
         public override string Id { get; set; }
-        public override IUser applicant { get; set; }
-        public override IUser staff { get; set; }
-        public override bool isAccepted { get; set; }
-        public override string reason { get; set; }
-        public override DateTime createdAt { get; protected set; }
+        public override IUser Applicant { get; set; }
+        public override IUser Staff { get; set; }
+        public override bool IsAccepted { get; set; }
+        public override string Reason { get; set; }
+        public override DateTime CreatedAt { get; protected set; }
     }
 }

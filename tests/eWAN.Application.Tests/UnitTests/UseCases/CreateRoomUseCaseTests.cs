@@ -10,19 +10,19 @@ namespace eWAN.Tests.UnitTests.UseCases.CreateRoom
 {
     public sealed class CreateRoomUseCaseTests : IClassFixture<StandardFixture>, IDisposable
     {
-        public CreateRoomUseCaseTests(StandardFixture fixture) => this._fixtures = fixture;
-        private StandardFixture _fixtures;
-        public void Dispose() => this._fixtures.Dispose();
+        public CreateRoomUseCaseTests(StandardFixture fixture) => _fixtures = fixture;
+        private readonly StandardFixture _fixtures;
+        public void Dispose() => _fixtures.Dispose();
 
         [Fact]
         public async Task CreateRoom_DuplicateId_ShouldReturnError()
         {
             var presenter = new CreateRoomPresenterFake();
             var sut = new CreateRoomUseCase(
-                this._fixtures.RoomRepositoryFake,
-                this._fixtures.EntityFactory,
+                _fixtures.RoomRepositoryFake,
+                _fixtures.EntityFactory,
                 presenter,
-                this._fixtures.UnitOfWorkFake
+                _fixtures.UnitOfWorkFake
             );
             var input = new CreateRoomInput(
                 EwanContextFake.TestRoom.Id,
@@ -41,10 +41,10 @@ namespace eWAN.Tests.UnitTests.UseCases.CreateRoom
         {
             var presenter = new CreateRoomPresenterFake();
             var sut = new CreateRoomUseCase(
-                this._fixtures.RoomRepositoryFake,
-                this._fixtures.EntityFactory,
+                _fixtures.RoomRepositoryFake,
+                _fixtures.EntityFactory,
                 presenter,
-                this._fixtures.UnitOfWorkFake
+                _fixtures.UnitOfWorkFake
             );
             var input = new CreateRoomInput(
                 "Testing Room",
@@ -55,7 +55,7 @@ namespace eWAN.Tests.UnitTests.UseCases.CreateRoom
             await sut.Handle(input);
 
             presenter.StandardOutput.Should().NotBe(null);
-            presenter.StandardOutput.newRoom.Id.Should().Be("Testing Room");
+            presenter.StandardOutput.NewRoom.Id.Should().Be("Testing Room");
         }
     }
 }

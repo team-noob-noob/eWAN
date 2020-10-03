@@ -12,8 +12,8 @@ namespace eWAN.Tests.UnitTests.UseCases.Reguster
 
     public sealed class RegisterUseCaseTests : IClassFixture<StandardFixture>, IDisposable
     {
-        public RegisterUseCaseTests(StandardFixture fixture) => this._fixture = fixture;
-        private StandardFixture _fixture { get; }
+        public RegisterUseCaseTests(StandardFixture fixture) => Fixture = fixture;
+        private StandardFixture Fixture { get; }
 
         [Theory]
         [ClassData(typeof(DuplicateUsername))]
@@ -23,12 +23,12 @@ namespace eWAN.Tests.UnitTests.UseCases.Reguster
             var registerPresenterFake = new RegisterPresenterFake();
             var sut = new RegisterUseCase(
                 registerPresenterFake,
-                this._fixture.UserRepositoryFake,
-                this._fixture.RoleRepositoryFake,
-                this._fixture.EntityFactory,
-                this._fixture.EntityFactory,
-                this._fixture.UnitOfWorkFake,
-                this._fixture.BcryptHashing
+                Fixture.UserRepositoryFake,
+                Fixture.RoleRepositoryFake,
+                Fixture.EntityFactory,
+                Fixture.EntityFactory,
+                Fixture.UnitOfWorkFake,
+                Fixture.BcryptHashing
             );
             
             // Act
@@ -46,7 +46,7 @@ namespace eWAN.Tests.UnitTests.UseCases.Reguster
         {
             // Arrange
             var registerPresenterFake = new RegisterPresenterFake();
-            this._fixture.EwanContextFake.Users.Add((User) this._fixture.EntityFactory.NewUser(
+            Fixture.EwanContextFake.Users.Add((User) Fixture.EntityFactory.NewUser(
                 "testing123341132123",      // Username
                 "testing",                  // Password
 
@@ -61,12 +61,12 @@ namespace eWAN.Tests.UnitTests.UseCases.Reguster
             ));
             var sut = new RegisterUseCase(
                 registerPresenterFake,
-                this._fixture.UserRepositoryFake,
-                this._fixture.RoleRepositoryFake,
-                this._fixture.EntityFactory,
-                this._fixture.EntityFactory,
-                this._fixture.UnitOfWorkFake,
-                this._fixture.BcryptHashing
+                Fixture.UserRepositoryFake,
+                Fixture.RoleRepositoryFake,
+                Fixture.EntityFactory,
+                Fixture.EntityFactory,
+                Fixture.UnitOfWorkFake,
+                Fixture.BcryptHashing
             );
 
             // Act
@@ -86,26 +86,26 @@ namespace eWAN.Tests.UnitTests.UseCases.Reguster
             var registerPresenterFake = new RegisterPresenterFake();
             var sut = new RegisterUseCase(
                 registerPresenterFake,
-                this._fixture.UserRepositoryFake,
-                this._fixture.RoleRepositoryFake,
-                this._fixture.EntityFactory,
-                this._fixture.EntityFactory,
-                this._fixture.UnitOfWorkFake,
-                this._fixture.BcryptHashing
+                Fixture.UserRepositoryFake,
+                Fixture.RoleRepositoryFake,
+                Fixture.EntityFactory,
+                Fixture.EntityFactory,
+                Fixture.UnitOfWorkFake,
+                Fixture.BcryptHashing
             );
 
             // Act
             await sut.Handle(input);
 
             // Assert
-            var actual = registerPresenterFake.StandardOutput.newUser.Username;
+            var actual = registerPresenterFake.StandardOutput.NewUser.Username;
             var expected = "testing321312312123";
             actual.Should().Be(expected);
         }
 
         public void Dispose()
         {
-            this._fixture.Dispose();
+            Fixture.Dispose();
         }
     }
 

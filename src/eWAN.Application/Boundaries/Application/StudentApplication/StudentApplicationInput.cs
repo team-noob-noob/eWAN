@@ -6,9 +6,9 @@ namespace eWAN.Application.Boundaries.StudentApplication
     {
         public StudentApplicationInput(IUser applicant)
         {
-            this.applicant = applicant;
+            Applicant = applicant;
         }
 
-        public IUser applicant { get; }
+        public IUser Applicant { get; }
     }
 }

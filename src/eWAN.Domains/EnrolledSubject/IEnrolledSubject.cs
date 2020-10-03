@@ -1,6 +1,5 @@
 namespace eWAN.Domains.EnrolledSubject
 {
-    using User;
     using Subject;
     using Student;
 
@@ -8,8 +7,8 @@ namespace eWAN.Domains.EnrolledSubject
     public interface IEnrolledSubject : IBaseEntity
     {
         int Id { get; set; }
-        IStudent enrolledStudent { get; set; }
-        ISubject subject { get; set; }
-        string grade { get; set; }
+        IStudent EnrolledStudent { get; set; }
+        ISubject Subject { get; set; }
+        string Grade { get; set; }
     }
 }

@@ -8,8 +8,8 @@ namespace eWAN.WebApi.UseCases.CreateCourse
         public IActionResult ViewModel = new NoContentResult();
 
         public void Standard(CreateCourseOutput output) 
-            => this.ViewModel = new CreatedResult("Course", new CreateCourseResponse(output.Course.Id));
+            => ViewModel = new CreatedResult("Course", new CreateCourseResponse(output.Course.Id));
 
-        public void WriteError(string message) => this.ViewModel = new UnprocessableEntityObjectResult(new {message});
+        public void WriteError(string message) => ViewModel = new UnprocessableEntityObjectResult(new {message});
     }
 }

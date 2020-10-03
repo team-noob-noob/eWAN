@@ -7,7 +7,9 @@ using System.Collections.Generic;
 
 namespace eWAN.Domains.Student
 {
-    /// <summary>Represents a Student Profile</summary>
+    /// <summary>
+    /// Represents a Student Profile
+    /// </summary>
     public interface IStudent : IBaseEntity
     {
         string Id { get; set; }
@@ -16,9 +18,9 @@ namespace eWAN.Domains.Student
         List<IEnrolledSubject> EnrolledSubjects { get; set; }
         List<IEnrolledProgram> EnrolledPrograms { get; set; }
         
-        /// <summary>Checks whether the student already finished all courses required in a given program</summary>
+        /// <summary>
+        /// Checks whether the student already finished all courses required in a given program
+        /// </summary>
         bool IsFinishedStudies(IProgram programToCheck);
-
-        
     }
 }

@@ -6,8 +6,8 @@ namespace eWAN.Domains.Role
     {
         public abstract int Id { get; set; }
 
-        public virtual IUser user { get; set; }
+        public virtual IUser User { get; set; }
 
-        public virtual UserRole role { get; set; }
+        public virtual UserRole UserRole { get; set; }
     }
 }

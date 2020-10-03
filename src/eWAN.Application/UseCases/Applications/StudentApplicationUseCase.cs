@@ -16,10 +16,10 @@ namespace eWAN.Application.UseCases
             IStudentApplicationOutputPort outputPort
         )
         {
-            this._applicationFactory = applicationFactory;
-            this._applicationRepository = applicationRepository;
-            this._unitOfWork = unitOfWork;
-            this._outputPort = outputPort;
+            _applicationFactory = applicationFactory;
+            _applicationRepository = applicationRepository;
+            _unitOfWork = unitOfWork;
+            _outputPort = outputPort;
         }
 
         private readonly IApplicationFactory _applicationFactory;
@@ -29,32 +29,32 @@ namespace eWAN.Application.UseCases
 
         public async Task Handle(StudentApplicationInput input)
         {
-            var previousApplications = this._applicationRepository.GetApplicationsByApplicantId(input.applicant.Id);
-            previousApplications.Sort((x, y) => y.createdAt.CompareTo(x.createdAt));
+            var previousApplications = _applicationRepository.GetApplicationsByApplicantId(input.Applicant.Id);
+            previousApplications.Sort((x, y) => y.CreatedAt.CompareTo(x.CreatedAt));
 
             if(previousApplications.Count >= 3)
             {
-                this._outputPort.WriteError("User already surpassed the allowed limit of applications; User is only allowed maximum of 3 applications");
+                _outputPort.WriteError("User already surpassed the allowed limit of applications; User is only allowed maximum of 3 applications");
                 return;
             }
 
-            if(previousApplications.Count >= 1 ? this.IsDateTimeWithinSixMonthsFromNow(previousApplications[0].createdAt) : false)
+            if(previousApplications.Count >= 1 && IsDateTimeWithinSixMonthsFromNow(previousApplications[0].CreatedAt))
             {
-                this._outputPort.WriteError("User already applied within 6 months, please wait a while");
+                _outputPort.WriteError("User already applied within 6 months, please wait a while");
                 return;
             }
 
-            var newApplication = this._applicationFactory.NewApplication(input.applicant);
+            var newApplication = _applicationFactory.NewApplication(input.Applicant);
 
-            await this._applicationRepository.Add(newApplication);
+            await _applicationRepository.Add(newApplication);
 
-            this._outputPort.Standard(new StudentApplicationOutput(newApplication.Id));
+            _outputPort.Standard(new StudentApplicationOutput(newApplication.Id));
 
-            await this._unitOfWork.Save();
+            await _unitOfWork.Save();
         }
 
         // TODO: Move to a proper class/lib
-        private bool IsDateTimeWithinSixMonthsFromNow(DateTime date)
+        private static bool IsDateTimeWithinSixMonthsFromNow(DateTime date)
         {
             DateTime now = DateTime.Now;
             DateTime start = now.AddMonths(-6);

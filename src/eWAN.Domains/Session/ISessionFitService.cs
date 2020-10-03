@@ -5,6 +5,6 @@ namespace eWAN.Domains.Session
 {
     public interface ISessionFitService
     {
-        Task<bool> IsSessionFitInSched(List<ISession> sessions, ISession newSession);
+        Task<bool> IsSessionFitInSchedule(List<ISession> sessions, ISession newSession);
     }
 }

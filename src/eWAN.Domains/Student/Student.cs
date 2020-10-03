@@ -19,19 +19,19 @@ namespace eWAN.Domains.Student
 
         public bool IsFinishedStudies(IProgram programToCheck)
         {
-            bool isAnyCourseNotFinished = false;
+            var isAnyCourseNotFinished = false;
 
             foreach(var course in programToCheck.Courses)
             {
                 // Get the Subjects in a Course that the student was enrolled in
-                var subjects = EnrolledSubjects.Where(x => x.subject.Course.Id == course.Id);
+                var subjects = EnrolledSubjects.Where(x => x.Subject.Course.Id == course.Id);
             
                 // If any of those subjects weren't graded, the course is not complete
-                if(subjects.Any(x => string.IsNullOrEmpty(x.grade)))
-                {
-                    isAnyCourseNotFinished = true;
-                    break;
-                }
+                if (!subjects.Any(x => string.IsNullOrEmpty(x.Grade))) 
+                    continue;
+
+                isAnyCourseNotFinished = true;
+                break;
             }
             
             return !isAnyCourseNotFinished;

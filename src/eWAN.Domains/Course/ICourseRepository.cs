@@ -6,7 +6,7 @@ namespace eWAN.Domains.Course
     {
         Task Add(ICourse course);
         Task Remove(ICourse course);
-        Task<ICourse> GetCourseById(string Id);
+        Task<ICourse> GetCourseById(string id);
         Task<ICourse> GetCourseByTitle(string title);
     }
 }

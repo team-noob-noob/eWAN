@@ -2,10 +2,10 @@ using System.Collections.Generic;
 
 namespace eWAN.Domains.Subject
 {
-    using Domains.Course;
-    using Domains.Session;
-    using Domains.EnrolledSubject;
-    using eWAN.Domains.Semester;
+    using Course;
+    using Session;
+    using EnrolledSubject;
+    using Semester;
 
     public abstract class Subject : BaseEntity, ISubject 
     {

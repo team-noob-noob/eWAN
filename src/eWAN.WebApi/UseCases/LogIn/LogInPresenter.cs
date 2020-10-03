@@ -1,14 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System.Collections.Generic;
-using System;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace eWAN.WebApi.UseCases.LogIn
 {
     using Application.Boundaries.LogIn;
     using Infrastructure.Auth;
-    using Domains.Role;
 
     public class LogInPresenter : ILogInOutputPort
     {
@@ -20,20 +18,20 @@ namespace eWAN.WebApi.UseCases.LogIn
             string secret = System.Environment.GetEnvironmentVariable("SERVER_KEY");
 
             List<Claim> claims = new List<Claim>();
-            claims.Add(new Claim(ClaimTypes.NameIdentifier, output.user.Id));
-            foreach(var role in output.user.AssignedRoles)
+            claims.Add(new Claim(ClaimTypes.NameIdentifier, output.User.Id));
+            foreach(var role in output.User.AssignedRoles)
             {
-                claims.Add(new Claim(ClaimTypes.Role, ((int) role.role).ToString()));
+                claims.Add(new Claim(ClaimTypes.Role, ((int) role.UserRole).ToString()));
             }
 
             var identity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
 
             string token = IdentityToken.GenerateJwtSecurityToken(identity, secret);
 
-            this.ViewModel = new OkObjectResult(new LogInReponse(token));
-            this.Identity = identity;
+            ViewModel = new OkObjectResult(new LogInReponse(token));
+            Identity = identity;
         }
 
-        public void WriteError(string message) => this.ViewModel = new BadRequestObjectResult(new {Message = message});
+        public void WriteError(string message) => ViewModel = new BadRequestObjectResult(new {Message = message});
     }
 }

@@ -19,12 +19,12 @@ namespace eWAN.Application.UseCases
             ISubjectRepository subjectRepository
         )
         {
-            this._unitOfWork = unitOfWork;
-            this._outputPort = outputPort;
-            this._sessionRepository = sessionRepository;
-            this._sessionFitService = sessionFitService;
-            this._subjectFactory = subjectFactory;
-            this._subjectRepository = subjectRepository;
+            _unitOfWork = unitOfWork;
+            _outputPort = outputPort;
+            _sessionRepository = sessionRepository;
+            _sessionFitService = sessionFitService;
+            _subjectFactory = subjectFactory;
+            _subjectRepository = subjectRepository;
         }
 
         private readonly IUnitOfWork _unitOfWork;
@@ -38,32 +38,32 @@ namespace eWAN.Application.UseCases
         {
             foreach(var session in input.Sessions)
             {
-                var roomSched = await this._sessionRepository.GetSessionsByRoomAndSemester(session.Room, input.Semester);
-                if(!await this._sessionFitService.IsSessionFitInSched(roomSched, session))
+                var roomSched = await _sessionRepository.GetSessionsByRoomAndSemester(session.Room, input.Semester);
+                if(!await _sessionFitService.IsSessionFitInSchedule(roomSched, session))
                 {
-                    this._outputPort.WriteError($"Session {session.StartTime}-{session.EndTime} does not fit in the schedule of Room {session.Room.Name}");
+                    _outputPort.WriteError($"Session {session.StartTime}-{session.EndTime} does not fit in the schedule of Room {session.Room.Name}");
                     return;
                 }
 
-                var instructorSched = await this._sessionRepository.GetSessionsByInstructorAndSemester(input.Instructor, input.Semester);
-                if(!await this._sessionFitService.IsSessionFitInSched(instructorSched, session))
+                var instructorSched = await _sessionRepository.GetSessionsByInstructorAndSemester(input.Instructor, input.Semester);
+                if(!await _sessionFitService.IsSessionFitInSchedule(instructorSched, session))
                 {
-                    this._outputPort.WriteError($"Session {session.StartTime}-{session.EndTime} does not fit in the schedule of Instructor {input.Instructor.FirstName} {input.Instructor.LastName}");
+                    _outputPort.WriteError($"Session {session.StartTime}-{session.EndTime} does not fit in the schedule of Instructor {input.Instructor.FirstName} {input.Instructor.LastName}");
                     return;
                 }
             }
 
-            ISubject subject = this._subjectFactory.NewSubject(input.Course, (List<ISession>) input.Sessions);
+            ISubject subject = _subjectFactory.NewSubject(input.Course, (List<ISession>) input.Sessions);
             
             input.Semester.OpenCourses.Add(subject);
 
             subject.Sessions.AddRange(input.Sessions);
 
-            await this._subjectRepository.Add(subject);
+            await _subjectRepository.Add(subject);
 
-            this._outputPort.Standard(new CreateSubjectOutput(subject));
+            _outputPort.Standard(new CreateSubjectOutput(subject));
 
-            await this._unitOfWork.Save();
+            await _unitOfWork.Save();
         }
     }
 }

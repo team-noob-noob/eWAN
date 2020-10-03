@@ -18,7 +18,6 @@ namespace eWAN.WebApi.Modules
     using Application.Boundaries.CreateProgram;
     using Application.Boundaries.CreateRoom;
     using Application.Boundaries.CreateCourse;
-    using eWAN.Application.Boundaries;
 
     public static class UserInterfaceExtensions
     {

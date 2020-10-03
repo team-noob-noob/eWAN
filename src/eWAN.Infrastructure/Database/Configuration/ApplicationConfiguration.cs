@@ -12,13 +12,13 @@ namespace eWAN.Infrastructure.Database.Configuration
         public void Configure(EntityTypeBuilder<Application> builder)
         {
             builder
-                .HasOne<User>(x => (User) x.applicant)
+                .HasOne<User>(x => (User) x.Applicant)
                 .WithMany()
                 .HasForeignKey(x => x.Applicant_Id)
                 .IsRequired(false);
             
             builder
-                .HasOne<User>(x => (User) x.staff)
+                .HasOne<User>(x => (User) x.Staff)
                 .WithOne()
                 .HasForeignKey<Application>(x => x.Staff_Id)
                 .IsRequired(false);

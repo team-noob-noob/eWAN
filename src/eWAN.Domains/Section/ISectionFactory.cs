@@ -6,8 +6,8 @@ namespace eWAN.Domains.Section
     public interface ISectionFactory
     {
         ISection NewSection(
-            string Name,
-            List<IStudent> Students
+            string name,
+            List<IStudent> students
         );
     }
 }

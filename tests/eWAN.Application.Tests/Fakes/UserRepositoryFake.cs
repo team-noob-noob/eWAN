@@ -8,19 +8,19 @@ namespace eWAN.Tests.Fakes
 
     public class UserRepositoryFake : IUserRepository
     {
-        public UserRepositoryFake(EwanContextFake context) => this._context = context;
+        public UserRepositoryFake(EwanContextFake context) => _context = context;
 
-        private EwanContextFake _context;
+        private readonly EwanContextFake _context;
 
         public async Task Add(IUser user)
         {
-            this._context.Users.Add((User) user);
+            _context.Users.Add((User) user);
             await Task.CompletedTask.ConfigureAwait(false);
         }
 
         public async Task<IUser> GetByUsername(string username)
         {
-            var user = this._context.Users.SingleOrDefault(e => e.Username == username);
+            var user = _context.Users.SingleOrDefault(e => e.Username == username);
             if(user is null)
             {
                 return null;
@@ -30,7 +30,7 @@ namespace eWAN.Tests.Fakes
 
         public async Task<IUser> GetByEmail(string email)
         {
-            var user = this._context.Users.SingleOrDefault(e => e.Email == email);
+            var user = _context.Users.SingleOrDefault(e => e.Email == email);
             if(user is null)
             {
                 return null;
@@ -38,9 +38,9 @@ namespace eWAN.Tests.Fakes
             return await Task.FromResult(user);
         }
 
-        public async Task<IUser> GetById(string Id)
+        public async Task<IUser> GetById(string id)
         {
-            var user = this._context.Users.SingleOrDefault(e => e.Id == Id);
+            var user = _context.Users.SingleOrDefault(e => e.Id == id);
             if(user is null)
             {
                 return null;

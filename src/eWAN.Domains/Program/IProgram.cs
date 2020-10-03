@@ -5,7 +5,9 @@ namespace eWAN.Domains.Program
     using Course;
     using EnrolledProgram;
 
-    ///<summary>Represents a curriculum that is required to be accomplished</summary>
+    ///<summary>
+    /// Represents a curriculum that is required to be accomplished
+    /// </summary>
     public interface IProgram : IBaseEntity
     {
         int Id { get; set; }

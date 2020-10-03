@@ -19,7 +19,7 @@ namespace eWAN.Infrastructure.Database.Repositories
 
         public async Task<IRoom> GetRoomById(string Id)
         {
-            var room = this._context.Rooms.FirstOrDefault(x => x.Id == Id && x.deletedAt == null);
+            var room = this._context.Rooms.FirstOrDefault(x => x.Id == Id && x.DeletedAt == null);
             if(room is null)
             {
                 return null;

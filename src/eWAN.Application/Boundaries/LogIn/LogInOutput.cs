@@ -6,9 +6,9 @@ namespace eWAN.Application.Boundaries.LogIn
     {
         public LogInOutput(IUser user)
         {
-            this.user = user;
+            User = user;
         }
 
-        public IUser user { get; }
+        public IUser User { get; }
     }
 }

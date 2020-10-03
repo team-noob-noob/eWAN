@@ -2,10 +2,10 @@ namespace eWAN.Application.Boundaries.LogIn
 {
     public class LogInInput
     {
-        public LogInInput(string Username, string Password)
+        public LogInInput(string username, string password)
         {
-            this.Username = Username;
-            this.Password = Password;
+            Username = username;
+            Password = password;
         }
 
         public string Username { get; }

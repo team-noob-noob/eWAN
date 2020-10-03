@@ -4,7 +4,7 @@ namespace eWAN.WebApi.UseCases.LogIn
     {
         public LogInReponse(string session)
         {
-            this.Session = session;
+            Session = session;
         }
 
         public string Session { get; }

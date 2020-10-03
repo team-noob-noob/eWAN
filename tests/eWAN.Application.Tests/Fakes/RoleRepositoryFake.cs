@@ -10,20 +10,20 @@ namespace eWAN.Tests.Fakes
 
     public class RoleRepositoryFake : IRoleRepository
     {
-        public RoleRepositoryFake(EwanContextFake context) => this._context = context;
+        public RoleRepositoryFake(EwanContextFake context) => _context = context;
 
-        private EwanContextFake _context;
+        private readonly EwanContextFake _context;
 
         public async Task Add(IRole newRole)
         {
-            this._context.UserRoles.Add((Role) newRole);
+            _context.UserRoles.Add((Role) newRole);
             await Task.CompletedTask;
         }
 
         public List<IRole> GetRolesByUser(IUser user)
         {
             List<IRole> result = new List<IRole>();
-            var query = this._context.UserRoles.Where(x => x.user.Username == user.Username);
+            var query = _context.UserRoles.Where(x => x.User.Username == user.Username);
             foreach (IRole role in query)
                 result.Add(role);
             return result;
@@ -31,7 +31,7 @@ namespace eWAN.Tests.Fakes
 
         public async Task Remove(IRole role)
         {
-            this._context.UserRoles.Remove((Role) role);
+            _context.UserRoles.Remove((Role) role);
             await Task.CompletedTask;
         }
     }

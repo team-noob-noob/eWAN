@@ -10,9 +10,9 @@ namespace eWAN.Tests.UnitTests.UseCases.LogIn
 
     public sealed class LogInUseCaseTests : IClassFixture<StandardFixture>
     {
-        private StandardFixture _fixture { get; }
+        private StandardFixture Fixture { get; }
 
-        public LogInUseCaseTests(StandardFixture fixture) => this._fixture = fixture;
+        public LogInUseCaseTests(StandardFixture fixture) => Fixture = fixture;
 
         [Theory]
         [InlineData("testing", "testing")]
@@ -25,8 +25,8 @@ namespace eWAN.Tests.UnitTests.UseCases.LogIn
             var logInPresenter = new LogInPresenterFake();
             var sut = new LogInUseCase(
                 logInPresenter,
-                this._fixture.UserRepositoryFake,
-                this._fixture.BcryptHashing
+                Fixture.UserRepositoryFake,
+                Fixture.BcryptHashing
             );
             var input = new LogInInput(username, password);
 
@@ -34,7 +34,7 @@ namespace eWAN.Tests.UnitTests.UseCases.LogIn
             await sut.Handle(input);
 
             // Assert
-            var actual = logInPresenter.StandardOutput.user.Username;
+            var actual = logInPresenter.StandardOutput.User.Username;
             actual.Should().Be(username);
         }
 
@@ -49,8 +49,8 @@ namespace eWAN.Tests.UnitTests.UseCases.LogIn
             var logInPresenter = new LogInPresenterFake();
             var sut = new LogInUseCase(
                 logInPresenter,
-                this._fixture.UserRepositoryFake,
-                this._fixture.BcryptHashing
+                Fixture.UserRepositoryFake,
+                Fixture.BcryptHashing
             );
             var input = new LogInInput(username, password);
 
@@ -74,8 +74,8 @@ namespace eWAN.Tests.UnitTests.UseCases.LogIn
             var logInPresenter = new LogInPresenterFake();
             var sut = new LogInUseCase(
                 logInPresenter,
-                this._fixture.UserRepositoryFake,
-                this._fixture.BcryptHashing
+                Fixture.UserRepositoryFake,
+                Fixture.BcryptHashing
             );
             var input = new LogInInput(username, password);
 

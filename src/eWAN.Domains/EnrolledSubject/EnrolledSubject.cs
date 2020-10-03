@@ -1,5 +1,4 @@
 using eWAN.Domains.Subject;
-using eWAN.Domains.User;
 using eWAN.Domains.Student;
 
 namespace eWAN.Domains.EnrolledSubject
@@ -7,8 +6,8 @@ namespace eWAN.Domains.EnrolledSubject
     public abstract class EnrolledSubject : BaseEntity, IEnrolledSubject
     {
         public abstract int Id { get; set; }
-        public virtual IStudent enrolledStudent { get; set; }
-        public virtual ISubject subject { get; set; }
-        public abstract string grade { get; set; }
+        public virtual IStudent EnrolledStudent { get; set; }
+        public virtual ISubject Subject { get; set; }
+        public abstract string Grade { get; set; }
     }
 }

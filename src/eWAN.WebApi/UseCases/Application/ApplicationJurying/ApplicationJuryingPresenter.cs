@@ -8,8 +8,8 @@ namespace eWAN.WebApi.UseCases.ApplicationJurying
     {
         public IActionResult ViewModel = new NoContentResult();
 
-        public void Standard(ApplicationJuryingOutput output) => this.ViewModel = new OkResult();
+        public void Standard(ApplicationJuryingOutput output) => ViewModel = new OkResult();
 
-        public void WriteError(string message) => this.ViewModel = new BadRequestObjectResult(new { message });
+        public void WriteError(string message) => ViewModel = new BadRequestObjectResult(new { message });
     }
 }

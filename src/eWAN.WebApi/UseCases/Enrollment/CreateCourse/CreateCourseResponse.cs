@@ -2,9 +2,9 @@ namespace eWAN.WebApi.UseCases.CreateCourse
 {
     public class CreateCourseResponse
     {
-        public CreateCourseResponse(string NewCourseId)
+        public CreateCourseResponse(string newCourseId)
         {
-            this.NewCourseId = NewCourseId;
+            NewCourseId = newCourseId;
         }
 
         public string NewCourseId { get; set; }

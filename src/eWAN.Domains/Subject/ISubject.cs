@@ -7,7 +7,9 @@ namespace eWAN.Domains.Subject
     using Course;
     using Semester;
 
-    /// <summary>Represents a timed Course, broken up into Sessions</summary>
+    /// <summary>
+    /// Represents a timed Course, broken up into Sessions
+    /// </summary>
     public interface ISubject : IBaseEntity
     {
         string Id { get; set; }

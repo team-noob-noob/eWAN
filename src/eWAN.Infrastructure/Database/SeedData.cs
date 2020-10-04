@@ -90,7 +90,7 @@ namespace eWAN.Infrastructure.Database
             this._context.Sessions.Add(SecondSession);
             this._context.Subjects.Add(Subject);
             this._context.EnrolledPrograms.Add(new EnrolledProgram(Student, Program));
-            this._context.EnrolledSubjects.Add(new EnrolledSubject(Student, Subject){grade = ""});
+            this._context.EnrolledSubjects.Add(new EnrolledSubject(Student, Subject){Grade = ""});
             this._context.Semesters.Add(Semester);
             this._context.Sections.Add(new Section("BSIT - 1B - 2077" + new Random().NewString(), new List<eWAN.Domains.Student.IStudent>(new []{Student})));
             this._context.SaveChanges();

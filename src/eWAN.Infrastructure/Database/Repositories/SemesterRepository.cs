@@ -19,7 +19,7 @@ namespace eWAN.Infrastructure.Database.Repositories
 
         public async Task<ISemester> GetSemesterById(string Id)
         {
-            var semester = this._context.Semesters.SingleOrDefault(x => x.Id == Id && x.deletedAt == null);
+            var semester = this._context.Semesters.SingleOrDefault(x => x.Id == Id && x.DeletedAt == null);
             if(semester is null)
             {
                 return null;

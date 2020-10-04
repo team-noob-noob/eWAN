@@ -7,13 +7,13 @@ namespace eWAN.Tests.Fakes
 {
     public class RoomRepositoryFake : IRoomRepository
     {
-        public RoomRepositoryFake(EwanContextFake context) => this._context = context;
-        private EwanContextFake _context;
+        public RoomRepositoryFake(EwanContextFake context) => _context = context;
+        private readonly EwanContextFake _context;
 
         public async Task Add(IRoom room)
-            => await Task.Run(() => this._context.Rooms.Add((Room) room));
+            => await Task.Run(() => _context.Rooms.Add((Room) room));
 
-        public async Task<IRoom> GetRoomById(string Id)
-            => await Task.Run(() => this._context.Rooms.FirstOrDefault(x => x.Id == Id));
+        public async Task<IRoom> GetRoomById(string id)
+            => await Task.Run(() => _context.Rooms.FirstOrDefault(x => x.Id == id));
     }
 }

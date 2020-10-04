@@ -1,34 +1,31 @@
 namespace eWAN.Application.Boundaries.Register
 {
-    using System;
-    using Domains.User;
-
     public class RegisterInput
     {
         public RegisterInput(
-            string Username,
-            string Password, 
+            string username,
+            string password, 
 
-            string Email, 
-            string PhoneNumber, 
+            string email, 
+            string phoneNumber, 
 
-            string FirstName,
-            string MiddleName,
-            string LastName,
+            string firstName,
+            string middleName,
+            string lastName,
 
-            string Address)
+            string address)
         {
-            this.Username = Username;
-            this.Password = Password;
+            Username = username;
+            Password = password;
 
-            this.Email = Email;
-            this.PhoneNumber = PhoneNumber;
+            Email = email;
+            PhoneNumber = phoneNumber;
             
-            this.FirstName = FirstName;
-            this.MiddleName = MiddleName;
-            this.LastName = LastName;
+            FirstName = firstName;
+            MiddleName = middleName;
+            LastName = lastName;
 
-            this.Address = Address;
+            Address = address;
         }
 
         public string Username { get; set; }

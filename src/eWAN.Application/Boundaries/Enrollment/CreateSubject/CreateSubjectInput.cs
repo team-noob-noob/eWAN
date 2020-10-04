@@ -2,7 +2,6 @@ using System.Collections.Generic;
 
 namespace eWAN.Application.Boundaries.CreateSubject
 {
-    using Domains.Room;
     using Domains.Course;
     using Domains.Session;
     using Domains.Semester;

@@ -17,19 +17,19 @@ namespace eWAN.Infrastructure.Database.Repositories
 
         public async Task Add(IApplication newApplication)
         {
-            this._context.Entry(newApplication.applicant).State = EntityState.Unchanged;
+            this._context.Entry(newApplication.Applicant).State = EntityState.Unchanged;
             this._context.Applications.Add((Application) newApplication);
             await this._context.SaveChangesAsync();
         }
 
         public IApplication GetApplicationById(string id)
         {
-            return (IApplication) this._context.Applications.Where(x => x.Id == id && x.deletedAt == null);
+            return (IApplication) this._context.Applications.Where(x => x.Id == id && x.DeletedAt == null);
         }
 
         public List<IApplication> GetApplicationsByApplicantId(string applicantId)
         {
-            var query = this._context.Applications.Where(x => x.applicant.Id == applicantId && x.deletedAt == null);
+            var query = this._context.Applications.Where(x => x.Applicant.Id == applicantId && x.DeletedAt == null);
             return query.Cast<IApplication>().ToList();
         }
     }

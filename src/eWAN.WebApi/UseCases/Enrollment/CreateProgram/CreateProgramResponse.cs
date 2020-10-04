@@ -2,9 +2,9 @@ namespace eWAN.WebApi.UseCases.CreateProgram
 {
     public class CreateProgramResponse
     {
-        public CreateProgramResponse(string ProgramId)
+        public CreateProgramResponse(string programId)
         {
-            this.ProgramId = ProgramId;
+            ProgramId = programId;
         }
 
         public string ProgramId { get; set; }

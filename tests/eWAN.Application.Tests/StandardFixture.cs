@@ -10,7 +10,7 @@ namespace eWAN.Tests
     {
         public StandardFixture()
         {
-            this.Dispose();
+            Dispose();
         }
 
         public ApplicationRepositoryFake ApplicationRepositoryFake { get; set; }
@@ -26,16 +26,16 @@ namespace eWAN.Tests
 
         public void Dispose()
         {
-            this.EwanContextFake = new EwanContextFake();
-            this.UnitOfWorkFake = new UnitOfWorkFake();
-            this.EntityFactory = new EntityFactory();
-            this.BcryptHashing = new BcryptHashing();
-            this.ApplicationRepositoryFake = new ApplicationRepositoryFake(this.EwanContextFake);
-            this.RoleRepositoryFake = new RoleRepositoryFake(this.EwanContextFake);
-            this.UserRepositoryFake = new UserRepositoryFake(this.EwanContextFake);
-            this.CourseRepositoryFake = new CourseRepositoryFake(this.EwanContextFake);
-            this.ProgramRepositoryFake = new ProgramRepositoryFake(this.EwanContextFake);
-            this.RoomRepositoryFake = new RoomRepositoryFake(this.EwanContextFake);
+            EwanContextFake = new EwanContextFake();
+            UnitOfWorkFake = new UnitOfWorkFake();
+            EntityFactory = new EntityFactory();
+            BcryptHashing = new BcryptHashing();
+            ApplicationRepositoryFake = new ApplicationRepositoryFake(EwanContextFake);
+            RoleRepositoryFake = new RoleRepositoryFake(EwanContextFake);
+            UserRepositoryFake = new UserRepositoryFake(EwanContextFake);
+            CourseRepositoryFake = new CourseRepositoryFake(EwanContextFake);
+            ProgramRepositoryFake = new ProgramRepositoryFake(EwanContextFake);
+            RoomRepositoryFake = new RoomRepositoryFake(EwanContextFake);
         }
     }
 }

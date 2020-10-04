@@ -1,10 +1,11 @@
 namespace eWAN.Domains.EnrolledProgram
 {
-    using User;
     using Program;
     using Student;
 
-    ///<summary>Represents a student's enrollment to a program</summary>
+    ///<summary>
+    /// Represents a <see cref="Student"/> enrollment to a <see cref="Program"/>
+    /// </summary>
     public interface IEnrolledProgram : IBaseEntity
     {
         int Id { get; set; }

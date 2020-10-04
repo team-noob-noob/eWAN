@@ -6,7 +6,6 @@ using System.ComponentModel.DataAnnotations;
 namespace eWAN.WebApi.UseCases.CreateSubject
 {
     using Application.Boundaries.CreateSubject;
-    using Domains.Room;
     using Domains.Course;
     using Domains.Semester;
     using Domains.User;

@@ -1,5 +1,4 @@
 using eWAN.Domains.Program;
-using eWAN.Domains.User;
 using eWAN.Domains.Student;
 
 namespace eWAN.Domains.EnrolledProgram

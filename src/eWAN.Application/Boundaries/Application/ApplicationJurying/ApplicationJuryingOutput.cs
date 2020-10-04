@@ -6,7 +6,7 @@ namespace eWAN.Application.Boundaries.ApplicationJurying
     {
         public ApplicationJuryingOutput(IApplication result)
         {
-            this.StudentApplicationResult = result;
+            StudentApplicationResult = result;
         }
 
         public IApplication StudentApplicationResult { get; }

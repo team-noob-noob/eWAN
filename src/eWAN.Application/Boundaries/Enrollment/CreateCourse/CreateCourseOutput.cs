@@ -6,7 +6,7 @@ namespace eWAN.Application.Boundaries.CreateCourse
     {
         public CreateCourseOutput(ICourse course)
         {
-            this.Course = course;
+            Course = course;
         }
 
         public ICourse Course { get; set; }

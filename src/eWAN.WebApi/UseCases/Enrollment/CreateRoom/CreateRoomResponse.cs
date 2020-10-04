@@ -2,9 +2,9 @@ namespace eWAN.WebApi.UseCases.CreateRoom
 {
     public class CreateRoomResponse
     {
-        public CreateRoomResponse(string RoomId)
+        public CreateRoomResponse(string roomId)
         {
-            this.NewRoomId = RoomId;
+            NewRoomId = roomId;
         }
 
         public string NewRoomId { get; }   

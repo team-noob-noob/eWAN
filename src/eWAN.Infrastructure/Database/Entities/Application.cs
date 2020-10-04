@@ -13,15 +13,15 @@ namespace eWAN.Infrastructure.Database.Entities
         {
             
             this.Id = new Random().NewString();
-            this.applicant = applicant;
-            this.staff = null;
-            this.isAccepted = false;
-            this.reason = "";
+            this.Applicant = applicant;
+            this.Staff = null;
+            this.IsAccepted = false;
+            this.Reason = "";
         }
 
         public override string Id { get; set; }
-        public override bool isAccepted { get; set; }
-        public override string reason { get; set; }
+        public override bool IsAccepted { get; set; }
+        public override string Reason { get; set; }
         public string? Applicant_Id { get; set; }
         public string? Staff_Id { get; set; }
     }

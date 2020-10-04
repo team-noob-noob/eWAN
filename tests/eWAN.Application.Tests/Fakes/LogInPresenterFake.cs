@@ -7,8 +7,8 @@ namespace eWAN.Tests.Fakes
         public LogInOutput StandardOutput { get; set; }
         public string ErrorOutput { get; set; }
 
-        public void Standard(LogInOutput output) => this.StandardOutput = output;
+        public void Standard(LogInOutput output) => StandardOutput = output;
 
-        public void WriteError(string message) => this.ErrorOutput = message;
+        public void WriteError(string message) => ErrorOutput = message;
     }
 }

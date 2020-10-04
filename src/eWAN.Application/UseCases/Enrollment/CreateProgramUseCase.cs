@@ -1,9 +1,9 @@
 namespace eWAN.Application.UseCases
 {
     using System.Threading.Tasks;
-    using Application.Boundaries.CreateProgram;
+    using Boundaries.CreateProgram;
     using Domains.Program;
-    using eWAN.Application.Services;
+    using Services;
 
     public class CreateProgramUseCase : ICreateProgramUseCase
     {
@@ -14,38 +14,38 @@ namespace eWAN.Application.UseCases
             IUnitOfWork unitOfWork
         )
         {
-            this._outputPort = outputPort;
-            this._programRepository = programRepository;
-            this._programFactory = factory;
-            this._unitOfWork = unitOfWork;
+            OutputPort = outputPort;
+            ProgramRepository = programRepository;
+            ProgramFactory = factory;
+            _unitOfWork = unitOfWork;
         }
 
-        private ICreateProgramOutputPort _outputPort { get; }
-        private IProgramRepository _programRepository { get; }
-        private IProgramFactory _programFactory { get; }
-        private IUnitOfWork _unitOfWork;
+        private ICreateProgramOutputPort OutputPort { get; }
+        private IProgramRepository ProgramRepository { get; }
+        private IProgramFactory ProgramFactory { get; }
+        private readonly IUnitOfWork _unitOfWork;
 
         public async Task Handle(CreateProgramInput input)
         {
-            if(!(await this._programRepository.GetProgramByTitle(input.Title) is null))
+            if(!(await ProgramRepository.GetProgramByTitle(input.Title) is null))
             {
-                this._outputPort.WriteError("Title already taken");
+                OutputPort.WriteError("Title already taken");
                 return;
             }
 
-            if(!(await this._programRepository.GetProgramByCode(input.Code) is null))
+            if(!(await ProgramRepository.GetProgramByCode(input.Code) is null))
             {
-                this._outputPort.WriteError("Code already taken");
+                OutputPort.WriteError("Code already taken");
                 return;
             }
 
-            IProgram newProgram = this._programFactory.NewProgram(input.Title, input.Code, input.Description, null);
+            IProgram newProgram = ProgramFactory.NewProgram(input.Title, input.Code, input.Description, null);
 
-            await this._programRepository.Add(newProgram);
+            await ProgramRepository.Add(newProgram);
 
-            this._outputPort.Standard(new CreateProgramOutput(newProgram));
+            OutputPort.Standard(new CreateProgramOutput(newProgram));
 
-            await this._unitOfWork.Save();
+            await _unitOfWork.Save();
         }
     }
 }

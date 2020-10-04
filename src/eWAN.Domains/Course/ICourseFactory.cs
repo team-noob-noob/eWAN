@@ -6,10 +6,10 @@ namespace eWAN.Domains.Course
     public interface ICourseFactory
     {
         ICourse NewCourse(
-            string Id, 
-            string Title, 
-            string Description, 
-            List<ICourse> Prerequisites,
+            string id, 
+            string title, 
+            string description, 
+            List<ICourse> prerequisites,
             IProgram program);
     }
 }

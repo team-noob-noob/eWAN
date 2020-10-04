@@ -8,8 +8,8 @@ namespace eWAN.WebApi.UseCases.CreateRoom
         public IActionResult ViewModel = new NoContentResult();
 
         public void Standard(CreateRoomOutput output) => 
-            this.ViewModel = new CreatedAtRouteResult("Room", new CreateRoomResponse(output.newRoom.Id));
+            ViewModel = new CreatedAtRouteResult("Room", new CreateRoomResponse(output.NewRoom.Id));
 
-        public void WriteError(string message) => this.ViewModel = new UnprocessableEntityObjectResult(new { message });
+        public void WriteError(string message) => ViewModel = new UnprocessableEntityObjectResult(new { message });
     }
 }

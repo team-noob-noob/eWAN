@@ -1,11 +1,9 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication;
 
 namespace eWAN.WebApi.UseCases.LogIn
 {
-    using System.Security.Claims;
     using Application.Boundaries.LogIn;
     using Microsoft.AspNetCore.Http;
 

@@ -24,12 +24,12 @@ namespace eWAN.Infrastructure.Database.Repositories
 
         public List<IRole> GetRolesByUser(IUser user)
         {
-            return (List<IRole>) user.AssignedRoles.Where(x => x.deletedAt == null);
+            return (List<IRole>) user.AssignedRoles.Where(x => x.DeletedAt == null);
         }
 
         public async Task Remove(IRole role)
         {
-            role.deletedAt = DateTime.Now;
+            role.DeletedAt = DateTime.Now;
             await this._context.SaveChangesAsync();
         }
     }

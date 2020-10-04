@@ -2,11 +2,11 @@ namespace eWAN.Application.Boundaries.CreateProgram
 {
     public class CreateProgramInput
     {
-        public CreateProgramInput(string Title, string Code, string Description)
+        public CreateProgramInput(string title, string code, string description)
         {
-            this.Title = Title;
-            this.Code = Code;
-            this.Description = Description;
+            Title = title;
+            Code = code;
+            Description = description;
         }
 
         public string Title { get; set; }

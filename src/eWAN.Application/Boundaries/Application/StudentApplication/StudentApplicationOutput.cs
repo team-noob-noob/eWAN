@@ -4,7 +4,7 @@ namespace eWAN.Application.Boundaries.StudentApplication
     {
         public StudentApplicationOutput(string id)
         {
-            this.ConfirmationId = id;
+            ConfirmationId = id;
         }
 
         public string ConfirmationId { get; }

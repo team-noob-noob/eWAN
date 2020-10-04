@@ -6,7 +6,7 @@ namespace eWAN.Application.Boundaries.CreateProgram
     {
         public CreateProgramOutput(IProgram program)
         {
-            this.Program = program;
+            Program = program;
         }
 
         public IProgram Program { get; set; }

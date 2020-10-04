@@ -7,10 +7,10 @@ namespace eWAN.Domains.Program
     public interface IProgramFactory
     {
         IProgram NewProgram(
-            string Title,
-            string Code,
-            string Description,
-            List<ICourse> Courses
+            string title,
+            string code,
+            string description,
+            List<ICourse> courses
         );
     }
 }

@@ -2,23 +2,23 @@ namespace eWAN.Application.Boundaries.CreateCourse
 {
     using System.Collections.Generic;
     using Domains.Course;
-    using eWAN.Domains.Program;
+    using Domains.Program;
 
     public class CreateCourseInput
     {
         public CreateCourseInput(
-            string Id, 
-            string Title, 
-            string Description, 
-            List<ICourse> Prerequisites,
+            string id, 
+            string title, 
+            string description, 
+            List<ICourse> prerequisites,
             IProgram program    
         )
         {
-            this.Id = Id;
-            this.Title = Title;
-            this.Description = Description;
-            this.Prerequisites = Prerequisites;
-            this.Program = program;
+            Id = id;
+            Title = title;
+            Description = description;
+            Prerequisites = prerequisites;
+            Program = program;
         }
 
         public string Id { get; set; }

@@ -1,9 +1,9 @@
 namespace eWAN.Application.UseCases
 {
     using System.Threading.Tasks;
-    using Application.Boundaries.CreateRoom;
+    using Boundaries.CreateRoom;
     using Domains.Room;
-    using eWAN.Application.Services;
+    using Services;
 
     public class CreateRoomUseCase : ICreateRoomUseCase
     {
@@ -14,10 +14,10 @@ namespace eWAN.Application.UseCases
             IUnitOfWork unitOfWork
         )
         {
-            this._roomRepo = roomRepository;
-            this._roomFactory = roomFactory;
-            this._output = outputPort;
-            this._unitOfWork = unitOfWork;
+            _roomRepo = roomRepository;
+            _roomFactory = roomFactory;
+            _output = outputPort;
+            _unitOfWork = unitOfWork;
         }
 
         private readonly IRoomRepository _roomRepo;
@@ -27,19 +27,19 @@ namespace eWAN.Application.UseCases
 
         public async Task Handle(CreateRoomInput input)
         {
-            if(await this._roomRepo.GetRoomById(input.Id) != null)
+            if(await _roomRepo.GetRoomById(input.Id) != null)
             {
-                this._output.WriteError("Id already taken");
+                _output.WriteError("Id already taken");
                 return;
             }
 
 
-            var room = this._roomFactory.NewRoom(input.Id, input.Name, input.Address);
-            await this._roomRepo.Add(room);
+            var room = _roomFactory.NewRoom(input.Id, input.Name, input.Address);
+            await _roomRepo.Add(room);
 
-            this._output.Standard(new CreateRoomOutput(room));
+            _output.Standard(new CreateRoomOutput(room));
 
-            await this._unitOfWork.Save();
+            await _unitOfWork.Save();
         }
     }
 }

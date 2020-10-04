@@ -20,7 +20,7 @@ namespace eWAN.Infrastructure.Database.Configuration
 
             builder
                 .HasMany<Role>(x => (IEnumerable<Role>) x.AssignedRoles)
-                .WithOne(y => (User) y.user)
+                .WithOne(y => (User) y.User)
                 .HasForeignKey(x => x.User_Id);
 
             builder.ToTable("User");

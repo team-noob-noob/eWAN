@@ -6,7 +6,7 @@ namespace eWAN.Application.Boundaries.CreateSubject
     {
         public CreateSubjectOutput(ISubject subject)
         {
-            this.Subject = subject;
+            Subject = subject;
         }
 
         public ISubject Subject { get; }

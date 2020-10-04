@@ -6,7 +6,9 @@ namespace eWAN.Domains.Session
     using User;
     using Subject;
 
-    /// <summary>A set time and day of when students and instructor meet in a specified room</summarY>
+    /// <summary>
+    /// A set time and day of when students and instructor meet in a specified room
+    /// </summarY>
     public interface ISession : IBaseEntity
     {
         string Id { get; set; }

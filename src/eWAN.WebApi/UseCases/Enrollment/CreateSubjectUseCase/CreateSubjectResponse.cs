@@ -4,9 +4,9 @@ namespace eWAN.WebApi.UseCases.CreateSubject
 
     public class CreateSubjectResponse
     {
-        public CreateSubjectResponse(ISubject NewSubject)
+        public CreateSubjectResponse(ISubject newSubject)
         {
-            this.NewSubject = NewSubject;
+            NewSubject = newSubject;
         }
 
         public ISubject NewSubject { get; }

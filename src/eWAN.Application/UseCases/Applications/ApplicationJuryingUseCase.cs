@@ -17,10 +17,10 @@ namespace eWAN.Application.UseCases
             IUnitOfWork unitOfWork
         )
         {
-            this._applicationRepository = applicationRepository;
-            this._outputPort = outputPort;
-            this._unitOfWork = unitOfWork;
-            this._roleRepository = roleRepository;
+            _applicationRepository = applicationRepository;
+            _outputPort = outputPort;
+            _unitOfWork = unitOfWork;
+            _roleRepository = roleRepository;
         }
 
         private readonly IApplicationRepository _applicationRepository;
@@ -30,27 +30,27 @@ namespace eWAN.Application.UseCases
 
         public async Task Handle(ApplicationJuryingInput input)
         {
-            var studentApplication = this._applicationRepository.GetApplicationById(input.ApplicationId);
+            var studentApplication = _applicationRepository.GetApplicationById(input.ApplicationId);
 
             if(studentApplication == null)
             {
-                this._outputPort.WriteError("Invalid Application Id");
+                _outputPort.WriteError("Invalid Application Id");
                 return;
             }
 
             if(input.IsAccepted)
             {
-                var oldStudentApplicantRole = this._roleRepository.GetRolesByUser(studentApplication.applicant).SingleOrDefault(x => x.role == UserRole.StudentApplicant);
-                oldStudentApplicantRole.role = UserRole.Student;
+                var oldStudentApplicantRole = _roleRepository.GetRolesByUser(studentApplication.Applicant).SingleOrDefault(x => x.UserRole == UserRole.StudentApplicant);
+                oldStudentApplicantRole.UserRole = UserRole.Student;
             }
 
-            studentApplication.isAccepted = input.IsAccepted;
-            studentApplication.reason = input.Reason;
-            studentApplication.staff = input.Jury;
+            studentApplication.IsAccepted = input.IsAccepted;
+            studentApplication.Reason = input.Reason;
+            studentApplication.Staff = input.Jury;
 
-            this._outputPort.Standard(new ApplicationJuryingOutput(studentApplication));
+            _outputPort.Standard(new ApplicationJuryingOutput(studentApplication));
 
-            await this._unitOfWork.Save();
+            await _unitOfWork.Save();
         }
     }
 }

@@ -10,8 +10,8 @@ namespace eWAN.Tests.UnitTests.UseCases.CreateCourse
 {
     public sealed class CreateCourseUseCaseTests : IClassFixture<StandardFixture>, IDisposable
     {
-        public CreateCourseUseCaseTests(StandardFixture fixture) => this._fixtures = fixture;
-        private StandardFixture _fixtures;
+        public CreateCourseUseCaseTests(StandardFixture fixture) => _fixtures = fixture;
+        private readonly StandardFixture _fixtures;
 
         [Fact]
         public async Task CreateCourse_DuplicateId_ShouldReturnError()
@@ -19,9 +19,9 @@ namespace eWAN.Tests.UnitTests.UseCases.CreateCourse
             var presenter = new CreateCoursePresenterFake();
             var sut = new CreateCourseUseCase(
                 presenter,
-                this._fixtures.EntityFactory,
-                this._fixtures.CourseRepositoryFake,
-                this._fixtures.UnitOfWorkFake
+                _fixtures.EntityFactory,
+                _fixtures.CourseRepositoryFake,
+                _fixtures.UnitOfWorkFake
             );
             var input = new CreateCourseInput(
                 EwanContextFake.TestCourse.Id,
@@ -43,9 +43,9 @@ namespace eWAN.Tests.UnitTests.UseCases.CreateCourse
             var presenter = new CreateCoursePresenterFake();
             var sut = new CreateCourseUseCase(
                 presenter,
-                this._fixtures.EntityFactory,
-                this._fixtures.CourseRepositoryFake,
-                this._fixtures.UnitOfWorkFake
+                _fixtures.EntityFactory,
+                _fixtures.CourseRepositoryFake,
+                _fixtures.UnitOfWorkFake
             );
             var input = new CreateCourseInput(
                 "Testing Course",
@@ -67,9 +67,9 @@ namespace eWAN.Tests.UnitTests.UseCases.CreateCourse
             var presenter = new CreateCoursePresenterFake();
             var sut = new CreateCourseUseCase(
                 presenter,
-                this._fixtures.EntityFactory,
-                this._fixtures.CourseRepositoryFake,
-                this._fixtures.UnitOfWorkFake
+                _fixtures.EntityFactory,
+                _fixtures.CourseRepositoryFake,
+                _fixtures.UnitOfWorkFake
             );
             var input = new CreateCourseInput(
                 "Testing Course",
@@ -85,6 +85,6 @@ namespace eWAN.Tests.UnitTests.UseCases.CreateCourse
             presenter.StandardOutput.Course.Id.Should().Be("Testing Course");
         }
 
-        public void Dispose() => this._fixtures.Dispose();
+        public void Dispose() => _fixtures.Dispose();
     }
 }

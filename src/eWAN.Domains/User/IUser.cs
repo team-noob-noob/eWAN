@@ -4,8 +4,9 @@ using eWAN.Domains.Student;
 
 namespace eWAN.Domains.User
 {
-
-    /// <summary>Holds all of the Personally Identifiable Information</summary>
+    /// <summary>
+    /// Holds all of the Personally Identifiable Information
+    /// </summary>
     public interface IUser : IBaseEntity
     {
         string Id { get; }
@@ -15,7 +16,7 @@ namespace eWAN.Domains.User
 
         string Email { get; set; }
         string PhoneNumber { get; set; }
-        
+
         string FirstName { get; set; }
         string MiddleName { get; set; }
         string LastName { get; set; }

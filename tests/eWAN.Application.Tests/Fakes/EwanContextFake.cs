@@ -23,20 +23,20 @@ namespace eWAN.Tests.Fakes
                 "testing",
                 "testing"
             );
-            this.Users.Add(user);
-            this.Users.Add(TestUser);
-            this.Users.Add(TestUser2);
+            Users.Add(user);
+            Users.Add(TestUser);
+            Users.Add(TestUser2);
 
             var role = new Role(user, UserRole.StudentApplicant);
-            this.UserRoles.Add(role);
+            UserRoles.Add(role);
 
-            this.Applications.Add(TestApplication);
+            Applications.Add(TestApplication);
 
-            this.Programs.Add(TestProgram);
+            Programs.Add(TestProgram);
 
-            this.Courses.Add(TestCourse);
+            Courses.Add(TestCourse);
 
-            this.Rooms.Add(TestRoom);
+            Rooms.Add(TestRoom);
         }
 
         public static User TestUser = new User(

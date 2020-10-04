@@ -4,8 +4,8 @@ namespace eWAN.Application.UseCases
 {
     using Domains.User;
     using Domains.Role;
-    using Application.Boundaries.Register;
-    using Application.Services;
+    using Boundaries.Register;
+    using Services;
 
     public class RegisterUseCase : IRegisterUseCase
     {
@@ -19,13 +19,13 @@ namespace eWAN.Application.UseCases
             IHashingService hashingService
         )
         {
-            this._outputPort = outputPort;
-            this._userRepository = userRepository;
-            this._roleRepository = roleRepository;
-            this._userFactory = userFactory;
-            this._roleFactory = roleFactory;
-            this._unitOfWork = unitOfWork;
-            this._hashingService = hashingService;
+            _outputPort = outputPort;
+            _userRepository = userRepository;
+            _roleRepository = roleRepository;
+            _userFactory = userFactory;
+            _roleFactory = roleFactory;
+            _unitOfWork = unitOfWork;
+            _hashingService = hashingService;
         }
 
         private readonly IRegisterOutputPort _outputPort;
@@ -40,39 +40,39 @@ namespace eWAN.Application.UseCases
         {
             if(input is null)
             {
-                this._outputPort.WriteError("Input is null");
+                _outputPort.WriteError("Input is null");
                 return;
             }
 
-            if(await this._userRepository.GetByUsername(input.Username) != null)
+            if(await _userRepository.GetByUsername(input.Username) != null)
             {
-                this._outputPort.WriteError("Username already taken");
+                _outputPort.WriteError("Username already taken");
                 return;
             }
 
-            if(await this._userRepository.GetByEmail(input.Email) != null)
+            if(await _userRepository.GetByEmail(input.Email) != null)
             {
-                this._outputPort.WriteError("Email already taken");
+                _outputPort.WriteError("Email already taken");
                 return;
             }
 
-            IUser user = this._userFactory.NewUser(
+            IUser user = _userFactory.NewUser(
                 input.Username,
-                this._hashingService.Hash(input.Password),
+                _hashingService.Hash(input.Password),
                 input.Email,
                 input.PhoneNumber,
                 input.FirstName,
                 input.MiddleName,
                 input.LastName,
                 input.Address);
-            await this._userRepository.Add(user);
+            await _userRepository.Add(user);
 
-            IRole role = this._roleFactory.NewRole(user);
-            await this._roleRepository.Add(role);
+            IRole role = _roleFactory.NewRole(user);
+            await _roleRepository.Add(role);
 
-            await this._unitOfWork.Save();
+            await _unitOfWork.Save();
 
-            this._outputPort.Standard(new RegisterOutput(user));
+            _outputPort.Standard(new RegisterOutput(user));
         }
     }
 }

@@ -4,8 +4,8 @@ namespace eWAN.Application.Boundaries.CreateRoom
 {
     public class CreateRoomOutput
     {
-        public CreateRoomOutput(IRoom room) => this.newRoom = room;
+        public CreateRoomOutput(IRoom room) => NewRoom = room;
 
-        public IRoom newRoom { get; set; }
+        public IRoom NewRoom { get; set; }
     }
 }

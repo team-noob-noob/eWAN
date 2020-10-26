@@ -9,7 +9,7 @@ namespace eWAN.Infrastructure.Database
         {
             string connectionString = "Server=localhost;Database=ewan;Uid=root;Pwd=root;";
             var builder = new DbContextOptionsBuilder<EwanContext>();
-            builder.UseMySQL(connectionString);
+            builder.UseMySql(connectionString);
             return new EwanContext(builder.Options);
         }
     }

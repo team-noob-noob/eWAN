@@ -1,11 +1,9 @@
 using System.Collections.Generic;
+using eWAN.Domains.Program;
+using eWAN.Domains.Course;
 
 namespace eWAN.Infrastructure.Database.Entities
 {
-    using Domains.Course;
-    using eWAN.Domains.Program;
-    using eWAN.Domains.Subject;
-
     public class Course : Domains.Course.Course, ICourse
     {
         public Course() {}

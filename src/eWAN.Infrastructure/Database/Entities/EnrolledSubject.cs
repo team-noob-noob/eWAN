@@ -1,9 +1,9 @@
+using eWAN.Domains.Subject;
+using eWAN.Domains.Student;
+using eWAN.Domains.EnrolledSubject;
+
 namespace eWAN.Infrastructure.Database.Entities
 {
-    using Domains.EnrolledSubject;
-    using eWAN.Domains.Subject;
-    using eWAN.Domains.Student;
-
     public class EnrolledSubject : Domains.EnrolledSubject.EnrolledSubject, IEnrolledSubject
     {
         public EnrolledSubject() {}

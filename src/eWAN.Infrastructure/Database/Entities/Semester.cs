@@ -1,10 +1,10 @@
+using System;
+using System.Collections.Generic;
+using eWAN.Domains.Semester;
+using eWAN.Domains.Subject;
+
 namespace eWAN.Infrastructure.Database.Entities
 {
-    using System;
-    using System.Collections.Generic;
-    using Domains.Semester;
-    using eWAN.Domains.Subject;
-
     public class Semester : Domains.Semester.Semester, ISemester
     {
         public Semester() {}

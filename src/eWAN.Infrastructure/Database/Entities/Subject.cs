@@ -1,14 +1,11 @@
+using System.Collections.Generic;
+using eWAN.Domains.Subject;
+using eWAN.Domains.Course;
+using eWAN.Domains.Session;
+using System;
+
 namespace eWAN.Infrastructure.Database.Entities
 {
-    using System.Collections.Generic;
-    using Domains.Subject;
-    using Domains.Course;
-    using Domains.Session;
-    using Domains.EnrolledSubject;
-    using System;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using eWAN.Domains.Semester;
-
     public class Subject : Domains.Subject.Subject, ISubject
     {
         public Subject() {}

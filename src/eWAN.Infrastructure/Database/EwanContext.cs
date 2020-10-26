@@ -38,7 +38,7 @@ namespace eWAN.Infrastructure.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectionString = "Server=localhost;Database=ewan;Uid=root;Pwd=root;";
-            optionsBuilder.UseMySQL(connectionString);
+            optionsBuilder.UseMySql(connectionString);
             optionsBuilder.EnableSensitiveDataLogging();
         }
 

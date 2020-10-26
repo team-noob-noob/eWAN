@@ -1,14 +1,13 @@
 using System;
+using System.Collections.Generic;
+using eWAN.Domains.User;
+using eWAN.Domains.EnrolledProgram;
+using eWAN.Domains.EnrolledSubject;
+using eWAN.Domains.Role;
+using eWAN.Domains.Section;
 
 namespace eWAN.Infrastructure.Database.Entities
 {
-    using System.Collections.Generic;
-    using Domains.User;
-    using eWAN.Domains.EnrolledProgram;
-    using eWAN.Domains.EnrolledSubject;
-    using eWAN.Domains.Role;
-    using eWAN.Domains.Section;
-
     public class User : Domains.User.User, IUser
     {
         public User() => this.Id = DateTime.Now.Year.ToString() + new Random().NewString(10, "0123456789");

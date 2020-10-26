@@ -1,11 +1,11 @@
+using System;
+using eWAN.Domains.Session;
+using eWAN.Domains.Room;
+using eWAN.Domains.User;
+using eWAN.Domains.Subject;
+
 namespace eWAN.Infrastructure.Database.Entities
 {
-    using System;
-    using Domains.Session;
-    using Domains.Room;
-    using Domains.User;
-    using eWAN.Domains.Subject;
-
     public class Session : Domains.Session.Session, ISession
     {
         public Session() => this.Id =  new Random().NewString(10, "0123456789");

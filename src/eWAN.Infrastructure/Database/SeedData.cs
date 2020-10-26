@@ -2,6 +2,8 @@ using eWAN.Infrastructure.Database.Entities;
 using System.Collections.Generic;
 using eWAN.Infrastructure.Hashing;
 using System;
+using SessionType = eWAN.Domains.Session.SessionType;
+using IStudent = eWAN.Domains.Student.IStudent;
 
 namespace eWAN.Infrastructure.Database
 {
@@ -58,7 +60,7 @@ namespace eWAN.Infrastructure.Database
             .RuleFor(o => o.EndTime, (_, o) => o.StartTime.Add(new System.TimeSpan(0, 1, 0)))
             .RuleFor(o => o.Room, _ => Room)
             .RuleFor(o => o.Instructor, _ => User2)
-            .RuleFor(o => o.Type, f => f.PickRandom<eWAN.Domains.Session.SessionType>());
+            .RuleFor(o => o.Type, f => f.PickRandom<SessionType>());
 
         public static readonly Session SecondSession = new Bogus.Faker<Session>()
             .RuleFor(o => o.Day, f => f.PickRandom<System.DayOfWeek>())
@@ -66,7 +68,7 @@ namespace eWAN.Infrastructure.Database
             .RuleFor(o => o.EndTime, (_, o) => o.StartTime.Add(new System.TimeSpan(0, 1, 0)))
             .RuleFor(o => o.Room, _ => Room)
             .RuleFor(o => o.Instructor, _ => User2)
-            .RuleFor(o => o.Type, f => f.PickRandom<eWAN.Domains.Session.SessionType>());
+            .RuleFor(o => o.Type, f => f.PickRandom<SessionType>());
         
         public static readonly Subject Subject = 
             new Subject(Course, new List<Domains.Session.ISession>(new []{FirstSession, SecondSession}));
@@ -92,7 +94,7 @@ namespace eWAN.Infrastructure.Database
             this._context.EnrolledPrograms.Add(new EnrolledProgram(Student, Program));
             this._context.EnrolledSubjects.Add(new EnrolledSubject(Student, Subject){Grade = ""});
             this._context.Semesters.Add(Semester);
-            this._context.Sections.Add(new Section("BSIT - 1B - 2077" + new Random().NewString(), new List<eWAN.Domains.Student.IStudent>(new []{Student})));
+            this._context.Sections.Add(new Section("BSIT - 1B - 2077" + new Random().NewString(), new List<IStudent>(new []{Student})));
             this._context.SaveChanges();
         }
     }

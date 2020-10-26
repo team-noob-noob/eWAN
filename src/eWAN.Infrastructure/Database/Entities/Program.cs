@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using eWAN.Domains.Course;
+using eWAN.Domains.EnrolledProgram;
+using eWAN.Domains.Program;
+
 
 namespace eWAN.Infrastructure.Database.Entities
 {
-    using Domains.Program;
-    using eWAN.Domains.Course;
-    using eWAN.Domains.EnrolledProgram;
+        
 
     public class Program : Domains.Program.Program, IProgram
     {

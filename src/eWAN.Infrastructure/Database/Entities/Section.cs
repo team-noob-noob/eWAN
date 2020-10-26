@@ -1,9 +1,9 @@
+using System.Collections.Generic;
+using eWAN.Domains.Section;
+using eWAN.Domains.Student;
+
 namespace eWAN.Infrastructure.Database.Entities
 {
-    using System.Collections.Generic;
-    using Domains.Section;
-    using eWAN.Domains.Student;
-
     public class Section : Domains.Section.Section, ISection
     {
         public Section() {}

@@ -2,48 +2,50 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eWAN.Infrastructure.Database;
 
-namespace eWAN.Infrastructure.Database.Migrations
+namespace eWAN.Infrastructure.eWAN.Infrastructure.Database.Migrations
 {
     [DbContext(typeof(EwanContext))]
-    partial class EwanContextModelSnapshot : ModelSnapshot
+    [Migration("20201026100836_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.4")
+                .HasAnnotation("ProductVersion", "3.1.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.Application", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Applicant_Id")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsAccepted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Staff_Id")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("createdAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("deletedAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<bool>("isAccepted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("reason")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("updatedAt")
-                        .HasColumnType("datetime");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -58,30 +60,30 @@ namespace eWAN.Infrastructure.Database.Migrations
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.Course", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ParentCourse_Id")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<int>("Program_Id")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("createdAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("deletedAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("updatedAt")
-                        .HasColumnType("datetime");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -98,21 +100,21 @@ namespace eWAN.Infrastructure.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int>("Program_Id")
                         .HasColumnType("int");
 
                     b.Property<string>("Student_Id")
                         .IsRequired()
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("createdAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("deletedAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("updatedAt")
-                        .HasColumnType("datetime");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -129,26 +131,26 @@ namespace eWAN.Infrastructure.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Grade")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("Subject_Id")
                         .IsRequired()
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("User_Id")
                         .IsRequired()
-                        .HasColumnType("varchar(767)");
-
-                    b.Property<DateTime>("createdAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("deletedAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<string>("grade")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime?>("updatedAt")
-                        .HasColumnType("datetime");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -167,24 +169,24 @@ namespace eWAN.Infrastructure.Database.Migrations
 
                     b.Property<string>("Code")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("createdAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("deletedAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("updatedAt")
-                        .HasColumnType("datetime");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -197,21 +199,21 @@ namespace eWAN.Infrastructure.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("User_Id")
-                        .IsRequired()
-                        .HasColumnType("varchar(767)");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("createdAt")
-                        .HasColumnType("datetime");
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime?>("deletedAt")
-                        .HasColumnType("datetime");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<int>("role")
+                    b.Property<int>("UserRole")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("updatedAt")
-                        .HasColumnType("datetime");
+                    b.Property<string>("User_Id")
+                        .IsRequired()
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -223,24 +225,24 @@ namespace eWAN.Infrastructure.Database.Migrations
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.Room", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("createdAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("deletedAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("updatedAt")
-                        .HasColumnType("datetime");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -253,18 +255,18 @@ namespace eWAN.Infrastructure.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("createdAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("deletedAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("updatedAt")
-                        .HasColumnType("datetime");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -274,25 +276,25 @@ namespace eWAN.Infrastructure.Database.Migrations
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.Semester", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("End")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsOpenForEnrollment")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime>("Start")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<DateTime>("createdAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("deletedAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("updatedAt")
-                        .HasColumnType("datetime");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -302,40 +304,40 @@ namespace eWAN.Infrastructure.Database.Migrations
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.Session", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("Day")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<TimeSpan>("EndTime")
-                        .HasColumnType("time");
+                        .HasColumnType("time(6)");
 
                     b.Property<string>("InstructorId")
                         .IsRequired()
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("RoomId")
                         .IsRequired()
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<TimeSpan>("StartTime")
-                        .HasColumnType("time");
+                        .HasColumnType("time(6)");
 
                     b.Property<string>("SubjectId")
                         .IsRequired()
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("createdAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("deletedAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("updatedAt")
-                        .HasColumnType("datetime");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -351,22 +353,22 @@ namespace eWAN.Infrastructure.Database.Migrations
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.Student", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<int?>("AssignedSectionId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("UserId")
-                        .HasColumnType("varchar(767)");
-
-                    b.Property<DateTime>("createdAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("deletedAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("updatedAt")
-                        .HasColumnType("datetime");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -381,23 +383,23 @@ namespace eWAN.Infrastructure.Database.Migrations
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.Subject", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("CourseId")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("SemesterId")
                         .IsRequired()
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
-                    b.Property<DateTime>("createdAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("deletedAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("updatedAt")
-                        .HasColumnType("datetime");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -411,48 +413,48 @@ namespace eWAN.Infrastructure.Database.Migrations
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.User", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("MiddleName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("createdAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("deletedAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("updatedAt")
-                        .HasColumnType("datetime");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -461,11 +463,11 @@ namespace eWAN.Infrastructure.Database.Migrations
 
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.Application", b =>
                 {
-                    b.HasOne("eWAN.Infrastructure.Database.Entities.User", "applicant")
+                    b.HasOne("eWAN.Infrastructure.Database.Entities.User", "Applicant")
                         .WithMany()
                         .HasForeignKey("Applicant_Id");
 
-                    b.HasOne("eWAN.Infrastructure.Database.Entities.User", "staff")
+                    b.HasOne("eWAN.Infrastructure.Database.Entities.User", "Staff")
                         .WithOne()
                         .HasForeignKey("eWAN.Infrastructure.Database.Entities.Application", "Staff_Id");
                 });
@@ -500,13 +502,13 @@ namespace eWAN.Infrastructure.Database.Migrations
 
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.EnrolledSubject", b =>
                 {
-                    b.HasOne("eWAN.Infrastructure.Database.Entities.Subject", "subject")
+                    b.HasOne("eWAN.Infrastructure.Database.Entities.Subject", "Subject")
                         .WithMany("StudentsEnrolled")
                         .HasForeignKey("Subject_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eWAN.Infrastructure.Database.Entities.Student", "enrolledStudent")
+                    b.HasOne("eWAN.Infrastructure.Database.Entities.Student", "EnrolledStudent")
                         .WithMany("EnrolledSubjects")
                         .HasForeignKey("User_Id")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -515,7 +517,7 @@ namespace eWAN.Infrastructure.Database.Migrations
 
             modelBuilder.Entity("eWAN.Infrastructure.Database.Entities.Role", b =>
                 {
-                    b.HasOne("eWAN.Infrastructure.Database.Entities.User", "user")
+                    b.HasOne("eWAN.Infrastructure.Database.Entities.User", "User")
                         .WithMany("AssignedRoles")
                         .HasForeignKey("User_Id")
                         .OnDelete(DeleteBehavior.Cascade)

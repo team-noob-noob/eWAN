@@ -1,8 +1,8 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using MySql.Data.EntityFrameworkCore.Metadata;
 
-namespace eWAN.Infrastructure.Database.Migrations
+namespace eWAN.Infrastructure.eWAN.Infrastructure.Database.Migrations
 {
     public partial class InitialMigration : Migration
     {
@@ -13,10 +13,10 @@ namespace eWAN.Infrastructure.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    createdAt = table.Column<DateTime>(nullable: false),
-                    updatedAt = table.Column<DateTime>(nullable: true),
-                    deletedAt = table.Column<DateTime>(nullable: true),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
                     Code = table.Column<string>(nullable: false),
                     Title = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: false)
@@ -31,9 +31,9 @@ namespace eWAN.Infrastructure.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    createdAt = table.Column<DateTime>(nullable: false),
-                    updatedAt = table.Column<DateTime>(nullable: true),
-                    deletedAt = table.Column<DateTime>(nullable: true),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(nullable: false),
                     Address = table.Column<string>(nullable: false)
                 },
@@ -47,10 +47,10 @@ namespace eWAN.Infrastructure.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    createdAt = table.Column<DateTime>(nullable: false),
-                    updatedAt = table.Column<DateTime>(nullable: true),
-                    deletedAt = table.Column<DateTime>(nullable: true),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -63,9 +63,9 @@ namespace eWAN.Infrastructure.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    createdAt = table.Column<DateTime>(nullable: false),
-                    updatedAt = table.Column<DateTime>(nullable: true),
-                    deletedAt = table.Column<DateTime>(nullable: true),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
                     Start = table.Column<DateTime>(nullable: false),
                     End = table.Column<DateTime>(nullable: false),
                     IsOpenForEnrollment = table.Column<bool>(nullable: false)
@@ -76,13 +76,35 @@ namespace eWAN.Infrastructure.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    Username = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(nullable: false),
+                    PhoneNumber = table.Column<string>(nullable: false),
+                    FirstName = table.Column<string>(nullable: false),
+                    MiddleName = table.Column<string>(nullable: false),
+                    LastName = table.Column<string>(nullable: false),
+                    Address = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Courses",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    createdAt = table.Column<DateTime>(nullable: false),
-                    updatedAt = table.Column<DateTime>(nullable: true),
-                    deletedAt = table.Column<DateTime>(nullable: true),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
                     Title = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: false),
                     ParentCourse_Id = table.Column<string>(nullable: true),
@@ -106,72 +128,15 @@ namespace eWAN.Infrastructure.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    createdAt = table.Column<DateTime>(nullable: false),
-                    updatedAt = table.Column<DateTime>(nullable: true),
-                    deletedAt = table.Column<DateTime>(nullable: true),
-                    AssignedSectionId = table.Column<int>(nullable: true),
-                    Username = table.Column<string>(nullable: false),
-                    Password = table.Column<string>(nullable: false),
-                    Email = table.Column<string>(nullable: false),
-                    PhoneNumber = table.Column<string>(nullable: false),
-                    FirstName = table.Column<string>(nullable: false),
-                    MiddleName = table.Column<string>(nullable: false),
-                    LastName = table.Column<string>(nullable: false),
-                    Address = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_User_Sections_AssignedSectionId",
-                        column: x => x.AssignedSectionId,
-                        principalTable: "Sections",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Subjects",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    createdAt = table.Column<DateTime>(nullable: false),
-                    updatedAt = table.Column<DateTime>(nullable: true),
-                    deletedAt = table.Column<DateTime>(nullable: true),
-                    CourseId = table.Column<string>(nullable: false),
-                    SemesterId = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Subjects", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Subjects_Courses_CourseId",
-                        column: x => x.CourseId,
-                        principalTable: "Courses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Subjects_Semesters_SemesterId",
-                        column: x => x.SemesterId,
-                        principalTable: "Semesters",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Applications",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    createdAt = table.Column<DateTime>(nullable: false),
-                    updatedAt = table.Column<DateTime>(nullable: true),
-                    deletedAt = table.Column<DateTime>(nullable: true),
-                    isAccepted = table.Column<bool>(nullable: false),
-                    reason = table.Column<string>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    IsAccepted = table.Column<bool>(nullable: false),
+                    Reason = table.Column<string>(nullable: false),
                     Applicant_Id = table.Column<string>(nullable: true),
                     Staff_Id = table.Column<string>(nullable: true)
                 },
@@ -193,32 +158,31 @@ namespace eWAN.Infrastructure.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EnrolledProgram",
+                name: "Students",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    createdAt = table.Column<DateTime>(nullable: false),
-                    updatedAt = table.Column<DateTime>(nullable: true),
-                    deletedAt = table.Column<DateTime>(nullable: true),
-                    Student_Id = table.Column<string>(nullable: false),
-                    Program_Id = table.Column<int>(nullable: false)
+                    Id = table.Column<string>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    AssignedSectionId = table.Column<int>(nullable: true),
+                    UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EnrolledProgram", x => x.Id);
+                    table.PrimaryKey("PK_Students", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EnrolledProgram_Programs_Program_Id",
-                        column: x => x.Program_Id,
-                        principalTable: "Programs",
+                        name: "FK_Students_Sections_AssignedSectionId",
+                        column: x => x.AssignedSectionId,
+                        principalTable: "Sections",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_EnrolledProgram_User_Student_Id",
-                        column: x => x.Student_Id,
+                        name: "FK_Students_User_UserId",
+                        column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -226,11 +190,11 @@ namespace eWAN.Infrastructure.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    createdAt = table.Column<DateTime>(nullable: false),
-                    updatedAt = table.Column<DateTime>(nullable: true),
-                    deletedAt = table.Column<DateTime>(nullable: true),
-                    role = table.Column<int>(type: "int", nullable: false),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    UserRole = table.Column<int>(type: "int", nullable: false),
                     User_Id = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -245,15 +209,72 @@ namespace eWAN.Infrastructure.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Subjects",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    CourseId = table.Column<string>(nullable: true),
+                    SemesterId = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Subjects", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Subjects_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Subjects_Semesters_SemesterId",
+                        column: x => x.SemesterId,
+                        principalTable: "Semesters",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EnrolledProgram",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    Student_Id = table.Column<string>(nullable: false),
+                    Program_Id = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EnrolledProgram", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EnrolledProgram_Programs_Program_Id",
+                        column: x => x.Program_Id,
+                        principalTable: "Programs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EnrolledProgram_Students_Student_Id",
+                        column: x => x.Student_Id,
+                        principalTable: "Students",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "EnrolledSubjects",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    createdAt = table.Column<DateTime>(nullable: false),
-                    updatedAt = table.Column<DateTime>(nullable: true),
-                    deletedAt = table.Column<DateTime>(nullable: true),
-                    grade = table.Column<string>(nullable: false),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
+                    Grade = table.Column<string>(nullable: false),
                     Subject_Id = table.Column<string>(nullable: false),
                     User_Id = table.Column<string>(nullable: false)
                 },
@@ -267,9 +288,9 @@ namespace eWAN.Infrastructure.Database.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_EnrolledSubjects_User_User_Id",
+                        name: "FK_EnrolledSubjects_Students_User_Id",
                         column: x => x.User_Id,
-                        principalTable: "User",
+                        principalTable: "Students",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -279,9 +300,9 @@ namespace eWAN.Infrastructure.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    createdAt = table.Column<DateTime>(nullable: false),
-                    updatedAt = table.Column<DateTime>(nullable: true),
-                    deletedAt = table.Column<DateTime>(nullable: true),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    DeletedAt = table.Column<DateTime>(nullable: true),
                     RoomId = table.Column<string>(nullable: false),
                     InstructorId = table.Column<string>(nullable: false),
                     SubjectId = table.Column<string>(nullable: false),
@@ -316,8 +337,7 @@ namespace eWAN.Infrastructure.Database.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Applications_Applicant_Id",
                 table: "Applications",
-                column: "Applicant_Id",
-                unique: true);
+                column: "Applicant_Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Applications_Staff_Id",
@@ -371,6 +391,17 @@ namespace eWAN.Infrastructure.Database.Migrations
                 column: "SubjectId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Students_AssignedSectionId",
+                table: "Students",
+                column: "AssignedSectionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Students_UserId",
+                table: "Students",
+                column: "UserId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Subjects_CourseId",
                 table: "Subjects",
                 column: "CourseId");
@@ -379,11 +410,6 @@ namespace eWAN.Infrastructure.Database.Migrations
                 name: "IX_Subjects_SemesterId",
                 table: "Subjects",
                 column: "SemesterId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_AssignedSectionId",
-                table: "User",
-                column: "AssignedSectionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserRoles_User_Id",
@@ -409,10 +435,16 @@ namespace eWAN.Infrastructure.Database.Migrations
                 name: "UserRoles");
 
             migrationBuilder.DropTable(
+                name: "Students");
+
+            migrationBuilder.DropTable(
                 name: "Rooms");
 
             migrationBuilder.DropTable(
                 name: "Subjects");
+
+            migrationBuilder.DropTable(
+                name: "Sections");
 
             migrationBuilder.DropTable(
                 name: "User");
@@ -422,9 +454,6 @@ namespace eWAN.Infrastructure.Database.Migrations
 
             migrationBuilder.DropTable(
                 name: "Semesters");
-
-            migrationBuilder.DropTable(
-                name: "Sections");
 
             migrationBuilder.DropTable(
                 name: "Programs");

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace eWAN.Infrastructure.eWAN.Infrastructure.Database.Migrations
+namespace eWAN.Infrastructure.Database.Migrations
 {
     public partial class InitialMigration : Migration
     {

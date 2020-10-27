@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eWAN.Infrastructure.Database;
 
 namespace eWAN.Infrastructure.Database.Migrations
 {
     [DbContext(typeof(EwanContext))]
-    partial class EwanContextModelSnapshot : ModelSnapshot
+    [Migration("20201027105400_RenameTables")]
+    partial class RenameTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -14,6 +14,7 @@ namespace eWAN.Infrastructure.Database.Configuration
                 .WithOne(x => (Student) x.StudentProfile)
                 .HasForeignKey<Student>(x => x.UserId)
                 .IsRequired(false);
+            builder.ToTable("Students");
         }
     }
 }

@@ -23,7 +23,7 @@ namespace eWAN.Infrastructure.Database.Configuration
                 .WithOne(y => (User) y.User)
                 .HasForeignKey(x => x.User_Id);
 
-            builder.ToTable("User");
+            builder.ToTable("Users");
 
             builder.HasKey(x => x.Id);
         }

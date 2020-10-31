@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace eWAN.WebApi.Modules
+namespace eWAN.Modules.Microsoft
 {
     public static class CustomControllersExtensions
     {

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace eWAN.WebApi.Modules
+namespace eWAN.Modules.Microsoft
 {
     using Application.Services;
     using Domains.User;

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using eWAN.Infrastructure.Database;
+using Autofac.Extensions.DependencyInjection;
 
 namespace eWAN.WebApi
 {
@@ -18,6 +19,7 @@ namespace eWAN.WebApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseUrls("http://localhost:5001").UseStartup<Startup>();

@@ -5,6 +5,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using eWAN.WebApi.Modules;
+using eWAN.Modules.Autofac;
+using eWAN.Modules.Microsoft;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 
 namespace eWAN.WebApi
 {
@@ -17,22 +21,32 @@ namespace eWAN.WebApi
 
         public IConfiguration Configuration { get; }
 
+        public ILifetimeScope AutofacContainer { get; private set; }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddPersistence();
-            services.AddUseCases();
             services.AddPresenters();
             services.AddCustomControllers();
             services.AddAuthentication();
-            services.AddServices();
             services.AddSwagger();
+            services.AddOptions();
+        }
+
+        // Autofac Specific Dependencies
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.AddPersistence();
+            builder.AddServices();
+            builder.AddUseCases();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            this.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
+
             app.UseAllElasticApm();
 
             app.UseHttpsRedirection();

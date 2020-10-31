@@ -8,7 +8,7 @@ namespace eWAN.Monitoring
         public void Intercept(IInvocation invocation)
         {
             var currentTransaction = Elastic.Apm.Agent.Tracer.CurrentTransaction;
-            var childSpan = currentTransaction.StartSpan(invocation.Method.ReflectedType.Namespace + invocation.Method.ToString(), "");
+            var childSpan = currentTransaction.StartSpan(invocation.Method.ReflectedType.Namespace + " " + invocation.Method.ToString(), "");
             try
             {
                 invocation.Proceed();

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="6.0.0" />
+    <PackageReference Include="Autofac.Extras.DynamicProxy" Version="6.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.8" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.5.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.5.1" />
@@ -18,6 +19,7 @@
     <ProjectReference Include="..\eWAN.Application\eWAN.Application.csproj" />
     <ProjectReference Include="..\eWAN.Domains\eWAN.Domains.csproj" />
     <ProjectReference Include="..\eWAN.Infrastructure\eWAN.Infrastructure.csproj" />
+    <ProjectReference Include="..\eWAN.Monitoring\eWAN.Monitoring.csproj" />
   </ItemGroup>
 
 </Project>

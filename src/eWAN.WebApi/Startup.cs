@@ -40,6 +40,7 @@ namespace eWAN.WebApi
             builder.AddPersistence();
             builder.AddServices();
             builder.AddUseCases();
+            builder.AddMonitoring();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

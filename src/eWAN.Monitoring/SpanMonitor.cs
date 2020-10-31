@@ -3,12 +3,12 @@ using Castle.DynamicProxy;
 
 namespace eWAN.Monitoring
 {
-    public class SpanMonitoring : IInterceptor
+    public class SpanMonitor : IInterceptor
     {
         public void Intercept(IInvocation invocation)
         {
-            var currentSpan = Elastic.Apm.Agent.Tracer.CurrentSpan;
-            var childSpan = currentSpan.StartSpan(invocation.Method.Name, "");
+            var currentTransaction = Elastic.Apm.Agent.Tracer.CurrentTransaction;
+            var childSpan = currentTransaction.StartSpan(invocation.Method.ReflectedType.Namespace + invocation.Method.ToString(), "");
             try
             {
                 invocation.Proceed();

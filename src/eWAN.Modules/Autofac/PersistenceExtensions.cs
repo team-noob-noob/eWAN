@@ -15,6 +15,8 @@ using eWAN.Domains.Semester;
 using eWAN.Domains.Session;
 using eWAN.Domains.Subject;
 using Microsoft.EntityFrameworkCore;
+using Autofac.Extras.DynamicProxy;
+using eWAN.Monitoring;
 
 namespace eWAN.Modules.Autofac
 {
@@ -29,36 +31,36 @@ namespace eWAN.Modules.Autofac
                 return new EwanContext(options.Options);
             }).AsSelf().InstancePerLifetimeScope();
 
-            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
 
             // Repositories
-            builder.RegisterType<UserRepository>().As<IUserRepository>();
-            builder.RegisterType<RoleRepository>().As<IRoleRepository>();
-            builder.RegisterType<ApplicationRepository>().As<IApplicationRepository>();
-            builder.RegisterType<CourseRepository>().As<ICourseRepository>();
-            builder.RegisterType<EnrolledProgramRepository>().As<IEnrolledProgramRepository>();
-            builder.RegisterType<EnrolledSubjectRepository>().As<IEnrolledSubjectRepository>();
-            builder.RegisterType<ProgramRepository>().As<IProgramRepository>();
-            builder.RegisterType<RoomRepository>().As<IRoomRepository>();
-            builder.RegisterType<SectionRepository>().As<ISectionRepository>();
-            builder.RegisterType<SemesterRepository>().As<ISemesterRepository>();
-            builder.RegisterType<SessionRepository>().As<ISessionRepository>();
-            builder.RegisterType<SubjectRepository>().As<ISubjectRepository>();
+            builder.RegisterType<UserRepository>().As<IUserRepository>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<RoleRepository>().As<IRoleRepository>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<ApplicationRepository>().As<IApplicationRepository>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<CourseRepository>().As<ICourseRepository>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<EnrolledProgramRepository>().As<IEnrolledProgramRepository>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<EnrolledSubjectRepository>().As<IEnrolledSubjectRepository>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<ProgramRepository>().As<IProgramRepository>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<RoomRepository>().As<IRoomRepository>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<SectionRepository>().As<ISectionRepository>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<SemesterRepository>().As<ISemesterRepository>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<SessionRepository>().As<ISessionRepository>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<SubjectRepository>().As<ISubjectRepository>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
 
             // Factories
-            builder.RegisterType<EntityFactory>().As<IUserFactory>();
-            builder.RegisterType<EntityFactory>().As<IRoleFactory>();
-            builder.RegisterType<EntityFactory>().As<IApplicationFactory>();
-            builder.RegisterType<EntityFactory>().As<ICourseFactory>();
-            builder.RegisterType<EntityFactory>().As<IEnrolledProgramFactory>();
-            builder.RegisterType<EntityFactory>().As<IEnrolledSubjectFactory>();
-            builder.RegisterType<EntityFactory>().As<IProgramFactory>();
-            builder.RegisterType<EntityFactory>().As<IRoomFactory>();
-            builder.RegisterType<EntityFactory>().As<ISectionFactory>();
-            builder.RegisterType<EntityFactory>().As<ISemesterFactory>();
-            builder.RegisterType<EntityFactory>().As<ISessionFactory>();
-            builder.RegisterType<EntityFactory>().As<ISubjectFactory>();
-            builder.RegisterType<EntityFactory>().As<IRoomFactory>();
+            builder.RegisterType<EntityFactory>().As<IUserFactory>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<EntityFactory>().As<IRoleFactory>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<EntityFactory>().As<IApplicationFactory>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<EntityFactory>().As<ICourseFactory>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<EntityFactory>().As<IEnrolledProgramFactory>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<EntityFactory>().As<IEnrolledSubjectFactory>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<EntityFactory>().As<IProgramFactory>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<EntityFactory>().As<IRoomFactory>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<EntityFactory>().As<ISectionFactory>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<EntityFactory>().As<ISemesterFactory>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<EntityFactory>().As<ISessionFactory>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<EntityFactory>().As<ISubjectFactory>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
+            builder.RegisterType<EntityFactory>().As<IRoomFactory>().EnableInterfaceInterceptors().InterceptedBy(typeof(SpanMonitor));
 
             builder.RegisterType<SeedData>().AsSelf();
 

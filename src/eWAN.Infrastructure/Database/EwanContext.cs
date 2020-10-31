@@ -7,6 +7,7 @@ namespace eWAN.Infrastructure.Database
 {
     using Entities;
     using Domains;
+    using Microsoft.Extensions.Logging;
 
     public class EwanContext : DbContext
     {
@@ -38,8 +39,15 @@ namespace eWAN.Infrastructure.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectionString = "Server=localhost;Database=ewan;Uid=root;Pwd=root;";
-            optionsBuilder.UseMySql(connectionString);
+            optionsBuilder.UseMySql(
+                connectionString,
+                options => {
+                    options.ServerVersion(new Version(8, 0, 20), Pomelo.EntityFrameworkCore.MySql.Infrastructure.ServerType.MySql);
+                    options.MaxBatchSize(1);
+                }
+            );
             optionsBuilder.EnableSensitiveDataLogging();
+            optionsBuilder.EnableDetailedErrors();
         }
 
         private void UpdateEntities()

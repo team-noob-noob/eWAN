@@ -1,19 +1,20 @@
+using System;
 using Microsoft.Extensions.DependencyInjection;
+using eWAN.Application.Boundaries.Register;
+using eWAN.Application.Boundaries.LogIn;
+using eWAN.Application.Boundaries.ApplicationJurying;
+using eWAN.Application.Boundaries.StudentApplication;
+using eWAN.Application.Boundaries.CreateSubject;
+using eWAN.Application.Boundaries.CreateProgram;
+using eWAN.Application.Boundaries.CreateRoom;
+using eWAN.Application.Boundaries.CreateCourse;
+using eWAN.Application.UseCases;
 
 namespace eWAN.Modules.Microsoft
 {
-    using Application.Boundaries.Register;
-    using Application.Boundaries.LogIn;
-    using Application.Boundaries.ApplicationJurying;
-    using Application.Boundaries.StudentApplication;
-    using Application.Boundaries.CreateSubject;
-    using Application.Boundaries.CreateProgram;
-    using Application.Boundaries.CreateRoom;
-    using Application.Boundaries.CreateCourse;
-    using Application.UseCases;
-
     public static class ApplicationExtensions
     {
+        [Obsolete("Replace with eWAN.Modules.Autofac.PersistenceExtensions.AddPersistence()", true)]
         public static IServiceCollection AddUseCases(this IServiceCollection services)
         {
             services.AddScoped<IRegisterUseCase, RegisterUseCase>();

@@ -1,26 +1,27 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using eWAN.Application.Services;
+using eWAN.Domains.User;
+using eWAN.Domains.Role;
+using eWAN.Domains.Application;
+using eWAN.Domains.Course;
+using eWAN.Domains.EnrolledProgram;
+using eWAN.Domains.EnrolledSubject;
+using eWAN.Domains.Program;
+using eWAN.Domains.Room;
+using eWAN.Domains.Section;
+using eWAN.Domains.Semester;
+using eWAN.Domains.Session;
+using eWAN.Domains.Subject;
+using eWAN.Infrastructure.Database;
+using eWAN.Infrastructure.Database.Repositories;
 
 namespace eWAN.Modules.Microsoft
 {
-    using Application.Services;
-    using Domains.User;
-    using Domains.Role;
-    using Domains.Application;
-    using Domains.Course;
-    using Domains.EnrolledProgram;
-    using Domains.EnrolledSubject;
-    using Domains.Program;
-    using Domains.Room;
-    using Domains.Section;
-    using Domains.Semester;
-    using Domains.Session;
-    using Domains.Subject;
-    using Infrastructure.Database;
-    using Infrastructure.Database.Repositories;
-
     public static class PersistenceExtensions
     {
+        [Obsolete("Replace with eWAN.Modules.Autofac.PersistenceExtensions.AddPersistence()", true)]
         public static IServiceCollection AddPersistence(this IServiceCollection services)
         {
             services.AddDbContext<EwanContext>(options => options.UseLazyLoadingProxies(), ServiceLifetime.Transient, ServiceLifetime.Transient);

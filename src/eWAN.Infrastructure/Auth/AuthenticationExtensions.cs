@@ -9,7 +9,7 @@ namespace eWAN.Infrastructure.Auth
 
     public static class AuthenticationExtensions
     {
-        public static IServiceCollection AddAuthentication(this IServiceCollection services)
+        public static IServiceCollection AddCustomAuthentication(this IServiceCollection services)
         {
             var key = Encoding.ASCII.GetBytes(System.Environment.GetEnvironmentVariable("SERVER_KEY"));
 

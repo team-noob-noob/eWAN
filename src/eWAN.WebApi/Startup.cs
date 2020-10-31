@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using eWAN.WebApi.Modules;
 using eWAN.Modules.Autofac;
 using eWAN.Modules.Microsoft;
+using eWAN.Infrastructure.Auth;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 
@@ -29,7 +30,7 @@ namespace eWAN.WebApi
             services.AddControllers();
             services.AddPresenters();
             services.AddCustomControllers();
-            services.AddAuthentication();
+            services.AddCustomAuthentication();
             services.AddSwagger();
             services.AddOptions();
         }

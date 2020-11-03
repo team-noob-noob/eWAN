@@ -68,14 +68,16 @@ namespace eWAN.Infrastructure.Database
                     )
                 .Select(x => x.Entity as IBaseEntity);
 
+            var currentTime = DateTime.UtcNow;
+
             foreach (var newEntity in newEntities)
             {
-                newEntity.UpdatedAt = DateTime.UtcNow;
+                newEntity.UpdatedAt = currentTime;
             }
 
             foreach (var modifiedEntity in modifiedEntities)
             {
-                modifiedEntity.UpdatedAt = DateTime.UtcNow;
+                modifiedEntity.UpdatedAt = currentTime;
             }
         }
 

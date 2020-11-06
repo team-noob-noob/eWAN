@@ -26,7 +26,7 @@ namespace eWAN.WebApi.UseCases.CreateCourse
             {
                 foreach(var courseId in request.CourseIds)
                 {
-                    var course = courseRepository.GetCourseById(courseId);
+                    var course = await courseRepository.GetCourseById(courseId);
                     if(course != null)
                     {
                         prerequisites.Add((ICourse) course);

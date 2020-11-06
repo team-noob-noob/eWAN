@@ -1,5 +1,6 @@
 using Autofac;
 using eWAN.Monitoring;
+using Castle.DynamicProxy;
 
 namespace eWAN.Modules.Autofac
 {
@@ -8,6 +9,7 @@ namespace eWAN.Modules.Autofac
         public static ContainerBuilder AddMonitoring(this ContainerBuilder builder)
         {
             builder.Register(_ => new SpanMonitor());
+            builder.Register(_ => new AsyncDeterminationInterceptor(new SpanMonitor()));
             return builder;
         }
     }

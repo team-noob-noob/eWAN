@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace eWAN.Domains.Room
 {
     using Session;
@@ -14,6 +12,6 @@ namespace eWAN.Domains.Room
         string Address { get; set; }
 
         // Inverse Property
-        List<ISession> Schedule { get; set; }
+        Schedule Schedule { get; set; }
     }
 }

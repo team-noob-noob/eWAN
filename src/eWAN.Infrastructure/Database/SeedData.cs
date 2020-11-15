@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using eWAN.Infrastructure.Hashing;
 using System;
 using SessionType = eWAN.Domains.Session.SessionType;
+using Schedule = eWAN.Domains.Session.Schedule;
 using IStudent = eWAN.Domains.Student.IStudent;
 
 namespace eWAN.Infrastructure.Database
@@ -38,7 +39,7 @@ namespace eWAN.Infrastructure.Database
         public static readonly Student Student = new Student(User1);
 
         public static readonly Room Room = new Bogus.Faker<Room>()
-            .RuleFor(o => o.Schedule, _ => new List<Domains.Session.ISession>())
+            .RuleFor(o => o.Schedule, _ => new Schedule())
             .RuleFor(o => o.Id, f => f.Random.Number(100, 999).ToString())
             .RuleFor(o => o.Name, (_, o) => "Room " + o.Id)
             .RuleFor(o => o.Address, f => f.Address.ToString());

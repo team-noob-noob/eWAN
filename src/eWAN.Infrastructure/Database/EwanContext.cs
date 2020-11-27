@@ -68,7 +68,7 @@ namespace eWAN.Infrastructure.Database
                     )
                 .Select(x => x.Entity as IBaseEntity);
 
-            var currentTime = DateTime.UtcNow;
+            var currentTime = DateTime.Now;
 
             foreach (var newEntity in newEntities)
             {

@@ -8,7 +8,7 @@ namespace eWAN.Domains.Course
     ///<summary>Represents a study or topic</summary>
     public interface ICourse : IBaseEntity
     {
-        string Id { get; set; }
+        string Code { get; set; }
         string Title { get; set; }
         string Description { get; set; }
         List<ICourse> Prerequisites { get; set; }

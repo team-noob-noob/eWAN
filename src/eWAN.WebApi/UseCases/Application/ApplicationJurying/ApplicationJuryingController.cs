@@ -22,7 +22,7 @@ namespace eWAN.WebApi.UseCases.ApplicationJurying
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> ApplyJudgement(
-            [FromServices] ApplicationJuryingUseCase useCase,
+            [FromServices] IApplicationJuryingUseCase useCase,
             [FromServices] ApplicationJuryingPresenter presenter,
             [FromServices] IApplicationRepository applicationRepository,
             [FromServices] IUserRepository userRepository,

@@ -16,6 +16,7 @@ namespace eWAN.Infrastructure.Database.Configuration
             builder.HasOne<User>(x => (User) x.Instructor);
 
             builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
             builder.ToTable("Sessions");
         }

@@ -39,7 +39,7 @@ namespace eWAN.Tests.Fakes
             Rooms.Add(TestRoom);
         }
 
-        public static User TestUser = new User(
+        public static UserEntityMock TestUser = new UserEntityMock(
             "testing123",
             new BcryptHashing().Hash("testing"),
             "testing@testing.testing",
@@ -47,10 +47,11 @@ namespace eWAN.Tests.Fakes
             "testing",
             "testing",
             "testing",
-            "testing"
+            "testing",
+            1
         );
 
-        public static User TestUser2 = new User(
+        public static UserEntityMock TestUser2 = new UserEntityMock(
             "testing123123",
             new BcryptHashing().Hash("testing"),
             "testing@testing.testing123",
@@ -58,7 +59,8 @@ namespace eWAN.Tests.Fakes
             "testing",
             "testing",
             "testing",
-            "testing"
+            "testing",
+            2
         );
 
         public static Application TestApplication = new Application(TestUser);

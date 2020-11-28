@@ -6,7 +6,7 @@ namespace eWAN.Domains.Course
 {
     public abstract class Course : BaseEntity, ICourse
     {
-        public abstract string Id { get; set; }
+        public abstract string Code { get; set; }
         public abstract string Title { get; set; }
         public abstract string Description { get; set; }
         public virtual List<ICourse> Prerequisites { get; set; } = new List<ICourse>();

@@ -6,8 +6,6 @@ namespace eWAN.Domains.User
 {
     public abstract class User : BaseEntity, IUser
     {
-        public abstract string Id { get; protected set; }
-
         public abstract string Username { get; set; }
         public abstract string Password { get; set; }
 

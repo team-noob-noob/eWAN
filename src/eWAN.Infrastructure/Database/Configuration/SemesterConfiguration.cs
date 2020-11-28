@@ -17,7 +17,9 @@ namespace eWAN.Infrastructure.Database.Configuration
                 .WithOne(y => (Semester) y.Semester)
                 .HasForeignKey("SemesterId");
 
+            
             builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
             builder.ToTable("Semesters");
         }

@@ -34,13 +34,13 @@ namespace eWAN.Application.UseCases
 
             if(previousApplications.Count >= 3)
             {
-                _outputPort.WriteError("User already surpassed the allowed limit of applications; User is only allowed maximum of 3 applications");
+                _outputPort.WriteError("Applicant already surpassed the allowed limit of applications; Applicant is only allowed maximum of 3 applications");
                 return;
             }
 
             if(previousApplications.Count >= 1 && IsDateTimeWithinSixMonthsFromNow(previousApplications[0].CreatedAt))
             {
-                _outputPort.WriteError("User already applied within 6 months, please wait a while");
+                _outputPort.WriteError("Applicant already applied within 6 months, please wait a while");
                 return;
             }
 
@@ -48,7 +48,7 @@ namespace eWAN.Application.UseCases
 
             await _applicationRepository.Add(newApplication);
 
-            _outputPort.Standard(new StudentApplicationOutput(newApplication.Id));
+            _outputPort.Standard(new StudentApplicationOutput(newApplication.PublicId));
 
             await _unitOfWork.Save();
         }

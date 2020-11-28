@@ -4,7 +4,7 @@ namespace eWAN.WebApi.Modules
 {
     public static class ClaimsPrincipalExtensions
     {
-        public static string GetUserId(this ClaimsPrincipal principal) =>
-            principal.FindFirstValue(ClaimTypes.NameIdentifier);
+        public static int GetUserId(this ClaimsPrincipal principal) =>
+            int.Parse(principal.FindFirstValue(ClaimTypes.NameIdentifier));
     }
 }

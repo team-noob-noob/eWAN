@@ -7,7 +7,7 @@ namespace eWAN.Domains.Session
 {
     public abstract class Session : BaseEntity, ISession
     {
-        public abstract string Id { get; set; }
+        public abstract string Code { get; set; }
         public abstract DayOfWeek Day { get; set; }
         public virtual IRoom Room { get; set; }
         public virtual IUser Instructor { get; set; }

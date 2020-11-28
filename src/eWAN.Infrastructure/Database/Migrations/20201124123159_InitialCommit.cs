@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace eWAN.Infrastructure.Database.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialCommit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,10 +30,12 @@ namespace eWAN.Infrastructure.Database.Migrations
                 name: "Rooms",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: true),
                     DeletedAt = table.Column<DateTime>(nullable: true),
+                    Code = table.Column<string>(nullable: false),
                     Name = table.Column<string>(nullable: false),
                     Address = table.Column<string>(nullable: false)
                 },
@@ -62,10 +64,12 @@ namespace eWAN.Infrastructure.Database.Migrations
                 name: "Semesters",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: true),
                     DeletedAt = table.Column<DateTime>(nullable: true),
+                    Code = table.Column<string>(nullable: false),
                     Start = table.Column<DateTime>(nullable: false),
                     End = table.Column<DateTime>(nullable: false),
                     IsOpenForEnrollment = table.Column<bool>(nullable: false)
@@ -76,10 +80,11 @@ namespace eWAN.Infrastructure.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: true),
                     DeletedAt = table.Column<DateTime>(nullable: true),
@@ -94,21 +99,23 @@ namespace eWAN.Infrastructure.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Courses",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: true),
                     DeletedAt = table.Column<DateTime>(nullable: true),
                     Title = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: false),
-                    ParentCourse_Id = table.Column<string>(nullable: true),
-                    Program_Id = table.Column<int>(nullable: false)
+                    ParentCourse_Id = table.Column<int>(nullable: false),
+                    Program_Id = table.Column<int>(nullable: false),
+                    Code = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -131,28 +138,30 @@ namespace eWAN.Infrastructure.Database.Migrations
                 name: "Applications",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: true),
                     DeletedAt = table.Column<DateTime>(nullable: true),
                     IsAccepted = table.Column<bool>(nullable: false),
                     Reason = table.Column<string>(nullable: false),
-                    Applicant_Id = table.Column<string>(nullable: true),
-                    Staff_Id = table.Column<string>(nullable: true)
+                    Applicant_Id = table.Column<int>(nullable: true),
+                    Staff_Id = table.Column<int>(nullable: true),
+                    PublicId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Applications", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Applications_User_Applicant_Id",
+                        name: "FK_Applications_Users_Applicant_Id",
                         column: x => x.Applicant_Id,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Applications_User_Staff_Id",
+                        name: "FK_Applications_Users_Staff_Id",
                         column: x => x.Staff_Id,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -161,12 +170,14 @@ namespace eWAN.Infrastructure.Database.Migrations
                 name: "Students",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: true),
                     DeletedAt = table.Column<DateTime>(nullable: true),
                     AssignedSectionId = table.Column<int>(nullable: true),
-                    UserId = table.Column<string>(nullable: true)
+                    Code = table.Column<string>(nullable: false),
+                    UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -178,9 +189,9 @@ namespace eWAN.Infrastructure.Database.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Students_User_UserId",
+                        name: "FK_Students_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -195,15 +206,15 @@ namespace eWAN.Infrastructure.Database.Migrations
                     UpdatedAt = table.Column<DateTime>(nullable: true),
                     DeletedAt = table.Column<DateTime>(nullable: true),
                     UserRole = table.Column<int>(type: "int", nullable: false),
-                    User_Id = table.Column<string>(nullable: false)
+                    User_Id = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_UserRoles", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserRoles_User_User_Id",
+                        name: "FK_UserRoles_Users_User_Id",
                         column: x => x.User_Id,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -212,12 +223,14 @@ namespace eWAN.Infrastructure.Database.Migrations
                 name: "Subjects",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: true),
                     DeletedAt = table.Column<DateTime>(nullable: true),
-                    CourseId = table.Column<string>(nullable: true),
-                    SemesterId = table.Column<string>(nullable: false)
+                    CourseId = table.Column<int>(nullable: false),
+                    SemesterId = table.Column<int>(nullable: false),
+                    Code = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -245,7 +258,7 @@ namespace eWAN.Infrastructure.Database.Migrations
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: true),
                     DeletedAt = table.Column<DateTime>(nullable: true),
-                    Student_Id = table.Column<string>(nullable: false),
+                    Student_Id = table.Column<int>(nullable: false),
                     Program_Id = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -275,8 +288,8 @@ namespace eWAN.Infrastructure.Database.Migrations
                     UpdatedAt = table.Column<DateTime>(nullable: true),
                     DeletedAt = table.Column<DateTime>(nullable: true),
                     Grade = table.Column<string>(nullable: false),
-                    Subject_Id = table.Column<string>(nullable: false),
-                    User_Id = table.Column<string>(nullable: false)
+                    Subject_Id = table.Column<int>(nullable: false),
+                    User_Id = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -299,13 +312,15 @@ namespace eWAN.Infrastructure.Database.Migrations
                 name: "Sessions",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: true),
                     DeletedAt = table.Column<DateTime>(nullable: true),
-                    RoomId = table.Column<string>(nullable: false),
-                    InstructorId = table.Column<string>(nullable: false),
-                    SubjectId = table.Column<string>(nullable: false),
+                    RoomId = table.Column<int>(nullable: false),
+                    InstructorId = table.Column<int>(nullable: false),
+                    SubjectId = table.Column<int>(nullable: false),
+                    Code = table.Column<string>(nullable: false),
                     Day = table.Column<int>(nullable: false),
                     Type = table.Column<int>(nullable: false),
                     StartTime = table.Column<TimeSpan>(nullable: false),
@@ -315,9 +330,9 @@ namespace eWAN.Infrastructure.Database.Migrations
                 {
                     table.PrimaryKey("PK_Sessions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Sessions_User_InstructorId",
+                        name: "FK_Sessions_Users_InstructorId",
                         column: x => x.InstructorId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -447,7 +462,7 @@ namespace eWAN.Infrastructure.Database.Migrations
                 name: "Sections");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Courses");

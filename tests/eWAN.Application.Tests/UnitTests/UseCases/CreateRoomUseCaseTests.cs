@@ -25,7 +25,7 @@ namespace eWAN.Tests.UnitTests.UseCases.CreateRoom
                 _fixtures.UnitOfWorkFake
             );
             var input = new CreateRoomInput(
-                EwanContextFake.TestRoom.Id,
+                EwanContextFake.TestRoom.Code,
                 "Testing Room",
                 "Testing Room building"
             );
@@ -55,7 +55,7 @@ namespace eWAN.Tests.UnitTests.UseCases.CreateRoom
             await sut.Handle(input);
 
             presenter.StandardOutput.Should().NotBe(null);
-            presenter.StandardOutput.NewRoom.Id.Should().Be("Testing Room");
+            presenter.StandardOutput.NewRoom.Code.Should().Be("Testing Room");
         }
     }
 }

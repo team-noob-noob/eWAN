@@ -12,7 +12,7 @@ namespace eWAN.Domains.Student
     /// </summary>
     public interface IStudent : IBaseEntity
     {
-        string Id { get; set; }
+        string Code { get; set; }
         IUser User { get; set; }
         ISection? AssignedSection { get; set; }
         List<IEnrolledSubject> EnrolledSubjects { get; set; }

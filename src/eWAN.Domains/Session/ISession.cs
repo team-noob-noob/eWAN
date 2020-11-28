@@ -11,7 +11,7 @@ namespace eWAN.Domains.Session
     /// </summarY>
     public interface ISession : IBaseEntity
     {
-        string Id { get; set; }
+        string Code { get; set; }
         DayOfWeek Day { get; set; }
         TimeSpan StartTime { get; set; }
         TimeSpan EndTime { get; set; }

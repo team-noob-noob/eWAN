@@ -40,7 +40,7 @@ namespace eWAN.Infrastructure.Database
 
         public static readonly Room Room = new Bogus.Faker<Room>()
             .RuleFor(o => o.Schedule, _ => new Schedule())
-            .RuleFor(o => o.Id, f => f.Random.Number(100, 999).ToString())
+            .RuleFor(o => o.Code, f => f.Random.Number(100, 999).ToString())
             .RuleFor(o => o.Name, (_, o) => "Room " + o.Id)
             .RuleFor(o => o.Address, f => f.Address.ToString());
 
@@ -50,8 +50,9 @@ namespace eWAN.Infrastructure.Database
             .RuleFor(o => o.Description, (f, o) => f.Rant.Review(o.Title));
 
         public static readonly Course Course = new Bogus.Faker<Course>()
-            .RuleFor(o => o.Id, f => f.Hacker.Abbreviation() + f.Hacker.Random.String2(12))
+            .RuleFor(o => o.Code, f => f.Hacker.Abbreviation() + f.Hacker.Random.String2(12))
             .RuleFor(o => o.Title, f => f.Hacker.Adjective() + " " + f.Hacker.Noun())
+            .RuleFor(o => o.ParentCourse_Id, _ => null)
             .RuleFor(o => o.Description, (f, o) => f.Rant.Review(o.Title))
             .RuleFor(o => o.AssignedProgram, _ => Program);
 

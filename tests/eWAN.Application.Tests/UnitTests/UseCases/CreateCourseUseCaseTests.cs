@@ -24,7 +24,7 @@ namespace eWAN.Tests.UnitTests.UseCases.CreateCourse
                 _fixtures.UnitOfWorkFake
             );
             var input = new CreateCourseInput(
-                EwanContextFake.TestCourse.Id,
+                EwanContextFake.TestCourse.Code,
                 "Testing Course",
                 "Testing Course",
                 null,
@@ -82,7 +82,7 @@ namespace eWAN.Tests.UnitTests.UseCases.CreateCourse
             await sut.Handle(input);
 
             presenter.StandardOutput.Should().NotBe(null);
-            presenter.StandardOutput.Course.Id.Should().Be("Testing Course");
+            presenter.StandardOutput.Course.Code.Should().Be("Testing Course");
         }
 
         public void Dispose() => _fixtures.Dispose();

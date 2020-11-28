@@ -7,6 +7,6 @@ namespace eWAN.Domains.User
         Task Add(IUser user);
         Task<IUser> GetByUsername(string username);
         Task<IUser> GetByEmail(string email);
-        Task<IUser> GetById(string id);
+        Task<IUser> GetById(int id);
     }
 }

@@ -38,7 +38,7 @@ namespace eWAN.Tests.Fakes
             return await Task.FromResult(user);
         }
 
-        public async Task<IUser> GetById(string id)
+        public async Task<IUser> GetById(int id)
         {
             var user = _context.Users.SingleOrDefault(e => e.Id == id);
             if(user is null)

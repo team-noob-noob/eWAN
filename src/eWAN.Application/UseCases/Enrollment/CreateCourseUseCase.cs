@@ -27,7 +27,7 @@ namespace eWAN.Application.UseCases
 
         public async Task Handle(CreateCourseInput input)
         {
-            if(await _repo.GetCourseById(input.Id) != null)
+            if(await _repo.GetCourseByCode(input.Id) != null)
             {
                 _outputPort.WriteError("Id already taken");
                 return;

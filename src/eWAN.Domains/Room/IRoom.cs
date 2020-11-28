@@ -7,7 +7,7 @@ namespace eWAN.Domains.Room
     /// </summary>
     public interface IRoom : IBaseEntity
     {
-        string Id { get; }
+        string Code { get; }
         string Name { get; set; }
         string Address { get; set; }
 

@@ -10,7 +10,7 @@ namespace eWAN.Domains.Student
 {
     public abstract class Student : BaseEntity, IStudent
     {
-        public abstract string Id { get; set; }
+        public abstract string Code { get; set; }
         
         public virtual IUser User { get; set; }
         public virtual ISection? AssignedSection { get; set; }

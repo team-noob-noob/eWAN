@@ -17,9 +17,9 @@ namespace eWAN.Infrastructure.Database.Repositories
             await this._context.SaveChangesAsync();
         }
 
-        public async Task<ISemester> GetSemesterById(string Id)
+        public async Task<ISemester> GetSemesterByCode(string Id)
         {
-            var semester = this._context.Semesters.SingleOrDefault(x => x.Id == Id && x.DeletedAt == null);
+            var semester = this._context.Semesters.SingleOrDefault(x => x.Code == Id && x.DeletedAt == null);
             if(semester is null)
             {
                 return null;

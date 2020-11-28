@@ -4,7 +4,7 @@ namespace eWAN.Domains.Application
 {
     public abstract class Application : BaseEntity, IApplication
     {
-        public abstract string Id { get; set; }
+        public abstract string PublicId { get; set; }
         public virtual IUser Applicant { get; set; } 
         public virtual IUser Staff { get; set; } 
         public abstract bool IsAccepted { get; set; } 

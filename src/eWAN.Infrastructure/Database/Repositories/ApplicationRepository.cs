@@ -24,10 +24,10 @@ namespace eWAN.Infrastructure.Database.Repositories
 
         public IApplication GetApplicationById(string id)
         {
-            return (IApplication) this._context.Applications.Where(x => x.Id == id && x.DeletedAt == null);
+            return (IApplication) this._context.Applications.FirstOrDefault(x => x.PublicId == id && x.DeletedAt == null);
         }
 
-        public List<IApplication> GetApplicationsByApplicantId(string applicantId)
+        public List<IApplication> GetApplicationsByApplicantId(int applicantId)
         {
             var query = this._context.Applications.Where(x => x.Applicant.Id == applicantId && x.DeletedAt == null);
             return query.Cast<IApplication>().ToList();

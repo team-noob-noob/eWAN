@@ -6,7 +6,7 @@ namespace eWAN.Domains.Room
 
     public abstract class Room : BaseEntity, IRoom
     {
-        public abstract string Id { get; set; }
+        public abstract string Code { get; set; }
         public abstract string Name { get; set; }
         public abstract string Address { get; set; }
         public virtual Schedule Schedule { get; set; } = new Schedule();

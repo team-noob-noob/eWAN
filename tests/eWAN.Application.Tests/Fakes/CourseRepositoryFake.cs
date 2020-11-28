@@ -14,8 +14,8 @@ namespace eWAN.Tests.Fakes
             => await Task.Run(() => _context.Courses.Add((Course) course));
         
 
-        public async Task<ICourse> GetCourseById(string id)
-            => await Task.FromResult(_context.Courses.FirstOrDefault(x => x.Id == id));
+        public async Task<ICourse> GetCourseByCode(string id)
+            => await Task.FromResult(_context.Courses.FirstOrDefault(x => x.Code == id));
         
 
         public async Task<ICourse> GetCourseByTitle(string title)

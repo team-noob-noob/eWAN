@@ -19,9 +19,9 @@ namespace eWAN.Tests.Fakes
         }
 
         public IApplication GetApplicationById(string id) => 
-            _context.Applications.SingleOrDefault(e => e.Id == id);
+            _context.Applications.SingleOrDefault(e => e.PublicId == id);
         
-        public List<IApplication> GetApplicationsByApplicantId(string applicantId)
+        public List<IApplication> GetApplicationsByApplicantId(int applicantId)
         {
             List<IApplication> result = new List<IApplication>();
             var query = _context.Applications.Where(x => x.Applicant.Id == applicantId).ToList();

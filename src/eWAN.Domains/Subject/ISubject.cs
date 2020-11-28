@@ -12,7 +12,7 @@ namespace eWAN.Domains.Subject
     /// </summary>
     public interface ISubject : IBaseEntity
     {
-        string Id { get; set; }
+        string Code { get; set; }
         ICourse Course { get; set; }
         List<ISession> Sessions { get; set; }
 

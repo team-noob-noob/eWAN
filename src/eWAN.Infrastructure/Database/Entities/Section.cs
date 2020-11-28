@@ -13,7 +13,6 @@ namespace eWAN.Infrastructure.Database.Entities
             this.Students = Students;
         }
 
-        public override int Id { get; set; }
         public override string Name { get; set; }
     }
 }

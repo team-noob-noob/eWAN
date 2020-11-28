@@ -24,9 +24,9 @@ namespace eWAN.Infrastructure.Database.Repositories
             await this._context.SaveChangesAsync();
         }
 
-        public async Task<ICourse> GetCourseById(string Id)
+        public async Task<ICourse> GetCourseByCode(string Id)
         {
-            var course = this._context.Courses.FirstOrDefault(x => x.Id == Id && x.DeletedAt == null);
+            var course = this._context.Courses.FirstOrDefault(x => x.Code == Id && x.DeletedAt == null);
             if(course is null)
             {
                 return null;

@@ -14,7 +14,7 @@ namespace eWAN.Modules.Microsoft
 {
     public static class ApplicationExtensions
     {
-        [Obsolete("Replace with eWAN.Modules.Autofac.PersistenceExtensions.AddPersistence()", true)]
+        [Obsolete("Replace with eWAN.Modules.Autofac.PersistenceExtensions.AddUseCases()", true)]
         public static IServiceCollection AddUseCases(this IServiceCollection services)
         {
             services.AddScoped<IRegisterUseCase, RegisterUseCase>();

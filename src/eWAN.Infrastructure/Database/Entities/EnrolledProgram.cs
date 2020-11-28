@@ -14,8 +14,7 @@ namespace eWAN.Infrastructure.Database.Entities
             this.Program = Program;
         }
 
-        public override int Id { get; set; }
-        public string Student_Id { get; set; }
+        public int Student_Id { get; set; }
         public int Program_Id { get; set; }
     }
 }

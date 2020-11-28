@@ -8,7 +8,7 @@ namespace eWAN.Infrastructure.Database.Entities
 {
     public class Session : Domains.Session.Session, ISession
     {
-        public Session() => this.Id =  new Random().NewString(10, "0123456789");
+        public Session() => this.Code =  new Random().NewString(10, "0123456789");
         public Session(DayOfWeek day, TimeSpan startTime, TimeSpan endTime, IRoom room, IUser Instructor, SessionType type)
         {
             this.Day = day;
@@ -17,10 +17,10 @@ namespace eWAN.Infrastructure.Database.Entities
             this.Room = room;
             this.Instructor = Instructor;
             this.Type = type;
-            this.Id =  new Random().NewString(10, "0123456789");
+            this.Code =  new Random().NewString(10, "0123456789");
         }
 
-        public override string Id { get; set; }
+        public override string Code { get; set; }
         public override DayOfWeek Day { get; set; }
         
         public override IRoom Room { get; set; }

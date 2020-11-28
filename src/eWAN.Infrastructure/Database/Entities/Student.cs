@@ -10,10 +10,10 @@ namespace eWAN.Infrastructure.Database.Entities
         public Student(IUser details)
         {
             this.User = details;
-            this.Id = DateTime.Now.Year.ToString() + new Random().NewString(10, "0123456789");
+            this.Code = DateTime.Now.Year.ToString() + new Random().NewString(10, "0123456789");
         }
 
-        public override string Id { get; set; }
-        public string UserId { get; set; }
+        public override string Code { get; set; }
+        public int UserId { get; set; }
     }
 }

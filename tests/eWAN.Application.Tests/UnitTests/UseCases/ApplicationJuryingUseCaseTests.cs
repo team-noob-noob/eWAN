@@ -52,7 +52,7 @@ namespace eWAN.Tests.UnitTests.UseCases.ApplicationJurying
             await sut.Handle(input);
 
             // Assert
-            var actual = applicationJuryingPresenterFake.StandardOutput.StudentApplicationResult.Id;
+            var actual = applicationJuryingPresenterFake.StandardOutput.StudentApplicationResult.PublicId;
             var expected = input.ApplicationId;
             actual.Should().Be(expected);
         }
@@ -65,6 +65,6 @@ namespace eWAN.Tests.UnitTests.UseCases.ApplicationJurying
 
     internal sealed class ValidApplicationId : TheoryData<ApplicationJuryingInput>
     {
-        public ValidApplicationId() => this.Add(new ApplicationJuryingInput(EwanContextFake.TestApplication.Id, EwanContextFake.TestUser, false, string.Empty));
+        public ValidApplicationId() => this.Add(new ApplicationJuryingInput(EwanContextFake.TestApplication.PublicId, EwanContextFake.TestUser, false, string.Empty));
     }
 }

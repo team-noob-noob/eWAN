@@ -19,7 +19,6 @@ namespace eWAN.Infrastructure.Database.Entities
             this.Courses = courses ?? new List<ICourse>();
         }
 
-        public override int Id { get; set; }
         public override string Code { get; set; }
         public override string Title { get; set; }
         public override string Description { get; set; }

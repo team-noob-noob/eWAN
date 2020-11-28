@@ -38,7 +38,7 @@ namespace eWAN.Tests.UnitTests.UseCases.StudentApplication
 
             // Assert
             var actual = studentApplicationPresenterFake.ErrorOutput;
-            var expected = "User already applied within 6 months, please wait a while";
+            var expected = "Applicant already applied within 6 months, please wait a while";
             actual.Should().Be(expected);
         }
 
@@ -63,7 +63,7 @@ namespace eWAN.Tests.UnitTests.UseCases.StudentApplication
 
             // Assert
             var actual = studentApplicationPresenterFake.ErrorOutput;
-            var expected = "User already surpassed the allowed limit of applications; User is only allowed maximum of 3 applications";
+            var expected = "Applicant already surpassed the allowed limit of applications; Applicant is only allowed maximum of 3 applications";
             actual.Should().Be(expected);
         }
 

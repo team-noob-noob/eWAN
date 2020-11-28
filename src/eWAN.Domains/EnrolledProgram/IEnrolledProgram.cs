@@ -8,7 +8,6 @@ namespace eWAN.Domains.EnrolledProgram
     /// </summary>
     public interface IEnrolledProgram : IBaseEntity
     {
-        int Id { get; set; }
         IStudent Student { get; set; }
         IProgram Program { get; set; }
     }

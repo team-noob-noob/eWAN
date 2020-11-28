@@ -26,6 +26,7 @@ namespace eWAN.Infrastructure.Database.Configuration
             builder.ToTable("Users");
 
             builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
         }
     }
 }

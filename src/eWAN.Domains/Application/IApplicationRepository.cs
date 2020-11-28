@@ -7,6 +7,6 @@ namespace eWAN.Domains.Application
     {
         Task Add(IApplication newApplication);
         IApplication GetApplicationById(string id);
-        List<IApplication> GetApplicationsByApplicantId(string applicantId);
+        List<IApplication> GetApplicationsByApplicantId(int applicantId);
     }
 }

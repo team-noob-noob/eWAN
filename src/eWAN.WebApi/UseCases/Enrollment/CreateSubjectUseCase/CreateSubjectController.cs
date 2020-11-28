@@ -32,9 +32,9 @@ namespace eWAN.WebApi.UseCases.CreateSubject
         {
             var input = new CreateSubjectInput()
             {
-                Course = await courseRepository.GetCourseById(request.CourseId),
+                Course = await courseRepository.GetCourseByCode(request.CourseId),
                 Sessions = request.Sessions,
-                Semester = await semesterRepository.GetSemesterById(request.SemesterCode),
+                Semester = await semesterRepository.GetSemesterByCode(request.SemesterCode),
                 Instructor = await userRepository.GetById(request.InstructorId)
             };
             await useCase.Handle(input);

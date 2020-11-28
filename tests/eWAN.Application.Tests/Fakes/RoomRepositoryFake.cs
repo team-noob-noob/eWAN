@@ -13,7 +13,7 @@ namespace eWAN.Tests.Fakes
         public async Task Add(IRoom room)
             => await Task.Run(() => _context.Rooms.Add((Room) room));
 
-        public async Task<IRoom> GetRoomById(string id)
-            => await Task.Run(() => _context.Rooms.FirstOrDefault(x => x.Id == id));
+        public async Task<IRoom> GetRoomByCode(string id)
+            => await Task.Run(() => _context.Rooms.FirstOrDefault(x => x.Code == id));
     }
 }

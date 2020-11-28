@@ -7,7 +7,7 @@ namespace eWAN.Domains.Application
     /// </summary>
     public interface IApplication : IBaseEntity
     {
-        string Id { get; }
+        string PublicId { get; }
         IUser Applicant { get; set; }
         IUser Staff { get; set; }
         bool IsAccepted { get; set; }

@@ -23,6 +23,7 @@ namespace eWAN.Infrastructure.Database.Configuration
                 .HasForeignKey("SubjectId");
 
             builder.HasKey(x => x.Id);
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
             builder.ToTable("Subjects");
         }

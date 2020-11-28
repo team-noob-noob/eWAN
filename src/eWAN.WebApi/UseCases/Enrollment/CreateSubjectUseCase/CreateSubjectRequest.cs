@@ -9,6 +9,6 @@ namespace eWAN.WebApi.UseCases.CreateSubject
         public string CourseId { get; set; }
         public List<ISession> Sessions { get; set; }
         public string SemesterCode { get; set; }
-        public string InstructorId { get; set; }
+        public int InstructorId { get; set; }
     }
 }

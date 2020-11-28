@@ -6,7 +6,6 @@ namespace eWAN.Domains.Program
 {
     public abstract class Program : BaseEntity, IProgram
     {
-        public abstract int Id { get; set; }
         public abstract string Code { get; set; }
         public abstract string Title { get; set; }
         public abstract string Description { get; set; }

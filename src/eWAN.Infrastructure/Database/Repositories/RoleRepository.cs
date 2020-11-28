@@ -24,7 +24,7 @@ namespace eWAN.Infrastructure.Database.Repositories
 
         public List<IRole> GetRolesByUser(IUser user)
         {
-            return (List<IRole>) user.AssignedRoles.Where(x => x.DeletedAt == null);
+            return user.AssignedRoles.Where(x => x.DeletedAt == null).ToList();
         }
 
         public async Task Remove(IRole role)

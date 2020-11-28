@@ -11,11 +11,11 @@ namespace eWAN.Tests.Mocks
             this.CreatedAt = createdAt;
         }
 
-        public override string Id { get; set; }
         public override IUser Applicant { get; set; }
         public override IUser Staff { get; set; }
         public override bool IsAccepted { get; set; }
         public override string Reason { get; set; }
         public override DateTime CreatedAt { get; protected set; }
+        public override string PublicId { get; set; }
     }
 }

@@ -1,17 +1,10 @@
-using System;
-using System.Collections.Generic;
-using eWAN.Domains.User;
-using eWAN.Domains.EnrolledProgram;
-using eWAN.Domains.EnrolledSubject;
-using eWAN.Domains.Role;
-using eWAN.Domains.Section;
+using eWAN.Infrastructure.Database.Entities;
 
-namespace eWAN.Infrastructure.Database.Entities
+namespace eWAN.Tests.Mocks
 {
-    public class User : Domains.User.User, IUser
+    public class UserEntityMock : User, Domains.User.IUser
     {
-        public User() {}
-        public User(
+        public UserEntityMock(
             string Username,
             string Password, 
 
@@ -22,7 +15,8 @@ namespace eWAN.Infrastructure.Database.Entities
             string MiddleName,
             string LastName,
 
-            string Address)
+            string Address,
+            int Id)
         {
             this.Username = Username;
             this.Password = Password;
@@ -32,10 +26,12 @@ namespace eWAN.Infrastructure.Database.Entities
             this.MiddleName = MiddleName;
             this.LastName = LastName;
             this.Address = Address;
+            this.Id = Id;
         }
 
+        public override int Id { get; protected set; }
         public override string Username { get; set; }
-        public override string Password { get; set; }
+        public override string Password { get; set;}
         public override string Email { get; set; }
         public override string PhoneNumber { get; set; }
         public override string FirstName { get; set; }
@@ -44,4 +40,3 @@ namespace eWAN.Infrastructure.Database.Entities
         public override string Address { get; set; }
     }
 }
-

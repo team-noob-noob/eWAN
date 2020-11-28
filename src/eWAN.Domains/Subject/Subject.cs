@@ -9,7 +9,7 @@ namespace eWAN.Domains.Subject
 
     public abstract class Subject : BaseEntity, ISubject 
     {
-        public abstract string Id { get; set; }
+        public abstract string Code { get; set; }
         public virtual ICourse Course { get; set; }
         public virtual List<ISession> Sessions { get; set; } = new List<ISession>();
         public virtual ISemester Semester { get; set; }

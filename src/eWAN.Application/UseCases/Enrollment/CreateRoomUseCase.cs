@@ -27,7 +27,7 @@ namespace eWAN.Application.UseCases
 
         public async Task Handle(CreateRoomInput input)
         {
-            if(await _roomRepo.GetRoomById(input.Id) != null)
+            if(await _roomRepo.GetRoomByCode(input.Id) != null)
             {
                 _output.WriteError("Id already taken");
                 return;

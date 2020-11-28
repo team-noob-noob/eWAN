@@ -13,9 +13,9 @@ namespace eWAN.Infrastructure.Database.Entities
         {
             this.Course = course;
             this.Sessions = sessions;
-            this.Id = "SUBJ-" + DateTime.Now.Year + new Random().NewString(10, "0123456789");
+            this.Code = "SUBJ-" + DateTime.Now.Year + new Random().NewString(10, "0123456789");
         }
 
-        public override string Id { get; set; }
+        public override string Code { get; set; }
     }
 }

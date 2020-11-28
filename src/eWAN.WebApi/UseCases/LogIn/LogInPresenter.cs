@@ -18,7 +18,7 @@ namespace eWAN.WebApi.UseCases.LogIn
             string secret = System.Environment.GetEnvironmentVariable("SERVER_KEY");
 
             List<Claim> claims = new List<Claim>();
-            claims.Add(new Claim(ClaimTypes.NameIdentifier, output.User.Id));
+            claims.Add(new Claim(ClaimTypes.NameIdentifier, output.User.Id.ToString()));
             foreach(var role in output.User.AssignedRoles)
             {
                 claims.Add(new Claim(ClaimTypes.Role, ((int) role.UserRole).ToString()));

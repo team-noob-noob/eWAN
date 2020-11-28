@@ -8,9 +8,9 @@ namespace eWAN.Domains.Semester
     ///<summary>
     /// Represents the overall time the students and instructors have to meet
     /// </summary>
-    public interface ISemester
+    public interface ISemester : IBaseEntity
     {
-        string Id { get; set; }
+        string Code { get; set; }
         DateTime Start { get; set; }
         DateTime End { get; set; }
         bool IsOpenForEnrollment { get; set; }

@@ -3,24 +3,24 @@ namespace eWAN.Domains.Role
     public enum UserRole
     {
         /// <summary>Users who have registered but hasn't been given a role; standard role for new users</summary>
-        StudentApplicant = -100,
+        StudentApplicant = 1 << 0,
 
         /// <summary>Users who are accepted but has not enrolled to any program</summary>
-        StudentEnrolee = -99,
+        StudentEnrolee = 1 << 1,
 
         /// <summary>Users who have access to lessons</summary>
-        Student = 100,
+        Student = 1 << 2,
 
         /// <summary>Users who have access to grading systems</summary>
-        TeachingStaff = 200,
+        TeachingStaff = 1 << 3,
 
         /// <summary>Users who have access to Student Applicant list</summary>
-        ApplicationStaff = 300,
+        ApplicationStaff = 1 << 4,
 
         /// <summary>Users who have access to Access Control</summary>
-        HrStaff = 400,
+        HrStaff = 1 << 5,
 
         /// <summary>Users who have access to everything</summary>
-        AdminStaff = 500,
+        AdminStaff = 1 << 6,
     }
 }

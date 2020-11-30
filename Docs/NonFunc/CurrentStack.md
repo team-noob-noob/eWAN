@@ -1,0 +1,8 @@
+- Backend
+    - Autofac
+    - Entity Framework Core
+    - ASP.Net Core
+    - Elastic APM Agent (Monitoring)
+    - Identity Server 4 (Auth, Identity, Account Management)
+- Frontend
+    - React

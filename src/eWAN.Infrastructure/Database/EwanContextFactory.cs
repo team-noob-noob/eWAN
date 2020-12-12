@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Design;
 
 namespace eWAN.Infrastructure.Database
 {
-    public class ContextFactory : IDesignTimeDbContextFactory<EwanContext>
+    public class EwanContextFactory : IDesignTimeDbContextFactory<EwanContext>
     {
         public EwanContext CreateDbContext(string[] args)
         {

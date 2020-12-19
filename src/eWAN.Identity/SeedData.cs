@@ -6,12 +6,11 @@ using System;
 using System.Linq;
 using System.Security.Claims;
 using IdentityModel;
-using eWAN.Identity.Data;
-using eWAN.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
+using eWAN.Infrastructure.Database;
 
 namespace eWAN.Identity
 {
@@ -21,25 +20,25 @@ namespace eWAN.Identity
         {
             var services = new ServiceCollection();
             services.AddLogging();
-            services.AddDbContext<ApplicationDbContext>(options =>
-               options.UseSqlite(connectionString));
+            services.AddDbContext<EwanIdentityDbContext>(options =>
+               options.UseMySql(connectionString));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+            services.AddIdentity<eWAN.Infrastructure.Database.Entities.Identity, IdentityRole>()
+                .AddEntityFrameworkStores<EwanIdentityDbContext>()
                 .AddDefaultTokenProviders();
 
             using (var serviceProvider = services.BuildServiceProvider())
             {
                 using (var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
                 {
-                    var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
+                    var context = scope.ServiceProvider.GetService<EwanIdentityDbContext>();
                     context.Database.Migrate();
 
-                    var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                    var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<eWAN.Infrastructure.Database.Entities.Identity>>();
                     var alice = userMgr.FindByNameAsync("alice").Result;
                     if (alice == null)
                     {
-                        alice = new ApplicationUser
+                        alice = new eWAN.Infrastructure.Database.Entities.Identity()
                         {
                             UserName = "alice",
                             Email = "AliceSmith@email.com",
@@ -71,7 +70,7 @@ namespace eWAN.Identity
                     var bob = userMgr.FindByNameAsync("bob").Result;
                     if (bob == null)
                     {
-                        bob = new ApplicationUser
+                        bob = new eWAN.Infrastructure.Database.Entities.Identity()
                         {
                             UserName = "bob",
                             Email = "BobSmith@email.com",

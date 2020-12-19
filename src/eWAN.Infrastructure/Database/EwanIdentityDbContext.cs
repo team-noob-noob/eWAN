@@ -3,11 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using eWAN.Domains;
-
+using eWAN.Infrastructure.Database.Entities;
 namespace eWAN.Infrastructure.Database
 {
-    public class EwanIdentityDbContext : IdentityDbContext
+    public class EwanIdentityDbContext : IdentityDbContext<Identity>
     {
         public EwanIdentityDbContext(DbContextOptions options) : base(options) {}
 

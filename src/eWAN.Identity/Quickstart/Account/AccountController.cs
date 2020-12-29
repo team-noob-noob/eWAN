@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using eWAN.Identity.ViewModels;
 using IdentityModel;
 using IdentityServer4.Events;
 using IdentityServer4.Extensions;
@@ -147,6 +148,49 @@ namespace IdentityServerHost.Quickstart.UI
             return View(vm);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Register()
+        {
+            var vm = new RegisterViewModel();
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterInputModel input)
+        {
+            // Check if the email is not taken
+            if(this._userManager.FindByEmailAsync(input.Email).Result != null)
+            {
+                ModelState.AddModelError(string.Empty, "Email already taken");
+            }
+
+            // Check if the username is not taken
+            if(this._userManager.FindByNameAsync(input.Username).Result != null)
+            {
+                ModelState.AddModelError(string.Empty, "Username already taken");
+            }
+
+            // Store the user
+            var test =  await this._userManager.CreateAsync(new eWAN.Infrastructure.Database.Entities.Identity() {
+                UserName = input.Username,
+                PasswordHash = input.Password,
+                Email = input.Email,
+                FirstName = input.FirstName,
+                MiddleName = input.MiddleName,
+                LastName = input.LastName,
+                HomeAddress = input.HomeAddress,
+            }, input.Password);
+
+            if(test.Errors.Count() > 0)
+            {
+                foreach(var error in test.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+
+            return Redirect("~/LogIn");
+        }
         
         /// <summary>
         /// Show logout page

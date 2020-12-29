@@ -43,6 +43,10 @@ namespace eWAN.Identity
                             UserName = "alice",
                             Email = "AliceSmith@email.com",
                             EmailConfirmed = true,
+                            FirstName = "Alice",
+                            MiddleName = "Absr",
+                            LastName = "Smith",
+                            HomeAddress = "Bahay"
                         };
                         var result = userMgr.CreateAsync(alice, "Pass123$").Result;
                         if (!result.Succeeded)
@@ -74,7 +78,11 @@ namespace eWAN.Identity
                         {
                             UserName = "bob",
                             Email = "BobSmith@email.com",
-                            EmailConfirmed = true
+                            EmailConfirmed = true,
+                            FirstName = "Bob",
+                            MiddleName = "asda",
+                            LastName = "Smith",
+                            HomeAddress = "Bahay"
                         };
                         var result = userMgr.CreateAsync(bob, "Pass123$").Result;
                         if (!result.Succeeded)

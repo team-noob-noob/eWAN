@@ -187,7 +187,7 @@ namespace eWAN.Identity.Controllers.Account
                 }
             }
 
-            if(!ModelState.IsValid)
+            if(ModelState.IsValid)
             {            
                 return Redirect("~/Account/LogIn");
             }

@@ -185,11 +185,14 @@ namespace eWAN.Identity.Controllers.Account
                 {
                     ModelState.AddModelError("", error.Description);
                 }
-
-                return View();
             }
 
-            return Redirect("~/Account/LogIn");
+            if(!ModelState.IsValid)
+            {            
+                return Redirect("~/Account/LogIn");
+            }
+
+            return View();
         }
         
         /// <summary>
@@ -339,7 +342,7 @@ namespace eWAN.Identity.Controllers.Account
                 vm.ShowLogoutPrompt = false;
                 return vm;
             }
-// The dog ran very fsat
+
             // show the logout prompt. this prevents attacks where the user
             // is automatically signed out by another malicious web page.
             return vm;

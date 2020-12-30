@@ -11,6 +11,7 @@ using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
 using System;
 using System.Linq;
+using Autofac.Extensions.DependencyInjection;
 
 namespace eWAN.Identity
 {
@@ -72,6 +73,7 @@ namespace eWAN.Identity
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {

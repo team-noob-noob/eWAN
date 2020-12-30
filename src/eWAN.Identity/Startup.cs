@@ -12,6 +12,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using eWAN.Infrastructure.Database;
 using eWAN.Infrastructure.Database.Entities;
+using eWAN.Modules.Autofac;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using IdentityServer4.Configuration;
+using Elastic.Apm.NetCoreAll;
 
 namespace eWAN.Identity
 {
@@ -26,12 +31,14 @@ namespace eWAN.Identity
             Configuration = configuration;
         }
 
+        public ILifetimeScope AutofacContainer { get; private set; }
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<EwanIdentityDbContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+            // services.AddDbContext<EwanIdentityDbContext>(options =>
+            //     options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<eWAN.Infrastructure.Database.Entities.Identity, IdentityRole>()
                 .AddEntityFrameworkStores<EwanIdentityDbContext>()
@@ -57,8 +64,22 @@ namespace eWAN.Identity
             services.AddAuthentication();
         }
 
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.AddMonitoring();
+            builder.Register(c => {
+                var options = new DbContextOptionsBuilder<EwanIdentityDbContext>();
+                options.UseLazyLoadingProxies();
+                return new EwanIdentityDbContext(options.Options);
+            }).AsSelf().InstancePerLifetimeScope();
+        }
+
         public void Configure(IApplicationBuilder app)
         {
+            this.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
+
+            app.UseAllElasticApm();
+
             if (Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

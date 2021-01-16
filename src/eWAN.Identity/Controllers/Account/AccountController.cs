@@ -147,7 +147,7 @@ namespace eWAN.Identity.Controllers.Account
         }
 
         [HttpGet]
-        public async Task<IActionResult> Register()
+        public IActionResult Register()
         {
             var vm = new RegisterViewModel();
             return View();

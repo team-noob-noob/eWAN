@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using eWAN.Infrastructure.Database;
+using eWAN.Domains.Role;
 
 namespace eWAN.Identity
 {
@@ -42,41 +43,32 @@ namespace eWAN.Identity
             }
         }
 
+        
+
         private static void InsertRoles(RoleManager<IdentityRole> roleManager)
         {
-            var applicant = roleManager.FindByNameAsync("applicant").Result;
-            if(applicant == null)
+            void InsertRole(string roleName, RoleManager<IdentityRole> roleManager)
             {
-                applicant = new IdentityRole("applicant");
-
-                var result = roleManager.CreateAsync(applicant).Result;
-                if(!result.Succeeded)
+                var role = roleManager.FindByNameAsync(roleName).Result;
+                if(role == null)
                 {
-                    throw new Exception(result.Errors.First().Description);
+                    role = new IdentityRole(roleName);
+
+                    var result = roleManager.CreateAsync(role).Result;
+                    if(!result.Succeeded)
+                    {
+                        throw new Exception(result.Errors.First().Description);
+                    }
+                    Log.Debug($"{roleName} role created");
                 }
-                Log.Debug("applicant role created");
-            }
-            else
-            {
-                Log.Debug("applicant already exists");
-            }
-
-            var student = roleManager.FindByNameAsync("student").Result;
-            if(student == null)
-            {
-                student = new IdentityRole("student");
-
-                var result = roleManager.CreateAsync(student).Result;
-                if(!result.Succeeded)
+                else
                 {
-                    throw new Exception(result.Errors.First().Description);
+                    Log.Debug($"{roleName} already exists");
                 }
-                Log.Debug("student role created");
             }
-            else
-            {
-                Log.Debug("student already exists");
-            }
+
+            InsertRole("student", roleManager);
+            InsertRole("applicant", roleManager);
         }
 
         private static void InsertUsers(UserManager<eWAN.Infrastructure.Database.Entities.Identity> userMgr)

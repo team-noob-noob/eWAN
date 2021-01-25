@@ -169,7 +169,7 @@ namespace eWAN.Identity.Controllers.Account
             }
 
             // Store the user
-            var createResult =  await this._userManager.CreateAsync(new eWAN.Infrastructure.Database.Entities.Identity() {
+            var user = new eWAN.Infrastructure.Database.Entities.Identity() {
                 UserName = input.Username,
                 PasswordHash = input.Password,
                 Email = input.Email,
@@ -177,7 +177,9 @@ namespace eWAN.Identity.Controllers.Account
                 MiddleName = input.MiddleName,
                 LastName = input.LastName,
                 HomeAddress = input.HomeAddress,
-            }, input.Password);
+            };
+
+            var createResult =  await this._userManager.CreateAsync(user, input.Password);
 
             if(createResult.Errors.Count() > 0)
             {
@@ -191,6 +193,8 @@ namespace eWAN.Identity.Controllers.Account
             {            
                 return Redirect("~/Account/LogIn");
             }
+
+            await this._userManager.AddToRoleAsync(user, "applicant");
 
             return View();
         }

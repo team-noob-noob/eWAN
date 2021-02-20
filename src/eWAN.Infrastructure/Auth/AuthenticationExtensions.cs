@@ -15,30 +15,25 @@ namespace eWAN.Infrastructure.Auth
 
             services
             .AddAuthentication(x => {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultScheme = "Cookies";
+                x.DefaultChallengeScheme = "oidc";
             })
-            .AddJwtBearer(x => {
-                x.RequireHttpsMetadata = false;
-                x.SaveToken = true;
-                x.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    ValidateLifetime = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidIssuer = "Testing123", // TODO: Move text to a config
-                    ValidAudience = "Testing123" // TODO: Move text to a config
-                };
+            .AddCookie("Cookies")
+            .AddOpenIdConnect("oidc", x => {
+                x.Authority = "https://localhost:5001";
+
+                x.ClientId = "mvc";
+                x.ClientSecret = "secret";
+                x.ResponseType = "code";
+
+                x.SaveTokens = true;
             });
 
-            services.AddAuthorization(options => {
-                var defaultAuthorizationPolicyBuilder = new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme);
-                defaultAuthorizationPolicyBuilder = defaultAuthorizationPolicyBuilder.RequireAuthenticatedUser();
-                options.DefaultPolicy = defaultAuthorizationPolicyBuilder.Build();
-            });
+            // services.AddAuthorization(options => {
+            //     var defaultAuthorizationPolicyBuilder = new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme);
+            //     defaultAuthorizationPolicyBuilder = defaultAuthorizationPolicyBuilder.RequireAuthenticatedUser();
+            //     options.DefaultPolicy = defaultAuthorizationPolicyBuilder.Build();
+            // });
 
             return services;
         }

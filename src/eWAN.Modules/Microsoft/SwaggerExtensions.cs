@@ -1,9 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace eWAN.WebApi.Modules
 {
+    public class AuthorizeCheckOperationFilter : IOperationFilter
+    {
+        public void Apply(OpenApiOperation operation, OperationFilterContext context)
+        {
+            var hasAuthorize = 
+            context.MethodInfo.DeclaringType.GetCustomAttributes(true).OfType<AuthorizeAttribute>().Any() 
+            || context.MethodInfo.GetCustomAttributes(true).OfType<AuthorizeAttribute>().Any();
+
+            if (hasAuthorize)
+            {
+                //operation.Responses.Add("401", new OpenApiResponse { Description = "Unauthorized" });
+                operation.Responses.Add("403", new OpenApiResponse { Description = "Forbidden" });
+
+                operation.Security = new List<OpenApiSecurityRequirement>
+                {
+                    new OpenApiSecurityRequirement
+                    {
+                        [
+                            new OpenApiSecurityScheme {Reference = new OpenApiReference 
+                            {
+                                Type = ReferenceType.SecurityScheme, 
+                                Id = "oauth2"}
+                            }
+                        ] = new[] {"api1"}
+                    }
+                };
+
+            }
+        }
+    }
+
     public static class SwaggerExtensions
     {
         // TODO: Config SwaggerGen
@@ -11,6 +47,8 @@ namespace eWAN.WebApi.Modules
         {
             services.AddSwaggerGen(c =>
             {
+                
+
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
@@ -18,24 +56,22 @@ namespace eWAN.WebApi.Modules
                     Description = "APIs of the School Management Service"
                 });
 
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                c.OperationFilter<AuthorizeCheckOperationFilter>();
+
+                c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
                 {
-                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-                    Name = "Authorization",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey
-                });
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+                    Type = SecuritySchemeType.OAuth2,
+                    Flows = new OpenApiOAuthFlows
                     {
-                        new OpenApiSecurityScheme
+                        AuthorizationCode = new OpenApiOAuthFlow
                         {
-                            Reference = new OpenApiReference
+                            AuthorizationUrl = new Uri("https://localhost:5001/connect/authorize"),
+                            TokenUrl = new Uri("https://localhost:5001/connect/token"),
+                            Scopes = new Dictionary<string, string>
                             {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer"
+                                {"scope1", "Swagger UI for eWAN API"}
                             }
-                        },
-                        new string[] { }
+                        }
                     }
                 });
             });
@@ -46,14 +82,14 @@ namespace eWAN.WebApi.Modules
             this IApplicationBuilder app
         )
         {
-            app.UseSwagger(c =>
-            {
-                c.SerializeAsV2 = true;
-            });
+            app.UseSwagger();
 
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "eWAN APIs");
+                c.OAuthClientId("ewan_swagger");
+                c.OAuthAppName("Swagger UI for eWAN API");
+                c.OAuthUsePkce();
                 c.RoutePrefix = string.Empty;
             });
 

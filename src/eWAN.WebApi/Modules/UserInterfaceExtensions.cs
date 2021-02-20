@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 namespace eWAN.WebApi.Modules
 {
     using UseCases.Register;
-    using UseCases.LogIn;
     using UseCases.StudentApplication;
     using UseCases.ApplicationJurying;
     using UseCases.CreateProgram;
@@ -25,9 +24,6 @@ namespace eWAN.WebApi.Modules
         {
             services.AddScoped<RegisterPresenter, RegisterPresenter>();
             services.AddScoped<IRegisterOutputPort>(x => x.GetRequiredService<RegisterPresenter>());
-
-            services.AddScoped<LogInPresenter, LogInPresenter>();
-            services.AddScoped<ILogInOutputPort>(x => x.GetRequiredService<LogInPresenter>());
 
             services.AddScoped<StudentApplicationPresenter, StudentApplicationPresenter>();
             services.AddScoped<IStudentApplicationOutputPort>(x => x.GetRequiredService<StudentApplicationPresenter>());

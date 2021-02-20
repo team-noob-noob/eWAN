@@ -1,12 +1,13 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using System;
+using eWAN.Application.Boundaries.LogIn;
+using Microsoft.AspNetCore.Http;
 
 namespace eWAN.WebApi.UseCases.LogIn
 {
-    using Application.Boundaries.LogIn;
-    using Microsoft.AspNetCore.Http;
-
+    [Obsolete("This route has been deprecated", true)]
     [Authorize]
     [Route("/api/[controller]/[action]")]
     [ApiController]

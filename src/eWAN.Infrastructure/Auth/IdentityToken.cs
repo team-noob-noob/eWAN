@@ -8,6 +8,7 @@ namespace eWAN.Infrastructure.Auth
 {
     public class IdentityToken
     {
+        [Obsolete]
         public static string GenerateJwtSecurityToken(ClaimsIdentity identity, string secret)
         {
             var tokenHandler = new JwtSecurityTokenHandler();

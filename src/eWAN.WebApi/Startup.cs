@@ -27,10 +27,16 @@ namespace eWAN.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication("Bearer")
+            .AddIdentityServerAuthentication("Bearer", options => {
+                options.ApiName = "api1";
+                options.Authority = "https://localhost:5001";
+            });
+
             services.AddControllers();
             services.AddPresenters();
             services.AddCustomControllers();
-            services.AddCustomAuthentication();
+            //services.AddCustomAuthentication();
             services.AddSwagger();
             services.AddOptions();
         }
@@ -49,7 +55,7 @@ namespace eWAN.WebApi
         {
             this.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
 
-            app.UseAllElasticApm();
+            //app.UseAllElasticApm();
 
             app.UseHttpsRedirection();
 
@@ -61,6 +67,8 @@ namespace eWAN.WebApi
             app.UseSwaggerDoc();
 
             app.UseRouting();
+
+            app.UseAuthorization();
 
             app.UseAuthentication();
 

@@ -57,11 +57,13 @@ namespace eWAN.Identity
                 .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryClients(Config.Clients)
+                .AddInMemoryApiResources(Config.ApiResources)
+                .AddInMemoryPersistedGrants()
                 .AddAspNetIdentity<eWAN.Infrastructure.Database.Entities.Identity>();
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
-            services.AddAuthentication();
+            //services.AddAuthentication();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
@@ -78,7 +80,7 @@ namespace eWAN.Identity
         {
             this.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
 
-            app.UseAllElasticApm();
+            //app.UseAllElasticApm();
 
             if (Environment.IsDevelopment())
             {

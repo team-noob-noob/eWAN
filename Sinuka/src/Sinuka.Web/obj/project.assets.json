@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\laron\\OneDrive\\Documents\\Projects\\eWAN\\Sinuka\\src\\src.csproj",
-      "projectName": "src",
-      "projectPath": "C:\\Users\\laron\\OneDrive\\Documents\\Projects\\eWAN\\Sinuka\\src\\src.csproj",
+      "projectUniqueName": "C:\\Users\\laron\\OneDrive\\Documents\\Projects\\eWAN\\Sinuka\\src\\Sinuka.Web\\Sinuka.Web.csproj",
+      "projectName": "Sinuka.Web",
+      "projectPath": "C:\\Users\\laron\\OneDrive\\Documents\\Projects\\eWAN\\Sinuka\\src\\Sinuka.Web\\Sinuka.Web.csproj",
       "packagesPath": "C:\\Users\\laron\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\laron\\OneDrive\\Documents\\Projects\\eWAN\\Sinuka\\src\\obj\\",
+      "outputPath": "C:\\Users\\laron\\OneDrive\\Documents\\Projects\\eWAN\\Sinuka\\src\\Sinuka.Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

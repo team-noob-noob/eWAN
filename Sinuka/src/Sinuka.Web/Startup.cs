@@ -33,6 +33,8 @@ namespace Sinuka.Web
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseHttpsRedirection();
+
             app.UseRouting();
 
             app.UseIdentityServer();

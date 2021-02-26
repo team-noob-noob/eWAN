@@ -26,6 +26,12 @@ namespace eWAN.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services
+            .AddAuthentication("Bearer")
+            .AddIdentityServerAuthentication("Bearer", options => {
+                options.ApiName = "api1";
+                options.Authority = "https://localhost:5000";
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -47,13 +53,12 @@ namespace eWAN.Web
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
         }
     }
 }

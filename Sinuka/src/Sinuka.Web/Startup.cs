@@ -21,8 +21,11 @@ namespace Sinuka.Web
             .AddInMemoryIdentityResources(Resources.GetIdentityResources())
             .AddInMemoryApiResources(Resources.GetApiResources())
             .AddInMemoryApiScopes(Resources.GetApiScopes())
+            .AddInMemoryPersistedGrants()
             .AddTestUsers(Users.Get())
             .AddDeveloperSigningCredential();
+            services.AddAuthentication();
+            services.AddAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +41,8 @@ namespace Sinuka.Web
             app.UseRouting();
 
             app.UseIdentityServer();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

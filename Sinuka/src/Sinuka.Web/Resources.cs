@@ -30,7 +30,7 @@ namespace Sinuka.Web
                 DisplayName = "API #1",
                 Description = "Allow the application to access API #1 on your behalf",
                 Scopes = new List<string> {"api1.read", "api1.write"},
-                ApiSecrets = new List<Secret> {new Secret("ScopeSecret".Sha256())},
+                //ApiSecrets = new List<Secret> {new Secret("ScopeSecret".Sha256())},
                 UserClaims = new List<string> {"role"}
             }
         };

@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace eWAN.Web
+namespace eWAN.Web.Api
 {
     public class Program
     {

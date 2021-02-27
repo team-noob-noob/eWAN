@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace eWAN.Web.Controllers
+namespace eWAN.Web.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{966AAFF3-E8AF-4B8B-A141-C79EBFD73278}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1CBAD9AC-CEA1-4A2E-8EDB-F71B33844610}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWAN.Web", "src\eWAN.Web\eWAN.Web.csproj", "{2157B3BE-2DD2-4FDF-8624-E9E2CC5567A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eWAN.Web.Api", "src\eWAN.Web.Api\eWAN.Web.Api.csproj", "{341039B4-6F28-48E3-998C-6F3A7B76DD75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,20 +20,20 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2157B3BE-2DD2-4FDF-8624-E9E2CC5567A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2157B3BE-2DD2-4FDF-8624-E9E2CC5567A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2157B3BE-2DD2-4FDF-8624-E9E2CC5567A7}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{2157B3BE-2DD2-4FDF-8624-E9E2CC5567A7}.Debug|x64.Build.0 = Debug|Any CPU
-		{2157B3BE-2DD2-4FDF-8624-E9E2CC5567A7}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{2157B3BE-2DD2-4FDF-8624-E9E2CC5567A7}.Debug|x86.Build.0 = Debug|Any CPU
-		{2157B3BE-2DD2-4FDF-8624-E9E2CC5567A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2157B3BE-2DD2-4FDF-8624-E9E2CC5567A7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2157B3BE-2DD2-4FDF-8624-E9E2CC5567A7}.Release|x64.ActiveCfg = Release|Any CPU
-		{2157B3BE-2DD2-4FDF-8624-E9E2CC5567A7}.Release|x64.Build.0 = Release|Any CPU
-		{2157B3BE-2DD2-4FDF-8624-E9E2CC5567A7}.Release|x86.ActiveCfg = Release|Any CPU
-		{2157B3BE-2DD2-4FDF-8624-E9E2CC5567A7}.Release|x86.Build.0 = Release|Any CPU
+		{341039B4-6F28-48E3-998C-6F3A7B76DD75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{341039B4-6F28-48E3-998C-6F3A7B76DD75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{341039B4-6F28-48E3-998C-6F3A7B76DD75}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{341039B4-6F28-48E3-998C-6F3A7B76DD75}.Debug|x64.Build.0 = Debug|Any CPU
+		{341039B4-6F28-48E3-998C-6F3A7B76DD75}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{341039B4-6F28-48E3-998C-6F3A7B76DD75}.Debug|x86.Build.0 = Debug|Any CPU
+		{341039B4-6F28-48E3-998C-6F3A7B76DD75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{341039B4-6F28-48E3-998C-6F3A7B76DD75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{341039B4-6F28-48E3-998C-6F3A7B76DD75}.Release|x64.ActiveCfg = Release|Any CPU
+		{341039B4-6F28-48E3-998C-6F3A7B76DD75}.Release|x64.Build.0 = Release|Any CPU
+		{341039B4-6F28-48E3-998C-6F3A7B76DD75}.Release|x86.ActiveCfg = Release|Any CPU
+		{341039B4-6F28-48E3-998C-6F3A7B76DD75}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{2157B3BE-2DD2-4FDF-8624-E9E2CC5567A7} = {966AAFF3-E8AF-4B8B-A141-C79EBFD73278}
+		{341039B4-6F28-48E3-998C-6F3A7B76DD75} = {1CBAD9AC-CEA1-4A2E-8EDB-F71B33844610}
 	EndGlobalSection
 EndGlobal

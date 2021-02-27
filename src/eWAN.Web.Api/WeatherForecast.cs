@@ -1,6 +1,6 @@
 using System;
 
-namespace eWAN.Web
+namespace eWAN.Web.Api
 {
     public class WeatherForecast
     {

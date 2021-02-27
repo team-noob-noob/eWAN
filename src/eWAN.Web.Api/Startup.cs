@@ -14,7 +14,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.OpenApi.Models;
 
-namespace eWAN.Web
+namespace eWAN.Web.Api
 {
     public class Startup
     {

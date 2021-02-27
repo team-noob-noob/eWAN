@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace eWAN.Web
@@ -27,7 +29,7 @@ namespace eWAN.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services
-            .AddAuthentication("Bearer")
+            .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddIdentityServerAuthentication("Bearer", options => {
                 options.ApiName = "api1";
                 options.Authority = "https://localhost:5000";
@@ -45,6 +47,7 @@ namespace eWAN.Web
         {
             if (env.IsDevelopment())
             {
+                IdentityModelEventSource.ShowPII = true;
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "eWAN.Web v1"));

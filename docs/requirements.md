@@ -50,7 +50,7 @@ This software should have a module that maintains and updates the timetable for 
 ## Fee Collection
 A school management system software should offer the fee collection module that manages the fee collection of students, a fee paid, fee dues, fee receipts etc. It should also provide parents with an online and reliable mode of payment and an integrated SMS service to alert and remind the parents of the fee payment or dues if any.
 ### Features
-- TBA
+- Note: Most likely will be ignored since it is an open source thingy
 
 
 
@@ -63,7 +63,6 @@ The school management system software should offer a communication platform for 
 ### Features
 - Allow notification of all parties involved for new schedules/deadlines
 - Allow students/staffers to view contact details of the students guardian
-- TBA
 
 
 
@@ -73,5 +72,20 @@ The school management system software should offer a communication platform for 
 ## Effortless Administration:
 The school management software should manage and store your day to day school business. It should provide users access to relevant school information, and permit users to access the information within few mouse clicks. The software should be user-friendly and navigable. It should integrate all departments into a single frame to monitor closely each operation.
 ### Features
-- TBA
+- Add generation of reports
 
+
+
+
+## Teaching 
+Not part of the original requirements. The school management software should be able to assist the instructors/teaching staff to teach their students.
+### Features
+- Allow teachers to create exams
+- Allow teachers to generate lessons on demand (MOOC)
+- Allow teachers to interact with their students live (Most likely an integration to a meeting app)
+
+
+
+## Others
+### Features
+- Allow non-fulltime students to create their own schedule

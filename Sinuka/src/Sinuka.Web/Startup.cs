@@ -36,6 +36,7 @@ namespace Sinuka.Web
             .AddInMemoryIdentityResources(Resources.GetIdentityResources())
             .AddInMemoryApiResources(Resources.GetApiResources())
             .AddInMemoryApiScopes(Resources.GetApiScopes())
+            .AddTestUsers(Users.Get())
             .AddAspNetIdentity<Sinuka.Core.Domains.Entities.User>()
             .AddDeveloperSigningCredential();
 

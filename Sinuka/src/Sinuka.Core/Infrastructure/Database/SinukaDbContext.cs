@@ -7,7 +7,7 @@ using Sinuka.Core.Domains.Entities;
 
 namespace Sinuka.Core.Infrastructure.Database
 {
-    public class SinukaDbContext : IdentityDbContext<User>
+    public class SinukaDbContext : IdentityDbContext<User, Role, string, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>
     {
         public SinukaDbContext(DbContextOptions options) : base(options) {}
 

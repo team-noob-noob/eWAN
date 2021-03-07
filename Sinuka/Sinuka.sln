@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{474DDCC2-939
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinuka.Web", "src\Sinuka.Web\Sinuka.Web.csproj", "{5748B997-DB97-4CA9-99E3-8C671F8AF41E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinuka.Core", "src\Sinuka.Core\Sinuka.Core.csproj", "{F5A0C530-AD51-4750-9A43-ACA14666DACE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,8 +34,21 @@ Global
 		{5748B997-DB97-4CA9-99E3-8C671F8AF41E}.Release|x64.Build.0 = Release|Any CPU
 		{5748B997-DB97-4CA9-99E3-8C671F8AF41E}.Release|x86.ActiveCfg = Release|Any CPU
 		{5748B997-DB97-4CA9-99E3-8C671F8AF41E}.Release|x86.Build.0 = Release|Any CPU
+		{F5A0C530-AD51-4750-9A43-ACA14666DACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5A0C530-AD51-4750-9A43-ACA14666DACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5A0C530-AD51-4750-9A43-ACA14666DACE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F5A0C530-AD51-4750-9A43-ACA14666DACE}.Debug|x64.Build.0 = Debug|Any CPU
+		{F5A0C530-AD51-4750-9A43-ACA14666DACE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F5A0C530-AD51-4750-9A43-ACA14666DACE}.Debug|x86.Build.0 = Debug|Any CPU
+		{F5A0C530-AD51-4750-9A43-ACA14666DACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5A0C530-AD51-4750-9A43-ACA14666DACE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5A0C530-AD51-4750-9A43-ACA14666DACE}.Release|x64.ActiveCfg = Release|Any CPU
+		{F5A0C530-AD51-4750-9A43-ACA14666DACE}.Release|x64.Build.0 = Release|Any CPU
+		{F5A0C530-AD51-4750-9A43-ACA14666DACE}.Release|x86.ActiveCfg = Release|Any CPU
+		{F5A0C530-AD51-4750-9A43-ACA14666DACE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5748B997-DB97-4CA9-99E3-8C671F8AF41E} = {474DDCC2-9398-4EC7-8E91-BBD981463B25}
+		{F5A0C530-AD51-4750-9A43-ACA14666DACE} = {474DDCC2-9398-4EC7-8E91-BBD981463B25}
 	EndGlobalSection
 EndGlobal

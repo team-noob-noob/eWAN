@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -17,6 +18,11 @@ namespace Sinuka.Web
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentity<Sinuka.Core.Domains.Entities.User, IdentityRole>()
+            .AddEntityFrameworkStores<Sinuka.Core.Infrastructure.Database.SinukaDbContext>()
+            .AddDefaultTokenProviders();
+
+            services.AddDbContext<Sinuka.Core.Infrastructure.Database.SinukaDbContext>(options => options.UseLazyLoadingProxies());
 
             services.AddIdentityServer(options => {
                 options.Events.RaiseErrorEvents = true;
@@ -30,15 +36,8 @@ namespace Sinuka.Web
             .AddInMemoryIdentityResources(Resources.GetIdentityResources())
             .AddInMemoryApiResources(Resources.GetApiResources())
             .AddInMemoryApiScopes(Resources.GetApiScopes())
-            .AddInMemoryPersistedGrants()
-            
-            .AddTestUsers(Users.Get())
+            .AddAspNetIdentity<Sinuka.Core.Domains.Entities.User>()
             .AddDeveloperSigningCredential();
-
-            services.AddIdentity<Sinuka.Core.Domains.Entities.User, IdentityRole>()
-            .AddEntityFrameworkStores<Sinuka.Core.Infrastructure.Database.SinukaDbContext>()
-            .AddDefaultTokenProviders();
-
 
             services.AddAuthentication();
             services.AddAuthorization();
@@ -51,6 +50,7 @@ namespace Sinuka.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
 
             app.UseHttpsRedirection();

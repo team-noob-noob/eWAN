@@ -8,3 +8,5 @@
 # Limitations
 - Sinuka shouldn't be able to create (register) new users
     - An endpoint would be exposed to allow Sinuka to accept new users
+- Sinuka shouldn't be able to store personal details of users
+    - It will only store username, password and emails

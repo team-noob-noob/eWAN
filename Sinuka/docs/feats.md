@@ -4,9 +4,14 @@
 - Handle password resets
     - in addition, it should send it to the users email
 - Handle role changes in users
+- Handle email confirmations
+- Handle phone number confirmations
 
 # Limitations
 - Sinuka shouldn't be able to create (register) new users
     - An endpoint would be exposed to allow Sinuka to accept new users
 - Sinuka shouldn't be able to store personal details of users
     - It will only store username, password and emails
+
+# Integrations
+- Elastic Stack for Logging and Monitoring

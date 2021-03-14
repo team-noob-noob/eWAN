@@ -20,6 +20,8 @@ namespace Sinuka.Web
         {
             services.AddIdentity<Sinuka.Core.Domains.Entities.User, IdentityRole>()
             .AddEntityFrameworkStores<Sinuka.Core.Infrastructure.Database.SinukaDbContext>()
+            .AddUserStore<Sinuka.Core.Stores.UserStore>()
+            .AddUserManager<Sinuka.Core.Managers.UserManager>()
             .AddDefaultTokenProviders();
 
             services.AddDbContext<Sinuka.Core.Infrastructure.Database.SinukaDbContext>(options => options.UseLazyLoadingProxies());
@@ -39,9 +41,7 @@ namespace Sinuka.Web
             .AddTestUsers(Users.Get())
             .AddAspNetIdentity<Sinuka.Core.Domains.Entities.User>()
             .AddDeveloperSigningCredential();
-
-            services.AddAuthentication();
-            services.AddAuthorization();
+            
             services.AddControllersWithViews();
         }
 

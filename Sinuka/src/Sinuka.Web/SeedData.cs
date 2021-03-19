@@ -21,11 +21,12 @@ namespace Sinuka.Web
         {
             var services = new ServiceCollection();
             services.AddLogging();
-            services.AddDbContext<SinukaDbContext>(options =>
-               options.UseSqlite(connectionString));
+            services.AddDbContext<SinukaDbContext>(options => options.UseLazyLoadingProxies());
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<Sinuka.Core.Domains.Entities.User, IdentityRole>()
                 .AddEntityFrameworkStores<SinukaDbContext>()
+                .AddUserManager<Sinuka.Core.Managers.UserManager>()
+                .AddUserStore<Sinuka.Core.Stores.UserStore>()
                 .AddDefaultTokenProviders();
 
             using (var serviceProvider = services.BuildServiceProvider())
@@ -35,11 +36,11 @@ namespace Sinuka.Web
                     var context = scope.ServiceProvider.GetService<SinukaDbContext>();
                     context.Database.Migrate();
 
-                    var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                    var userMgr = scope.ServiceProvider.GetRequiredService<Sinuka.Core.Managers.UserManager>();
                     var alice = userMgr.FindByNameAsync("alice").Result;
                     if (alice == null)
                     {
-                        alice = new ApplicationUser
+                        alice = new Sinuka.Core.Domains.Entities.User
                         {
                             UserName = "alice",
                             Email = "AliceSmith@email.com",
@@ -71,7 +72,7 @@ namespace Sinuka.Web
                     var bob = userMgr.FindByNameAsync("bob").Result;
                     if (bob == null)
                     {
-                        bob = new ApplicationUser
+                        bob = new Sinuka.Core.Domains.Entities.User
                         {
                             UserName = "bob",
                             Email = "BobSmith@email.com",

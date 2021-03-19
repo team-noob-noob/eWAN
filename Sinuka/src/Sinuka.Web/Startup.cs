@@ -31,6 +31,8 @@ namespace Sinuka.Web
 
             services.AddIdentity<Sinuka.Core.Domains.Entities.User, IdentityRole>()
                 .AddEntityFrameworkStores<SinukaDbContext>()
+                .AddUserManager<Sinuka.Core.Managers.UserManager>()
+                .AddUserStore<Sinuka.Core.Stores.UserStore>()
                 .AddDefaultTokenProviders();
 
             var builder = services.AddIdentityServer(options =>

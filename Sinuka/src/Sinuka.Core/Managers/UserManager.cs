@@ -33,15 +33,5 @@ namespace Sinuka.Core.Managers
                 logger
             )
         { }
-
-        public User? FindByUsername(string username) => this.Users.FirstOrDefault(u => u.UserName == username);
-
-        public async Task<bool> ValidateCredentials(string username, string password) 
-        {
-            var user = FindByUsername(username);
-            if(user is null) return false;
-            
-            return await this.CheckPasswordAsync(user, password);
-        }
     }
 }

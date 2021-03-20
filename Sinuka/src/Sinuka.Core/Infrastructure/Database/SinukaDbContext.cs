@@ -13,8 +13,8 @@ namespace Sinuka.Core.Infrastructure.Database
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfigurationsFromAssembly(typeof(SinukaDbContext).Assembly);
             base.OnModelCreating(builder);
+            builder.ApplyConfigurationsFromAssembly(typeof(SinukaDbContext).Assembly);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

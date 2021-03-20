@@ -12,7 +12,7 @@ using Sinuka.Web.Attributes;
 using Sinuka.Web.ViewModels.Home;
 using System.Threading.Tasks;
 
-namespace IdentityServerHost.Quickstart.UI
+namespace Sinuka.Web.Controllers.Home
 {
     [SecurityHeaders]
     [AllowAnonymous]

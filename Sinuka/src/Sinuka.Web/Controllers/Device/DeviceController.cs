@@ -20,7 +20,7 @@ using Sinuka.Web.Attributes;
 using Sinuka.Web.ViewModels.Consent;
 using Sinuka.Web.ViewModels.Device;
 
-namespace IdentityServerHost.Quickstart.UI
+namespace Sinuka.Web.Controllers.Device
 {
     [Authorize]
     [SecurityHeaders]

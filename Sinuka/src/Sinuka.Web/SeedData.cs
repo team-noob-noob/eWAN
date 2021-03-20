@@ -6,7 +6,6 @@ using System;
 using System.Linq;
 using System.Security.Claims;
 using IdentityModel;
-using Sinuka.Web.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;

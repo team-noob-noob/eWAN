@@ -6,7 +6,7 @@
 - Handle role changes in users
 - Handle email confirmations
 - Handle phone number confirmations
-- Handle multiple clients (Identity Server specific)
+- Handle multiple clients and multiple scopes non-programmatically (Identity Server specific)
 
 # Limitations
 - Sinuka shouldn't be able to create (register) new users

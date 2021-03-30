@@ -17,3 +17,6 @@
 
 # Integrations
 - Elastic Stack for Logging and Monitoring
+
+# Remarks
+- Admin and Public are on separate web projects

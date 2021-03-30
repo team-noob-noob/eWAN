@@ -20,3 +20,4 @@
 
 # Remarks
 - Admin and Public are on separate web projects
+- Should follow GDPR regulations cuz reasons (Not really needed)

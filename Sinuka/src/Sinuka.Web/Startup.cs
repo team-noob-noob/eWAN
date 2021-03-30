@@ -45,6 +45,7 @@ namespace Sinuka.Web
             })
                 .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
+                .AddInMemoryApiResources(Config.ApiResources)
                 .AddInMemoryClients(Config.Clients)
                 .AddAspNetIdentity<Sinuka.Core.Domains.Entities.User>();
 

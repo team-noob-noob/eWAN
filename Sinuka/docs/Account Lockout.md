@@ -15,3 +15,4 @@ Everyone (Public)
 ## Remarks
 - Should a flag that allows to disable permanent disable, instead will be replaced by 24 hours. Every subsequent 3 failures without successfully logging in will always be 24 hours.
 - Should reset the count to 0 after the login successfully logins
+- There should be a flag that disables the account lockout feature

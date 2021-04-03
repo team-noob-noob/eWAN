@@ -14,5 +14,6 @@
         "strict": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
+        "moduleResolution": "node",
     }
 }

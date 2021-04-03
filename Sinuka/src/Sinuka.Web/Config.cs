@@ -37,7 +37,26 @@ namespace Sinuka.Web
                     Scopes = new List<string> {"ClientToIdentity"},
                     ApiSecrets = new List<Secret> {new Secret("ScopeSecret".Sha256())},
                     UserClaims = new List<string> {"Role"},
+                },
+                new ApiResource()
+                {
+                    Name = "Sinuka.Web.Admin.UI",
+                    DisplayName = "Sinuka Admin Controls",
+                    Description = "Admin Controls for Sinuka",
+                    Scopes = new List<string> {"Admin"},
+                    ApiSecrets = new List<Secret> {new Secret("ScopeSecret".Sha256())},
+                    UserClaims = new List<string>{"Role"}
+                },
+                new ApiResource()
+                {
+                    Name = "Sinuka.Web.Admin",
+                    DisplayName = "Sinuka Accounts Admin Web APIs",
+                    Description = "Web APIs for Admin Controls",
+                    Scopes = new List<string> {"Admin"},
+                    ApiSecrets = new List<Secret> {new Secret("ScopeSecret".Sha256())},
+                    UserClaims = new List<string> {"Role"},
                 }
+                // TODO: Add dynamic addition of ApiResources
             };
 
         public static IEnumerable<Client> Clients =>
@@ -55,21 +74,18 @@ namespace Sinuka.Web
                     AllowedScopes = { "ClientToIdentity" }
                 },
 
-                // interactive client using code flow + pkce
                 new Client
                 {
-                    ClientId = "interactive",
-                    ClientName = "Administration Clients",
-                    ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },
+                    ClientId = "sinukaWebAdminUI",
+                    ClientName = "Sinuka Web Admin UI",
 
-                    AllowedGrantTypes = GrantTypes.Code,
+                    AllowedGrantTypes = GrantTypes.Implicit,
 
-                    RedirectUris = { "https://localhost:44300/signin-oidc" },
-                    FrontChannelLogoutUri = "https://localhost:44300/signout-oidc",
-                    PostLogoutRedirectUris = { "https://localhost:44300/signout-callback-oidc" },
+                    RedirectUris = { "https://localhost:6001/signin-oidc" },
+                    FrontChannelLogoutUri = "https://localhost:6001/signout-oidc",
+                    PostLogoutRedirectUris = { "https://localhost:6001/signout-callback-oidc" },
 
-                    AllowOfflineAccess = true,
-                    AllowedScopes = { "openid", "profile", "Admin" }
+                    AllowedScopes = {"openid", "profile", "Admin"}
                 },
             };
     }

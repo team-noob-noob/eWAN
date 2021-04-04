@@ -40,15 +40,6 @@ namespace Sinuka.Web
                 },
                 new ApiResource()
                 {
-                    Name = "Sinuka.Web.Admin.UI",
-                    DisplayName = "Sinuka Admin Controls",
-                    Description = "Admin Controls for Sinuka",
-                    Scopes = new List<string> {"Admin"},
-                    ApiSecrets = new List<Secret> {new Secret("ScopeSecret".Sha256())},
-                    UserClaims = new List<string>{"Role"}
-                },
-                new ApiResource()
-                {
                     Name = "Sinuka.Web.Admin",
                     DisplayName = "Sinuka Accounts Admin Web APIs",
                     Description = "Web APIs for Admin Controls",
@@ -56,7 +47,6 @@ namespace Sinuka.Web
                     ApiSecrets = new List<Secret> {new Secret("ScopeSecret".Sha256())},
                     UserClaims = new List<string> {"Role"},
                 }
-                // TODO: Add dynamic addition of ApiResources
             };
 
         public static IEnumerable<Client> Clients =>

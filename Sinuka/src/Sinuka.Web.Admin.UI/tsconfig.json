@@ -9,7 +9,6 @@
         ],
         "target": "ES2019",
         "jsx": "react",
-        "baseUrl": "src",
         "allowSyntheticDefaultImports": true,
         "noImplicitAny": true,
         "strict": true,

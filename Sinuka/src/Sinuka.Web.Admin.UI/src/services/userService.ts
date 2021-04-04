@@ -1,4 +1,5 @@
 import { UserManager } from "oidc-client";
+import { UserStore } from "stores/userStore";
 
 const config = {
     authority: "https://localhost:5000",
@@ -11,24 +12,35 @@ const config = {
 
 const userManager = new UserManager(config);
 
-export async function loadUserFromStorage() {
-
+export async function loadUserFromStorage(store: UserStore) {
+    try {
+        let user = await userManager.getUser();
+        store.user = user;
+    }
+    catch(e) {
+        console.log(`Sinuka.Web.Admin.UI> user not found ${e}`);
+        store.user = null;
+    }
 }
 
 export async function signInRedirect() {
-
+    return userManager.signinRedirect();
 }
 
 export async function signInRedirectCallback() {
-
+    return userManager.signinRedirectCallback();
 }
 
 export async function signOutRedirect() {
-
+    userManager.clearStaleState();
+    userManager.removeUser();
+    return userManager.signoutRedirect();
 }
 
 export async function signOutRedirectCallback() {
-
+    userManager.clearStaleState();
+    userManager.removeUser();
+    return userManager.signoutRedirectCallback();
 }
 
 export default userManager;

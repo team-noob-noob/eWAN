@@ -1,7 +1,7 @@
-import { UserManager } from "oidc-client";
+import { UserManager, UserManagerSettings } from "oidc-client";
 import { UserStore } from "../stores/userStore";
 
-const config = {
+const config: UserManagerSettings = {
     authority: "https://localhost:5000",
     client_id: "sinukaWebAdminUI",
     redirect_uri: "https://localhost:7001/signin-oidc",
@@ -31,10 +31,10 @@ export async function signInRedirectCallback() {
     return userManager.signinRedirectCallback();
 }
 
-export async function signOutRedirect() {
+export async function signOutRedirect(idToken: string) {
     userManager.clearStaleState();
     userManager.removeUser();
-    return userManager.signoutRedirect();
+    return userManager.signoutRedirect({'id_token_hint': idToken});
 }
 
 export async function signOutRedirectCallback() {

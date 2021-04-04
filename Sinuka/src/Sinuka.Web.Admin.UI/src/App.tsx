@@ -1,23 +1,37 @@
-import React from "react";
-import './App.css';
+import React, { useEffect } from "react";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
+import userManager, { loadUserFromStorage } from "./services/userService";
+import { useStores } from "./useStores";
+import { AuthProvider } from "./providers/authProvider";
+
+import { Login } from "./pages/Login"
+import { SigninOidc } from "./pages/SigninOidc";
+import { SignoutOidc } from "./pages/SignoutOidc";
+import { Home } from "./pages/Home";
+
+import { ProtectedRoute } from "./utils/protectedRoute";
 
 function App() {
+  const store = useStores();
+
+  useEffect(() => {
+    loadUserFromStorage(store.userStore);
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider
+      userManager={userManager}
+      store={store.userStore}
+    >
+      <BrowserRouter>
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/signin-oidc" component={SigninOidc} />
+          <Route path="/signout-oidc" component={SignoutOidc} />
+          <ProtectedRoute userStore={store.userStore} path="/" component={Home} />
+        </Switch>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

@@ -23,6 +23,12 @@ namespace Sinuka.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => {
+                options.AddDefaultPolicy(builder => {
+                    builder.WithOrigins("*").SetIsOriginAllowedToAllowWildcardSubdomains().AllowAnyHeader();
+                });
+            });
+
             services.AddControllersWithViews();
 
             services.AddDbContext<SinukaDbContext>(options => options.UseLazyLoadingProxies());
@@ -63,9 +69,11 @@ namespace Sinuka.Web
                 app.UseDatabaseErrorPage();
             }
 
-            app.UseAllElasticApm(Configuration);
+            // app.UseAllElasticApm(Configuration);
 
             app.UseStaticFiles();
+
+            app.UseCors();
 
             app.UseRouting();
             app.UseIdentityServer();

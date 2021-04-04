@@ -78,12 +78,13 @@ namespace Sinuka.Web
                 {
                     ClientId = "sinukaWebAdminUI",
                     ClientName = "Sinuka Web Admin UI",
+                    ClientUri = "https://localhost:7001",
 
                     AllowedGrantTypes = GrantTypes.Implicit,
 
                     RedirectUris = { "https://localhost:7001/signin-oidc" },
                     FrontChannelLogoutUri = "https://localhost:7001/signout-oidc",
-                    PostLogoutRedirectUris = { "https://localhost:7001/signout-callback-oidc" },
+                    PostLogoutRedirectUris = { "https://localhost:7001/signout-oidc" },
 
                     AllowedScopes = {"openid", "profile", "Admin"},
 

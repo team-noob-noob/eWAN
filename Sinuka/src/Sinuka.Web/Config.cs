@@ -72,6 +72,7 @@ namespace Sinuka.Web
 
                     AllowedGrantTypes = GrantTypes.Implicit,
 
+                    AllowedCorsOrigins = { "https://localhost:7001" },
                     RedirectUris = { "https://localhost:7001/signin-oidc" },
                     FrontChannelLogoutUri = "https://localhost:7001/signout-oidc",
                     PostLogoutRedirectUris = { "https://localhost:7001/signout-oidc" },

@@ -81,11 +81,13 @@ namespace Sinuka.Web
 
                     AllowedGrantTypes = GrantTypes.Implicit,
 
-                    RedirectUris = { "https://localhost:6001/signin-oidc" },
-                    FrontChannelLogoutUri = "https://localhost:6001/signout-oidc",
-                    PostLogoutRedirectUris = { "https://localhost:6001/signout-callback-oidc" },
+                    RedirectUris = { "https://localhost:7001/signin-oidc" },
+                    FrontChannelLogoutUri = "https://localhost:7001/signout-oidc",
+                    PostLogoutRedirectUris = { "https://localhost:7001/signout-callback-oidc" },
 
-                    AllowedScopes = {"openid", "profile", "Admin"}
+                    AllowedScopes = {"openid", "profile", "Admin"},
+
+                    AllowAccessTokensViaBrowser = true,
                 },
             };
     }

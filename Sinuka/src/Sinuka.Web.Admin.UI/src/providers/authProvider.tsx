@@ -1,6 +1,7 @@
-import React, { FunctionComponent, useEffect, useRef } from "react";
-import { User, UserManager, UserManagerEvents } from "oidc-client";
+import React, { useEffect, useRef } from "react";
+import { UserManager, UserManagerEvents } from "oidc-client";
 import { UserStore } from "../stores/userStore";
+import { setAuthHeader } from "../utils/axiosHeaders";
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({userManager: manager, store, children}) => {
     let userManager = useRef<UserManager>();
@@ -11,11 +12,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({userManager: manager,
         const onUserLoaded: UserManagerEvents.UserLoadedCallback = (user) => {
             console.log(`Sinuka.Web.Admin.UI > user loaded: ${user}`);
             store.user = user;
+            setAuthHeader(user.access_token);
         };
 
         const onUserUnloaded: UserManagerEvents.UserUnloadedCallback = () => {
             console.log(`Sinuka.Web.Admin.UI > user unloaded`);
             store.user = null;
+            setAuthHeader(null);
         };
 
         const onAccessTokenExpiring = () => {

@@ -10,12 +10,14 @@ import { SignoutOidc } from "./pages/SignoutOidc";
 import { Home } from "./pages/Home";
 
 import { ProtectedRoute } from "./utils/protectedRoute";
+import { HOSTS } from "./config";
 
 function App() {
   const store = useStores();
 
   useEffect(() => {
     loadUserFromStorage(store.userStore);
+    console.log(HOSTS);
   }, [])
 
   return (

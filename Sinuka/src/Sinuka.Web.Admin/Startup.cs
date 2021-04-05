@@ -34,6 +34,12 @@ namespace Sinuka.Web.Admin
                 options.Authority = Sinuka.Core.Infrastructure.Configs.HostConfig.IdentityServerUrl;
             });
 
+            services.AddCors(options => {
+                options.AddDefaultPolicy(builder => {
+                    builder.WithOrigins("*").SetIsOriginAllowedToAllowWildcardSubdomains().AllowAnyHeader();
+                });
+            });
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -54,6 +60,8 @@ namespace Sinuka.Web.Admin
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthentication();
 

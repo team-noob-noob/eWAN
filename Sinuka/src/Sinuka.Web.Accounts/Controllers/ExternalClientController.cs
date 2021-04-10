@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 namespace Sinuka.Web.Accounts.Controllers.Account
 {
     [Authorize("MachineToMachinePolicy")]
+    [Route("/[controller]/[method]")]
     public class ExternalClientController : Controller
     {
         private readonly Sinuka.Core.Managers.UserManager _userManager;

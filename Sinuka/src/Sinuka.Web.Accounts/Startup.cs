@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,11 +30,18 @@ namespace Sinuka.Web.Accounts
         {
             services
                 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddIdentityServerAuthentication("Bearer", options => {
+                .AddIdentityServerAuthentication("Bearer", options =>
+                {
                     options.ApiName = "Sinuka.Web.Accounts";
                     options.Authority = Sinuka.Core.Infrastructure.Configs.HostConfig.IdentityServerUrl;
                 });
-            
+
+            services.AddDbContext<Sinuka.Core.Infrastructure.Database.SinukaDbContext>();
+            services.AddIdentity<Sinuka.Core.Domains.Entities.User, IdentityRole>()
+                .AddEntityFrameworkStores<Sinuka.Core.Infrastructure.Database.SinukaDbContext>()
+                .AddUserManager<Sinuka.Core.Managers.UserManager>()
+                .AddUserStore<Sinuka.Core.Stores.UserStore>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

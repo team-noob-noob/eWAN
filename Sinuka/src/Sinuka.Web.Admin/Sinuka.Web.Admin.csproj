@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sinuka.Core\Sinuka.Core.csproj" />
+    <ProjectReference Include="..\Sinuka.Web.Accounts\Sinuka.Web.Accounts.csproj" />
   </ItemGroup>
 
 </Project>

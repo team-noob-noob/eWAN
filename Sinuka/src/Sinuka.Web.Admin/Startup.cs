@@ -40,6 +40,8 @@ namespace Sinuka.Web.Admin
                 });
             });
 
+            services.AddDbContext<Sinuka.Core.Infrastructure.Database.SinukaDbContext>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

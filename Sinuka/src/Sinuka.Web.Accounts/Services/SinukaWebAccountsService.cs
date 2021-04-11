@@ -10,9 +10,9 @@ namespace Sinuka.Web.Accounts.Services
     {
         private readonly ISinukaWebAccountsEndpoint _sinukaWebAccountsEndpoint;
 
-        public SinukaWebAccountsService()
+        public SinukaWebAccountsService(string baseUrl = null)
         {
-            this._sinukaWebAccountsEndpoint = RestService.For<ISinukaWebAccountsEndpoint>(HostConfig.AccountsSyncUrl);
+            this._sinukaWebAccountsEndpoint = RestService.For<ISinukaWebAccountsEndpoint>(baseUrl ?? HostConfig.AccountsSyncUrl);
         }
 
         public IdentityResult AddUser(NewUserInputModel newUserInput)

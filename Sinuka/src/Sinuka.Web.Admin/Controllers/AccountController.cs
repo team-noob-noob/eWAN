@@ -6,10 +6,10 @@ using Sinuka.Web.Admin.Extensions;
 using Sinuka.Web.Admin.ViewModels;
 using Sinuka.Core.Domains.Entities;
 using Sinuka.Web.Accounts.Services;
-using Sinuka.Web.Accounts.Endpoints;
 using Sinuka.Core.Infrastructure.Database;
 using Sinuka.Web.Admin.ViewModels.Accounts;
 using Sinuka.Web.Accounts.ViewModels.Account;
+using Sinuka.Web.Accounts.Interfaces;
 
 namespace Sinuka.Web.Admin.Controllers
 {
@@ -19,7 +19,7 @@ namespace Sinuka.Web.Admin.Controllers
     public class AccountController : ControllerBase
     {
         private SinukaDbContext _dbContext;
-        private ISinukaWebAccountsEndpoint _sinukaWebAccountsEndpoints;
+        private ISinukaWebAccountsService _sinukaWebAccountsEndpoints;
 
         public AccountController(
             SinukaDbContext dbContext

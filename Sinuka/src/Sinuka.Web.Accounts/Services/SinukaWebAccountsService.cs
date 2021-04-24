@@ -1,12 +1,13 @@
 using Refit;
-using Sinuka.Web.Accounts.Endpoints;
-using Sinuka.Core.Infrastructure.Configs;
 using Microsoft.AspNetCore.Identity;
+using Sinuka.Web.Accounts.Endpoints;
+using Sinuka.Web.Accounts.Interfaces;
+using Sinuka.Core.Infrastructure.Configs;
 using Sinuka.Web.Accounts.ViewModels.Account;
 
 namespace Sinuka.Web.Accounts.Services
 {
-    public class SinukaWebAccountsService : ISinukaWebAccountsEndpoint
+    public class SinukaWebAccountsService : ISinukaWebAccountsService
     {
         private readonly ISinukaWebAccountsEndpoint _sinukaWebAccountsEndpoint;
 

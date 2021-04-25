@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sinuka.Core\Sinuka.Core.csproj" />
+    <ProjectReference Include="..\Sinuka.Web\Sinuka.Web.csproj" />
   </ItemGroup>
 
 </Project>

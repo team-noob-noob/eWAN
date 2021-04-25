@@ -7,9 +7,9 @@ namespace Sinuka.Web.Accounts.Endpoints
     public interface ISinukaWebAccountsEndpoint
     {
         [Post("/ExternalClient/AddUser")]
-        IdentityResult AddUser(NewUserInputModel newUserInput);
+        IdentityResult AddUser(NewUserInputModel newUserInput, [Authorize("Bearer")] string token);
 
         [Put("/ExternalClient/UpdateUser")]
-        IdentityResult UpdateUser(UpdateUserInputModel userInputModel);
+        IdentityResult UpdateUser(UpdateUserInputModel userInputModel, [Authorize("Bearer")] string token);
     }
 }

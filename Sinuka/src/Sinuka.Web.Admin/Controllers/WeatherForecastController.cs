@@ -10,7 +10,7 @@ namespace Sinuka.Web.Admin.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("[controller]")]
+    [Route("/test/admin/[[controller]]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]

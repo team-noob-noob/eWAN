@@ -15,7 +15,7 @@ namespace Sinuka.Web.Admin.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("/[controller]/[method]")]
+    [Route("/[[controller]]/[[action]]")]
     public class AccountController : ControllerBase
     {
         private SinukaDbContext _dbContext;
@@ -30,13 +30,13 @@ namespace Sinuka.Web.Admin.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<User> GetAllUsers([FromBody] UserQueryInputModel queryInputModel, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
+        public IEnumerable<User> GetAllUsers([FromQuery] UserQueryInputModel queryInputModel, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
         {
             return this._dbContext.Set<User>().Where(u => u.Email == queryInputModel.Email).Page(pageNumber, pageSize);
         }
 
         [HttpPost]
-        public Response<AccountCreationOutputModel> CreateAccount(NewUserInputModel newUserInput)
+        public Response<AccountCreationOutputModel> CreateAccount([FromBody] NewUserInputModel newUserInput)
         {
             var response = this._sinukaWebAccountsEndpoints.AddUser(newUserInput);
             return new Response<AccountCreationOutputModel>(new AccountCreationOutputModel()

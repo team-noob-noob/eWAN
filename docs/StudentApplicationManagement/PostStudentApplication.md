@@ -1,4 +1,4 @@
-# Sending Student Application
+# Post Student Application
 ## Description
 Student Applicants sends their documents to the school
 

@@ -21,12 +21,15 @@ namespace Sinuka.Web.Accounts.Controllers.Account
         [HttpPost]
         public async Task<IdentityResult> AddUser([FromBody] NewUserInputModel newUserInput)
         {
-            return await this._userManager.CreateAsync(new Sinuka.Core.Domains.Entities.User() {
+            var user = new Sinuka.Core.Domains.Entities.User() {
                 UserName = newUserInput.Username,
                 PasswordHash = newUserInput.Password,
                 PhoneNumber = newUserInput.PhoneNumber,
                 Email = newUserInput.Email,
-            }, newUserInput.Password);
+            };
+            var result = await this._userManager.CreateAsync(user, newUserInput.Password);
+            await this._userManager.AddToRoleAsync(user, Sinuka.Core.Domains.Constants.UserRoleTypes.StudentApplicant);
+            return result;
         }
 
         [HttpPut]

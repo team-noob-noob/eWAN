@@ -15,6 +15,7 @@ namespace Sinuka.Core.Infrastructure.Database
         {
             base.OnModelCreating(builder);
             builder.ApplyConfigurationsFromAssembly(typeof(SinukaDbContext).Assembly);
+            SeedData.Seed(builder);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
